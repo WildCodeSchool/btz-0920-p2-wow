@@ -12,13 +12,13 @@ class Leaderboards extends React.Component {
     return (
       <div>
         <Navbar className="bg-primary">
-          <NavbarText href="#" className="h1">
+          <NavbarText href="#" className="h1 font-weight-bold">
             World Of Wildcraft
           </NavbarText>
           <FaSearch className="h2" />
         </Navbar>
-        <div className="container d-flex flex-wrap mt-5">
-          <Table dark className="table-striped">
+        <div className="leaderboard-container container d-flex mt-5 align-items-center">
+          <Table className="table-striped mx-5">
             <thead>
               <tr>
                 <th className="h2 font-weight-bold">Top World Guilds</th>
@@ -52,7 +52,7 @@ class Leaderboards extends React.Component {
               </tr>
             </tbody>
           </Table>
-          <Table className="table-striped">
+          <Table className="table-striped mx-5">
             <thead>
               <tr>
                 <th className="h2 font-weight-bold">Top World Players</th>
