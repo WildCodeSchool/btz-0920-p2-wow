@@ -1,11 +1,12 @@
 import './App.css';
+import { Container } from 'reactstrap';
 import SearchPage from './components/searchPage/SearchPage';
 
 function App() {
   return (
-    <div className="App">
+    <Container className="App" style={{ width: '100vw' }}>
       <SearchPage />
-    </div>
+    </Container>
   );
 }
 

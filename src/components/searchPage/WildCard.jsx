@@ -1,13 +1,23 @@
 import './SearchPage.css';
+import { Col } from 'reactstrap';
+
+import guild from '../../img/guild.jpg';
 
 const WildCard = () => {
+  const wildCardStyle = {
+    backgroundImage: `url(${guild})`,
+    height: '20rem',
+  };
   return (
-    <div
-      className="wildCard"
-      style={{ backgroundImage: '../img/character.jpg' }}
+    <Col
+      xs="4"
+      className="opacity-50 d-flex align-items-center justify-content-center m-3 border border-primary"
+      style={wildCardStyle}
     >
-      <h3>Title</h3>
-    </div>
+      <a href="http:/test.com" className="display-3">
+        Title
+      </a>
+    </Col>
   );
 };
 

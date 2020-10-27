@@ -13,8 +13,12 @@ body {
   align-items: center;
 }
 
+.opacity-50 {
+  opacity: 0.5;
+}
+
 .border-bot-primary {
-  border-bottom: var(--main-color) 10px solid;
+  border-bottom: var(--main-color) 6px solid;
 }
 
 .title-y {
