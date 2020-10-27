@@ -1,14 +1,33 @@
 import React from 'react';
 import { Navbar, NavbarText, Table } from 'reactstrap';
 import { FaSearch } from 'react-icons/fa';
+import Axios from 'axios';
+
+const api =
+  'https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=world';
 
 class Leaderboards extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      first: 'blabla',
+      second: 'ljxfks',
+    };
+  }
+
+  componentDidMount() {
+    Axios.get(api)
+      .then((response) => response.data)
+      .then((data) =>
+        this.setState({
+          first: data.raidRankings[0].guild,
+          second: data.raidRankings[1].guild,
+        })
+      );
   }
 
   render() {
+    const { first, second } = this.state;
     return (
       <div>
         <Navbar className="bg-primary">
@@ -21,17 +40,17 @@ class Leaderboards extends React.Component {
           <Table className="table-striped mx-5">
             <thead>
               <tr>
-                <th className="h2 font-weight-bold">Top World Guilds</th>
+                <th className="h2 font-weight-bold ">Top World Guilds</th>
               </tr>
             </thead>
             <tbody>
               <tr className="bg-primary">
-                <th>Complexity Limit</th>
+                <th>{first.name}</th>
                 <th>Illidan</th>
                 <th>US</th>
               </tr>
               <tr>
-                <th>Complexity Limit</th>
+                <th>{second.name}</th>
                 <th>Illidan</th>
                 <th>US</th>
               </tr>
