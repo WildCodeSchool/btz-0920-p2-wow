@@ -47,68 +47,267 @@ export const factions = [
 ];
 
 /**
- * array of classes
+ * array of classes and specs
  */
 export const classes = [
   {
     id: 1,
     name: 'Death Knight',
     slug: 'death-knight',
+    specs: [
+      {
+        id: 1,
+        name: 'Blood',
+        slug: 'blood',
+      },
+      {
+        id: 2,
+        name: 'Blood',
+        slug: 'blood',
+      },
+      {
+        id: 3,
+        name: 'Unholdy',
+        slug: 'unholdy',
+      },
+    ],
   },
   {
     id: 2,
     name: 'Demon Hunter',
     slug: 'demon-hunter',
+    specs: [
+      {
+        id: 4,
+        name: 'Havoc',
+        slug: 'havoc',
+      },
+      {
+        id: 5,
+        name: 'Vengeance',
+        slug: 'vengeance',
+      },
+    ],
   },
   {
     id: 3,
     name: 'Druid',
     slug: 'druid',
+    specs: [
+      {
+        id: 6,
+        name: 'Feral',
+        slug: 'feral',
+      },
+      {
+        id: 7,
+        name: 'Guardian',
+        slug: 'guardian',
+      },
+      {
+        id: 8,
+        name: 'Restoration',
+        slug: 'restoration',
+      },
+    ],
   },
   {
     id: 4,
     name: 'Alliance',
     slug: 'hunter',
+    specs: [
+      {
+        id: 9,
+        name: 'Beast Mastery',
+        slug: 'beastmastery',
+      },
+      {
+        id: 10,
+        name: 'Marksmanship',
+        slug: 'marksmanship',
+      },
+      {
+        id: 11,
+        name: 'Survival',
+        slug: 'survival',
+      },
+    ],
   },
   {
     id: 5,
     name: 'Mage',
     slug: 'mage',
+    specs: [
+      {
+        id: 12,
+        name: 'Arcade',
+        slug: 'arcade',
+      },
+      {
+        id: 13,
+        name: 'Fire',
+        slug: 'fire',
+      },
+      {
+        id: 14,
+        name: 'Frost',
+        slug: 'frost',
+      },
+    ],
   },
   {
     id: 6,
     name: 'Monk',
     slug: 'monk',
+    specs: [
+      {
+        id: 15,
+        name: 'Brewmaster',
+        slug: 'brewmaster',
+      },
+      {
+        id: 16,
+        name: 'Windwalker',
+        slug: 'windwalker',
+      },
+      {
+        id: 17,
+        name: 'Mistweaver',
+        slug: 'mistweaver',
+      },
+    ],
   },
   {
     id: 7,
     name: 'Paladin',
     slug: 'paladin',
+    specs: [
+      {
+        id: 18,
+        name: 'Holy',
+        slug: 'holy',
+      },
+      {
+        id: 19,
+        name: 'Protection',
+        slug: 'protection',
+      },
+      {
+        id: 20,
+        name: 'Retribution',
+        slug: 'retribution',
+      },
+    ],
   },
   {
     id: 8,
     name: 'Priest',
     slug: 'priest',
+    specs: [
+      {
+        id: 21,
+        name: 'Discipline',
+        slug: 'discipline',
+      },
+      {
+        id: 22,
+        name: 'Holy',
+        slug: 'holy',
+      },
+      {
+        id: 23,
+        name: 'Shadow',
+        slug: 'shadow',
+      },
+    ],
   },
   {
     id: 9,
     name: 'Rogue',
     slug: 'rogue',
+    specs: [
+      {
+        id: 24,
+        name: 'Assassination',
+        slug: 'assassination',
+      },
+      {
+        id: 25,
+        name: 'Outlaw',
+        slug: 'outlaw',
+      },
+      {
+        id: 26,
+        name: 'Subtlety',
+        slug: 'subtlety',
+      },
+    ],
   },
   {
     id: 10,
     name: 'Shaman',
     slug: 'shaman',
+    specs: [
+      {
+        id: 27,
+        name: 'Elemental',
+        slug: 'elemental',
+      },
+      {
+        id: 28,
+        name: 'Enhancement',
+        slug: 'enhancement',
+      },
+      {
+        id: 29,
+        name: 'Restoration',
+        slug: 'restoration',
+      },
+    ],
   },
   {
     id: 11,
     name: 'Warlock',
     slug: 'warlock',
+    specs: [
+      {
+        id: 30,
+        name: 'Affliction',
+        slug: 'affliction',
+      },
+      {
+        id: 31,
+        name: 'Demonology',
+        slug: 'demonology',
+      },
+      {
+        id: 32,
+        name: 'Destruction',
+        slug: 'destruction',
+      },
+    ],
   },
   {
     id: 12,
     name: 'Warrior',
     slug: 'warrior',
+    specs: [
+      {
+        id: 33,
+        name: 'Arms',
+        slug: 'arms',
+      },
+      {
+        id: 34,
+        name: 'Fury',
+        slug: 'fury',
+      },
+      {
+        id: 35,
+        name: 'Protection',
+        slug: 'protection',
+      },
+    ],
   },
 ];
 
@@ -134,7 +333,7 @@ export const roles = [
 ];
 
 /**
- * array of raids
+ * array of raids (latest 10)
  */
 export const raids = [
   {
@@ -186,5 +385,46 @@ export const raids = [
     id: 10,
     name: 'The Emerald Nightmare',
     slug: 'the-emerald-nightmare',
+  },
+];
+
+/**
+ * array of seasons
+ */
+export const seasons = [
+  {
+    id: 1,
+    name: '',
+    slug: 'season-bfa-4-post',
+  },
+  {
+    id: 2,
+    name: '',
+    slug: 'season-bfa-4',
+  },
+  {
+    id: 3,
+    name: '',
+    slug: 'season-bfa-3-post',
+  },
+  {
+    id: 4,
+    name: '',
+    slug: 'season-bfa-3',
+  },
+  {
+    id: 5,
+    name: '',
+    slug: 'season-bfa-2-post',
+  },
+  {
+    id: 6,
+    name: '',
+    slug: 'season-bfa-2',
+  },
+  {
+    id: 7,
+    name: '',
+    slug: 'season-bfa-1',
   },
 ];
