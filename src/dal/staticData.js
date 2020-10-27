@@ -49,11 +49,13 @@ export const factions = [
 /**
  * array of classes and specs
  */
-export const classes = [
+export const classesAndSpecs = [
   {
     id: 1,
     name: 'Death Knight',
     slug: 'death-knight',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/e/e5/Ui-charactercreate-classes_deathknight.png/revision/latest/scale-to-width-down/64',
     specs: [
       {
         id: 1,
@@ -76,6 +78,8 @@ export const classes = [
     id: 2,
     name: 'Demon Hunter',
     slug: 'demon-hunter',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/c/c9/Ui-charactercreate-classes_demonhunter.png',
     specs: [
       {
         id: 4,
@@ -93,6 +97,8 @@ export const classes = [
     id: 3,
     name: 'Druid',
     slug: 'druid',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/6/6f/Ui-charactercreate-classes_druid.png',
     specs: [
       {
         id: 6,
@@ -115,6 +121,8 @@ export const classes = [
     id: 4,
     name: 'Alliance',
     slug: 'hunter',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/4/4e/Ui-charactercreate-classes_hunter.png',
     specs: [
       {
         id: 9,
@@ -137,6 +145,8 @@ export const classes = [
     id: 5,
     name: 'Mage',
     slug: 'mage',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/5/56/Ui-charactercreate-classes_mage.png',
     specs: [
       {
         id: 12,
@@ -159,6 +169,8 @@ export const classes = [
     id: 6,
     name: 'Monk',
     slug: 'monk',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/2/24/Ui-charactercreate-classes_monk.png',
     specs: [
       {
         id: 15,
@@ -181,6 +193,8 @@ export const classes = [
     id: 7,
     name: 'Paladin',
     slug: 'paladin',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/8/80/Ui-charactercreate-classes_paladin.png',
     specs: [
       {
         id: 18,
@@ -203,6 +217,8 @@ export const classes = [
     id: 8,
     name: 'Priest',
     slug: 'priest',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/0/0f/Ui-charactercreate-classes_priest.png',
     specs: [
       {
         id: 21,
@@ -225,6 +241,8 @@ export const classes = [
     id: 9,
     name: 'Rogue',
     slug: 'rogue',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/b/b1/Ui-charactercreate-classes_rogue.png',
     specs: [
       {
         id: 24,
@@ -247,6 +265,8 @@ export const classes = [
     id: 10,
     name: 'Shaman',
     slug: 'shaman',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/3/3e/Ui-charactercreate-classes_shaman.png',
     specs: [
       {
         id: 27,
@@ -269,6 +289,8 @@ export const classes = [
     id: 11,
     name: 'Warlock',
     slug: 'warlock',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/c/cf/Ui-charactercreate-classes_warlock.png',
     specs: [
       {
         id: 30,
@@ -291,6 +313,8 @@ export const classes = [
     id: 12,
     name: 'Warrior',
     slug: 'warrior',
+    image:
+      'https://static.wikia.nocookie.net/wowpedia/images/3/37/Ui-charactercreate-classes_warrior.png',
     specs: [
       {
         id: 33,
