@@ -17,15 +17,15 @@ class Leaderboards extends React.Component {
           </NavbarText>
           <FaSearch className="h2" />
         </Navbar>
-        <div className="container d-flex">
+        <div className="container d-flex flex-wrap mt-5">
           <Table dark className="table-striped">
             <thead>
               <tr>
-                <th>Top World Guilds</th>
+                <th className="h2 font-weight-bold">Top World Guilds</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr className="bg-primary">
                 <th>Complexity Limit</th>
                 <th>Illidan</th>
                 <th>US</th>
@@ -55,11 +55,11 @@ class Leaderboards extends React.Component {
           <Table className="table-striped">
             <thead>
               <tr>
-                <th>Top World Players</th>
+                <th className="h2 font-weight-bold">Top World Players</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr className="bg-primary">
                 <th>Complexity Limit</th>
                 <th>Illidan</th>
                 <th>US</th>
