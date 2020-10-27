@@ -1,0 +1,22 @@
+* {
+  --main-color: #df6924;
+  --main-bg-color: #2b3e50;
+  --sec-color: #4e5d6c;
+  --sec-color-light: #808b96;
+  color: white;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.border-bot-primary {
+  border-bottom: var(--main-color) 10px solid;
+}
+
+.title-y {
+  width: 20rem;
+}
