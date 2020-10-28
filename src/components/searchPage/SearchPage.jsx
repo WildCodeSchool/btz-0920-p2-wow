@@ -69,9 +69,16 @@ const SearchPage = () => {
         onExited={() => setAnimating(false)}
         key={item.src}
       >
-        <Container className="d-flex justify-content-center">
+        <Container className="d-flex flex-wrap justify-content-center">
           {item.cardNames.map((cardName) => {
-            return <WildCard title={cardName} width="240px" height="240px" />;
+            return (
+              <WildCard
+                key={cardName}
+                title={cardName}
+                width="240px"
+                height="240px"
+              />
+            );
           })}
         </Container>
       </CarouselItem>
@@ -79,11 +86,17 @@ const SearchPage = () => {
   });
 
   return (
-    <Container className="container-fluid" style={{ width: '100vw' }}>
+    <Container className="container-fluid d-flex flex-column justify-content-start align-items-center">
       <div className="d-flex justify-content-center">
         <h1 className="border-bot-primary title-y m-5 ">Looking For</h1>
       </div>
-      <Carousel activeIndex={activeIndex} next={next} previous={previous}>
+      <Carousel
+        style={{ display: 'contents' }}
+        activeIndex={activeIndex}
+        next={next}
+        previous={previous}
+        interval={false}
+      >
         <CarouselIndicators
           items={items}
           activeIndex={activeIndex}
@@ -122,13 +135,14 @@ Carousel.propTypes = {
   pause: PropTypes.oneOf(['hover', false]),
   // Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.
   // This is how bootstrap defines it... I would prefer a bool named autoplay or something...
-  ride: PropTypes.oneOf(['carousel']),
+  ride: PropTypes.oneOf(['carousel', false]),
   // the interval at which the carousel automatically cycles (default: 5000)
   // If set to false, carousel will not Autoplay (i.e. will not automatically cycle).
   interval: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
     PropTypes.bool,
+    false,
   ]),
   children: PropTypes.array,
   // called when the mouse enters the Carousel
