@@ -107,10 +107,10 @@ class DalApi {
   /**
    *
    * @param {*} callback function or method to execute when result is ok
-   * @param {*} classe
-   * @param {*} role
-   * @param {*} region
-   * @param {*} season
+   * @param {*} classe class of the character default = all
+   * @param {*} role role of the character default = all
+   * @param {*} region region for guild ranking. default = world
+   * @param {*} season season for ranking season default = season-bfa-4-post
    */
   static getTopPlayer(
     callback,
