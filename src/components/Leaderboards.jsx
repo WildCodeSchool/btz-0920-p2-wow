@@ -1,13 +1,7 @@
 import React from 'react';
 import { Table } from 'reactstrap';
 import { GiEuropeanFlag, GiUsaFlag, GiEarthAsiaOceania } from 'react-icons/gi';
-import Axios from 'axios';
 import DalApi from '../dal/DalApi';
-
-// const api =
-//   'https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=world';
-const apiPlayer =
-  '/raider.io/api/mythic-plus/rankings/characters?region=world&season=season-bfa-4-post&class=all&role=tank&page=0';
 
 // Display flag image per region
 const displaysFlag = (region) => {
@@ -52,37 +46,36 @@ class Leaderboards extends React.Component {
         fifthRealm: raidRankings.rankedGuilds[4].guild.realm.name,
       });
     });
-    Axios.get(`https://cors-anywhere.herokuapp.com${apiPlayer}`)
-      .then((response) => response.data)
-      .then((data) => {
-        this.setState({
-          firstPlayerName: data.rankings.rankedCharacters[0].character.name,
-          secondPlayerName: data.rankings.rankedCharacters[1].character.name,
-          thirdPlayerName: data.rankings.rankedCharacters[2].character.name,
-          fourthPlayerName: data.rankings.rankedCharacters[3].character.name,
-          fifthPlayerName: data.rankings.rankedCharacters[4].character.name,
-          firstPlayerRealm:
-            data.rankings.rankedCharacters[0].character.realm.name,
-          secondPlayerRealm:
-            data.rankings.rankedCharacters[1].character.realm.name,
-          thirdPlayerRealm:
-            data.rankings.rankedCharacters[2].character.realm.name,
-          fourthPlayerRealm:
-            data.rankings.rankedCharacters[3].character.realm.name,
-          fifthPlayerRealm:
-            data.rankings.rankedCharacters[4].character.realm.name,
-          firstPlayerRegion:
-            data.rankings.rankedCharacters[0].character.region.name,
-          secondPlayerRegion:
-            data.rankings.rankedCharacters[1].character.region.name,
-          thirdPlayerRegion:
-            data.rankings.rankedCharacters[2].character.region.name,
-          fourthPlayerRegion:
-            data.rankings.rankedCharacters[3].character.region.name,
-          fifthPlayerRegion:
-            data.rankings.rankedCharacters[4].character.region.name,
-        });
+    DalApi.getTopPlayer((data) => {
+      const { rankings } = data;
+      this.setState({
+        firstPlayerName: rankings.rankedCharacters[0].character.name,
+        secondPlayerName: rankings.rankedCharacters[1].character.name,
+        thirdPlayerName: rankings.rankedCharacters[2].character.name,
+        fourthPlayerName: rankings.rankedCharacters[3].character.name,
+        fifthPlayerName: rankings.rankedCharacters[4].character.name,
+        firstPlayerRealm:
+          data.rankings.rankedCharacters[0].character.realm.name,
+        secondPlayerRealm:
+          data.rankings.rankedCharacters[1].character.realm.name,
+        thirdPlayerRealm:
+          data.rankings.rankedCharacters[2].character.realm.name,
+        fourthPlayerRealm:
+          data.rankings.rankedCharacters[3].character.realm.name,
+        fifthPlayerRealm:
+          data.rankings.rankedCharacters[4].character.realm.name,
+        firstPlayerRegion:
+          data.rankings.rankedCharacters[0].character.region.name,
+        secondPlayerRegion:
+          data.rankings.rankedCharacters[1].character.region.name,
+        thirdPlayerRegion:
+          data.rankings.rankedCharacters[2].character.region.name,
+        fourthPlayerRegion:
+          data.rankings.rankedCharacters[3].character.region.name,
+        fifthPlayerRegion:
+          data.rankings.rankedCharacters[4].character.region.name,
       });
+    });
   }
 
   render() {
