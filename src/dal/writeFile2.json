@@ -1,0 +1,2140 @@
+{
+  "eu": [
+    {
+      "type": "PvP",
+      "name": "Aegwynn",
+      "slug": "aegwynn",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Agamaggan",
+      "slug": "agamaggan",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Bloodscalp",
+      "slug": "bloodscalp",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Crushridge",
+      "slug": "crushridge",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Emeriss",
+      "slug": "emeriss",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Hakkar",
+      "slug": "hakkar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Twilight's Hammer",
+      "slug": "twilights-hammer",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Aggra (Português)",
+      "slug": "aggra-português",
+      "locale": "pt_BR",
+      "language": "Portuguese",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Frostmane",
+      "slug": "frostmane",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Grim Batol",
+      "slug": "grim-batol",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Aggramar",
+      "slug": "aggramar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Hellscream",
+      "slug": "hellscream",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Ahn'Qiraj",
+      "slug": "ahnqiraj",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Balnazzar",
+      "slug": "balnazzar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Boulderfist",
+      "slug": "boulderfist",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Chromaggus",
+      "slug": "chromaggus",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Daggerspine",
+      "slug": "daggerspine",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Laughing Skull",
+      "slug": "laughing-skull",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Shattered Halls",
+      "slug": "shattered-halls",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Sunstrider",
+      "slug": "sunstrider",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Talnivarr",
+      "slug": "talnivarr",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Trollbane",
+      "slug": "trollbane",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Alleria",
+      "slug": "alleria",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Rexxar",
+      "slug": "rexxar",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Alonsus",
+      "slug": "alonsus",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Anachronos",
+      "slug": "anachronos",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Kul Tiras",
+      "slug": "kul-tiras",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Antonidas",
+      "slug": "antonidas",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Aman'thul",
+      "slug": "amanthul",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Anub'arak",
+      "slug": "anubarak",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Dalvengyr",
+      "slug": "dalvengyr",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Frostmourne",
+      "slug": "frostmourne",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Nazjatar",
+      "slug": "nazjatar",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Zuluhed",
+      "slug": "zuluhed",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Arak-arahm",
+      "slug": "arakarahm",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Kael'thas",
+      "slug": "kaelthas",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Rashgarroth",
+      "slug": "rashgarroth",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Throk'Feroth",
+      "slug": "throkferoth",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Arathi",
+      "slug": "arathi",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Illidan",
+      "slug": "illidan",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Naxxramas",
+      "slug": "naxxramas",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Temple noir",
+      "slug": "temple-noir",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Arathor",
+      "slug": "arathor",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Hellfire",
+      "slug": "hellfire",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Kilrogg",
+      "slug": "kilrogg",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Nagrand",
+      "slug": "nagrand",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Runetotem",
+      "slug": "runetotem",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Archimonde",
+      "slug": "archimonde",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Area 52",
+      "slug": "area-52",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Sen'jin",
+      "slug": "senjin",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Un'Goro",
+      "slug": "ungoro",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Argent Dawn",
+      "slug": "argent-dawn",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Arthas",
+      "slug": "arthas",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Blutkessel",
+      "slug": "blutkessel",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Durotan",
+      "slug": "durotan",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Kel'Thuzad",
+      "slug": "kelthuzad",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Tirion",
+      "slug": "tirion",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Vek'lor",
+      "slug": "veklor",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Wrathbringer",
+      "slug": "wrathbringer",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Arygos",
+      "slug": "arygos",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Khaz'goroth",
+      "slug": "khazgoroth",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Ashenvale",
+      "slug": "ashenvale",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Aszune",
+      "slug": "aszune",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Shadowsong",
+      "slug": "shadowsong",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Auchindoun",
+      "slug": "auchindoun",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Dunemaul",
+      "slug": "dunemaul",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Jaedenar",
+      "slug": "jaedenar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Sylvanas",
+      "slug": "sylvanas",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Azjol-Nerub",
+      "slug": "azjolnerub",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Quel'Thalas",
+      "slug": "quelthalas",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Azuregos",
+      "slug": "azuregos",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Azuremyst",
+      "slug": "azuremyst",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Stormrage",
+      "slug": "stormrage",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Azshara",
+      "slug": "azshara",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Baelgun",
+      "slug": "baelgun",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Krag'jin",
+      "slug": "kragjin",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Lothar",
+      "slug": "lothar",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Blackhand",
+      "slug": "blackhand",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Echsenkessel",
+      "slug": "echsenkessel",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Mal'Ganis",
+      "slug": "malganis",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Taerar",
+      "slug": "taerar",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Blackmoore",
+      "slug": "blackmoore",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Lordaeron",
+      "slug": "lordaeron",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Tichondrius",
+      "slug": "tichondrius",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Blackrock",
+      "slug": "blackrock",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Blackscar",
+      "slug": "blackscar",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Booty Bay",
+      "slug": "booty-bay",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Borean Tundra",
+      "slug": "borean-tundra",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Deathweaver",
+      "slug": "deathweaver",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Grom",
+      "slug": "grom",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Thermaplugg",
+      "slug": "thermaplugg",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Aerie Peak",
+      "slug": "aerie-peak",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Blade's Edge",
+      "slug": "blades-edge",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Bronzebeard",
+      "slug": "bronzebeard",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Eonar",
+      "slug": "eonar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Vek'nilash",
+      "slug": "veknilash",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Bladefist",
+      "slug": "bladefist",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Darksorrow",
+      "slug": "darksorrow",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Frostwhisper",
+      "slug": "frostwhisper",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Genjuros",
+      "slug": "genjuros",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Neptulon",
+      "slug": "neptulon",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Zenedar",
+      "slug": "zenedar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Bloodfeather",
+      "slug": "bloodfeather",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Burning Steppes",
+      "slug": "burning-steppes",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Darkspear",
+      "slug": "darkspear",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Executus",
+      "slug": "executus",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Kor'gall",
+      "slug": "korgall",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Saurfang",
+      "slug": "saurfang",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Shattered Hand",
+      "slug": "shattered-hand",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Terokkar",
+      "slug": "terokkar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Bloodhoof",
+      "slug": "bloodhoof",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Khadgar",
+      "slug": "khadgar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Bronze Dragonflight",
+      "slug": "bronze-dragonflight",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Nordrassil",
+      "slug": "nordrassil",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Burning Blade",
+      "slug": "burning-blade",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Drak'thul",
+      "slug": "drakthul",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Al'Akir",
+      "slug": "alakir",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Burning Legion",
+      "slug": "burning-legion",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Skullcrusher",
+      "slug": "skullcrusher",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Xavius",
+      "slug": "xavius",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Chamber of Aspects",
+      "slug": "chamber-of-aspects",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Chants éternels",
+      "slug": "chants-éternels",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Vol'jin",
+      "slug": "voljin",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Colinas Pardas",
+      "slug": "colinas-pardas",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Los Errantes",
+      "slug": "los-errantes",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Tyrande",
+      "slug": "tyrande",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Confrérie du Thorium",
+      "slug": "confrérie-du-thorium",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Conseil des Ombres",
+      "slug": "conseil-des-ombres",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Culte de la Rive noire",
+      "slug": "culte-de-la-rive-noire",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Kirin Tor",
+      "slug": "kirin-tor",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "La Croisade écarlate",
+      "slug": "la-croisade-écarlate",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Les Clairvoyants",
+      "slug": "les-clairvoyants",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Les Sentinelles",
+      "slug": "les-sentinelles",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Cho'gall",
+      "slug": "chogall",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Dalaran",
+      "slug": "dalaran",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Eldre'Thalas",
+      "slug": "eldrethalas",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Marécage de Zangar",
+      "slug": "marécage-de-zangar",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Sinstralis",
+      "slug": "sinstralis",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Das Konsortium",
+      "slug": "das-konsortium",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Das Syndikat",
+      "slug": "das-syndikat",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Der Abyssische Rat",
+      "slug": "der-abyssische-rat",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Die Arguswacht",
+      "slug": "die-arguswacht",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Die Silberne Hand",
+      "slug": "die-silberne-hand",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Die Todeskrallen",
+      "slug": "die-todeskrallen",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Die ewige Wacht",
+      "slug": "die-ewige-wacht",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Kult der Verdammten",
+      "slug": "kult-der-verdammten",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Deathguard",
+      "slug": "deathguard",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Deathwing",
+      "slug": "deathwing",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Dragonblight",
+      "slug": "dragonblight",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Ghostlands",
+      "slug": "ghostlands",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Karazhan",
+      "slug": "karazhan",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Lightning's Blade",
+      "slug": "lightnings-blade",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "The Maelstrom",
+      "slug": "the-maelstrom",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Darkmoon Faire",
+      "slug": "darkmoon-faire",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Defias Brotherhood",
+      "slug": "defias-brotherhood",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Earthen Ring",
+      "slug": "earthen-ring",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Ravenholdt",
+      "slug": "ravenholdt",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Scarshield Legion",
+      "slug": "scarshield-legion",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "Sporeggar",
+      "slug": "sporeggar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP (RP)",
+      "name": "The Venture Co",
+      "slug": "the-venture-co",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Dentarg",
+      "slug": "dentarg",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Tarren Mill",
+      "slug": "tarren-mill",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Destromath",
+      "slug": "destromath",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Gilneas",
+      "slug": "gilneas",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Gorgonnash",
+      "slug": "gorgonnash",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Mannoroth",
+      "slug": "mannoroth",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Nefarian",
+      "slug": "nefarian",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Nera'thor",
+      "slug": "nerathor",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Ulduar",
+      "slug": "ulduar",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Dethecus",
+      "slug": "dethecus",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Mug'thol",
+      "slug": "mugthol",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Onyxia",
+      "slug": "onyxia",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Terrordar",
+      "slug": "terrordar",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Theradras",
+      "slug": "theradras",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Die Aldor",
+      "slug": "die-aldor",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Doomhammer",
+      "slug": "doomhammer",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Turalyon",
+      "slug": "turalyon",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Draenor",
+      "slug": "draenor",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Dragonmaw",
+      "slug": "dragonmaw",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Haomarush",
+      "slug": "haomarush",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Spinebreaker",
+      "slug": "spinebreaker",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Stormreaver",
+      "slug": "stormreaver",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Vashj",
+      "slug": "vashj",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Drek'Thar",
+      "slug": "drekthar",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Eitrigg",
+      "slug": "eitrigg",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Krasus",
+      "slug": "krasus",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Uldaman",
+      "slug": "uldaman",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "C'Thun",
+      "slug": "cthun",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Dun Modr",
+      "slug": "dun-modr",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Dun Morogh",
+      "slug": "dun-morogh",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Norgannon",
+      "slug": "norgannon",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Elune",
+      "slug": "elune",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Varimathras",
+      "slug": "varimathras",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Emerald Dream",
+      "slug": "emerald-dream",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Terenas",
+      "slug": "terenas",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Eredar",
+      "slug": "eredar",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Eversong",
+      "slug": "eversong",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Exodar",
+      "slug": "exodar",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Minahonda",
+      "slug": "minahonda",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Fordragon",
+      "slug": "fordragon",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Frostwolf",
+      "slug": "frostwolf",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Deepholm",
+      "slug": "deepholm",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Galakrond",
+      "slug": "galakrond",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Razuvious",
+      "slug": "razuvious",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Garona",
+      "slug": "garona",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Ner'zhul",
+      "slug": "nerzhul",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Sargeras",
+      "slug": "sargeras",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Garrosh",
+      "slug": "garrosh",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Nozdormu",
+      "slug": "nozdormu",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Perenolde",
+      "slug": "perenolde",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Shattrath",
+      "slug": "shattrath",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Teldrassil",
+      "slug": "teldrassil",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Goldrinn",
+      "slug": "goldrinn",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Greymane",
+      "slug": "greymane",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Lich King",
+      "slug": "lich-king",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Gordunni",
+      "slug": "gordunni",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Howling Fjord",
+      "slug": "howling-fjord",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Hyjal",
+      "slug": "hyjal",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Kazzak",
+      "slug": "kazzak",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Khaz Modan",
+      "slug": "khaz-modan",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Lightbringer",
+      "slug": "lightbringer",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Mazrigos",
+      "slug": "mazrigos",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Alexstrasza",
+      "slug": "alexstrasza",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Madmortem",
+      "slug": "madmortem",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Nethersturm",
+      "slug": "nethersturm",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Proudmoore",
+      "slug": "proudmoore",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Magtheridon",
+      "slug": "magtheridon",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Malfurion",
+      "slug": "malfurion",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Malygos",
+      "slug": "malygos",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Malorne",
+      "slug": "malorne",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Ysera",
+      "slug": "ysera",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Medivh",
+      "slug": "medivh",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Suramar",
+      "slug": "suramar",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Moonglade",
+      "slug": "moonglade",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Steamwheedle Cartel",
+      "slug": "steamwheedle-cartel",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "The Sha'tar",
+      "slug": "the-shatar",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Nemesis",
+      "slug": "nemesis",
+      "locale": "it_IT",
+      "language": "Italian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Outland",
+      "slug": "outland",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Pozzo dell'Eternità",
+      "slug": "pozzo-delleternità",
+      "locale": "it_IT",
+      "language": "Italian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Ragnaros",
+      "slug": "ragnaros",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Ravencrest",
+      "slug": "ravencrest",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Sanguino",
+      "slug": "sanguino",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Shen'dralar",
+      "slug": "shendralar",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Uldum",
+      "slug": "uldum",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Zul'jin",
+      "slug": "zuljin",
+      "locale": "es_ES",
+      "language": "Spanish",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Silvermoon",
+      "slug": "silvermoon",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Soulflayer",
+      "slug": "soulflayer",
+      "locale": "ru_RU",
+      "language": "Russian",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Stormscale",
+      "slug": "stormscale",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Ambossar",
+      "slug": "ambossar",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Kargath",
+      "slug": "kargath",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Thrall",
+      "slug": "thrall",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Thunderhorn",
+      "slug": "thunderhorn",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE",
+      "name": "Wildhammer",
+      "slug": "wildhammer",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Der Mithrilorden",
+      "slug": "der-mithrilorden",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Der Rat von Dalaran",
+      "slug": "der-rat-von-dalaran",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Die Nachtwache",
+      "slug": "die-nachtwache",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Forscherliga",
+      "slug": "forscherliga",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Todeswache",
+      "slug": "todeswache",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvE (RP)",
+      "name": "Zirkel des Cenarius",
+      "slug": "zirkel-des-cenarius",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Twisting Nether",
+      "slug": "twisting-nether",
+      "locale": "en_GB",
+      "language": "English",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Ysondre",
+      "slug": "ysondre",
+      "locale": "fr_FR",
+      "language": "French",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Festung der Stürme",
+      "slug": "festung-der-stürme",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Gul'dan",
+      "slug": "guldan",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Kil'jaeden",
+      "slug": "kiljaeden",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Nathrezim",
+      "slug": "nathrezim",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Rajaxx",
+      "slug": "rajaxx",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    },
+    {
+      "type": "PvP",
+      "name": "Anetheron",
+      "slug": "anetheron",
+      "locale": "de_DE",
+      "language": "German",
+      "timezone": "+02:00 (CEST)"
+    }
+  ]
+}
