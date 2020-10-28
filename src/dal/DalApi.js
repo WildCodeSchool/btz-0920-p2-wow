@@ -12,7 +12,7 @@ class DalApi {
   constructor() {
     this.propRegions = regions;
     this.propFactions = factions;
-    this.propFlassesAndSpecs = classesAndSpecs;
+    this.propClassesAndSpecs = classesAndSpecs;
     this.propRoles = roles;
     this.propRaids = raids;
     this.propSeasons = seasons;
@@ -27,16 +27,6 @@ class DalApi {
     this.getRoles = this.getRoles.bind(thisClass);
     this.getRaids = this.getRaids.bind(thisClass);
     this.getSeasons = this.getSeasons.bind(thisClass);
-    this.createReqParamDifficulty = this.createReqParamDifficulty.bind(
-      thisClass
-    );
-    this.createReqParamRegion = this.createReqParamRegion.bind(thisClass);
-    this.createReqParamFaction = this.createReqParamFaction.bind(thisClass);
-    this.createReqParamLimit = this.createReqParamLimit.bind(thisClass);
-    this.createReqParamPage = this.createReqParamPage.bind(thisClass);
-    this.createReqParamRaid = this.createReqParamRaid.bind(thisClass);
-    this.createReqParamRealm = this.createReqParamRealm.bind(thisClass);
-    this.createReqParamRecent = this.createReqParamRecent.bind(thisClass);
   }
 
   /**
@@ -94,7 +84,8 @@ class DalApi {
    * @param {*} limit : don't know .... default = 0
    * @param {*} callback : function or method to execute when result is ok
    */
-  getTopGuild(
+  static getTopGuild(
+    callback,
     raid = 'nyalotha-the-waking-city',
     difficulty = 'mythic',
     region = 'world',
@@ -102,19 +93,19 @@ class DalApi {
     page = 0,
     faction = '',
     recent = false,
-    limit = 0,
-    callback
+    limit = 0
   ) {
-    const requestBase = 'https://raider.io/api/raids/instance-rankings?';
+    const requestBase =
+      'https://cors-anywhere.herokuapp.com/https://raider.io/api/raids/instance-rankings?';
     const request = requestBase
-      .concat(this.createReqParamRaid(raid, false))
-      .concat(this.createReqParamDifficulty(difficulty, true))
-      .concat(this.createReqParamRegion(region, true))
-      .concat(this.createReqParamRealm(realm, true))
-      .concat(this.createReqParamPage(page, true))
-      .concat(this.createReqParamFaction(faction, true))
-      .concat(this.createReqParamRecent(recent, true))
-      .concat(this.createReqParamLimit(limit, true));
+      .concat(DalApi.createReqParamRaid(raid, false))
+      .concat(DalApi.createReqParamDifficulty(difficulty, true))
+      .concat(DalApi.createReqParamRegion(region, true))
+      .concat(DalApi.createReqParamRealm(realm, true))
+      .concat(DalApi.createReqParamPage(page, true))
+      .concat(DalApi.createReqParamFaction(faction, true))
+      .concat(DalApi.createReqParamRecent(recent, true))
+      .concat(DalApi.createReqParamLimit(limit, true));
 
     axios.get(request).then((response) => callback(response.data));
   }
