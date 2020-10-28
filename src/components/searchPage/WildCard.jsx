@@ -5,17 +5,19 @@ import guild from '../../img/guild.jpg';
 
 const WildCard = ({ title, height, width }) => {
   const wildCardStyle = {
-    backgroundImage: `url(${guild})`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35)),url(${guild})`,
     height: `${height}`,
     width: `${width}`,
   };
   return (
-    <div
-      xs="6"
-      className="opacity-50 d-flex align-items-center justify-content-center m-3 border border-primary"
-      style={wildCardStyle}
-    >
-      <h3 className="display-4">{title}</h3>
+    <div>
+      <a
+        href="test.com"
+        className="wildCard d-flex align-items-center justify-content-center m-3 border border-primary"
+        style={wildCardStyle}
+      >
+        <h2>{title}</h2>
+      </a>
     </div>
   );
 };

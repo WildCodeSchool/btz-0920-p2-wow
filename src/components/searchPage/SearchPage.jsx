@@ -86,7 +86,12 @@ const SearchPage = () => {
   });
 
   return (
-    <Container className="container-fluid d-flex flex-column justify-content-start align-items-center">
+    <Container
+      className="d-flex flex-column justify-content-start align-items-center"
+      style={{
+        height: '100vh',
+      }}
+    >
       <div className="d-flex justify-content-center">
         <h1 className="border-bot-primary title-y m-5 ">Looking For</h1>
       </div>

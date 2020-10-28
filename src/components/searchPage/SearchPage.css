@@ -7,14 +7,9 @@
 }
 
 body {
-  background-color: var(--main-bg-color);
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.opacity-50 {
-  opacity: 0.5;
 }
 
 .border-bot-primary {
@@ -23,4 +18,8 @@ body {
 
 .title-y {
   width: 20rem;
+}
+
+.wildCard:hover {
+  transform: translateY(-10px);
 }
