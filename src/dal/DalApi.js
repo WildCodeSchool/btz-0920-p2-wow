@@ -10,6 +10,7 @@ import {
 } from './staticData';
 
 const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
+const GUILD_DETAILS = 'https://raider.io/api/guilds/details?';
 const INSTANCE_RANKING = 'https://raider.io/api/raids/instance-rankings?';
 const MYTHIC_PLUS_RANKING_CHARACTER =
   'https://raider.io/api/mythic-plus/rankings/characters?';
@@ -101,6 +102,27 @@ class DalApi {
       .concat(DalApi.createReqParamLimit(limit));
 
     // call the method who return the request result
+    DalApi.axiosRequest(request, callback);
+  }
+
+  /**
+   *
+   * @param {*} callback
+   * @param {*} guildName
+   * @param {*} region
+   * @param {*} realm
+   */
+  static getGuild(callback, region, realm, guildName) {
+    const requestBase = TIPS_BASILE.concat(GUILD_DETAILS);
+    const guildParam = guildName.replaceAll(' ', '%20');
+
+    // Construct the request
+    const request = requestBase
+      .concat(DalApi.createReqParamRegion(region, false))
+      .concat(DalApi.createReqParamRealm(realm))
+      .concat('&guild=')
+      .concat(guildParam);
+
     DalApi.axiosRequest(request, callback);
   }
 
