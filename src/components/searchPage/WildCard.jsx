@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import guild from '../../img/guild.jpg';
 
-const WildCard = ({ url, title }) => {
+const WildCard = ({ title }) => {
   const wildCardStyle = {
     backgroundImage: `url(${guild})`,
     height: '20rem',
@@ -16,9 +16,7 @@ const WildCard = ({ url, title }) => {
       className="opacity-50 d-flex align-items-center justify-content-center m-3 border border-primary"
       style={wildCardStyle}
     >
-      <a href={url}>
-        <h3 className="display-3">{title}</h3>
-      </a>
+      <h3 className="display-3">{title}</h3>
     </Col>
   );
 };
@@ -26,6 +24,5 @@ const WildCard = ({ url, title }) => {
 export default WildCard;
 
 WildCard.propTypes = {
-  url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };

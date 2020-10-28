@@ -15,7 +15,12 @@ const SearchServerPage = () => {
         </Col>
       </Row>
       <Row className="d-flex justify-content-center">
-        <WildCard />
+        <WildCard title="Sargeras" />
+        <WildCard title="Archimonde" />
+        <WildCard title="Hyjal" />
+        <WildCard title="Eldre'thalas" />
+        <WildCard title="Area 52" />
+        <WildCard title="Arthas" />
       </Row>
     </Container>
   );

@@ -15,7 +15,8 @@ const SearchFactionPage = () => {
         </Col>
       </Row>
       <Row className="d-flex justify-content-center">
-        <WildCard />
+        <WildCard title="Horde" />
+        <WildCard title="Alliance" />
       </Row>
     </Container>
   );
