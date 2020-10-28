@@ -10,13 +10,12 @@ const WildCard = () => {
   };
   return (
     <Col
+      href="http:/test.com"
       xs="4"
       className="opacity-50 d-flex align-items-center justify-content-center m-3 border border-primary"
       style={wildCardStyle}
     >
-      <a href="http:/test.com" className="display-3">
-        Title
-      </a>
+      <h3 className="display-3">Title</h3>
     </Col>
   );
 };
