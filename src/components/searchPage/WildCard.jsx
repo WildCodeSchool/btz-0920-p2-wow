@@ -1,23 +1,21 @@
 import './SearchPage.css';
-import { Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import guild from '../../img/guild.jpg';
 
-const WildCard = ({ title }) => {
+const WildCard = ({ title, height, width }) => {
   const wildCardStyle = {
     backgroundImage: `url(${guild})`,
-    height: '20rem',
+    height: `${height}`,
+    width: `${width}`,
   };
-
   return (
-    <Col
-      xs="4"
+    <div
       className="opacity-50 d-flex align-items-center justify-content-center m-3 border border-primary"
       style={wildCardStyle}
     >
-      <h3 className="display-3">{title}</h3>
-    </Col>
+      <h3 className="display-4">{title}</h3>
+    </div>
   );
 };
 
@@ -25,4 +23,6 @@ export default WildCard;
 
 WildCard.propTypes = {
   title: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
 };
