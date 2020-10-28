@@ -357,6 +357,27 @@ export const roles = [
 ];
 
 /**
+ * array of raid difficulty
+ */
+export const raidDifficulty = [
+  {
+    id: 1,
+    name: 'Mythic',
+    slug: 'mythic',
+  },
+  {
+    id: 2,
+    name: 'Heroic',
+    slug: 'heroic',
+  },
+  {
+    id: 3,
+    name: 'Normal',
+    slug: 'normal',
+  },
+];
+
+/**
  * array of raids (latest 10)
  */
 export const raids = [

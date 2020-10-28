@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 768px) {
+  .leaderboard-container {
+    flex-wrap: wrap;
+  }
+}
