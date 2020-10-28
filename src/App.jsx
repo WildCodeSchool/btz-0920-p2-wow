@@ -1,11 +1,11 @@
 import './App.css';
 
-import GuildArray from './components/GuildArray';
+import GuildsArray from './components/GuildsArray';
 
 function App() {
   return (
-    <div className="App">
-      <GuildArray />
+    <div id="app" className="App">
+      <GuildsArray />
     </div>
   );
 }

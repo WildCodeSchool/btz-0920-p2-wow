@@ -1,19 +1,33 @@
-//	import React from 'react';
 import PropTypes from 'prop-types';
 
+import EuroFlag from './EuroFlag';
+import ChinaFlag from './ChinaFlag';
+import UsFlag from './UsFlag';
+
+const flag = (slug) => {
+  switch (slug) {
+    case 'eu':
+      return <EuroFlag />;
+    case 'us':
+      return <UsFlag />;
+    case 'ch':
+      return <ChinaFlag />;
+    default:
+      return 'error';
+  }
+};
+
 function GuildRow(props) {
-  const { name, realm, flag, raidRank } = props;
+  const { name, realm, slug } = props;
   return (
     <tr>
       <td>
         <strong>{name}</strong>
       </td>
       <td>
-        {name} raid score : {raidRank}
+        <p>{realm}</p>
       </td>
-      <td>
-        <p>{realm}</p> <img src={flag} alt={name} />
-      </td>
+      <td>{flag(slug)}</td>
     </tr>
   );
 }
@@ -21,15 +35,7 @@ function GuildRow(props) {
 GuildRow.propTypes = {
   name: PropTypes.string.isRequired,
   realm: PropTypes.string.isRequired,
-  flag: PropTypes.string.isRequired,
-  raidRank: PropTypes.number.isRequired,
+  slug: PropTypes.string.isRequired,
 };
-
-//	GuildRow.defaultProps = {
-//	  name: '',
-//	  realm: '',
-//	  flag: '',
-//	  raidRank: 0,
-//	};
 
 export default GuildRow;
