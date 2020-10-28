@@ -4,72 +4,64 @@ import {
   factions,
   classesAndSpecs,
   roles,
+  raidDifficulty,
   raids,
   seasons,
 } from './staticData';
 
+const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
+const INSTANCE_RANKING = 'https://raider.io/api/raids/instance-rankings?';
+const MYTHIC_PLUS_RANKING_CHARACTER =
+  'https://raider.io/api/mythic-plus/rankings/characters?';
 class DalApi {
-  constructor() {
-    this.propRegions = regions;
-    this.propFactions = factions;
-    this.propClassesAndSpecs = classesAndSpecs;
-    this.propRoles = roles;
-    this.propRaids = raids;
-    this.propSeasons = seasons;
-
-    this.binder(this);
-  }
-
-  binder(thisClass) {
-    this.getRegions = this.getRegions.bind(thisClass);
-    this.getFactions = this.getFactions.bind(thisClass);
-    this.getClassesAndSpecs = this.getClassesAndSpecs.bind(thisClass);
-    this.getRoles = this.getRoles.bind(thisClass);
-    this.getRaids = this.getRaids.bind(thisClass);
-    this.getSeasons = this.getSeasons.bind(thisClass);
-  }
-
   /**
    * description: return an array of all 4 regions with id, name and request slug
    */
-  getRegions() {
-    return this.propRegions;
+  static getRegions() {
+    return regions;
   }
 
   /**
    * description: return an array of all 2 factions with id, name and request slug
    */
-  getFactions() {
-    return this.propFactions;
+  static getFactions() {
+    return factions;
   }
 
   /**
    * description: return an array of all 12 factions with id, name, request slug and specs object for each of them
    * spec object contain id, name and request slug
    */
-  getClassesAndSpecs() {
-    return this.propClassesAndSpecs;
+  static getClassesAndSpecs() {
+    return classesAndSpecs;
   }
 
   /**
    * description: return an array of all 3 roles with id, name and request slug
    */
-  getRoles() {
-    return this.propRoles;
+  static getRoles() {
+    return roles;
+  }
+
+  /**
+   * description: return an array of all 3 raid difficulty with id, name and request slug
+   */
+  static getDifficulty() {
+    return raidDifficulty;
   }
 
   /**
    * description: return an array of 10 latest raids with id, name and request slug
    */
-  getRaids() {
-    return this.propRaids;
+  static getRaids() {
+    return raids;
   }
 
   /**
    * description: return an array of all available seasoons with id, name and request slug
    */
-  getSeasons() {
-    return this.propSeasons;
+  static getSeasons() {
+    return seasons;
   }
 
   /**
@@ -95,19 +87,89 @@ class DalApi {
     recent = false,
     limit = 0
   ) {
-    const requestBase =
-      'https://cors-anywhere.herokuapp.com/https://raider.io/api/raids/instance-rankings?';
+    const requestBase = TIPS_BASILE.concat(INSTANCE_RANKING);
+
+    // Construc the request
     const request = requestBase
       .concat(DalApi.createReqParamRaid(raid, false))
-      .concat(DalApi.createReqParamDifficulty(difficulty, true))
-      .concat(DalApi.createReqParamRegion(region, true))
-      .concat(DalApi.createReqParamRealm(realm, true))
-      .concat(DalApi.createReqParamPage(page, true))
-      .concat(DalApi.createReqParamFaction(faction, true))
-      .concat(DalApi.createReqParamRecent(recent, true))
-      .concat(DalApi.createReqParamLimit(limit, true));
+      .concat(DalApi.createReqParamDifficulty(difficulty))
+      .concat(DalApi.createReqParamRegion(region))
+      .concat(DalApi.createReqParamRealm(realm))
+      .concat(DalApi.createReqParamPage(page))
+      .concat(DalApi.createReqParamFaction(faction))
+      .concat(DalApi.createReqParamRecent(recent))
+      .concat(DalApi.createReqParamLimit(limit));
 
-    axios.get(request).then((response) => callback(response.data));
+    // call the method who return the request result
+    DalApi.axiosRequest(request, callback);
+  }
+
+  /**
+   *
+   * @param {*} callback function or method to execute when result is ok
+   * @param {*} classe
+   * @param {*} role
+   * @param {*} region
+   * @param {*} season
+   */
+  static getTopPlayer(
+    callback,
+    classe = 'all',
+    role = 'all',
+    region = 'world',
+    season = 'season-bfa-4-post',
+    page = 0
+  ) {
+    const requestBase = TIPS_BASILE.concat(MYTHIC_PLUS_RANKING_CHARACTER);
+
+    // Construct the request
+    const request = requestBase
+      .concat(DalApi.createReqParamRegion(region, false))
+      .concat(DalApi.createReqParamClasse(classe))
+      .concat(DalApi.createReqParamRole(role))
+      .concat(DalApi.createReqParamSeason(season))
+      .concat(DalApi.createReqParamPage(page));
+
+    DalApi.axiosRequest(request, callback);
+  }
+
+  /**
+   *
+   * @param {*} url url of the request
+   * @param {*} callback function or method called when result is ok
+   */
+  static axiosRequest(url, callback) {
+    axios.get(url).then((response) => callback(response.data));
+  }
+
+  /**
+   * static method because it don't use 'this' then this méthod is common for all instances
+   * @param {*} classe : slug of the class default = all
+   * @param {*} and : liaison '&' for joining parameters
+   * @returns string parameter for raid
+   */
+  static createReqParamClasse(classe, and = true) {
+    return and ? '&class='.concat(classe) : 'class='.concat(classe);
+  }
+
+  /**
+   * static method because it don't use 'this' then this méthod is common for all instances
+   * @param {*} role : slug of the role default = all
+   * @param {*} and : liaison '&' for joining parameters
+   * @returns string parameter for raid
+   */
+  static createReqParamRole(role, and = true) {
+    return and ? '&role='.concat(role) : 'role='.concat(role);
+  }
+
+  /**
+   * static method because it don't use 'this' then this méthod is common for all instances
+   * @param {*} season : slug of the season default = season-bfa-4-post
+   * @param {*} and : liaison '&' for joining parameters
+   * @returns string parameter for raid
+   */
+  static createReqParamSeason(season, and = true) {
+    return and ? '&season='.concat(season) : 'season='.concat(season);
   }
 
   /**
@@ -116,7 +178,7 @@ class DalApi {
    * @param {*} and : liaison '&' for joining parameters
    * @returns string parameter for raid
    */
-  static createReqParamRaid(raid, and = false) {
+  static createReqParamRaid(raid, and = true) {
     return and ? '&raid='.concat(raid) : 'raid='.concat(raid);
   }
 
@@ -126,7 +188,7 @@ class DalApi {
    * @param {*} and : liaison '&' for joining parameters
    * @returns string parameter for difficulty
    */
-  static createReqParamDifficulty(difficulty, and = false) {
+  static createReqParamDifficulty(difficulty, and = true) {
     return and
       ? '&difficulty='.concat(difficulty)
       : 'difficulty='.concat(difficulty);
@@ -138,7 +200,7 @@ class DalApi {
    * @param {*} and : liaison '&' for joining parameters
    * @returns string parameter for region
    */
-  static createReqParamRegion(region, and = false) {
+  static createReqParamRegion(region, and = true) {
     return and ? '&region='.concat(region) : 'region='.concat(region);
   }
 
@@ -148,7 +210,7 @@ class DalApi {
    * @param {*} and : liaison '&' for joining parameters
    * @returns string parameter for realm
    */
-  static createReqParamRealm(realm, and = false) {
+  static createReqParamRealm(realm, and = true) {
     return and ? '&realm='.concat(realm) : 'realm='.concat(realm);
   }
 
@@ -158,7 +220,7 @@ class DalApi {
    * @param {*} and : liaison '&' for joining parameters
    * @returns string of parameter for page
    */
-  static createReqParamPage(page, and = false) {
+  static createReqParamPage(page, and = true) {
     return and ? '&page='.concat(page) : 'page='.concat(page);
   }
 
@@ -168,7 +230,7 @@ class DalApi {
    * @param {*} and : liaison '&' for joining parameters
    * @returns string parameter for faction
    */
-  static createReqParamFaction(faction, and = false) {
+  static createReqParamFaction(faction, and = true) {
     return and ? '&faction='.concat(faction) : 'faction='.concat(faction);
   }
 
@@ -178,7 +240,7 @@ class DalApi {
    * @param {*} and : liaison '&' for joining parameters
    * @returns string parameter for recent
    */
-  static createReqParamRecent(recent, and = false) {
+  static createReqParamRecent(recent, and = true) {
     return and ? '&recent='.concat(recent) : 'recent='.concat(recent);
   }
 
@@ -188,7 +250,7 @@ class DalApi {
    * @param {*} and : liaison '&' for joining parameters
    * @returns string parameter for limit
    */
-  static createReqParamLimit(limit, and = false) {
+  static createReqParamLimit(limit, and = true) {
     return and ? '&limit='.concat(limit) : 'limit='.concat(limit);
   }
 }
