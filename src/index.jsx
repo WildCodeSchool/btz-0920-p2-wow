@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootswatch/dist/superhero/bootstrap.min.css';
+// import DalApi from './dal/DalApi';
+
+// DalApi.getTopGuild((data) => console.log(data));
 
 ReactDOM.render(
   <React.StrictMode>
