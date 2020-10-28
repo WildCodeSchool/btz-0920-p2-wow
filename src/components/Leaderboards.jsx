@@ -3,9 +3,10 @@ import { Navbar, NavbarText, Table } from 'reactstrap';
 import { FaSearch } from 'react-icons/fa';
 import { GiEuropeanFlag, GiUsaFlag, GiEarthAsiaOceania } from 'react-icons/gi';
 import Axios from 'axios';
+import DalApi from '../dal/DalApi';
 
-const api =
-  'https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=world';
+// const api =
+//   'https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=world';
 const apiPlayer =
   '/raider.io/api/mythic-plus/rankings/characters?region=world&season=season-bfa-4-post&class=all&role=tank&page=0';
 
@@ -32,27 +33,26 @@ class Leaderboards extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(api)
-      .then((response) => response.data)
-      .then((data) => {
-        this.setState({
-          firstName: data.raidRankings[0].guild.name,
-          firstRegion: data.raidRankings[0].guild.region.name,
-          firstRealm: data.raidRankings[0].guild.realm.name,
-          secondName: data.raidRankings[1].guild.name,
-          secondRegion: data.raidRankings[1].guild.region.name,
-          secondRealm: data.raidRankings[1].guild.realm.name,
-          thirdName: data.raidRankings[2].guild.name,
-          thirdRegion: data.raidRankings[2].guild.region.name,
-          thirdRealm: data.raidRankings[2].guild.realm.name,
-          fourthName: data.raidRankings[3].guild.name,
-          fourthRegion: data.raidRankings[3].guild.region.name,
-          fourthRealm: data.raidRankings[3].guild.realm.name,
-          fifthName: data.raidRankings[4].guild.name,
-          fifthRegion: data.raidRankings[4].guild.region.name,
-          fifthRealm: data.raidRankings[4].guild.realm.name,
-        });
+    DalApi.getTopGuild((data) => {
+      const { raidRankings } = data;
+      this.setState({
+        firstName: raidRankings.rankedGuilds[0].guild.name,
+        firstRegion: raidRankings.rankedGuilds[0].guild.region.name,
+        firstRealm: raidRankings.rankedGuilds[0].guild.realm.name,
+        secondName: raidRankings.rankedGuilds[1].guild.name,
+        secondRegion: raidRankings.rankedGuilds[1].guild.region.name,
+        secondRealm: raidRankings.rankedGuilds[1].guild.realm.name,
+        thirdName: raidRankings.rankedGuilds[2].guild.name,
+        thirdRegion: raidRankings.rankedGuilds[2].guild.region.name,
+        thirdRealm: raidRankings.rankedGuilds[2].guild.realm.name,
+        fourthName: raidRankings.rankedGuilds[3].guild.name,
+        fourthRegion: raidRankings.rankedGuilds[3].guild.region.name,
+        fourthRealm: raidRankings.rankedGuilds[3].guild.realm.name,
+        fifthName: raidRankings.rankedGuilds[4].guild.name,
+        fifthRegion: raidRankings.rankedGuilds[4].guild.region.name,
+        fifthRealm: raidRankings.rankedGuilds[4].guild.realm.name,
       });
+    });
     Axios.get(`https://cors-anywhere.herokuapp.com${apiPlayer}`)
       .then((response) => response.data)
       .then((data) => {
