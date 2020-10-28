@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { GiWorld } from 'react-icons/gi';
 
 import EuroFlag from './EuroFlag';
 import ChinaFlag from './ChinaFlag';
@@ -13,17 +14,18 @@ const flag = (slug) => {
     case 'ch':
       return <ChinaFlag />;
     default:
-      return 'error';
+      return <GiWorld />;
   }
 };
 
 function GuildRow(props) {
-  const { name, realm, slug } = props;
+  const { name, realm, slug, rank } = props;
   return (
     <tr>
-      <td>
+      <td>{rank}</td>
+      <th>
         <strong>{name}</strong>
-      </td>
+      </th>
       <td>
         <p>{realm}</p>
       </td>
@@ -36,6 +38,7 @@ GuildRow.propTypes = {
   name: PropTypes.string.isRequired,
   realm: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
+  rank: PropTypes.number.isRequired,
 };
 
 export default GuildRow;
