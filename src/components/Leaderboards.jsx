@@ -1,6 +1,5 @@
 import React from 'react';
-import { Navbar, NavbarText, Table } from 'reactstrap';
-import { FaSearch } from 'react-icons/fa';
+import { Table } from 'reactstrap';
 import { GiEuropeanFlag, GiUsaFlag, GiEarthAsiaOceania } from 'react-icons/gi';
 import Axios from 'axios';
 import DalApi from '../dal/DalApi';
@@ -121,12 +120,6 @@ class Leaderboards extends React.Component {
     } = this.state;
     return (
       <div>
-        <Navbar className="bg-primary">
-          <NavbarText href="#" className="h1 font-weight-bold">
-            World Of Wildcraft
-          </NavbarText>
-          <FaSearch className="h2" />
-        </Navbar>
         <div className="leaderboard-container container d-flex mt-5 align-items-center">
           <Table className="table-striped mx-5">
             <thead>
