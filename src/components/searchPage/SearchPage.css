@@ -22,4 +22,5 @@ body {
 
 .wildCard:hover {
   transform: translateY(-10px);
+  text-decoration: none;
 }
