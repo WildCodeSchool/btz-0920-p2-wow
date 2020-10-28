@@ -1,11 +1,14 @@
 import './App.css';
-
+//  import Leaderboards from './components/Leaderboards';
+import NavBar from './components/NavBar';
 import GuildsArray from './components/GuildsArray';
 
 function App() {
   return (
-    <div id="app" className="App">
+    <div className="App">
+      <NavBar />
       <GuildsArray />
+      {/* <Leaderboards /> */}
     </div>
   );
 }

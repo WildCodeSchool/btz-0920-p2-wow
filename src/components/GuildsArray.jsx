@@ -10,16 +10,8 @@ class GuildsArray extends Component {
     super();
     this.state = {
       results: [],
-      title: {
-        guild: {
-          region: {
-            slug: '',
-          },
-          realm: {
-            name: '',
-          },
-        },
-      },
+      serverSlug: '',
+      realmName: '',
     };
   }
 
@@ -29,18 +21,18 @@ class GuildsArray extends Component {
       .then((guildsRes) => {
         this.setState({
           results: guildsRes.raidRankings,
-          title: guildsRes.raidRankings[0],
+          serverSlug: guildsRes.raidRankings[0].guild.region.slug,
+          realmName: guildsRes.raidRankings[0].guild.realm.name,
         });
       });
   }
 
   render() {
-    const { results, title } = this.state;
+    const { results, serverSlug, realmName } = this.state;
     return (
       <div>
         <h2>
-          Top <span>{title.guild.region.slug}</span> {title.guild.realm.name}{' '}
-          Guilds
+          Top <span>{serverSlug}</span> {realmName} Guilds
         </h2>
         <hr />
         <table>

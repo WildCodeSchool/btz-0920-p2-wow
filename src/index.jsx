@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootswatch/dist/superhero/bootstrap.min.css';
+// import DalApi from './dal/DalApi';
+
+// DalApi.getTopPlayer((data) => console.log(data));
 
 ReactDOM.render(
   <React.StrictMode>
