@@ -1,17 +1,24 @@
+import React from 'react';
 import './App.css';
-// eslint-disable-next-line import/no-named-as-default-member
 import PlayerProfile from './components/PlayerProfile';
-import Leaderboards from './components/Leaderboards';
+// import Leaderboards from './components/Leaderboards';
 import NavBar from './components/NavBar';
 
-function App() {
-  return (
-    <div className="App">
-      <PlayerProfile />
-      <NavBar />
-      <Leaderboards />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <NavBar />
+        <PlayerProfile />
+        {/* <Leaderboards /> */}
+      </div>
+    );
+  }
 }
 
 export default App;
