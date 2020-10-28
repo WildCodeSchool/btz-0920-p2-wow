@@ -15,7 +15,7 @@ const SearchPage = () => {
         </Col>
       </Row>
       <Row className="d-flex justify-content-center">
-        <WildCard />
+        <WildCard url="./SearchRegionPage.jsx" title="Guild" />
       </Row>
     </Container>
   );
