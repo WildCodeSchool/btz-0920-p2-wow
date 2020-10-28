@@ -2,8 +2,6 @@ import { useState } from 'react';
 import './SearchPage.css';
 import {
   Container,
-  Row,
-  Col,
   Carousel,
   CarouselItem,
   CarouselControl,
@@ -69,7 +67,9 @@ const SearchPage = () => {
         onExited={() => setAnimating(false)}
         key={item.src}
       >
-        <WildCard title={item.title} />
+        {item.cardNames.map((cardName) => {
+          return <WildCard title={cardName} />;
+        })}
       </CarouselItem>
     );
   });
@@ -95,20 +95,6 @@ const SearchPage = () => {
           onClickHandler={next}
         />
       </Carousel>
-
-      <Container
-        className="d-flex flex-column justify-content-center"
-        style={{ marginTop: '10vh' }}
-      >
-        <Row>
-          <Col className="d-flex justify-content-center m-5">
-            <h1 className="border-bot-primary title-y">Looking For</h1>
-          </Col>
-        </Row>
-        <Row className="d-flex justify-content-center">
-          <WildCard title="Guild" />
-        </Row>
-      </Container>
     </Container>
   );
 };
