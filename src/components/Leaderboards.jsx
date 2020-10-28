@@ -144,7 +144,7 @@ class Leaderboards extends React.Component {
               </tr>
               <tr>
                 <th>{secondName}</th>
-                <th>{secondRealm}</th>
+                <th className="px-0">{secondRealm}</th>
                 <th>{displaysFlag(secondRegion)}</th>
               </tr>
               <tr>
