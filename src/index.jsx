@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import DalApi from './dal/DalApi';
 
-// DalApi.getTopGuild((data) => console.log(data));
+// DalApi.getTopPlayer((data) => console.log(data));
 
 ReactDOM.render(
   <React.StrictMode>
