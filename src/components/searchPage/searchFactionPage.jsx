@@ -3,7 +3,7 @@ import './SearchPage.css';
 import { Container, Row, Col } from 'reactstrap';
 import WildCard from './WildCard';
 
-const SearchPage = () => {
+const SearchFactionPage = () => {
   return (
     <Container
       className="d-flex flex-column justify-content-center"
@@ -11,7 +11,7 @@ const SearchPage = () => {
     >
       <Row>
         <Col className="d-flex justify-content-center m-5">
-          <h1 className="border-bot-primary title-y">Looking For</h1>
+          <h1 className="border-bot-primary title-y">Faction</h1>
         </Col>
       </Row>
       <Row className="d-flex justify-content-center">
@@ -21,4 +21,4 @@ const SearchPage = () => {
   );
 };
 
-export default SearchPage;
+export default SearchFactionPage;
