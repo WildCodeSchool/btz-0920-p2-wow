@@ -6,7 +6,7 @@ class GuildPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      guild: [],
+      guild: null,
     };
     this.refreshState = this.refreshState.bind(this);
   }
@@ -17,7 +17,7 @@ class GuildPage extends Component {
 
   refreshState(data) {
     // console.log(data);
-    this.setState({ guild: data.guildDetails });
+    this.setState({ guild: data });
   }
 
   render() {
@@ -25,7 +25,7 @@ class GuildPage extends Component {
     return (
       <div>
         <Navbar />
-        <div>{guild}</div>
+        <div>{guild ? guild.guildDetails.guild.name : 'Loading ...'}</div>
       </div>
     );
   }
