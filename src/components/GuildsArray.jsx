@@ -16,7 +16,8 @@ import './GuildsArray.css';
 
 const url =
   //  'https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=kr&realm=Azshara';
-  "https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=us&realm=Mal'Ganis";
+  //  "https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=us&realm=Mal'Ganis";
+  "https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=eu&realm=Vol'jin";
 class GuildsArray extends Component {
   constructor() {
     super();
@@ -64,7 +65,7 @@ class GuildsArray extends Component {
               return (
                 <GuildRow
                   name={result.guild.name}
-                  realm={result.guild.realm.name}
+                  faction={result.guild.faction}
                   slug={result.guild.region.slug}
                   rank={result.rank}
                   key={result.rank}

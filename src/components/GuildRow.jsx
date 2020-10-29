@@ -19,7 +19,7 @@ const flag = (slug) => {
 };
 
 function GuildRow(props) {
-  const { name, realm, slug, rank, bckgrdStyle } = props;
+  const { name, faction, slug, rank, bckgrdStyle } = props;
   // console.log(bckgrdStyle);
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
@@ -29,7 +29,7 @@ function GuildRow(props) {
         <strong>{name}</strong>
       </th>
       <td>
-        <p>{realm}</p>
+        <p>{faction}</p>
       </td>
       <td>{flag(slug)}</td>
     </tr>
@@ -38,7 +38,7 @@ function GuildRow(props) {
 
 GuildRow.propTypes = {
   name: PropTypes.string.isRequired,
-  realm: PropTypes.string.isRequired,
+  faction: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   bckgrdStyle: PropTypes.string.isRequired,
   rank: PropTypes.number.isRequired,
