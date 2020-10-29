@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'reactstrap';
 import { GiEuropeanFlag, GiUsaFlag, GiEarthAsiaOceania } from 'react-icons/gi';
 import DalApi from '../dal/DalApi';
+import LoadingSpinner from './LoadingSpinner';
 
 // Display flag image per region
 const displaysFlag = (region) => {
@@ -22,7 +23,10 @@ const displaysFlag = (region) => {
 class Leaderboards extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loadingGuilds: true,
+      loadingPlayers: true,
+    };
   }
 
   componentDidMount() {
@@ -44,6 +48,7 @@ class Leaderboards extends React.Component {
         fifthName: raidRankings.rankedGuilds[4].guild.name,
         fifthRegion: raidRankings.rankedGuilds[4].guild.region.name,
         fifthRealm: raidRankings.rankedGuilds[4].guild.realm.name,
+        loadingGuilds: false,
       });
     });
     DalApi.getTopPlayer((data) => {
@@ -74,6 +79,7 @@ class Leaderboards extends React.Component {
           data.rankings.rankedCharacters[3].character.region.name,
         fifthPlayerRegion:
           data.rankings.rankedCharacters[4].character.region.name,
+        loadingPlayers: false,
       });
     });
   }
@@ -110,80 +116,90 @@ class Leaderboards extends React.Component {
       thirdPlayerRegion,
       fourthPlayerRegion,
       fifthPlayerRegion,
+      loadingGuilds,
+      loadingPlayers,
     } = this.state;
     return (
       <div>
-        <div className="leaderboard-container container d-flex mt-5 align-items-center">
-          <Table className="table-striped mx-5">
-            <thead>
-              <tr>
-                <th className="h2 font-weight-bold col-md-6">
-                  Top World Guilds
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="bg-primary">
-                <th>{firstName}</th>
-                <th>{firstRealm}</th>
-                <th>{displaysFlag(firstRegion)}</th>
-              </tr>
-              <tr>
-                <th>{secondName}</th>
-                <th className="px-0">{secondRealm}</th>
-                <th>{displaysFlag(secondRegion)}</th>
-              </tr>
-              <tr>
-                <th>{thirdName}</th>
-                <th>{thirdRealm}</th>
-                <th>{displaysFlag(thirdRegion)}</th>
-              </tr>
-              <tr>
-                <th>{fourthName}</th>
-                <th>{fourthRealm}</th>
-                <th>{displaysFlag(fourthRegion)}</th>
-              </tr>
-              <tr>
-                <th>{fifthName}</th>
-                <th>{fifthRealm}</th>
-                <th>{displaysFlag(fifthRegion)}</th>
-              </tr>
-            </tbody>
-          </Table>
-          <Table className="table-striped mx-5">
-            <thead>
-              <tr>
-                <th className="h2 font-weight-bold">Top World Players</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="bg-primary">
-                <th>{firstPlayerName}</th>
-                <th>{firstPlayerRealm}</th>
-                <th>{displaysFlag(firstPlayerRegion)}</th>
-              </tr>
-              <tr>
-                <th>{secondPlayerName}</th>
-                <th>{secondPlayerRealm}</th>
-                <th>{displaysFlag(secondPlayerRegion)}</th>
-              </tr>
-              <tr>
-                <th>{thirdPlayerName}</th>
-                <th>{thirdPlayerRealm}</th>
-                <th>{displaysFlag(thirdPlayerRegion)}</th>
-              </tr>
-              <tr>
-                <th>{fourthPlayerName}</th>
-                <th>{fourthPlayerRealm}</th>
-                <th>{displaysFlag(fourthPlayerRegion)}</th>
-              </tr>
-              <tr>
-                <th>{fifthPlayerName}</th>
-                <th>{fifthPlayerRealm}</th>
-                <th>{displaysFlag(fifthPlayerRegion)}</th>
-              </tr>
-            </tbody>
-          </Table>
+        <div className="leaderboard-container container d-flex mt-5 align-items-center justify-content-center">
+          {loadingGuilds ? (
+            <LoadingSpinner />
+          ) : (
+            <Table className="table-striped mx-5">
+              <thead>
+                <tr>
+                  <th className="h2 font-weight-bold col-md-6">
+                    Top World Guilds
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-primary">
+                  <th>{firstName}</th>
+                  <th>{firstRealm}</th>
+                  <th>{displaysFlag(firstRegion)}</th>
+                </tr>
+                <tr>
+                  <th>{secondName}</th>
+                  <th className="px-0">{secondRealm}</th>
+                  <th>{displaysFlag(secondRegion)}</th>
+                </tr>
+                <tr>
+                  <th>{thirdName}</th>
+                  <th>{thirdRealm}</th>
+                  <th>{displaysFlag(thirdRegion)}</th>
+                </tr>
+                <tr>
+                  <th>{fourthName}</th>
+                  <th>{fourthRealm}</th>
+                  <th>{displaysFlag(fourthRegion)}</th>
+                </tr>
+                <tr>
+                  <th>{fifthName}</th>
+                  <th>{fifthRealm}</th>
+                  <th>{displaysFlag(fifthRegion)}</th>
+                </tr>
+              </tbody>
+            </Table>
+          )}
+          {loadingPlayers ? (
+            <LoadingSpinner />
+          ) : (
+            <Table className="table-striped mx-5">
+              <thead>
+                <tr>
+                  <th className="h2 font-weight-bold">Top World Players</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-primary">
+                  <th>{firstPlayerName}</th>
+                  <th>{firstPlayerRealm}</th>
+                  <th>{displaysFlag(firstPlayerRegion)}</th>
+                </tr>
+                <tr>
+                  <th>{secondPlayerName}</th>
+                  <th>{secondPlayerRealm}</th>
+                  <th>{displaysFlag(secondPlayerRegion)}</th>
+                </tr>
+                <tr>
+                  <th>{thirdPlayerName}</th>
+                  <th>{thirdPlayerRealm}</th>
+                  <th>{displaysFlag(thirdPlayerRegion)}</th>
+                </tr>
+                <tr>
+                  <th>{fourthPlayerName}</th>
+                  <th>{fourthPlayerRealm}</th>
+                  <th>{displaysFlag(fourthPlayerRegion)}</th>
+                </tr>
+                <tr>
+                  <th>{fifthPlayerName}</th>
+                  <th>{fifthPlayerRealm}</th>
+                  <th>{displaysFlag(fifthPlayerRegion)}</th>
+                </tr>
+              </tbody>
+            </Table>
+          )}
         </div>
       </div>
     );
