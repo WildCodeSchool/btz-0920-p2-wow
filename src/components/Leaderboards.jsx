@@ -165,7 +165,9 @@ class Leaderboards extends React.Component {
               <Table className="table-striped mx-5">
                 <thead>
                   <tr>
-                    <th className="h2 font-weight-bold">Top World Players</th>
+                    <th className="h2 font-weight-bold col-md-6">
+                      Top World Players
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
