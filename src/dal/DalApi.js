@@ -10,6 +10,7 @@ import {
 } from './staticData';
 
 const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
+const GUILD_DETAILS = 'https://raider.io/api/guilds/details?';
 const INSTANCE_RANKING = 'https://raider.io/api/raids/instance-rankings?';
 const MYTHIC_PLUS_RANKING_CHARACTER =
   'https://raider.io/api/mythic-plus/rankings/characters?';
@@ -66,24 +67,24 @@ class DalApi {
 
   /**
    *
-   * @param {*} raid : raid for the ranking. default = nyalotha-the-waking-city
-   * @param {*} difficulty : difficulty for ranking. default = mythic
    * @param {*} region : region for guild ranking. default = world
    * @param {*} realm : realm for guild ranking. default = all
-   * @param {*} page : page numer for request (20 guild/page). default = 0
    * @param {*} faction : faction for guild ranking. default = ''
+   * @param {*} page : page numer for request (20 guild/page). default = 0
+   * @param {*} difficulty : difficulty for ranking. default = mythic
+   * @param {*} raid : raid for the ranking. default = nyalotha-the-waking-city
    * @param {*} recent  : latest boss killed for guild ranking. default = false
    * @param {*} limit : don't know .... default = 0
    * @param {*} callback : function or method to execute when result is ok
    */
   static getTopGuild(
     callback,
-    raid = 'nyalotha-the-waking-city',
-    difficulty = 'mythic',
     region = 'world',
     realm = 'all',
-    page = 0,
     faction = '',
+    page = 0,
+    difficulty = 'mythic',
+    raid = 'nyalotha-the-waking-city',
     recent = false,
     limit = 0
   ) {
@@ -91,16 +92,37 @@ class DalApi {
 
     // Construc the request
     const request = requestBase
-      .concat(DalApi.createReqParamRaid(raid, false))
-      .concat(DalApi.createReqParamDifficulty(difficulty))
       .concat(DalApi.createReqParamRegion(region))
       .concat(DalApi.createReqParamRealm(realm))
-      .concat(DalApi.createReqParamPage(page))
       .concat(DalApi.createReqParamFaction(faction))
+      .concat(DalApi.createReqParamPage(page))
+      .concat(DalApi.createReqParamDifficulty(difficulty))
+      .concat(DalApi.createReqParamRaid(raid, false))
       .concat(DalApi.createReqParamRecent(recent))
       .concat(DalApi.createReqParamLimit(limit));
 
     // call the method who return the request result
+    DalApi.axiosRequest(request, callback);
+  }
+
+  /**
+   *
+   * @param {*} callback
+   * @param {*} region
+   * @param {*} realm
+   * @param {*} guildName
+   */
+  static getGuild(callback, region, realm, guildName) {
+    const requestBase = TIPS_BASILE.concat(GUILD_DETAILS);
+    const guildParam = guildName.replaceAll(' ', '%20');
+
+    // Construct the request
+    const request = requestBase
+      .concat(DalApi.createReqParamRegion(region, false))
+      .concat(DalApi.createReqParamRealm(realm))
+      .concat('&guild=')
+      .concat(guildParam);
+
     DalApi.axiosRequest(request, callback);
   }
 
@@ -114,9 +136,9 @@ class DalApi {
    */
   static getTopPlayer(
     callback,
+    region = 'world',
     classe = 'all',
     role = 'all',
-    region = 'world',
     season = 'season-bfa-4-post',
     page = 0
   ) {

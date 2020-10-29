@@ -1,7 +1,9 @@
-import './App.css';
-//  import Leaderboards from './components/Leaderboards';
 import NavBar from './components/NavBar';
 import GuildsArray from './components/GuildsArray';
+// import Leaderboards from './components/Leaderboards';
+// import GuildPage from './components/guildPage';
+
+import './App.css';
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
     >
       <NavBar />
       <GuildsArray />
+      {/* <GuildPage /> */}
       {/* <Leaderboards /> */}
     </div>
   );
