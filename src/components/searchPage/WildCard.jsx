@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const WildCard = ({ title, image, height, width }) => {
   const wildCardStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.15)),url(${image})`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(255, 255,255, 0.25)),url(${image})`,
     height: `${height}`,
     width: `${width}`,
   };

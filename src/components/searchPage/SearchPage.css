@@ -21,7 +21,7 @@ body {
 }
 
 .wildCard {
-  background: center / contain no-repeat;
+  background: center / cover no-repeat;
 }
 
 .wildCard:hover {

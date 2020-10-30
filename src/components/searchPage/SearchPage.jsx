@@ -11,7 +11,13 @@ import {
 import PropTypes from 'prop-types';
 
 import guild from '../../img/guild.jpg';
+import alliance from '../../img/alliance.png';
+import horde from '../../img/horde.png';
 import character from '../../img/character.jpg';
+import europe from '../../img/europe.png';
+import usa from '../../img/usa.png';
+import korea from '../../img/korea.png';
+import taiwan from '../../img/taiwan.png';
 import WildCard from './WildCard';
 
 const items = [
@@ -24,12 +30,10 @@ const items = [
   },
   {
     cardNames: [
-      ['EU', guild],
-      ['US', character],
-      ['CN/KR', guild],
-      ['RU', character],
-      ['OC', guild],
-      ['BR', character],
+      ['EU', europe],
+      ['US', usa],
+      ['KR', korea],
+      ['TW', taiwan],
     ],
     title: 'Region',
   },
@@ -46,8 +50,8 @@ const items = [
   },
   {
     cardNames: [
-      ['Horde', character],
-      ['Alliance', guild],
+      ['Horde', horde],
+      ['Alliance', alliance],
     ],
     title: 'Faction',
   },
