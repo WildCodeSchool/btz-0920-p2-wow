@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GiEarthAsiaOceania, GiEuropeanFlag, GiUsaFlag } from 'react-icons/gi';
 import { Table } from 'reactstrap';
 import DalApi from '../dal/DalApi';
@@ -16,24 +16,26 @@ const PlayerProfile = () => {
   const [raidScore, setRaidScore] = useState('');
   const [mythicScore, setMythicScore] = useState('');
 
-  DalApi.getPlayer(
-    (data) => {
-      setRegion(data.region);
-      setRealm(data.realm);
-      setName(data.name);
-      setThumbnail(data.thumbnail_url);
-      setCharClass(data.class);
-      setSpecName(data.active_spec_name);
-      setSpecRole(data.active_spec_role);
-      setGuild(data.guild.name);
-      setItemLevel(data.gear.item_level_equipped);
-      setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
-      setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
-    },
-    'us',
-    `Illidan`,
-    'Trancem'
-  );
+  useEffect(() => {
+    DalApi.getPlayer(
+      (data) => {
+        setRegion(data.region);
+        setRealm(data.realm);
+        setName(data.name);
+        setThumbnail(data.thumbnail_url);
+        setCharClass(data.class);
+        setSpecName(data.active_spec_name);
+        setSpecRole(data.active_spec_role);
+        setGuild(data.guild.name);
+        setItemLevel(data.gear.item_level_equipped);
+        setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
+        setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
+      },
+      'us',
+      `Illidan`,
+      'Trancem'
+    );
+  }, []);
 
   const displaysFlag = (playerRegion) => {
     switch (playerRegion) {
