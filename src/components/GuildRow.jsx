@@ -26,7 +26,7 @@ function GuildRow(props) {
     <tr {...bckgrdStyle}>
       <td>{rank}</td>
       <th>
-        <strong>{name}</strong>
+        <strong style={{ fontSize: '21px' }}>{name}</strong>
       </th>
       <td>
         <p>{faction}</p>

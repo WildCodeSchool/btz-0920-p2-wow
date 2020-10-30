@@ -19,7 +19,7 @@
 .main {
   width: 100vw;
   display: grid;
-  grid-template-columns: 20% 70%;
+  grid-template-columns: 10% 80%;
 }
 
 .filter {
@@ -32,10 +32,6 @@
   padding: 0 100px;
 }
 
-.pagination {
-  self-align: center;
-}
-
-.pagination > .paginationItem {
-  padding: 2px;
-}
+/* .pagination > .paginationItem { */
+/* padding: 2px; */
+/* } */
