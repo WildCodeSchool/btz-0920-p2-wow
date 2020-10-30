@@ -36,8 +36,6 @@ class GuildsArray extends Component {
           results: guildsRes.raidRankings.rankedGuilds,
           serverSlug: guildsRes.raidRankings.rankedGuilds[0].guild.region.slug,
           realmName: guildsRes.raidRankings.rankedGuilds[0].guild.realm.name,
-          // min: 0,
-          // max: 5,
           loadingGuilds: false,
         });
       },
@@ -71,10 +69,6 @@ class GuildsArray extends Component {
   page4() {
     this.setState({ min: 15, max: 20 });
   }
-  // pageUp() {
-  //   const { min, max } = this.state;
-  //   this.setState = { min: { min } + 5, max: { max } + 5 };
-  // }
 
   render() {
     const {
