@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Col, Container, Navbar, Row } from 'reactstrap';
 import Hr from './Hr';
 import DalApi from '../dal/DalApi';
+import GuildRanking from './GuildRanking';
 
 class GuildPage extends Component {
   constructor(props) {
@@ -17,24 +18,31 @@ class GuildPage extends Component {
   }
 
   refreshState(data) {
-    this.setState({ guild: data });
+    this.setState({ guild: data.guildDetails });
   }
 
   render() {
     const { guild } = this.state;
+    // console.log(guild);
     if (!guild) return 'Loading ...';
     return (
       <div>
         <Navbar />
-        <div>{guild.guildDetails.guild.name}</div>
+        <div>{guild.guild.name}</div>
         <Container>
           <Row>
-            <Col sm={4}>{guild.guildDetails.guild.region.name}</Col>
-            <Col sm={4}>{guild.guildDetails.guild.realm.name}</Col>
-            <Col sm={4}>{guild.guildDetails.guild.faction}</Col>
+            <Col sm={4}>{guild.guild.region.name}</Col>
+            <Col sm={4}>{guild.guild.realm.name}</Col>
+            <Col sm={4}>{guild.guild.faction}</Col>
           </Row>
         </Container>
         <Hr />
+        <Container>
+          <GuildRanking
+            raidRankings={guild.raidRankings}
+            raidProgress={guild.raidProgress}
+          />
+        </Container>
       </div>
     );
   }

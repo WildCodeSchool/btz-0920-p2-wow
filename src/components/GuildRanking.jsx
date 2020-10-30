@@ -5,11 +5,11 @@ const { Container } = require('reactstrap');
 
 export default function GuildRanking(props) {
   // eslint-disable-next-line react/prop-types
-  const { raidRankings } = props;
+  const { raidRankings, raidProgress } = props;
   return (
     <Container>
-      {raidRankings.map((ranking) => (
-        <GuildRankingRow raid={ranking} />
+      {raidRankings.map((ranking, index) => (
+        <GuildRankingRow raid={ranking} raidProgress={raidProgress[index]} />
       ))}
     </Container>
   );
