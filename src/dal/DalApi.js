@@ -141,7 +141,10 @@ class DalApi {
     const request = requestBase
       .concat(DalApi.createReqParamRegion(region, false))
       .concat(DalApi.createReqParamRealm(realm))
-      .concat(DalApi.createReqParamName(nameParam));
+      .concat(DalApi.createReqParamName(nameParam))
+      .concat(
+        '&fields=guild%2C%20gear%2C%20raid_progression%2C%20mythic_plus_scores_by_season'
+      );
     DalApi.axiosRequest(request, callback);
   }
 

@@ -9,6 +9,8 @@ const PlayerProfile = () => {
   const [name, setName] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [charClass, setCharClass] = useState('');
+  const [specName, setSpecName] = useState('');
+  const [guild, setGuild] = useState('');
 
   DalApi.getPlayer(
     (data) => {
@@ -17,6 +19,8 @@ const PlayerProfile = () => {
       setName(data.name);
       setThumbnail(data.thumbnail_url);
       setCharClass(data.class);
+      setSpecName(data.active_spec_name);
+      setGuild(data.guild.name);
     },
     'us',
     'Illidan',
@@ -26,13 +30,26 @@ const PlayerProfile = () => {
   const displaysFlag = (playerRegion) => {
     switch (playerRegion) {
       case 'Europe':
-        return <GiEuropeanFlag font-size="3em" />;
+        return <GiEuropeanFlag fontSize="3em" />;
       case 'us':
-        return <GiUsaFlag font-size="3em" />;
+        return <GiUsaFlag fontSize="3em" />;
       case 'China':
-        return <GiEarthAsiaOceania />;
+        return <GiEarthAsiaOceania fontSize="3em" />;
       case 'Russian':
-        return <GiEuropeanFlag />;
+        return <GiEuropeanFlag fontSize="3em" />;
+      default:
+        return 'error';
+    }
+  };
+
+  const displaysSpecRole = (specRole) => {
+    switch (specRole) {
+      case 'DPS':
+        return 'https://static.wikia.nocookie.net/wowpedia/images/2/27/Dps_icon.png/revision/latest?cb=20120802091709';
+      case 'TANK':
+        return 'https://static.wikia.nocookie.net/wowpedia/images/5/5a/Tank_icon.png/revision/latest?cb=20110626220936';
+      case 'HEALER':
+        return 'https://static.wikia.nocookie.net/wowpedia/images/2/2a/Healer_icon.png/revision/latest?cb=20120802091522';
       default:
         return 'error';
     }
@@ -72,27 +89,36 @@ const PlayerProfile = () => {
   return (
     <div className="d-flex justify-content-center align-items-center">
       <Table className="w-50">
-        <thead className="d-flex justify-content-around align-items-center col-md-12">
-          <img src={thumbnail} alt="" />
-          <h1>{name}</h1>
-          <p>{realm}</p>
-          {displaysFlag(region)}
-        </thead>
         <tbody>
+          <tr className="d-flex justify-content-around align-items-center col-md-12">
+            <td>
+              <img src={thumbnail} alt="" />
+            </td>
+            <td>
+              <h1>{name}</h1>
+            </td>
+            <td>
+              <p>{realm}</p>
+            </td>
+            <td>{displaysFlag(region)}</td>
+          </tr>
           <tr>
-            <th>
+            <td>
               <img
                 src={displaysClass(charClass)}
                 alt=""
                 height="64px"
                 width="64px"
               />
+            </td>
+
+            <th>{specName}</th>
+            <th>
+              <img src={displaysSpecRole(specName)} alt="" />
             </th>
-            <th>Retribution</th>
-            <th>Img</th>
           </tr>
           <tr>
-            <th>Guild</th>
+            <th>{guild}</th>
             <th>Pals for life</th>
           </tr>
           <tr>
