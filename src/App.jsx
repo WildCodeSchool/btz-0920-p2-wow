@@ -7,7 +7,7 @@ import SearchPage from './components/searchPage/SearchPage';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App d-flex flex-column">
       <NavBar />
       {/* <Leaderboards /> */}
       {/* <GuildPage /> */}

@@ -6,12 +6,8 @@
   color: white;
 }
 
-.border-bot-primary {
-  border-bottom: var(--main-color) 6px solid;
-}
-
-.title-y {
-  width: 20rem;
+.slide {
+  flex: 1;
 }
 
 .wildCard {

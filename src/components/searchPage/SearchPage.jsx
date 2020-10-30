@@ -86,7 +86,7 @@ const SearchPage = () => {
         key={item.src}
       >
         <div className="d-flex justify-content-center">
-          <h1 className="border-bot-primary title-y m-5 ">{item.title}</h1>
+          <h1 className="border-vert m-5">{item.title}</h1>
         </div>
         <Container className="d-flex flex-wrap justify-content-center">
           {item.cardNames.map((cardName) => {
@@ -106,9 +106,8 @@ const SearchPage = () => {
   });
 
   return (
-    <Container className="d-flex flex-column justify-content-start align-items-center">
+    <Container className="d-flex flex-column flex-1">
       <Carousel
-        style={{ display: 'contents' }}
         activeIndex={activeIndex}
         next={next}
         previous={previous}
