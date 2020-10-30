@@ -3,7 +3,7 @@ import GuildsArray from './components/GuildsArray';
 // import Leaderboards from './components/Leaderboards';
 // import GuildPage from './components/guildPage';
 // import SearchPage from './components/searchPage/SearchPage';
-        
+
 import './App.css';
 
 function App() {
