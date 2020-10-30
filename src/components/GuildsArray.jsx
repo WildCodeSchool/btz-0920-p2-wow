@@ -1,4 +1,4 @@
-import Axios from 'axios';
+//  import Axios from 'axios';
 import { Component } from 'react';
 import { Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import {
@@ -10,14 +10,16 @@ import {
 
 import GuildRow from './GuildRow';
 import ToolsFilters from './ToolsFilters';
+import DalApi from '../dal/DalApi';
 
 import Hr from './Hr';
+import LoadingSpinner from './LoadingSpinner';
 import './GuildsArray.css';
 
-const url =
-  //  'https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=kr&realm=Azshara';
-  //  "https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=us&realm=Mal'Ganis";
-  "https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=eu&realm=Vol'jin";
+//  const url =
+//  'https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=kr&realm=Azshara';
+//  "https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=us&realm=Mal'Ganis";
+//  "https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=eu&realm=Vol'jin";
 class GuildsArray extends Component {
   constructor() {
     super();
@@ -25,23 +27,38 @@ class GuildsArray extends Component {
       results: [],
       serverSlug: '',
       realmName: '',
+      loadingGuilds: true,
     };
   }
 
   componentDidMount() {
-    Axios.get(url)
-      .then((response) => response.data)
-      .then((guildsRes) => {
+    //  Axios.get(url)
+    //    .then((response) => response.data)
+    //    .then((guildsRes) => {
+    //      this.setState({
+    //        results: guildsRes.raidRankings,
+    //        serverSlug: guildsRes.raidRankings[0].guild.region.slug,
+    //        realmName: guildsRes.raidRankings[0].guild.realm.name,
+    //      });
+    //    });
+    DalApi.getTopGuild(
+      (guildsRes) => {
+        // console.log(guildsRes);
         this.setState({
           results: guildsRes.raidRankings,
           serverSlug: guildsRes.raidRankings[0].guild.region.slug,
           realmName: guildsRes.raidRankings[0].guild.realm.name,
+          loadingGuilds: false,
         });
-      });
+      },
+      'eu',
+      "Vol'jin"
+    );
   }
 
   render() {
-    const { results, serverSlug, realmName } = this.state;
+    const { results, serverSlug, realmName, loadingGuilds } = this.state;
+    if (loadingGuilds) return <LoadingSpinner />;
     return (
       <div className="align-items-center">
         <div className="title">
