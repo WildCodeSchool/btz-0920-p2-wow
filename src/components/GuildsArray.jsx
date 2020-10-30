@@ -1,4 +1,3 @@
-//  import Axios from 'axios';
 import { Component } from 'react';
 import { Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import {
@@ -16,10 +15,6 @@ import Hr from './Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './GuildsArray.css';
 
-//  const url =
-//  'https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=kr&realm=Azshara';
-//  "https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=us&realm=Mal'Ganis";
-//  "https://raider.io/api/v1/raiding/raid-rankings?raid=nyalotha-the-waking-city&difficulty=mythic&region=eu&realm=Vol'jin";
 class GuildsArray extends Component {
   constructor() {
     super();
@@ -32,22 +27,12 @@ class GuildsArray extends Component {
   }
 
   componentDidMount() {
-    //  Axios.get(url)
-    //    .then((response) => response.data)
-    //    .then((guildsRes) => {
-    //      this.setState({
-    //        results: guildsRes.raidRankings,
-    //        serverSlug: guildsRes.raidRankings[0].guild.region.slug,
-    //        realmName: guildsRes.raidRankings[0].guild.realm.name,
-    //      });
-    //    });
     DalApi.getTopGuild(
       (guildsRes) => {
-        // console.log(guildsRes);
         this.setState({
-          results: guildsRes.raidRankings,
-          serverSlug: guildsRes.raidRankings[0].guild.region.slug,
-          realmName: guildsRes.raidRankings[0].guild.realm.name,
+          results: guildsRes.raidRankings.rankedGuilds,
+          serverSlug: guildsRes.raidRankings.rankedGuilds[0].guild.region.slug,
+          realmName: guildsRes.raidRankings.rankedGuilds[0].guild.realm.name,
           loadingGuilds: false,
         });
       },
@@ -58,6 +43,9 @@ class GuildsArray extends Component {
 
   render() {
     const { results, serverSlug, realmName, loadingGuilds } = this.state;
+    // function suffisammentGrand(e) {
+    //   return results[e].rank <= 5;
+    // }
     if (loadingGuilds) return <LoadingSpinner />;
     return (
       <div className="align-items-center">
@@ -72,24 +60,30 @@ class GuildsArray extends Component {
             <ToolsFilters />
           </div>
           <Table className="guildsTable">
-            {results.map((result) => {
-              let style;
-              if (result.rank % 2 !== 0) {
-                style = "style={{backgroundColor: 'rgba(255, 255, 255, 0.5'}}";
-              } else {
-                style = "style={{backgroundColor: 'rgba(255, 255, 255, 0'}}";
-              }
-              return (
-                <GuildRow
-                  name={result.guild.name}
-                  faction={result.guild.faction}
-                  slug={result.guild.region.slug}
-                  rank={result.rank}
-                  key={result.rank}
-                  bckgrdStyle={style}
-                />
-              );
-            })}
+            <tbody>
+              {results
+                .map((result) => {
+                  let style;
+                  if (result.rank % 2 !== 0) {
+                    style =
+                      "style={{backgroundColor: 'rgba(255, 255, 255, 0.5'}}";
+                  } else {
+                    style =
+                      "style={{backgroundColor: 'rgba(255, 255, 255, 0'}}";
+                  }
+                  return (
+                    <GuildRow
+                      name={result.guild.name}
+                      faction={result.guild.faction}
+                      slug={result.guild.region.slug}
+                      rank={result.rank}
+                      key={result.rank}
+                      bckgrdStyle={style}
+                    />
+                  );
+                })
+                .filter((e, index) => index < 5)}
+            </tbody>
           </Table>
         </main>
         <Pagination className="pagination" size="lg clearfix">
