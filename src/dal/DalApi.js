@@ -92,12 +92,12 @@ class DalApi {
 
     // Construc the request
     const request = requestBase
-      .concat(DalApi.createReqParamRegion(region))
+      .concat(DalApi.createReqParamRegion(region, false))
       .concat(DalApi.createReqParamRealm(realm))
       .concat(DalApi.createReqParamFaction(faction))
       .concat(DalApi.createReqParamPage(page))
       .concat(DalApi.createReqParamDifficulty(difficulty))
-      .concat(DalApi.createReqParamRaid(raid, false))
+      .concat(DalApi.createReqParamRaid(raid))
       .concat(DalApi.createReqParamRecent(recent))
       .concat(DalApi.createReqParamLimit(limit));
 
@@ -162,6 +162,7 @@ class DalApi {
    */
   static axiosRequest(url, callback) {
     axios.get(url).then((response) => callback(response.data));
+    // axios.get(url).then((response) => callback(console.log(response.data)));
   }
 
   /**
