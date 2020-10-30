@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Col, Container, Navbar, Row } from 'reactstrap';
-import Hr from './Hr';
-import DalApi from '../dal/DalApi';
+import Hr from '../Hr';
+import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
 
 class GuildPage extends Component {
