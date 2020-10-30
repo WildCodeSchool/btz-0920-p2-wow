@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import { Navbar } from 'reactstrap';
+import { Col, Container, Navbar, Row } from 'reactstrap';
+import Hr from './Hr';
 import DalApi from '../dal/DalApi';
 
 class GuildPage extends Component {
@@ -16,16 +17,24 @@ class GuildPage extends Component {
   }
 
   refreshState(data) {
-    // console.log(data);
     this.setState({ guild: data });
   }
 
   render() {
     const { guild } = this.state;
+    if (!guild) return 'Loading ...';
     return (
       <div>
         <Navbar />
-        <div>{guild ? guild.guildDetails.guild.name : 'Loading ...'}</div>
+        <div>{guild.guildDetails.guild.name}</div>
+        <Container>
+          <Row>
+            <Col sm={4}>{guild.guildDetails.guild.region.name}</Col>
+            <Col sm={4}>{guild.guildDetails.guild.realm.name}</Col>
+            <Col sm={4}>{guild.guildDetails.guild.faction}</Col>
+          </Row>
+        </Container>
+        <Hr />
       </div>
     );
   }
