@@ -161,7 +161,10 @@ class DalApi {
    * @param {*} callback function or method called when result is ok
    */
   static axiosRequest(url, callback) {
-    axios.get(url).then((response) => callback(response.data));
+    axios.get(url).then((response) => {
+      // console.log(response.data);
+      callback(response.data);
+    });
     // axios.get(url).then((response) => callback(console.log(response.data)));
   }
 
