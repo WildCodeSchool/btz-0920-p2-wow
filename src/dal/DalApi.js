@@ -143,7 +143,7 @@ class DalApi {
       .concat(DalApi.createReqParamRealm(realm))
       .concat(DalApi.createReqParamName(nameParam))
       .concat(
-        '&fields=guild%2C%20gear%2C%20raid_progression%2C%20mythic_plus_scores_by_season'
+        '&fields=gear%2Cguild%2Cmythic_plus_scores_by_season:current%2Craid_progression'
       );
     DalApi.axiosRequest(request, callback);
   }
@@ -183,7 +183,10 @@ class DalApi {
    * @param {*} callback function or method called when result is ok
    */
   static axiosRequest(url, callback) {
-    axios.get(url).then((response) => callback(response.data));
+    axios.get(url).then((response) => {
+      // console.log(response.data);
+      callback(response.data);
+    });
     // axios.get(url).then((response) => callback(console.log(response.data)));
   }
 

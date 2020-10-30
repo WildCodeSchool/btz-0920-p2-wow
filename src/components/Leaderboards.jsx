@@ -126,7 +126,7 @@ class Leaderboards extends React.Component {
             <LoadingSpinner />
           ) : (
             <div className="d-flex mt-5 align-items-center justify-content-center">
-              <Table className="table-striped mx-5">
+              <Table className="mx-5" hover>
                 <thead>
                   <tr>
                     <th className="h2 font-weight-bold col-md-6">
@@ -162,10 +162,10 @@ class Leaderboards extends React.Component {
                   </tr>
                 </tbody>
               </Table>
-              <Table className="table-striped mx-5">
+              <Table className="mx-5" hover>
                 <thead>
                   <tr>
-                    <th className="h2 font-weight-bold" width="310px">
+                    <th className="h2 font-weight-bold" width="350px">
                       Top World Players
                     </th>
                   </tr>

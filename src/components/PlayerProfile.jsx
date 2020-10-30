@@ -10,7 +10,11 @@ const PlayerProfile = () => {
   const [thumbnail, setThumbnail] = useState('');
   const [charClass, setCharClass] = useState('');
   const [specName, setSpecName] = useState('');
+  const [specRole, setSpecRole] = useState('');
   const [guild, setGuild] = useState('');
+  const [itemLevel, setItemLevel] = useState(0);
+  const [raidScore, setRaidScore] = useState('');
+  const [mythicScore, setMythicScore] = useState('');
 
   DalApi.getPlayer(
     (data) => {
@@ -20,10 +24,14 @@ const PlayerProfile = () => {
       setThumbnail(data.thumbnail_url);
       setCharClass(data.class);
       setSpecName(data.active_spec_name);
+      setSpecRole(data.active_spec_role);
       setGuild(data.guild.name);
+      setItemLevel(data.gear.item_level_equipped);
+      setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
+      setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
     },
     'us',
-    'Illidan',
+    `Illidan`,
     'Trancem'
   );
 
@@ -42,12 +50,12 @@ const PlayerProfile = () => {
     }
   };
 
-  const displaysSpecRole = (specRole) => {
-    switch (specRole) {
+  const displaysSpecRole = (playerSpecRole) => {
+    switch (playerSpecRole) {
       case 'DPS':
         return 'https://static.wikia.nocookie.net/wowpedia/images/2/27/Dps_icon.png/revision/latest?cb=20120802091709';
       case 'TANK':
-        return 'https://static.wikia.nocookie.net/wowpedia/images/5/5a/Tank_icon.png/revision/latest?cb=20110626220936';
+        return 'https://i.pinimg.com/236x/6a/2e/da/6a2edae61362537b8558c9007d92a3b6.jpg';
       case 'HEALER':
         return 'https://static.wikia.nocookie.net/wowpedia/images/2/2a/Healer_icon.png/revision/latest?cb=20120802091522';
       default:
@@ -88,9 +96,9 @@ const PlayerProfile = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center">
-      <Table className="w-50">
+      <Table className="w-50" hover>
         <tbody>
-          <tr className="d-flex justify-content-around align-items-center col-md-12">
+          <tr>
             <td>
               <img src={thumbnail} alt="" />
             </td>
@@ -114,24 +122,24 @@ const PlayerProfile = () => {
 
             <th>{specName}</th>
             <th>
-              <img src={displaysSpecRole(specName)} alt="" />
+              <img src={displaysSpecRole(specRole)} alt="" height="64px" />
             </th>
           </tr>
           <tr>
+            <th>Guild</th>
             <th>{guild}</th>
-            <th>Pals for life</th>
           </tr>
           <tr>
             <th>Item level</th>
-            <th>60</th>
+            <th>{itemLevel}</th>
           </tr>
           <tr>
             <th>Current raid score</th>
-            <th>0/12</th>
+            <th>{raidScore}</th>
           </tr>
           <tr>
             <th>Current mythic score</th>
-            <th>1337</th>
+            <th>{mythicScore}</th>
           </tr>
         </tbody>
       </Table>
