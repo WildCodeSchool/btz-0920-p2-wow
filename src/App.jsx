@@ -1,16 +1,17 @@
 import './App.css';
-// import NavBar from './components/NavBar';
-// import Leaderboards from './components/Leaderboards';
+
+import NavBar from './components/NavBar';
+import Leaderboards from './components/Leaderboards';
 // import GuildPage from './components/guildPage';
-import SearchPage from './components/searchPage/SearchPage';
+// import SearchPage from './components/searchPage/SearchPage';
 
 function App() {
   return (
     <div className="App">
-      {/* <NavBar /> */}
-      {/* <Leaderboards /> */}
+      <NavBar />
+      <Leaderboards />
       {/* <GuildPage /> */}
-      <SearchPage />
+      {/* <SearchPage /> */}
     </div>
   );
 }
