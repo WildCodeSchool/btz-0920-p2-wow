@@ -85,6 +85,9 @@ const SearchPage = () => {
         onExited={() => setAnimating(false)}
         key={item.src}
       >
+        <div className="d-flex justify-content-center">
+          <h1 className="border-bot-primary title-y m-5 ">{item.title}</h1>
+        </div>
         <Container className="d-flex flex-wrap justify-content-center">
           {item.cardNames.map((cardName) => {
             return (
@@ -103,15 +106,7 @@ const SearchPage = () => {
   });
 
   return (
-    <Container
-      className="d-flex flex-column justify-content-start align-items-center"
-      style={{
-        height: '100vh',
-      }}
-    >
-      <div className="d-flex justify-content-center">
-        <h1 className="border-bot-primary title-y m-5 ">Looking For</h1>
-      </div>
+    <Container className="d-flex flex-column justify-content-start align-items-center">
       <Carousel
         style={{ display: 'contents' }}
         activeIndex={activeIndex}
