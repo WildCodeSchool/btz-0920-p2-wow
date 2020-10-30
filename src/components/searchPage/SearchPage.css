@@ -20,7 +20,13 @@ body {
   width: 20rem;
 }
 
+.wildCard {
+  background: center / cover no-repeat;
+}
+
 .wildCard:hover {
-  transform: translateY(-10px);
+  transition: ease-in 0.15s;
+  transform: translateY(-5px);
   text-decoration: none;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
 }

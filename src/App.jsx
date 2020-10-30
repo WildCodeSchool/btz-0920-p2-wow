@@ -1,4 +1,5 @@
 import './App.css';
+
 import NavBar from './components/NavBar';
 import Leaderboards from './components/Leaderboards';
 // import GuildPage from './components/guildPage';
