@@ -5,11 +5,31 @@
 .slide {
   display: contents;
 }
-/* 
+ 
 .carousel-inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: -webkit-fill-available;
-  margin-bottom: 20vh;
-} */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .leaderboard-container {
+    flex-wrap: wrap;
+  }
+}
+
