@@ -1,11 +1,9 @@
 import './SearchPage.css';
 import PropTypes from 'prop-types';
 
-import guild from '../../img/guild.jpg';
-
-const WildCard = ({ title, height, width }) => {
+const WildCard = ({ title, image, height, width }) => {
   const wildCardStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35)),url(${guild})`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.15)),url(${image})`,
     height: `${height}`,
     width: `${width}`,
   };
@@ -26,6 +24,7 @@ export default WildCard;
 
 WildCard.propTypes = {
   title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
   height: PropTypes.string.isRequired,
   width: PropTypes.string.isRequired,
 };

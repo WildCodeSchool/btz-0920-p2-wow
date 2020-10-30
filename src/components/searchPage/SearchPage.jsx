@@ -9,34 +9,46 @@ import {
   CarouselIndicators,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+
+import guild from '../../img/guild.jpg';
+import character from '../../img/character.jpg';
 import WildCard from './WildCard';
 
 const items = [
   {
-    cards: 2,
-    cardNames: ['Guild', 'Character'],
+    cardNames: [
+      ['Guild', guild],
+      ['Character', character],
+    ],
     title: 'Guild',
   },
   {
-    cards: 6,
-    cardNames: ['EU', 'US', 'CN/KR', 'RU', 'OC', 'BR'],
+    cardNames: [
+      ['EU', guild],
+      ['US', character],
+      ['CN/KR', guild],
+      ['RU', character],
+      ['OC', guild],
+      ['BR', character],
+    ],
     title: 'Region',
   },
   {
-    cards: 6,
     cardNames: [
-      'Archimonde',
-      'Sargeras',
-      "Eldre'thalas",
-      'Hyjal',
-      'Area 52',
-      'Arthas',
+      ['Archimonde', character],
+      ['Sargeras', guild],
+      ["Eldre'thalas", character],
+      ['Hyjal', guild],
+      ['Area 52', character],
+      ['Arthas', guild],
     ],
     title: 'Server',
   },
   {
-    cards: 2,
-    cardNames: ['Horde', 'Alliance'],
+    cardNames: [
+      ['Horde', character],
+      ['Alliance', guild],
+    ],
     title: 'Faction',
   },
 ];
@@ -73,8 +85,9 @@ const SearchPage = () => {
           {item.cardNames.map((cardName) => {
             return (
               <WildCard
-                key={cardName}
-                title={cardName}
+                key={cardName[0]}
+                title={cardName[0]}
+                image={cardName[1]}
                 width="240px"
                 height="240px"
               />

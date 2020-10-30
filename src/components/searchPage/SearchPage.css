@@ -20,6 +20,10 @@ body {
   width: 20rem;
 }
 
+.wildCard {
+  background: center / contain no-repeat;
+}
+
 .wildCard:hover {
   transition: ease-in 0.15s;
   transform: translateY(-5px);
