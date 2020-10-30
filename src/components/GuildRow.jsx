@@ -20,7 +20,6 @@ const flag = (slug) => {
 
 function GuildRow(props) {
   const { name, faction, slug, rank, bckgrdStyle } = props;
-  // console.log(bckgrdStyle);
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <tr {...bckgrdStyle}>
