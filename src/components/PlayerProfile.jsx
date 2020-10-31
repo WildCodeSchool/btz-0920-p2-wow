@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { GiEarthAsiaOceania, GiEuropeanFlag, GiUsaFlag } from 'react-icons/gi';
 import { Table } from 'reactstrap';
 import DalApi from '../dal/DalApi';
+import LoadingSpinner from './LoadingSpinner';
 
 const PlayerProfile = () => {
   const [region, setRegion] = useState('');
@@ -15,6 +16,7 @@ const PlayerProfile = () => {
   const [itemLevel, setItemLevel] = useState(0);
   const [raidScore, setRaidScore] = useState('');
   const [mythicScore, setMythicScore] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     DalApi.getPlayer(
@@ -30,6 +32,7 @@ const PlayerProfile = () => {
         setItemLevel(data.gear.item_level_equipped);
         setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
         setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
+        setLoading(false);
       },
       'us',
       `Illidan`,
@@ -98,53 +101,57 @@ const PlayerProfile = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center">
-      <Table className="w-50" hover>
-        <tbody>
-          <tr>
-            <td>
-              <img src={thumbnail} alt="" />
-            </td>
-            <td>
-              <h1>{name}</h1>
-            </td>
-            <td>
-              <p>{realm}</p>
-            </td>
-            <td>{displaysFlag(region)}</td>
-          </tr>
-          <tr>
-            <td>
-              <img
-                src={displaysClass(charClass)}
-                alt=""
-                height="64px"
-                width="64px"
-              />
-            </td>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <Table className="w-50" hover>
+          <tbody>
+            <tr>
+              <td>
+                <img src={thumbnail} alt="" />
+              </td>
+              <td>
+                <h1>{name}</h1>
+              </td>
+              <td>
+                <p>{realm}</p>
+              </td>
+              <td>{displaysFlag(region)}</td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src={displaysClass(charClass)}
+                  alt=""
+                  height="64px"
+                  width="64px"
+                />
+              </td>
 
-            <th>{specName}</th>
-            <th>
-              <img src={displaysSpecRole(specRole)} alt="" height="64px" />
-            </th>
-          </tr>
-          <tr>
-            <th>Guild</th>
-            <th>{guild}</th>
-          </tr>
-          <tr>
-            <th>Item level</th>
-            <th>{itemLevel}</th>
-          </tr>
-          <tr>
-            <th>Current raid score</th>
-            <th>{raidScore}</th>
-          </tr>
-          <tr>
-            <th>Current mythic score</th>
-            <th>{mythicScore}</th>
-          </tr>
-        </tbody>
-      </Table>
+              <th>{specName}</th>
+              <th>
+                <img src={displaysSpecRole(specRole)} alt="" height="64px" />
+              </th>
+            </tr>
+            <tr>
+              <th>Guild</th>
+              <th>{guild}</th>
+            </tr>
+            <tr>
+              <th>Item level</th>
+              <th>{itemLevel}</th>
+            </tr>
+            <tr>
+              <th>Current raid score</th>
+              <th>{raidScore}</th>
+            </tr>
+            <tr>
+              <th>Current mythic score</th>
+              <th>{mythicScore}</th>
+            </tr>
+          </tbody>
+        </Table>
+      )}
     </div>
   );
 };
