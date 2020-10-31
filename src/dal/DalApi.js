@@ -136,10 +136,26 @@ class DalApi {
   static getPlayer(callback, region, realm, name) {
     const requestBase = CHARACTER_DETAILS;
     const nameParam = name.replaceAll(' ', '%20');
+    const regionParam = () => {
+      switch (region) {
+        case 'United States & Oceania':
+          return 'us';
+        case 'Europe':
+          return 'eu';
+        case 'China':
+          return 'cn';
+        case 'Taiwan':
+          return 'tw';
+        case 'Korea':
+          return 'kr';
+        default:
+          return 'error';
+      }
+    };
 
     // Construct the request
     const request = requestBase
-      .concat(DalApi.createReqParamRegion(region, false))
+      .concat(DalApi.createReqParamRegion(regionParam(), false))
       .concat(DalApi.createReqParamRealm(realm))
       .concat(DalApi.createReqParamName(nameParam))
       .concat(

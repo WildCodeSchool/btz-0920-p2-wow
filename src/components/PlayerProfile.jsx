@@ -5,7 +5,7 @@ import { Col, Row, Container } from 'reactstrap';
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
 
-const PlayerProfile = ({ name, realm, region }) => {
+const PlayerProfile = ({ match }) => {
   const [playerRegion, setPlayerRegion] = useState('');
   const [playerRealm, setPlayerRealm] = useState('');
   const [playerName, setPlayerName] = useState('');
@@ -35,9 +35,9 @@ const PlayerProfile = ({ name, realm, region }) => {
         setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
         setLoading(false);
       },
-      name,
-      realm,
-      region
+      match.params.region,
+      match.params.realm,
+      match.params.name
     );
   }, []);
 
@@ -156,9 +156,13 @@ const PlayerProfile = ({ name, realm, region }) => {
 };
 
 PlayerProfile.propTypes = {
-  name: PropTypes.string.isRequired,
-  realm: PropTypes.string.isRequired,
-  region: PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      realm: PropTypes.string.isRequired,
+      region: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 };
 
 export default PlayerProfile;
