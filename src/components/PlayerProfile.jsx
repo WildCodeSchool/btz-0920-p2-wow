@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { GiEarthAsiaOceania, GiEuropeanFlag, GiUsaFlag } from 'react-icons/gi';
-import { Table } from 'reactstrap';
+import { Col, Row, Container } from 'reactstrap';
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
 
@@ -100,59 +100,57 @@ const PlayerProfile = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center">
+    <Container fluid>
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <Table className="w-50" hover>
-          <tbody>
-            <tr>
-              <td>
-                <img src={thumbnail} alt="" />
-              </td>
-              <td>
-                <h1>{name}</h1>
-              </td>
-              <td>
-                <p>{realm}</p>
-              </td>
-              <td>{displaysFlag(region)}</td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src={displaysClass(charClass)}
-                  alt=""
-                  height="64px"
-                  width="64px"
-                />
-              </td>
+        <Container>
+          <Row>
+            <Col xs={3}>
+              <img src={thumbnail} alt="" />
+            </Col>
+            <Col xs={6}>
+              <h1>{name}</h1>
+            </Col>
+            <Col xs="3">{displaysFlag(region)}</Col>
+            <Col>{realm}</Col>
+          </Row>
+          <Row>
+            <Col>
+              <img
+                src={displaysClass(charClass)}
+                alt=""
+                height="64px"
+                width="64px"
+              />
+            </Col>
 
-              <th>{specName}</th>
-              <th>
-                <img src={displaysSpecRole(specRole)} alt="" height="64px" />
-              </th>
-            </tr>
-            <tr>
-              <th>Guild</th>
-              <th>{guild}</th>
-            </tr>
-            <tr>
-              <th>Item level</th>
-              <th>{itemLevel}</th>
-            </tr>
-            <tr>
-              <th>Current raid score</th>
-              <th>{raidScore}</th>
-            </tr>
-            <tr>
-              <th>Current mythic score</th>
-              <th>{mythicScore}</th>
-            </tr>
-          </tbody>
-        </Table>
+            <Col>{specName}</Col>
+            <Col>
+              <img src={displaysSpecRole(specRole)} alt="" height="64px" />
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={3}>
+              <p>Guild</p>
+            </Col>
+            <Col xs={9}>{guild}</Col>
+          </Row>
+          <Row>
+            <Col xs={3}>Item level</Col>
+            <Col>{itemLevel}</Col>
+          </Row>
+          <Row>
+            <Col xs={9}>Current raid score</Col>
+            <Col xs={3}>{raidScore}</Col>
+          </Row>
+          <Row>
+            <Col xs={9}>Current mythic score</Col>
+            <Col xs={3}>{mythicScore}</Col>
+          </Row>
+        </Container>
       )}
-    </div>
+    </Container>
   );
 };
 

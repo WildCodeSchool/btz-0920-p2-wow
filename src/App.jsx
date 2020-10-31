@@ -13,15 +13,15 @@ function App() {
     <Router>
       <div
         className="App"
-        style={{
-          fontFamily: 'Ubuntu',
-          fontSize: '48px',
-          fontStyle: 'normal',
-          fontWeight: '700',
-          lineHeight: '55px',
-          letterSpacing: '0em',
-          textAlign: 'center',
-        }}
+        // style={{
+        //   fontFamily: 'Ubuntu',
+        //   fontSize: '48px',
+        //   fontStyle: 'normal',
+        //   fontWeight: '700',
+        //   lineHeight: '55px',
+        //   letterSpacing: '0em',
+        //   textAlign: 'center',
+        // }}
       >
         <NavBar />
         <Switch>
