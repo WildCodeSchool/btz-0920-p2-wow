@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { GiEarthAsiaOceania, GiEuropeanFlag, GiUsaFlag } from 'react-icons/gi';
 import { Col, Row, Container } from 'reactstrap';
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
 
-const PlayerProfile = () => {
-  const [region, setRegion] = useState('');
-  const [realm, setRealm] = useState('');
-  const [name, setName] = useState('');
+const PlayerProfile = ({ name, realm, region }) => {
+  const [playerRegion, setPlayerRegion] = useState('');
+  const [playerRealm, setPlayerRealm] = useState('');
+  const [playerName, setPlayerName] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [charClass, setCharClass] = useState('');
   const [specName, setSpecName] = useState('');
@@ -21,9 +22,9 @@ const PlayerProfile = () => {
   useEffect(() => {
     DalApi.getPlayer(
       (data) => {
-        setRegion(data.region);
-        setRealm(data.realm);
-        setName(data.name);
+        setPlayerRegion(data.region);
+        setPlayerRealm(data.realm);
+        setPlayerName(data.name);
         setThumbnail(data.thumbnail_url);
         setCharClass(data.class);
         setSpecName(data.active_spec_name);
@@ -34,14 +35,14 @@ const PlayerProfile = () => {
         setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
         setLoading(false);
       },
-      'us',
-      `Illidan`,
-      'Trancem'
+      name,
+      realm,
+      region
     );
   }, []);
 
-  const displaysFlag = (playerRegion) => {
-    switch (playerRegion) {
+  const displaysFlag = (reg) => {
+    switch (reg) {
       case 'Europe':
         return <GiEuropeanFlag fontSize="3em" />;
       case 'us':
@@ -110,10 +111,10 @@ const PlayerProfile = () => {
               <img src={thumbnail} alt="" />
             </Col>
             <Col xs={6}>
-              <h1>{name}</h1>
+              <h1>{playerName}</h1>
             </Col>
-            <Col xs="3">{displaysFlag(region)}</Col>
-            <Col>{realm}</Col>
+            <Col xs="3">{displaysFlag(playerRegion)}</Col>
+            <Col>{playerRealm}</Col>
           </Row>
           <Row>
             <Col>
@@ -152,6 +153,12 @@ const PlayerProfile = () => {
       )}
     </Container>
   );
+};
+
+PlayerProfile.propTypes = {
+  name: PropTypes.string.isRequired,
+  realm: PropTypes.string.isRequired,
+  region: PropTypes.string.isRequired,
 };
 
 export default PlayerProfile;

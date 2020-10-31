@@ -26,7 +26,10 @@ function App() {
         <NavBar />
         <Switch>
           <Route path="/" exact component={Leaderboards} />
-          <Route path="/PlayerProfile" component={PlayerProfile} />
+          <Route
+            path="/PlayerProfile/:name/:region/:realm"
+            component={PlayerProfile}
+          />
           <Route path="/GuildsArray" component={GuildsArray} />
           <Route path="/GuildPage" component={GuildPage} />
           <Route path="/SearchPage" component={SearchPage} />

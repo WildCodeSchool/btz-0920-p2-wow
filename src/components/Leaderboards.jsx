@@ -1,4 +1,5 @@
 import React from 'react';
+import uniqid from 'uniqid';
 import { Table } from 'reactstrap';
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
@@ -60,6 +61,7 @@ class Leaderboards extends React.Component {
                           name={result.guild.name}
                           realm={result.guild.realm.name}
                           region={result.guild.region.name}
+                          key={uniqid()}
                         />
                       );
                     })
@@ -82,6 +84,7 @@ class Leaderboards extends React.Component {
                           name={result.character.name}
                           realm={result.character.realm.name}
                           region={result.character.region.name}
+                          key={uniqid()}
                         />
                       );
                     })

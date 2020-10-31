@@ -1,5 +1,6 @@
 import { GiEuropeanFlag, GiUsaFlag, GiEarthAsiaOceania } from 'react-icons/gi';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 // Display flag image per region
 const displaysFlag = (region) => {
@@ -21,7 +22,7 @@ const PlayerLeaderboardRow = (props) => {
   const { name, realm, region } = props;
   return (
     <tr>
-      <th>{name}</th>
+      <Link to={`/PlayerProfile/${name}/${region}/${realm}`}>{name}</Link>
       <th>{realm}</th>
       <th>{displaysFlag(region)}</th>
     </tr>
