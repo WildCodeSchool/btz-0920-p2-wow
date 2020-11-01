@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { Col, Row, Container } from 'reactstrap';
+import { Col, Table, Container } from 'reactstrap';
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
 import EuroFlag from './EuroFlag';
@@ -61,11 +61,11 @@ const PlayerProfile = ({ match }) => {
   const displaysSpecRole = (playerSpecRole) => {
     switch (playerSpecRole) {
       case 'DPS':
-        return 'https://static.wikia.nocookie.net/wowpedia/images/2/27/Dps_icon.png/revision/latest?cb=20120802091709';
+        return 'https://external-preview.redd.it/S38BJlfOcffd02QmOfbhABLi-J9C_FsRDkPcf66F_d4.png?auto=webp&s=8422980d40b8218136652c9ecbc53aa94b38128c';
       case 'TANK':
         return 'https://i.pinimg.com/236x/6a/2e/da/6a2edae61362537b8558c9007d92a3b6.jpg';
-      case 'HEALER':
-        return 'https://static.wikia.nocookie.net/wowpedia/images/2/2a/Healer_icon.png/revision/latest?cb=20120802091522';
+      case 'HEALING':
+        return 'https://i.pinimg.com/736x/86/bf/ea/86bfea90a098cafd1e185429a73e3a6f.jpg';
       default:
         return 'error';
     }
@@ -103,55 +103,65 @@ const PlayerProfile = ({ match }) => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid className="w-75">
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <Container>
-          <Row>
+        <div>
+          <Container className="d-flex justify-content-center">
             <Col xs={3}>
               <img src={thumbnail} alt="" />
             </Col>
-            <Col xs={6}>
-              <h1>{playerName}</h1>
-            </Col>
-            <Col xs="3">{displaysFlag(playerRegion)}</Col>
-            <Col>{playerRealm}</Col>
-          </Row>
-          <Row>
-            <Col>
-              <img
-                src={displaysClass(charClass)}
-                alt=""
-                height="64px"
-                width="64px"
-              />
-            </Col>
+            <div className="d-flex flex-column">
+              <Col xs={6}>
+                <h1>{playerName}</h1>
+              </Col>
+              <div className="d-flex">
+                <Col xs="3">{displaysFlag(playerRegion)}</Col>
+                <Col>{playerRealm}</Col>
+              </div>
+            </div>
+          </Container>
+          <Table striped>
+            <tbody>
+              <tr>
+                <td>
+                  <img
+                    src={displaysClass(charClass)}
+                    alt=""
+                    height="64px"
+                    width="64px"
+                  />
+                </td>
 
-            <Col>{specName}</Col>
-            <Col>
-              <img src={displaysSpecRole(specRole)} alt="" height="64px" />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={3}>
-              <p>Guild</p>
-            </Col>
-            <Col xs={9}>{guild}</Col>
-          </Row>
-          <Row>
-            <Col xs={3}>Item level</Col>
-            <Col>{itemLevel}</Col>
-          </Row>
-          <Row>
-            <Col xs={9}>Current raid score</Col>
-            <Col xs={3}>{raidScore}</Col>
-          </Row>
-          <Row>
-            <Col xs={9}>Current mythic score</Col>
-            <Col xs={3}>{mythicScore}</Col>
-          </Row>
-        </Container>
+                <td>{specName}</td>
+                <td>
+                  <img src={displaysSpecRole(specRole)} alt="" height="64px" />
+                </td>
+              </tr>
+              <tr>
+                <td xs={3}>
+                  <p>Guild</p>
+                </td>
+                <td xs={9}>{guild}</td>
+              </tr>
+              <tr>
+                <td xs={3}>Item level</td>
+                <td>{itemLevel}</td>
+                <td />
+              </tr>
+              <tr>
+                <td xs={9}>Current raid score</td>
+                <td xs={3}>{raidScore}</td>
+              </tr>
+              <tr>
+                <td xs={9}>Current mythic score</td>
+                <td xs={3}>{mythicScore}</td>
+                <td />
+              </tr>
+            </tbody>
+          </Table>
+        </div>
       )}
     </Container>
   );
