@@ -40,11 +40,11 @@ class Leaderboards extends React.Component {
     } = this.state;
     return (
       <div>
-        <div className="leaderboard-container container d-flex mt-5 justify-content-center">
+        <div className="leaderboard-container container d-flex mt-5 justify-content-center overflow-hidden">
           {loadingGuilds || loadingPlayers ? (
             <LoadingSpinner />
           ) : (
-            <div className="d-flex w-100">
+            <div className="d-flex w-100 flex-wrap">
               <Table className="mx-5" w-50 hover>
                 <thead>
                   <tr>
