@@ -1,17 +1,19 @@
-import { GiEuropeanFlag, GiUsaFlag, GiEarthAsiaOceania } from 'react-icons/gi';
 import PropTypes from 'prop-types';
+import EuroFlag from './EuroFlag';
+import ChinaFlag from './ChinaFlag';
+import UsFlag from './UsFlag';
 
 // Display flag image per region
 const displaysFlag = (region) => {
   switch (region) {
     case 'Europe':
-      return <GiEuropeanFlag />;
+      return <EuroFlag />;
     case 'United States & Oceania':
-      return <GiUsaFlag />;
+      return <UsFlag />;
     case 'China':
-      return <GiEarthAsiaOceania />;
+      return <ChinaFlag />;
     case 'Russian':
-      return <GiEuropeanFlag />;
+      return <EuroFlag />;
     default:
       return 'error';
   }

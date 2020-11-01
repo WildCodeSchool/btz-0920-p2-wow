@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-import { GiEarthAsiaOceania, GiEuropeanFlag, GiUsaFlag } from 'react-icons/gi';
 import { Col, Row, Container } from 'reactstrap';
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
+import EuroFlag from './EuroFlag';
+import ChinaFlag from './ChinaFlag';
+import UsFlag from './UsFlag';
 
 const PlayerProfile = ({ match }) => {
   const [playerRegion, setPlayerRegion] = useState('');
@@ -44,13 +46,13 @@ const PlayerProfile = ({ match }) => {
   const displaysFlag = (reg) => {
     switch (reg) {
       case 'Europe':
-        return <GiEuropeanFlag fontSize="3em" />;
+        return <EuroFlag />;
       case 'us':
-        return <GiUsaFlag fontSize="3em" />;
+        return <UsFlag />;
       case 'China':
-        return <GiEarthAsiaOceania fontSize="3em" />;
+        return <ChinaFlag />;
       case 'Russian':
-        return <GiEuropeanFlag fontSize="3em" />;
+        return <EuroFlag />;
       default:
         return 'error';
     }
