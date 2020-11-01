@@ -25,7 +25,12 @@ const PlayerLeaderboardRow = (props) => {
   return (
     <tr>
       <th>
-        <Link to={`/PlayerProfile/${name}/${region}/${realm}`}>{name}</Link>
+        <Link
+          to={`/PlayerProfile/${name}/${region}/${realm}`}
+          style={{ textDecoration: 'none' }}
+        >
+          {name}
+        </Link>
       </th>
       <th>{realm}</th>
       <th>{displaysFlag(region)}</th>

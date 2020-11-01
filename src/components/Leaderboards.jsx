@@ -44,11 +44,11 @@ class Leaderboards extends React.Component {
           {loadingGuilds || loadingPlayers ? (
             <LoadingSpinner />
           ) : (
-            <div className="d-flex mt-5 align-items-center justify-content-center">
-              <Table className="mx-5" hover>
+            <div className="d-flex w-100">
+              <Table className="mx-5" w-50 hover>
                 <thead>
                   <tr>
-                    <th className="h2 font-weight-bold col-md-6">
+                    <th className="h2 font-weight-bold" colSpan={12}>
                       Top World Guilds
                     </th>
                   </tr>
@@ -68,10 +68,10 @@ class Leaderboards extends React.Component {
                     .filter((_, index) => index < 5)}
                 </tbody>
               </Table>
-              <Table className="mx-5" hover>
+              <Table className="mx-5" w-auto text-nowrap hover>
                 <thead>
                   <tr>
-                    <th className="h2 font-weight-bold col-md-6">
+                    <th className="h2 font-weight-bold" colSpan={12}>
                       Top World Players
                     </th>
                   </tr>
