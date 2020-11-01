@@ -108,7 +108,7 @@ const PlayerProfile = ({ match }) => {
         <LoadingSpinner />
       ) : (
         <div>
-          <Container className="d-flex justify-content-center">
+          <Container className="d-flex justify-content-center flex-wrap">
             <Col xs={3}>
               <img src={thumbnail} alt="" />
             </Col>
