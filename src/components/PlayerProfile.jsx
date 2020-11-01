@@ -103,7 +103,7 @@ const PlayerProfile = ({ match }) => {
   };
 
   return (
-    <Container fluid className="w-75">
+    <Container fluid className="w-50">
       {loading ? (
         <LoadingSpinner />
       ) : (
@@ -118,7 +118,9 @@ const PlayerProfile = ({ match }) => {
               </Col>
               <div className="d-flex">
                 <Col xs="3">{displaysFlag(playerRegion)}</Col>
-                <Col>{playerRealm}</Col>
+                <Col>
+                  <h3>{playerRealm}</h3>
+                </Col>
               </div>
             </div>
           </Container>
@@ -134,29 +136,45 @@ const PlayerProfile = ({ match }) => {
                   />
                 </td>
 
-                <td>{specName}</td>
+                <td>
+                  <h4>{specName}</h4>
+                </td>
                 <td>
                   <img src={displaysSpecRole(specRole)} alt="" height="64px" />
                 </td>
               </tr>
               <tr>
                 <td xs={3}>
-                  <p>Guild</p>
+                  <h4>Guild</h4>
                 </td>
-                <td xs={9}>{guild}</td>
+                <td xs={9}>
+                  <h4>{guild}</h4>
+                </td>
               </tr>
               <tr>
-                <td xs={3}>Item level</td>
-                <td>{itemLevel}</td>
+                <td xs={3}>
+                  <h4>Item level</h4>
+                </td>
+                <td>
+                  <h4>{itemLevel}</h4>
+                </td>
                 <td />
               </tr>
               <tr>
-                <td xs={9}>Current raid score</td>
-                <td xs={3}>{raidScore}</td>
+                <td xs={9}>
+                  <h4>Current raid score</h4>
+                </td>
+                <td xs={3}>
+                  <h4>{raidScore}</h4>
+                </td>
               </tr>
               <tr>
-                <td xs={9}>Current mythic score</td>
-                <td xs={3}>{mythicScore}</td>
+                <td xs={9}>
+                  <h4>Current mythic score</h4>
+                </td>
+                <td xs={3}>
+                  <h4>{mythicScore}</h4>
+                </td>
                 <td />
               </tr>
             </tbody>
