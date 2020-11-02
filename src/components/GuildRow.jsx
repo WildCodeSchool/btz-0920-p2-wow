@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { GiWorld } from 'react-icons/gi';
 
-import HordeFlag from './HordeFlag';
-import AllianceFlag from './AllianceFlag';
+import HordeFlag from './flags/HordeFlag';
+import AllianceFlag from './flags/AllianceFlag';
 
-import './GuildRow.css';
+import './cssPages&Components/GuildRow.css';
 
 const flag = (faction) => {
   switch (faction) {

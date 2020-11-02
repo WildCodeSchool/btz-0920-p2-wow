@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { Col, Table, Container } from 'reactstrap';
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
-import EuroFlag from './EuroFlag';
-import ChinaFlag from './ChinaFlag';
-import UsFlag from './UsFlag';
+import EuroFlag from './flags/EuroFlag';
+import ChinaFlag from './flags/ChinaFlag';
+import UsFlag from './flags/UsFlag';
 
 const PlayerProfile = ({ match }) => {
   const [playerRegion, setPlayerRegion] = useState('');

@@ -6,9 +6,9 @@ import GuildRow from './GuildRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 
-import Hr from './Hr';
+import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
-import './GuildsArray.css';
+import './cssPages&Components/GuildsArray.css';
 
 class GuildsArray extends Component {
   constructor() {

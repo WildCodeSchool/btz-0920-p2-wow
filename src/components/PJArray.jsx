@@ -6,9 +6,9 @@ import PJRow from './PJRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 
-import Hr from './Hr';
+import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
-import './GuildsArray.css';
+import './cssPages&Components/GuildsArray.css';
 
 class PJArray extends Component {
   constructor() {
