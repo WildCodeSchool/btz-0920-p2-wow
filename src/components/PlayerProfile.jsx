@@ -6,6 +6,7 @@ import LoadingSpinner from './LoadingSpinner';
 import EuroFlag from './EuroFlag';
 import ChinaFlag from './ChinaFlag';
 import UsFlag from './UsFlag';
+import allianceLogo from '../img/alliance.png';
 
 const PlayerProfile = ({ match }) => {
   const [playerRegion, setPlayerRegion] = useState('');
@@ -105,17 +106,15 @@ const PlayerProfile = ({ match }) => {
   };
 
   return (
-    <Container fluid className="w-50">
+    <Container
+      fluid
+      className="w-50"
+      style={{ backgroundImage: `url(${allianceLogo})` }}
+    >
       {loading ? (
         <LoadingSpinner />
       ) : (
         <div>
-          <div
-            style={{
-              backgroundImage: `url(https://img2.freepng.fr/20180403/pce/kisspng-warlords-of-draenor-world-of-warcraft-logo-symbol-wow-5ac38523bf5be1.7443374015227630437838.jpg)`,
-              height: '300px',
-            }}
-          />
           <Container className="d-flex justify-content-center flex-wrap">
             <Col xs={3}>
               <img src={thumbnail} alt="" />
