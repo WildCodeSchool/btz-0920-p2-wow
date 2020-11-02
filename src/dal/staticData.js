@@ -119,7 +119,7 @@ export const classesAndSpecs = [
   },
   {
     id: 4,
-    name: 'Alliance',
+    name: 'Hunter',
     slug: 'hunter',
     image:
       'https://static.wikia.nocookie.net/wowpedia/images/4/4e/Ui-charactercreate-classes_hunter.png',
