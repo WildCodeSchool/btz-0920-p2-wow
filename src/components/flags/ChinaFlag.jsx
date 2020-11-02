@@ -1,4 +1,4 @@
-import chinaFlag from '../img/chinaFlag.png';
+import chinaFlag from '../../img/chinaFlag.png';
 
 function ChinaFlag() {
   return <img src={chinaFlag} alt="China flag" />;

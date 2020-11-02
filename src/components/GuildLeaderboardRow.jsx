@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
-import EuroFlag from './EuroFlag';
-import ChinaFlag from './ChinaFlag';
-import UsFlag from './UsFlag';
-import KoreaFlag from './KoreaFlag';
+import { Link } from 'react-router-dom';
+
+import EuroFlag from './flags/EuroFlag';
+import ChinaFlag from './flags/ChinaFlag';
+import UsFlag from './flags/UsFlag';
+import KoreaFlag from './flags/KoreaFlag';
 
 // Display flag image per region
 const displaysFlag = (region) => {
@@ -28,7 +30,15 @@ const GuildLeaderboardRow = (props) => {
   const { name, realm, region } = props;
   return (
     <tr>
-      <th>{name}</th>
+      <th>
+        {' '}
+        <Link
+          to={`/GuildPage/${name}/${region}/${realm}`}
+          style={{ textDecoration: 'none' }}
+        >
+          {name}
+        </Link>
+      </th>
       <th>{realm}</th>
       <th>{displaysFlag(region)}</th>
     </tr>

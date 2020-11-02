@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
 
-import GuildRow from './GuildRow';
+import PJRow from './PJRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 
@@ -10,13 +10,12 @@ import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
 
-class GuildsArray extends Component {
+class PJArray extends Component {
   constructor() {
     super();
     this.state = {
       results: [],
-      serverSlug: '',
-      realmName: '',
+      regionName: '',
       loadingGuilds: true,
       min: 0,
       max: 5,
@@ -30,18 +29,13 @@ class GuildsArray extends Component {
   }
 
   componentDidMount() {
-    DalApi.getTopGuild(
-      (guildsRes) => {
-        this.setState({
-          results: guildsRes.raidRankings.rankedGuilds,
-          serverSlug: guildsRes.raidRankings.rankedGuilds[0].guild.region.slug,
-          realmName: guildsRes.raidRankings.rankedGuilds[0].guild.realm.name,
-          loadingGuilds: false,
-        });
-      },
-      'us',
-      "Mal'ganis"
-    );
+    DalApi.getTopPlayer((PJRes) => {
+      this.setState({
+        results: PJRes.rankings.rankedCharacters,
+        regionName: PJRes.rankings.region.name,
+        loadingGuilds: false,
+      });
+    }, 'eu');
   }
 
   pageUp() {
@@ -71,21 +65,14 @@ class GuildsArray extends Component {
   }
 
   render() {
-    const {
-      results,
-      serverSlug,
-      realmName,
-      loadingGuilds,
-      min,
-      max,
-    } = this.state;
+    const { results, regionName, loadingGuilds, min, max } = this.state;
 
     if (loadingGuilds) return <LoadingSpinner />;
     return (
       <div className="align-items-center">
         <div className="title">
           <h2>
-            Top <span>{serverSlug}</span> {realmName} Guilds
+            Top <span>{regionName}</span> Characters
           </h2>
           <Hr />
         </div>
@@ -98,11 +85,14 @@ class GuildsArray extends Component {
               {results
                 .map((result) => {
                   return (
-                    <GuildRow
-                      name={result.guild.name}
-                      faction={result.guild.faction}
-                      slug={result.guild.region.slug}
+                    <PJRow
+                      name={result.character.name}
+                      pjClass={result.character.class.name}
+                      faction={result.character.faction}
+                      slug={result.character.region.slug}
                       rank={result.rank}
+                      spec={result.character.spec.name}
+                      realm={result.character.realm.name}
                       key={result.rank}
                     />
                   );
@@ -140,4 +130,4 @@ class GuildsArray extends Component {
   }
 }
 
-export default GuildsArray;
+export default PJArray;
