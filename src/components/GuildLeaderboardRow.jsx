@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import EuroFlag from './EuroFlag';
-import ChinaFlag from './ChinaFlag';
-import UsFlag from './UsFlag';
-import KoreaFlag from './KoreaFlag';
+
+import EuroFlag from './flags/EuroFlag';
+import ChinaFlag from './flags/ChinaFlag';
+import UsFlag from './flags/UsFlag';
+import KoreaFlag from './flags/KoreaFlag';
 
 // Display flag image per region
 const displaysFlag = (region) => {
