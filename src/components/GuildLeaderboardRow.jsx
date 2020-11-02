@@ -2,11 +2,14 @@ import PropTypes from 'prop-types';
 import EuroFlag from './EuroFlag';
 import ChinaFlag from './ChinaFlag';
 import UsFlag from './UsFlag';
+import KoreaFlag from './KoreaFlag';
 
 // Display flag image per region
 const displaysFlag = (region) => {
   switch (region) {
     case 'Europe':
+      return <EuroFlag />;
+    case 'German':
       return <EuroFlag />;
     case 'United States & Oceania':
       return <UsFlag />;
@@ -14,6 +17,8 @@ const displaysFlag = (region) => {
       return <ChinaFlag />;
     case 'Russian':
       return <EuroFlag />;
+    case 'Korea':
+      return <KoreaFlag />;
     default:
       return 'error';
   }
