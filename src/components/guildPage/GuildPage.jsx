@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Col, Container, Navbar, Row } from 'reactstrap';
 // import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import Hr from '../Hr';
+import Hr from '../cssPages&Components/Hr';
 import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
 import LoadingSpinner from '../LoadingSpinner';

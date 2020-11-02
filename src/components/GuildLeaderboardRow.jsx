@@ -28,8 +28,6 @@ const displaysFlag = (region) => {
 
 const GuildLeaderboardRow = (props) => {
   const { name, realm, region } = props;
-  // eslint-disable-next-line no-console
-  console.log(`GuildLeaderBoardRow : ${name}, ${realm}, ${region}`);
   return (
     <tr>
       <th>
