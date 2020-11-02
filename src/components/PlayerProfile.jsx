@@ -45,7 +45,9 @@ const PlayerProfile = ({ match }) => {
 
   const displaysFlag = (reg) => {
     switch (reg) {
-      case 'Europe':
+      case 'eu':
+        return <EuroFlag />;
+      case 'de':
         return <EuroFlag />;
       case 'us':
         return <UsFlag />;

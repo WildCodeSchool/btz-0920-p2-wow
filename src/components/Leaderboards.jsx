@@ -19,26 +19,22 @@ const Leaderboards = () => {
   const [loadingPlayers, setLoadingPlayers] = useState(true);
   const [dropdownOpen, setOpen] = useState(false);
   const [playersToDisplay, setPlayersToDisplay] = useState(5);
+  const [guildsToDisplay, setGuildsToDisplay] = useState(5);
+  const [dropdownItems] = useState([5, 10, 15, 20]);
 
   useEffect(() => {
-    return (
-      DalApi.getTopGuild((data) => {
-        setGuildResults(data.raidRankings.rankedGuilds);
-        setLoadingGuilds(false);
-      }),
-      []
-    );
-  });
+    DalApi.getTopGuild((data) => {
+      setGuildResults(data.raidRankings.rankedGuilds);
+      setLoadingGuilds(false);
+    });
+  }, []);
 
   useEffect(() => {
-    return (
-      DalApi.getTopPlayer((data) => {
-        setPlayerResults(data.rankings.rankedCharacters);
-        setLoadingPlayers(false);
-      }),
-      []
-    );
-  });
+    DalApi.getTopPlayer((data) => {
+      setPlayerResults(data.rankings.rankedCharacters);
+      setLoadingPlayers(false);
+    });
+  }, []);
 
   const toggle = () => setOpen(!dropdownOpen);
   return (
@@ -51,26 +47,20 @@ const Leaderboards = () => {
             <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle caret>Show more</DropdownToggle>
               <DropdownMenu>
-                <DropdownItem
-                  onClick={(e) => setPlayersToDisplay(e.target.value)}
-                >
-                  5
-                </DropdownItem>
-                <DropdownItem
-                  onClick={(e) => setPlayersToDisplay(e.target.value)}
-                >
-                  10
-                </DropdownItem>
-                <DropdownItem
-                  onClick={(e) => setPlayersToDisplay(e.target.value)}
-                >
-                  15
-                </DropdownItem>
-                <DropdownItem
-                  onClick={(e) => setPlayersToDisplay(e.target.value)}
-                >
-                  20
-                </DropdownItem>
+                {dropdownItems.map((item) => {
+                  return (
+                    <DropdownItem
+                      onClick={(e) => {
+                        setPlayersToDisplay(e.target.value);
+                        setGuildsToDisplay(e.target.value);
+                      }}
+                      value={item}
+                      key={uniqid()}
+                    >
+                      {item}
+                    </DropdownItem>
+                  );
+                })}
               </DropdownMenu>
             </ButtonDropdown>
             <Table className="mx-5 w-100" hover>
@@ -93,7 +83,7 @@ const Leaderboards = () => {
                       />
                     );
                   })
-                  .filter((_, index) => index < 5)}
+                  .filter((_, index) => index < guildsToDisplay)}
               </tbody>
             </Table>
             <Table className="mx-5 w-100 text-nowrap" hover>
