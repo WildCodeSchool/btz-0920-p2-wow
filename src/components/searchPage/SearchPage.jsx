@@ -7,6 +7,8 @@ import {
   CarouselItem,
   CarouselControl,
   CarouselIndicators,
+  FormGroup,
+  Input,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 
@@ -89,17 +91,32 @@ const SearchPage = () => {
           <h1 className="border-vert m-5">{item.title}</h1>
         </div>
         <Container className="d-flex flex-wrap justify-content-center">
-          {item.cardNames.map((cardName) => {
-            return (
-              <WildCard
-                key={cardName[0]}
-                title={cardName[0]}
-                image={cardName[1]}
-                width="240px"
-                height="240px"
-              />
-            );
-          })}
+          {item.title === 'Server' ? (
+            <FormGroup>
+              <Input
+                type="select"
+                className="custom-select custom-select-lg"
+                name="server"
+                id="serverSelect"
+              >
+                {item.cardNames.map((cardName) => {
+                  return <option className="text-dark">{cardName[0]}</option>;
+                })}
+              </Input>
+            </FormGroup>
+          ) : (
+            item.cardNames.map((cardName) => {
+              return (
+                <WildCard
+                  key={cardName[0]}
+                  title={cardName[0]}
+                  image={cardName[1]}
+                  width={item.cardNames.length > 3 ? '200px' : '240px'}
+                  height={item.cardNames.length > 3 ? '200px' : '240px'}
+                />
+              );
+            })
+          )}
         </Container>
       </CarouselItem>
     );
