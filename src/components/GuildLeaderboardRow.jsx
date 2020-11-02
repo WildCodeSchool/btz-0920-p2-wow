@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import EuroFlag from './flags/EuroFlag';
 import ChinaFlag from './flags/ChinaFlag';
 import UsFlag from './flags/UsFlag';
@@ -26,9 +28,19 @@ const displaysFlag = (region) => {
 
 const GuildLeaderboardRow = (props) => {
   const { name, realm, region } = props;
+  // eslint-disable-next-line no-console
+  console.log(`GuildLeaderBoardRow : ${name}, ${realm}, ${region}`);
   return (
     <tr>
-      <th>{name}</th>
+      <th>
+        {' '}
+        <Link
+          to={`/GuildPage/${name}/${region}/${realm}`}
+          style={{ textDecoration: 'none' }}
+        >
+          {name}
+        </Link>
+      </th>
       <th>{realm}</th>
       <th>{displaysFlag(region)}</th>
     </tr>
