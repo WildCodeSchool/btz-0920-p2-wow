@@ -93,7 +93,7 @@ class GuildsArray extends Component {
           <div className="filter">
             <ToolsFilters />
           </div>
-          <Table className="guildsTable">
+          <Table className="guildsTable" hover>
             <tbody>
               {results
                 .map((result) => {
