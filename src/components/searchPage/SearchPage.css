@@ -5,12 +5,12 @@
   --sec-color-light: #808b96;
   color: white;
 }
-
+/* 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
 .border-bot-primary {
   border-bottom: var(--main-color) 6px solid;

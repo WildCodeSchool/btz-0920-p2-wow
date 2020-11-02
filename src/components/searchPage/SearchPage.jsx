@@ -1,6 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
 import { useState } from 'react';
-import './SearchPage.css';
 import {
   Container,
   Carousel,
