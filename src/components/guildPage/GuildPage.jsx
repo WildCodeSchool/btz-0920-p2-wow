@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Col, Container, Navbar, Row } from 'reactstrap';
+import PropTypes from 'prop-types';
 import Hr from '../Hr';
 import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
@@ -7,6 +8,8 @@ import GuildRanking from './GuildRanking';
 class GuildPage extends Component {
   constructor(props) {
     super(props);
+    // eslint-disable-next-line no-console
+    console.log(props);
     this.state = {
       guild: null,
     };
@@ -14,7 +17,13 @@ class GuildPage extends Component {
   }
 
   componentDidMount() {
-    DalApi.getGuild(this.refreshState, 'us', 'illidan', 'Complexity Limit');
+    const {
+      match: { name, realm, region },
+    } = this.props;
+    // eslint-disable-next-line no-console
+    console.log(`${name}, ${realm}, ${region}`);
+
+    DalApi.getGuild(this.refreshState, region, realm, name);
   }
 
   refreshState(data) {
@@ -47,5 +56,13 @@ class GuildPage extends Component {
     );
   }
 }
+
+GuildPage.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  match: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  realm: PropTypes.string.isRequired,
+  region: PropTypes.string.isRequired,
+};
 
 export default GuildPage;

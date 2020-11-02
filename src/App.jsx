@@ -1,11 +1,10 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import GuildPage from './components/guildPage';
 import PlayerProfile from './components/PlayerProfile';
 import Leaderboards from './components/Leaderboards';
 import NavBar from './components/NavBar';
 import GuildsArray from './components/GuildsArray';
-import GuildPage from './components/guildPage/guildPage';
+import GuildPage from './components/guildPage/GuildPage';
 import SearchPage from './components/searchPage/SearchPage';
 
 function App() {
@@ -30,12 +29,11 @@ function App() {
             path="/PlayerProfile/:name/:region/:realm"
             component={PlayerProfile}
           />
+          <Route path="/GuildPage/:name/:region/:realm" component={GuildPage} />
           <Route path="/GuildsArray" component={GuildsArray} />
-          <Route path="/GuildPage" component={GuildPage} />
           <Route path="/SearchPage" component={SearchPage} />
           {/* <PlayerProfile /> */}
           {/* <GuildsArray /> */}
-          {/* <GuildPage /> */}
           {/* <Leaderboards /> */}
           {/* <SearchPage /> */}
         </Switch>
