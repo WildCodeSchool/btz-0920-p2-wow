@@ -1,61 +1,71 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import { Col, Container, Navbar, Row } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Hr from '../Hr';
 import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
+import LoadingSpinner from '../LoadingSpinner';
 
-class GuildPage extends Component {
-  constructor(props) {
-    super(props);
-    // eslint-disable-next-line no-console
-    console.log(props);
-    this.state = {
-      guild: null,
-    };
-    this.refreshState = this.refreshState.bind(this);
-  }
+const GuildPage = ({ match }) => {
+  const { region, realm, name } = match;
+  // const [name, setName] = useState('');
+  // const [region, setRegion] = useState('');
+  // const [realm, setRealm] = useState('');
+  // const [faction, setFaction] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [guild, setGuild] = useState(null);
+  const [raidRankings, setRaidRankings] = useState(null);
+  const [raidProgress, setRaidProgress] = useState(null);
 
-  componentDidMount() {
-    const {
-      match: { name, realm, region },
-    } = this.props;
-    // eslint-disable-next-line no-console
-    console.log(`${name}, ${realm}, ${region}`);
-
-    DalApi.getGuild(this.refreshState, region, realm, name);
-  }
-
-  refreshState(data) {
-    this.setState({ guild: data.guildDetails });
-  }
-
-  render() {
-    const { guild } = this.state;
-    // console.log(guild);
-    if (!guild) return 'Loading ...';
-    return (
-      <div>
-        <Navbar />
-        <div>{guild.guild.name}</div>
-        <Container>
-          <Row>
-            <Col sm={4}>{guild.guild.region.name}</Col>
-            <Col sm={4}>{guild.guild.realm.name}</Col>
-            <Col sm={4}>{guild.guild.faction}</Col>
-          </Row>
-        </Container>
-        <Hr />
-        <Container>
-          <GuildRanking
-            raidRankings={guild.raidRankings}
-            raidProgress={guild.raidProgress}
-          />
-        </Container>
-      </div>
+  useEffect(() => {
+    DalApi.getGuild(
+      (data) => {
+        // setRegion(guild.region.name);
+        // setRealm(guild.realm.name);
+        // setFaction(guild.faction);
+        // setName(guild.name);
+        setGuild(data.guild);
+        setRaidRankings(data.raidRankings);
+        setRaidProgress(data.raidProgress);
+      },
+      region,
+      realm,
+      name
     );
-  }
-}
+    setLoading(false);
+  }, []);
+
+  // refreshState(data) {
+  //   set({ guild: data.guildDetails });
+  // }
+
+  return (
+    <div>
+      <Navbar />
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <div>
+          <div>{guild.name}</div>
+          <Container>
+            <Row>
+              <Col sm={4}>{guild.region.name}</Col>
+              <Col sm={4}>{guild.realm.name}</Col>
+              <Col sm={4}>{guild.faction}</Col>
+            </Row>
+          </Container>
+          <Hr />
+          <Container>
+            <GuildRanking
+              raidRankings={raidRankings}
+              raidProgress={raidProgress}
+            />
+          </Container>
+        </div>
+      )}
+    </div>
+  );
+};
 
 GuildPage.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
