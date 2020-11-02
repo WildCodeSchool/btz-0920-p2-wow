@@ -414,7 +414,7 @@ export const raids = [
   {
     id: 6,
     name: 'Antorus, the Burning Throne',
-    slug: 'antonus-the-burning-throne',
+    slug: 'antorus-the-burning-throne',
     bossQty: 11,
   },
   {

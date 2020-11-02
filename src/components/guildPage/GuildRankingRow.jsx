@@ -10,6 +10,7 @@ export default function GuildRankingRow(props) {
       encountersDefeated: { mythic },
     },
   } = props;
+
   const currentRaid = DalApi.getRaids().filter((r) => r.slug === raid.raid)[0];
   return (
     <Row>
