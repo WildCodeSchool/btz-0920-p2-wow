@@ -385,51 +385,61 @@ export const raids = [
     id: 1,
     name: "Ny'alotha, the Waking City",
     slug: 'nyalotha-the-waking-city',
+    bossQty: 12,
   },
   {
     id: 2,
     name: 'The Eternal Palace',
     slug: 'the-eternal-palace',
+    bossQty: 8,
   },
   {
     id: 3,
     name: 'Crucible of Storms',
     slug: 'crucible-of-storms',
+    bossQty: 2,
   },
   {
     id: 4,
     name: "Battle of Dazar'alor",
     slug: 'battle-of-dazaralor',
+    bossQty: 9,
   },
   {
     id: 5,
     name: 'Uldir',
     slug: 'uldir',
+    bossQty: 8,
   },
   {
     id: 6,
     name: 'Antorus, the Burning Throne',
     slug: 'antonus-the-burning-throne',
+    bossQty: 11,
   },
   {
     id: 7,
     name: 'Tomb of Sargeras',
     slug: 'tomb-of-sargeras',
+    bossQty: 9,
   },
   {
     id: 8,
     name: 'The Nighthold',
     slug: 'the-nighthold',
+    bossQty: 10,
   },
   {
     id: 9,
     name: 'Trial of Valor',
     slug: 'trial-of-valor',
+    bossQty: 3,
   },
   {
     id: 10,
     name: 'The Emerald Nightmare',
     slug: 'the-emerald-nightmare',
+    bossQty: 7,
   },
 ];
 

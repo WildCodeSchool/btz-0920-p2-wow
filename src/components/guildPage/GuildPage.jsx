@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Col, Container, Navbar, Row } from 'reactstrap';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import Hr from '../Hr';
 import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
 import LoadingSpinner from '../LoadingSpinner';
 
-const GuildPage = ({ match }) => {
-  const { region, realm, name } = match;
+const GuildPage = () => {
+  const params = useParams();
   // const [name, setName] = useState('');
   // const [region, setRegion] = useState('');
   // const [realm, setRealm] = useState('');
@@ -20,19 +21,18 @@ const GuildPage = ({ match }) => {
   useEffect(() => {
     DalApi.getGuild(
       (data) => {
-        // setRegion(guild.region.name);
-        // setRealm(guild.realm.name);
-        // setFaction(guild.faction);
-        // setName(guild.name);
-        setGuild(data.guild);
-        setRaidRankings(data.raidRankings);
-        setRaidProgress(data.raidProgress);
+        const { guildDetails } = data;
+        setGuild(guildDetails.guild);
+        setRaidRankings(guildDetails.raidRankings);
+        setRaidProgress(guildDetails.raidProgress);
+        setLoading(false);
+
+        // console.log(guildDetails);
       },
-      region,
-      realm,
-      name
+      params.region,
+      params.realm,
+      params.name
     );
-    setLoading(false);
   }, []);
 
   // refreshState(data) {
@@ -67,12 +67,12 @@ const GuildPage = ({ match }) => {
   );
 };
 
-GuildPage.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  match: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-  realm: PropTypes.string.isRequired,
-  region: PropTypes.string.isRequired,
-};
+// GuildPage.propTypes = {
+//   // eslint-disable-next-line react/forbid-prop-types
+//   match: PropTypes.object.isRequired,
+//   name: PropTypes.string.isRequired,
+//   realm: PropTypes.string.isRequired,
+//   region: PropTypes.string.isRequired,
+// };
 
 export default GuildPage;

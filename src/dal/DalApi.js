@@ -116,10 +116,9 @@ class DalApi {
   static getGuild(callback, region, realm, guildName) {
     const requestBase = TIPS_BASILE.concat(GUILD_DETAILS);
     const guildParam = guildName.replaceAll(' ', '%20');
-
     // Construct the request
     const request = requestBase
-      .concat(DalApi.createReqParamRegion(DalApi.regionParam(), false))
+      .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
       .concat(DalApi.createReqParamRealm(realm))
       .concat('&guild=')
       .concat(guildParam);
@@ -136,10 +135,9 @@ class DalApi {
   static getPlayer(callback, region, realm, name) {
     const requestBase = CHARACTER_DETAILS;
     const nameParam = name.replaceAll(' ', '%20');
-
     // Construct the request
     const request = requestBase
-      .concat(DalApi.createReqParamRegion(DalApi.regionParam(), false))
+      .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
       .concat(DalApi.createReqParamRealm(realm))
       .concat(DalApi.createReqParamName(nameParam))
       .concat(
