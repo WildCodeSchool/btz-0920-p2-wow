@@ -1,0 +1,27 @@
+.pjRow {
+  display: grid;
+  grid-template-columns: 10% auto 20% 10%;
+  min-width: 100%;
+  height: 120px;
+}
+
+.rank {
+  min-width: 10%;
+}
+
+.name {
+  text-align: center;
+  position: center;
+  min-width: 70%;
+}
+
+.classAndSpec {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  min-width: 20%;
+}
+
+.faction {
+  min-width: 10%;
+}

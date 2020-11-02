@@ -7,21 +7,22 @@ import NavBar from './components/NavBar';
 import GuildsArray from './components/GuildsArray';
 import GuildPage from './components/guildPage';
 import SearchPage from './components/searchPage/SearchPage';
+import PJArray from './components/PJArray';
 
 function App() {
   return (
     <Router>
       <div
         className="App"
-        // style={{
-        //   fontFamily: 'Ubuntu',
-        //   fontSize: '48px',
-        //   fontStyle: 'normal',
-        //   fontWeight: '700',
-        //   lineHeight: '55px',
-        //   letterSpacing: '0em',
-        //   textAlign: 'center',
-        // }}
+        style={{
+          fontFamily: 'Ubuntu',
+          fontSize: '48px',
+          fontStyle: 'normal',
+          fontWeight: '700',
+          lineHeight: '55px',
+          letterSpacing: '0em',
+          textAlign: 'center',
+        }}
       >
         <NavBar />
         <Switch>
@@ -33,6 +34,7 @@ function App() {
           <Route path="/GuildsArray" component={GuildsArray} />
           <Route path="/GuildPage" component={GuildPage} />
           <Route path="/SearchPage" component={SearchPage} />
+          <Route path="/PJArray" component={PJArray} />
           {/* <PlayerProfile /> */}
           {/* <GuildsArray /> */}
           {/* <GuildPage /> */}
