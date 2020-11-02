@@ -93,7 +93,7 @@ class GuildsArray extends Component {
           <div className="filter">
             <ToolsFilters />
           </div>
-          <Table className="guildsTable" hover>
+          <Table className="guildsTable" w-auto text-nowrap hover>
             <tbody>
               {results
                 .map((result) => {

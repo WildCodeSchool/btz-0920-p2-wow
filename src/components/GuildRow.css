@@ -1,0 +1,7 @@
+.guildRow :first-child {
+  width: 20%;
+}
+
+.guildRow :last-child {
+  width: 180px;
+}

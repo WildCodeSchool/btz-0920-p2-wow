@@ -4,6 +4,8 @@ import { GiWorld } from 'react-icons/gi';
 import HordeFlag from './HordeFlag';
 import AllianceFlag from './AllianceFlag';
 
+import './GuildRow.css';
+
 const flag = (faction) => {
   switch (faction) {
     case 'horde':
@@ -19,7 +21,7 @@ function GuildRow(props) {
   const { name, faction, rank, bckgrdStyle } = props;
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <tr {...bckgrdStyle}>
+    <tr className="guildRow" {...bckgrdStyle}>
       <td>{rank}</td>
       <th>
         <strong style={{ fontSize: '21px' }}>{name}</strong>
