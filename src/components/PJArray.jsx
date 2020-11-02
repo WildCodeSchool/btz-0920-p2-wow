@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
 
-import GuildRow from './GuildRow';
+import PJRow from './PJRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 
@@ -10,7 +10,7 @@ import Hr from './Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './GuildsArray.css';
 
-class GuildsArray extends Component {
+class PJArray extends Component {
   constructor() {
     super();
     this.state = {
@@ -30,17 +30,17 @@ class GuildsArray extends Component {
   }
 
   componentDidMount() {
-    DalApi.getTopGuild(
-      (guildsRes) => {
+    DalApi.getTopPlayer(
+      (PJRes) => {
         this.setState({
-          results: guildsRes.raidRankings.rankedGuilds,
-          serverSlug: guildsRes.raidRankings.rankedGuilds[0].guild.region.slug,
-          realmName: guildsRes.raidRankings.rankedGuilds[0].guild.realm.name,
+          results: PJRes.rankings.rankedCharacters,
+          serverSlug: PJRes.rankings.rankedCharacters[0].character.region.slug,
+          realmName: PJRes.rankings.rankedCharacters[0].character.realm.name,
           loadingGuilds: false,
         });
       },
-      'us',
-      "Mal'ganis"
+      'eu',
+      'Sargeras'
     );
   }
 
@@ -85,7 +85,7 @@ class GuildsArray extends Component {
       <div className="align-items-center">
         <div className="title">
           <h2>
-            Top <span>{serverSlug}</span> {realmName} Guilds
+            Top <span>{serverSlug}</span> {realmName} Characters
           </h2>
           <Hr />
         </div>
@@ -98,11 +98,12 @@ class GuildsArray extends Component {
               {results
                 .map((result) => {
                   return (
-                    <GuildRow
-                      name={result.guild.name}
-                      faction={result.guild.faction}
-                      slug={result.guild.region.slug}
+                    <PJRow
+                      name={result.character.name}
+                      faction={result.character.faction}
+                      slug={result.character.region.slug}
                       rank={result.rank}
+                      spec={result.character.spec.name}
                       key={result.rank}
                     />
                   );
@@ -148,4 +149,4 @@ class GuildsArray extends Component {
   }
 }
 
-export default GuildsArray;
+export default PJArray;

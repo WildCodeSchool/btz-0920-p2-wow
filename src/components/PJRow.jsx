@@ -17,23 +17,25 @@ const flag = (faction) => {
   }
 };
 
-function GuildRow(props) {
-  const { name, faction, rank } = props;
+function PJRow(props) {
+  const { name, faction, rank, spec } = props;
   return (
     <tr className="guildRow">
       <td>{rank}</td>
       <th>
         <strong style={{ fontSize: '21px' }}>{name}</strong>
       </th>
+      <td>{spec}</td>
       <td>{flag(faction)}</td>
     </tr>
   );
 }
 
-GuildRow.propTypes = {
+PJRow.propTypes = {
   name: PropTypes.string.isRequired,
   faction: PropTypes.string.isRequired,
+  spec: PropTypes.string.isRequired,
   rank: PropTypes.number.isRequired,
 };
 
-export default GuildRow;
+export default PJRow;
