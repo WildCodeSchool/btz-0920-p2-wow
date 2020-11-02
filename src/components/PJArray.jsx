@@ -15,8 +15,7 @@ class PJArray extends Component {
     super();
     this.state = {
       results: [],
-      serverSlug: '',
-      realmName: '',
+      regionName: '',
       loadingGuilds: true,
       min: 0,
       max: 5,
@@ -30,18 +29,13 @@ class PJArray extends Component {
   }
 
   componentDidMount() {
-    DalApi.getTopPlayer(
-      (PJRes) => {
-        this.setState({
-          results: PJRes.rankings.rankedCharacters,
-          serverSlug: PJRes.rankings.rankedCharacters[0].character.region.slug,
-          realmName: PJRes.rankings.rankedCharacters[0].character.realm.name,
-          loadingGuilds: false,
-        });
-      },
-      'eu',
-      'Sargeras'
-    );
+    DalApi.getTopPlayer((PJRes) => {
+      this.setState({
+        results: PJRes.rankings.rankedCharacters,
+        regionName: PJRes.rankings.region.name,
+        loadingGuilds: false,
+      });
+    }, 'eu');
   }
 
   pageUp() {
@@ -71,21 +65,14 @@ class PJArray extends Component {
   }
 
   render() {
-    const {
-      results,
-      serverSlug,
-      realmName,
-      loadingGuilds,
-      min,
-      max,
-    } = this.state;
+    const { results, regionName, loadingGuilds, min, max } = this.state;
 
     if (loadingGuilds) return <LoadingSpinner />;
     return (
       <div className="align-items-center">
         <div className="title">
           <h2>
-            Top <span>{serverSlug}</span> {realmName} Characters
+            Top <span>{regionName}</span> Characters
           </h2>
           <Hr />
         </div>
@@ -100,46 +87,40 @@ class PJArray extends Component {
                   return (
                     <PJRow
                       name={result.character.name}
+                      pjClass={result.character.class.name}
                       faction={result.character.faction}
                       slug={result.character.region.slug}
                       rank={result.rank}
                       spec={result.character.spec.name}
+                      realm={result.character.realm.name}
                       key={result.rank}
                     />
                   );
                 })
-                .filter((e, index) => index >= min && index < max)}
+                .filter((_, index) => index >= min && index < max)}
             </tbody>
           </Table>
         </main>
         <Pagination className="pagination" size="lg clearfix">
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page1} href="#">
+            <PaginationLink onClick={this.page1}>
               <BsFillSkipBackwardFill />
             </PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page1} href="#">
-              1
-            </PaginationLink>
+            <PaginationLink onClick={this.page1}>1</PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page2} href="#">
-              2
-            </PaginationLink>
+            <PaginationLink onClick={this.page2}>2</PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page3} href="#">
-              3
-            </PaginationLink>
+            <PaginationLink onClick={this.page3}>3</PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page4} href="#">
-              4
-            </PaginationLink>
+            <PaginationLink onClick={this.page4}>4</PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page4} href="#">
+            <PaginationLink onClick={this.page4}>
               <BsFillSkipForwardFill />
             </PaginationLink>
           </PaginationItem>

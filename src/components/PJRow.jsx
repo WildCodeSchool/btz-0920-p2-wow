@@ -4,7 +4,7 @@ import { GiWorld } from 'react-icons/gi';
 import HordeFlag from './HordeFlag';
 import AllianceFlag from './AllianceFlag';
 
-import './GuildRow.css';
+import './PJRow.css';
 
 const flag = (faction) => {
   switch (faction) {
@@ -18,21 +18,25 @@ const flag = (faction) => {
 };
 
 function PJRow(props) {
-  const { name, faction, rank, spec } = props;
+  const { name, pjClass, faction, rank, spec } = props;
   return (
-    <tr className="guildRow">
-      <td>{rank}</td>
-      <th>
+    <tr className="pjRow">
+      <td className="rank">{rank}</td>
+      <td className="pjNname">
         <strong style={{ fontSize: '21px' }}>{name}</strong>
-      </th>
-      <td>{spec}</td>
-      <td>{flag(faction)}</td>
+      </td>
+      <td className="classAndSpec">
+        {pjClass} <br />
+        {spec}
+      </td>
+      <td className="faction">{flag(faction)}</td>
     </tr>
   );
 }
 
 PJRow.propTypes = {
   name: PropTypes.string.isRequired,
+  pjClass: PropTypes.string.isRequired,
   faction: PropTypes.string.isRequired,
   spec: PropTypes.string.isRequired,
   rank: PropTypes.number.isRequired,

@@ -107,38 +107,30 @@ class GuildsArray extends Component {
                     />
                   );
                 })
-                .filter((e, index) => index >= min && index < max)}
+                .filter((_, index) => index >= min && index < max)}
             </tbody>
           </Table>
         </main>
         <Pagination className="pagination" size="lg clearfix">
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page1} href="#">
+            <PaginationLink onClick={this.page1}>
               <BsFillSkipBackwardFill />
             </PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page1} href="#">
-              1
-            </PaginationLink>
+            <PaginationLink onClick={this.page1}>1</PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page2} href="#">
-              2
-            </PaginationLink>
+            <PaginationLink onClick={this.page2}>2</PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page3} href="#">
-              3
-            </PaginationLink>
+            <PaginationLink onClick={this.page3}>3</PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page4} href="#">
-              4
-            </PaginationLink>
+            <PaginationLink onClick={this.page4}>4</PaginationLink>
           </PaginationItem>
           <PaginationItem className="paginationItem">
-            <PaginationLink onClick={this.page4} href="#">
+            <PaginationLink onClick={this.page4}>
               <BsFillSkipForwardFill />
             </PaginationLink>
           </PaginationItem>
