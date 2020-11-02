@@ -11,7 +11,7 @@ import PJArray from './components/PJArray';
 function App() {
   return (
     <Router>
-      <div
+      {/* <div
         className="App"
         style={{
           fontFamily: 'Ubuntu',
@@ -22,7 +22,8 @@ function App() {
           letterSpacing: '0em',
           textAlign: 'center',
         }}
-      >
+      > */}
+      <div>
         <NavBar />
         <Switch>
           <Route path="/" exact component={Leaderboards} />
