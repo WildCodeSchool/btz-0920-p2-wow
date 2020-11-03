@@ -1,8 +1,6 @@
 import propTypes from 'prop-types';
 import DalApi from '../../dal/DalApi';
 
-const { Row, Col } = require('reactstrap');
-
 export default function GuildRankingRow(props) {
   const {
     raid,
@@ -16,14 +14,14 @@ export default function GuildRankingRow(props) {
   const currentRaid = DalApi.getRaidBySlug(raid.raid);
 
   return (
-    <Row>
-      <Col sm="3">{currentRaid.name}</Col>
-      <Col sm="1">
+    <tr className="d-flex">
+      <td className="col-md-4">{currentRaid.name}</td>
+      <td className="col-md-2">
         {mythic.length.toString().concat('/').concat(currentRaid.bossQty)}
-      </Col>
-      <Col offser-sm="5" />
-      <Col sm="3">{raid.factionRanks.mythic.world}</Col>
-    </Row>
+      </td>
+      <td className="col-md-3" />
+      <td className="col-md-3">{raid.factionRanks.mythic.world}</td>
+    </tr>
   );
 }
 
