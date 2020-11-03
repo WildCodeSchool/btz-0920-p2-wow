@@ -76,9 +76,9 @@ const GuildPage = () => {
               raidRankings={raidRankings}
               raidProgress={raidProgress}
             />
+            <Hr />
+            <GuildRoster roster={roster} />
           </Container>
-          <Hr />
-          <GuildRoster roster={roster} />
         </>
       )}
     </div>
