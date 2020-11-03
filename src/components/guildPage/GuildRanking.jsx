@@ -10,7 +10,11 @@ export default function GuildRanking(props) {
   return (
     <Table className="d-flex flex-column">
       {raidRankings.map((ranking, index) => (
-        <GuildRankingRow raid={ranking} raidProgress={raidProgress[index]} />
+        <GuildRankingRow
+          raid={ranking}
+          raidProgress={raidProgress[index]}
+          key={ranking.raid}
+        />
       ))}
       <Container>
         <Row>
@@ -25,5 +29,5 @@ GuildRanking.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   // raidProgress: propTypes.array.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  raidRankings: propTypes.object.isRequired,
+  raidRankings: propTypes.array.isRequired,
 };
