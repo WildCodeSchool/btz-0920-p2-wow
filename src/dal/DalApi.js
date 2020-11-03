@@ -10,7 +10,7 @@ import {
 } from './staticData';
 
 const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
-const GUILD_DETAILS = 'https://raider.io/api/guilds/details?';
+const GUILD = 'https://raider.io/api/guilds/';
 const INSTANCE_RANKING = 'https://raider.io/api/raids/instance-rankings?';
 const MYTHIC_PLUS_RANKING_CHARACTER =
   'https://raider.io/api/mythic-plus/rankings/characters?';
@@ -36,6 +36,12 @@ class DalApi {
    */
   static getClassesAndSpecs() {
     return classesAndSpecs;
+  }
+
+  static getClassesAndSpecsBySlug(slug) {
+    return slug
+      ? DalApi.getClassesAndSpecs().filter((c) => c.slug === slug)[0]
+      : null;
   }
 
   /**
@@ -123,16 +129,27 @@ class DalApi {
    * @param {*} guildName
    */
   static getGuild(callback, region, realm, guildName) {
-    const requestBase = TIPS_BASILE.concat(GUILD_DETAILS);
-    const guildParam = guildName.replaceAll(' ', '%20');
+    const requestBase = TIPS_BASILE.concat(GUILD).concat('details?');
     // Construct the request
     const request = requestBase
       .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
       .concat(DalApi.createReqParamRealm(realm))
-      .concat('&guild=')
-      .concat(guildParam);
+      .concat(DalApi.createReqParamGuild(guildName));
 
     DalApi.axiosRequest(request, callback);
+  }
+
+  static getGuildRoster(callback, region, realm, guildName) {
+    const requestBase = TIPS_BASILE.concat(GUILD).concat('roster?');
+    // Construct the request
+    const request = requestBase
+      .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
+      .concat(DalApi.createReqParamRealm(realm))
+      .concat(DalApi.createReqParamGuild(guildName));
+
+    DalApi.axiosRequest(request, (data) => {
+      callback(data);
+    });
   }
 
   /**
@@ -334,6 +351,12 @@ class DalApi {
    */
   static createReqParamName(name, and = true) {
     return and ? '&name='.concat(name) : 'name='.concat(name);
+  }
+
+  static createReqParamGuild(guildName, and = true) {
+    return and
+      ? '&guild='.concat(guildName.replaceAll(' ', '%20'))
+      : 'guild='.concat(guildName.replaceAll(' ', '%20'));
   }
 }
 

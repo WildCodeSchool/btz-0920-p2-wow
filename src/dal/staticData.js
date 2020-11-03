@@ -55,7 +55,7 @@ export const classesAndSpecs = [
     name: 'Death Knight',
     slug: 'death-knight',
     image:
-      'https://static.wikia.nocookie.net/wowpedia/images/e/e5/Ui-charactercreate-classes_deathknight.png/revision/latest/scale-to-width-down/64',
+      'https://static.wikia.nocookie.net/wowpedia/images/e/e5/Ui-charactercreate-classes_deathknight.png',
     specs: [
       {
         id: 1,
