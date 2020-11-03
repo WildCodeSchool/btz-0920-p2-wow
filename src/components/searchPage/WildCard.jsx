@@ -9,7 +9,8 @@ const WildCard = ({ title, image, height, width, handleClick }) => {
   };
   return (
     <button
-      onClick={handleClick}
+      onClick={(e) => handleClick(e)}
+      id={title}
       type="button"
       className="wildCard d-flex align-items-center justify-content-center m-3 border border-primary"
       style={wildCardStyle}

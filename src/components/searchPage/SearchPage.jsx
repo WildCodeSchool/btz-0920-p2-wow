@@ -54,15 +54,67 @@ const SearchPage = () => {
       title: 'Faction',
     },
   ]);
-  const [count, setCount] = useState(0);
 
-  const handleSelection = () => setCount(count + 1);
+  const [searchTypeData, setSearchTypeData] = useState('Search Type');
+  const [regionData, setRegionData] = useState('Region');
+  const [serverData, setServerData] = useState('Server');
+  const [factionData, setFactionData] = useState('Faction');
+
+  const handleSelection = (e) => {
+    switch (e.target.id || e.target.selectedIndex) {
+      case 'Guild':
+        setSearchTypeData('Guild');
+        break;
+      case 'Character':
+        setSearchTypeData('Character');
+        break;
+      case 'EU':
+        setRegionData('EU');
+        break;
+      case 'US':
+        setRegionData('US');
+        break;
+      case 'KR':
+        setRegionData('KR');
+        break;
+      case 'TW':
+        setRegionData('TW');
+        break;
+      case 0:
+        setServerData('Archimonde');
+        break;
+      case 1:
+        setServerData('Sargeras');
+        break;
+      case 2:
+        setServerData("Eldre'thalas");
+        break;
+      case 3:
+        setServerData('Hyjal');
+        break;
+      case 4:
+        setServerData('Area 52');
+        break;
+      case 5:
+        setServerData('Arthas');
+        break;
+      case 'Horde':
+        setFactionData('Horde');
+        break;
+      case 'Alliance':
+        setFactionData('Alliance');
+        break;
+      default:
+        setServerData('Archimonde');
+        break;
+    }
+  };
+
+  const requestData = [searchTypeData, regionData, serverData, factionData];
 
   return (
     <Container className="d-flex flex-column flex-1">
-      <button type="button" className="text-dark" onClick={handleSelection}>
-        Request Datas : {count}
-      </button>
+      <p>Request Datas : {requestData}</p>
       <Slider slides={items} handleSelection={handleSelection} />
     </Container>
   );

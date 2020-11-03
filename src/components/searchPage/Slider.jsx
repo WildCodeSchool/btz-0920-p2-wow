@@ -11,7 +11,6 @@ import {
 import PropTypes from 'prop-types';
 
 import WildCard from './WildCard';
-// import Slide from './Slide';
 
 const Slider = ({ slides, handleSelection }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -52,14 +51,14 @@ const Slider = ({ slides, handleSelection }) => {
           {title === 'Server' ? (
             <FormGroup>
               <Input
+                onChange={handleSelection}
                 type="select"
                 className="custom-select custom-select-lg"
                 name="server"
-                id="serverSelect"
               >
                 {cardNames.map(([label]) => {
                   return (
-                    <option key={label} className="text-dark">
+                    <option key={label} value={label} className="text-dark">
                       {label}
                     </option>
                   );
