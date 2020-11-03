@@ -38,6 +38,12 @@ class DalApi {
     return classesAndSpecs;
   }
 
+  static getClassesAndSpecsBySlug(slug) {
+    return slug
+      ? DalApi.getClassesAndSpecs().filter((c) => c.slug === slug)[0]
+      : null;
+  }
+
   /**
    * description: return an array of all 3 roles with id, name and request slug
    */

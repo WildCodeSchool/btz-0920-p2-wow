@@ -9,9 +9,11 @@ const GuildRoster = (props) => {
   return (
     <>
       <Table className="d-flex flex-column">
-        {roster.map((player) => (
-          <GuildRosterRow player={player} key={player.character.name} />
-        ))}
+        {roster
+          .filter((elmt, index) => index >= 0 && index < 5)
+          .map((player) => (
+            <GuildRosterRow player={player} key={player.character.name} />
+          ))}
       </Table>
       <Pagination className="pagination" size="lg clearfix">
         <PaginationItem className="paginationItem">
