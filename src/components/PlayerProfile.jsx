@@ -7,6 +7,8 @@ import EuroFlag from './flags/EuroFlag';
 import ChinaFlag from './flags/ChinaFlag';
 import UsFlag from './flags/UsFlag';
 
+import './cssPages&Components/test.css';
+
 const PlayerProfile = ({ match }) => {
   const [playerRegion, setPlayerRegion] = useState('');
   const [playerRealm, setPlayerRealm] = useState('');
@@ -109,7 +111,7 @@ const PlayerProfile = ({ match }) => {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div>
+        <div className="test">
           <Container className="d-flex justify-content-center flex-wrap">
             <Col xs={3}>
               <img src={thumbnail} alt="" />
