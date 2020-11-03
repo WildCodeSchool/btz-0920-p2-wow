@@ -11,7 +11,8 @@ export default function GuildRankingRow(props) {
     },
   } = props;
 
-  // get the raid object from staticData by DalApi to find bossQty
+  // get the raid object from staticData by DalApi
+  // to find bossQty
   const currentRaid = DalApi.getRaidBySlug(raid.raid);
 
   return (
