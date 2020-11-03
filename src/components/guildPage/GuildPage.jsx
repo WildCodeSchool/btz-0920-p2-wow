@@ -41,23 +41,25 @@ const GuildPage = () => {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <div>
-          <div>{guild.name}</div>
-          <Container>
+        <Container fluid className="w-50">
+          <Container className="d-flex flex-column justify-content-center">
             <Row>
-              <Col sm={4}>{guild.region.name}</Col>
-              <Col sm={4}>{guild.realm.name}</Col>
-              <Col sm={4}>{guild.faction}</Col>
+              <Col xs={12}>
+                <h1 className="text-center">{guild.name}</h1>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={4}>{guild.region.name}</Col>
+              <Col xs={4}>{guild.realm.name}</Col>
+              <Col xs={4}>{guild.faction}</Col>
             </Row>
           </Container>
           <Hr />
-          <Container>
-            <GuildRanking
-              raidRankings={raidRankings}
-              raidProgress={raidProgress}
-            />
-          </Container>
-        </div>
+          <GuildRanking
+            raidRankings={raidRankings}
+            raidProgress={raidProgress}
+          />
+        </Container>
       )}
     </div>
   );
