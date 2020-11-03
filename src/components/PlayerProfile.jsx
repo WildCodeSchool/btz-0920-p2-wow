@@ -6,8 +6,9 @@ import LoadingSpinner from './LoadingSpinner';
 import EuroFlag from './flags/EuroFlag';
 import ChinaFlag from './flags/ChinaFlag';
 import UsFlag from './flags/UsFlag';
-import allianceLogo from '../img/alliance.png';
-import hordeLogo from '../img/horde.png';
+// import allianceLogo from '../img/alliance.png';
+// import hordeLogo from '../img/horde.png';
+import './cssPages&Components/playerProfile.css';
 
 const PlayerProfile = ({ match }) => {
   const [playerRegion, setPlayerRegion] = useState('');
@@ -22,7 +23,7 @@ const PlayerProfile = ({ match }) => {
   const [raidScore, setRaidScore] = useState('');
   const [mythicScore, setMythicScore] = useState('');
   const [loading, setLoading] = useState(true);
-  const [faction, setFaction] = useState('');
+  // const [faction, setFaction] = useState('');
 
   useEffect(() => {
     DalApi.getPlayer(
@@ -39,7 +40,7 @@ const PlayerProfile = ({ match }) => {
         setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
         setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
         setLoading(false);
-        setFaction(data.faction);
+        // setFaction(data.faction);
       },
       match.params.region,
       match.params.realm,
@@ -47,24 +48,24 @@ const PlayerProfile = ({ match }) => {
     );
   }, []);
 
-  const determineLogo = () => {
-    let factionLogo = '';
-    if (faction === 'alliance') {
-      factionLogo = allianceLogo;
-    } else {
-      factionLogo = hordeLogo;
-    }
-    return factionLogo;
-  };
+  // const determineLogo = () => {
+  //   let factionLogo = '';
+  //   if (faction === 'alliance') {
+  //     factionLogo = allianceLogo;
+  //   } else {
+  //     factionLogo = hordeLogo;
+  //   }
+  //   return factionLogo;
+  // };
 
-  // Inserts faction logo in background
-  useEffect(() => {
-    document.body.style.background = `url(${determineLogo()}) no-repeat fixed center`;
-    document.body.style.backgroundColor = 'rgb(43, 62, 80)';
-    return () => {
-      document.body.style.background = ``;
-    };
-  }, []);
+  // // Inserts faction logo in background
+  // useEffect(() => {
+  //   document.body.style.background = `url(${determineLogo()}) no-repeat fixed center`;
+  //   document.body.style.backgroundColor = 'rgb(43, 62, 80)';
+  //   return () => {
+  //     document.body.style.background = ``;
+  //   };
+  // }, []);
 
   const displaysFlag = (reg) => {
     switch (reg) {
@@ -132,7 +133,7 @@ const PlayerProfile = ({ match }) => {
       {loading ? (
         <LoadingSpinner className="text-center" />
       ) : (
-        <div>
+        <div className="background-logo">
           <Container className="d-flex justify-content-center flex-wrap">
             <Col xs={3}>
               <img src={thumbnail} alt="" />

@@ -11,19 +11,7 @@ import PJArray from './components/PJArray';
 function App() {
   return (
     <Router>
-      {/* <div
-        className="App"
-        style={{
-          fontFamily: 'Ubuntu',
-          fontSize: '48px',
-          fontStyle: 'normal',
-          fontWeight: '700',
-          lineHeight: '55px',
-          letterSpacing: '0em',
-          textAlign: 'center',
-        }}
-      > */}
-      <div>
+      <div className="App">
         <NavBar />
         <Switch>
           <Route path="/" exact component={Leaderboards} />
