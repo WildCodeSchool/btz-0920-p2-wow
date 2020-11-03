@@ -1,0 +1,59 @@
+.DeathKnight {
+  color: rgb(196, 30, 59);
+  font-size: 21px;
+}
+
+.DemonHunter {
+  color: rgb(163, 48, 201);
+  font-size: 21px;
+}
+
+.Druid {
+  color: rgb(255, 125, 10);
+  font-size: 21px;
+}
+
+.Hunter {
+  color: rgb(171, 212, 115);
+  font-size: 21px;
+}
+
+.Mage {
+  color: rgb(105, 204, 240);
+  font-size: 21px;
+}
+
+.Monk {
+  color: rgb(0, 255, 150);
+  font-size: 21px;
+}
+
+.Paladin {
+  color: rgb(245, 140, 186);
+  font-size: 21px;
+}
+
+.Priest {
+  color: rgb(255, 255, 255);
+  font-size: 21px;
+}
+
+.Rogue {
+  color: rgb(255, 245, 105);
+  font-size: 21px;
+}
+
+.Shaman {
+  color: rgb(0, 112, 222);
+  font-size: 21px;
+}
+
+.Warlock {
+  color: rgb(148, 130, 201);
+  font-size: 21px;
+}
+
+.Warrior {
+  color: rgb(199, 156, 110);
+  font-size: 21px;
+}
