@@ -103,6 +103,8 @@ class GuildsArray extends Component {
                       faction={result.guild.faction}
                       slug={result.guild.region.slug}
                       rank={result.rank}
+                      region={result.guild.region.name}
+                      realm={result.guild.realm.name}
                       key={result.rank}
                     />
                   );

@@ -89,10 +89,10 @@ class PJArray extends Component {
                       name={result.character.name}
                       pjClass={result.character.class.name}
                       faction={result.character.faction}
-                      slug={result.character.region.slug}
                       rank={result.rank}
                       spec={result.character.spec.name}
                       realm={result.character.realm.name}
+                      region={regionName}
                       key={result.rank}
                     />
                   );
