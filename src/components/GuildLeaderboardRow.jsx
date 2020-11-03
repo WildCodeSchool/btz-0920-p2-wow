@@ -29,9 +29,8 @@ const displaysFlag = (region) => {
 const GuildLeaderboardRow = (props) => {
   const { name, realm, region } = props;
   return (
-    <tr>
-      <th>
-        {' '}
+    <tr className="d-flex">
+      <th className="col-md-5">
         <Link
           to={`/GuildPage/${name}/${region}/${realm}`}
           style={{ textDecoration: 'none' }}
@@ -39,8 +38,8 @@ const GuildLeaderboardRow = (props) => {
           {name}
         </Link>
       </th>
-      <th>{realm}</th>
-      <th>{displaysFlag(region)}</th>
+      <th className="col-md-5">{realm}</th>
+      <th className="col-md-2">{displaysFlag(region)}</th>
     </tr>
   );
 };

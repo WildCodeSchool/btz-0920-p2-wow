@@ -7,6 +7,8 @@ import EuroFlag from './flags/EuroFlag';
 import ChinaFlag from './flags/ChinaFlag';
 import UsFlag from './flags/UsFlag';
 import allianceLogo from '../img/alliance.png';
+import hordeLogo from '../img/horde.png';
+// import playerProfileCSS from '../components/cssPages&Components/playerProfile.css'
 
 const PlayerProfile = ({ match }) => {
   const [playerRegion, setPlayerRegion] = useState('');
@@ -21,6 +23,7 @@ const PlayerProfile = ({ match }) => {
   const [raidScore, setRaidScore] = useState('');
   const [mythicScore, setMythicScore] = useState('');
   const [loading, setLoading] = useState(true);
+  const [faction, setFaction] = useState('');
 
   useEffect(() => {
     DalApi.getPlayer(
@@ -37,11 +40,33 @@ const PlayerProfile = ({ match }) => {
         setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
         setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
         setLoading(false);
+        setFaction(data.faction);
       },
       match.params.region,
       match.params.realm,
       match.params.name
     );
+  }, []);
+
+  const determineLogo = () => {
+    let factionLogo = '';
+    if (faction === 'alliance') {
+      factionLogo = allianceLogo;
+    } else {
+      factionLogo = hordeLogo;
+    }
+    return factionLogo;
+  };
+
+  // Inserts faction logo in background
+  useEffect(() => {
+    document.body.style.background = `url(${determineLogo()}) no-repeat fixed center`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundColor = '#2b3e50';
+    document.body.classList.add('transparent-background');
+    return () => {
+      document.body.style.background = ``;
+    };
   }, []);
 
   const displaysFlag = (reg) => {
@@ -106,11 +131,7 @@ const PlayerProfile = ({ match }) => {
   };
 
   return (
-    <Container
-      fluid
-      className="w-50"
-      style={{ backgroundImage: `url(${allianceLogo})` }}
-    >
+    <Container fluid className="w-50">
       {loading ? (
         <LoadingSpinner />
       ) : (
@@ -131,7 +152,7 @@ const PlayerProfile = ({ match }) => {
               </div>
             </div>
           </Container>
-          <Table striped>
+          <Table striped height="750px" opacity="0.5">
             <tbody>
               <tr>
                 <td>

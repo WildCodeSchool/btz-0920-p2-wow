@@ -23,8 +23,8 @@ const displaysFlag = (region) => {
 const PlayerLeaderboardRow = (props) => {
   const { name, realm, region } = props;
   return (
-    <tr>
-      <th>
+    <tr className="d-flex">
+      <th className="col-md-5">
         <Link
           to={`/PlayerProfile/${name}/${region}/${realm}`}
           style={{ textDecoration: 'none' }}
@@ -32,8 +32,8 @@ const PlayerLeaderboardRow = (props) => {
           {name}
         </Link>
       </th>
-      <th>{realm}</th>
-      <th>{displaysFlag(region)}</th>
+      <th className="col-md-5">{realm}</th>
+      <th className="col-md-2">{displaysFlag(region)}</th>
     </tr>
   );
 };
