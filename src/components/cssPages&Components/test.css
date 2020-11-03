@@ -4,3 +4,10 @@ div.test {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+div.horde {
+  background: local url(../../img/alliance.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
