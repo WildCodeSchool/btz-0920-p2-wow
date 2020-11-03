@@ -69,39 +69,41 @@ class PJArray extends Component {
 
     if (loadingGuilds) return <LoadingSpinner />;
     return (
-      <div className="align-items-center">
-        <div className="title">
+      <div className="cssStyle d-flex flex-column text-center">
+        <div>
           <h2>
             Top <span>{regionName}</span> Characters
           </h2>
           <Hr />
         </div>
-        <main className="main">
-          <div className="filter">
-            <ToolsFilters />
+        <main className="container min-vw-100">
+          <div className="row w-100">
+            <div className="col-1 align-self-center">
+              <ToolsFilters />
+            </div>
+            <Table className="col-10" w-auto text-nowrap hover>
+              <tbody className="container">
+                {results
+                  .map((result) => {
+                    return (
+                      <PJRow
+                        name={result.character.name}
+                        pjClass={result.character.class.name}
+                        faction={result.character.faction}
+                        rank={result.rank}
+                        spec={result.character.spec.name}
+                        realm={result.character.realm.name}
+                        region={regionName}
+                        key={result.rank}
+                      />
+                    );
+                  })
+                  .filter((_, index) => index >= min && index < max)}
+              </tbody>
+            </Table>
           </div>
-          <Table className="guildsTable" w-auto text-nowrap hover>
-            <tbody>
-              {results
-                .map((result) => {
-                  return (
-                    <PJRow
-                      name={result.character.name}
-                      pjClass={result.character.class.name}
-                      faction={result.character.faction}
-                      rank={result.rank}
-                      spec={result.character.spec.name}
-                      realm={result.character.realm.name}
-                      region={regionName}
-                      key={result.rank}
-                    />
-                  );
-                })
-                .filter((_, index) => index >= min && index < max)}
-            </tbody>
-          </Table>
         </main>
-        <Pagination className="pagination" size="lg clearfix">
+        <Pagination className="align-self-center" size="lg clearfix">
           <PaginationItem className="paginationItem">
             <PaginationLink onClick={this.page1}>
               <BsFillSkipBackwardFill />

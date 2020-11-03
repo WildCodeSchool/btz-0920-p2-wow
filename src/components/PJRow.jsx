@@ -5,8 +5,6 @@ import { GiWorld } from 'react-icons/gi';
 import HordeFlag from './flags/HordeFlag';
 import AllianceFlag from './flags/AllianceFlag';
 
-import './cssPages&Components/PJRow.css';
-
 const flag = (faction) => {
   switch (faction) {
     case 'horde':
@@ -25,16 +23,16 @@ function PJRow(props) {
       to={`/PlayerProfile/${name}/${region}/${realm}`}
       style={{ textDecoration: 'none' }}
     >
-      <tr className="pjRow">
-        <td className="rank">{rank}</td>
-        <td className="pjNname">
+      <tr className="row w-100">
+        <td className="col-1">{rank}</td>
+        <td className="col-8">
           <strong style={{ fontSize: '21px' }}>{name}</strong>
         </td>
-        <td className="classAndSpec">
-          {pjClass} <br />
-          {spec}
+        <td className="col-2">
+          <p>{pjClass}</p> <br />
+          <p>{spec}</p>
         </td>
-        <td className="faction">{flag(faction)}</td>
+        <td className="col-1">{flag(faction)}</td>
       </tr>
     </Link>
   );

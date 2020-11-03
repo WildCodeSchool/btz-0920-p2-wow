@@ -5,8 +5,6 @@ import { GiWorld } from 'react-icons/gi';
 import HordeFlag from './flags/HordeFlag';
 import AllianceFlag from './flags/AllianceFlag';
 
-import './cssPages&Components/GuildRow.css';
-
 const flag = (faction) => {
   switch (faction) {
     case 'horde':
@@ -25,12 +23,12 @@ function GuildRow(props) {
       to={`/GuildPage/${name}/${region}/${realm}`}
       style={{ textDecoration: 'none' }}
     >
-      <tr className="guildRow">
-        <td>{rank}</td>
-        <th>
+      <tr className="row">
+        <td className="col-2">{rank}</td>
+        <th className="col-8">
           <strong style={{ fontSize: '21px' }}>{name}</strong>
         </th>
-        <td>{flag(faction)}</td>
+        <td className="col-2">{flag(faction)}</td>
       </tr>
     </Link>
   );

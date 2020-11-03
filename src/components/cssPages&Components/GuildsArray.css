@@ -1,35 +1,14 @@
-.align-items-center {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 50px 0 50px;
-  font-family: Ubuntu;
+.cssStyle {
+  padding: 10px 0 0 0;
+  font-family: Ubuntu, sans-serif;
   font-size: 48px;
   font-weight: 700;
-  line-height: 55px;
-  letter-spacing: 0em;
-  text-align: center;
 }
 
-.title h2 {
-  font-size: 48px;
+.cssStyle div h2 {
+  font-size: 1.2em;
 }
 
-.title h2 span {
-  text-transform: uppercase;
-}
-
-.main {
-  width: 100vw;
-  display: grid;
-  grid-template-columns: 10% 80%;
-}
-
-.filter {
-  width: 100%;
-  align-self: center;
-  text-align: center;
-}
-
-.guildsTable {
-  width: 100%;
+.cssStyle main {
+  padding: 0;
 }
