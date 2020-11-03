@@ -8,7 +8,6 @@ import ChinaFlag from './flags/ChinaFlag';
 import UsFlag from './flags/UsFlag';
 import allianceLogo from '../img/alliance.png';
 import hordeLogo from '../img/horde.png';
-// import playerProfileCSS from '../components/cssPages&Components/playerProfile.css'
 
 const PlayerProfile = ({ match }) => {
   const [playerRegion, setPlayerRegion] = useState('');
@@ -63,7 +62,6 @@ const PlayerProfile = ({ match }) => {
     document.body.style.background = `url(${determineLogo()}) no-repeat fixed center`;
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundColor = '#2b3e50';
-    document.body.classList.add('transparent-background');
     return () => {
       document.body.style.background = ``;
     };
