@@ -10,6 +10,8 @@ import UsFlag from './flags/UsFlag';
 // import hordeLogo from '../img/horde.png';
 import './cssPages&Components/playerProfile.css';
 
+import './cssPages&Components/test.css';
+
 const PlayerProfile = ({ match }) => {
   const [playerRegion, setPlayerRegion] = useState('');
   const [playerRealm, setPlayerRealm] = useState('');
@@ -133,7 +135,7 @@ const PlayerProfile = ({ match }) => {
       {loading ? (
         <LoadingSpinner className="text-center" />
       ) : (
-        <div className="background-logo">
+        <div className="test">
           <Container className="d-flex justify-content-center flex-wrap">
             <Col xs={3}>
               <img src={thumbnail} alt="" />

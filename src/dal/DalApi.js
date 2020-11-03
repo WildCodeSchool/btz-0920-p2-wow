@@ -60,6 +60,15 @@ class DalApi {
   }
 
   /**
+   *
+   * @param {*} slug Slug of the raid to find
+   * @returns an object raid or null
+   */
+  static getRaidBySlug(slug) {
+    return slug ? DalApi.getRaids().filter((r) => r.slug === slug)[0] : null;
+  }
+
+  /**
    * description: return an array of all available seasoons with id, name and request slug
    */
   static getSeasons() {

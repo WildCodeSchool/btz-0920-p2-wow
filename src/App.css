@@ -1,10 +1,11 @@
 .App {
-  text-align: center;
-  background: url('./img/world-of-warcraft-shadowlands-world-of-warcraft-tiomnye-zeml.jpg');
   min-height: 100vh;
   height: 100%;
-  background-attachment: fixed;
-  background-size: contain;
+  text-align: center;
+  font-family: Ubuntu, sans-serif;
+  background: fixed repeat-y
+      linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(./img/backgroundImage.jpg);
 }
 
 .slide {
