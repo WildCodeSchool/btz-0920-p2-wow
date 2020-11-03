@@ -60,8 +60,7 @@ const PlayerProfile = ({ match }) => {
   // Inserts faction logo in background
   useEffect(() => {
     document.body.style.background = `url(${determineLogo()}) no-repeat fixed center`;
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundColor = '#2b3e50';
+    document.body.style.backgroundColor = 'rgb(43, 62, 80)';
     return () => {
       document.body.style.background = ``;
     };
@@ -131,7 +130,7 @@ const PlayerProfile = ({ match }) => {
   return (
     <Container fluid className="w-50">
       {loading ? (
-        <LoadingSpinner />
+        <LoadingSpinner className="text-center" />
       ) : (
         <div>
           <Container className="d-flex justify-content-center flex-wrap">
