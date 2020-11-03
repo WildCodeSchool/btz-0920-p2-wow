@@ -9,10 +9,6 @@ import LoadingSpinner from '../LoadingSpinner';
 
 const GuildPage = () => {
   const params = useParams();
-  // const [name, setName] = useState('');
-  // const [region, setRegion] = useState('');
-  // const [realm, setRealm] = useState('');
-  // const [faction, setFaction] = useState('');
   const [loading, setLoading] = useState(true);
   const [guild, setGuild] = useState(null);
   const [raidRankings, setRaidRankings] = useState(null);
