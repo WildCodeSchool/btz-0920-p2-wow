@@ -6,8 +6,8 @@ import LoadingSpinner from './LoadingSpinner';
 import EuroFlag from './flags/EuroFlag';
 import ChinaFlag from './flags/ChinaFlag';
 import UsFlag from './flags/UsFlag';
-// import allianceLogo from '../img/alliance.png';
-// import hordeLogo from '../img/horde.png';
+import allianceLogo from '../img/alliance.png';
+import hordeLogo from '../img/horde.png';
 import './cssPages&Components/playerProfile.css';
 
 import './cssPages&Components/test.css';
@@ -25,7 +25,7 @@ const PlayerProfile = ({ match }) => {
   const [raidScore, setRaidScore] = useState('');
   const [mythicScore, setMythicScore] = useState('');
   const [loading, setLoading] = useState(true);
-  // const [faction, setFaction] = useState('');
+  const [faction] = useState('');
 
   useEffect(() => {
     DalApi.getPlayer(
@@ -50,15 +50,16 @@ const PlayerProfile = ({ match }) => {
     );
   }, []);
 
-  // const determineLogo = () => {
-  //   let factionLogo = '';
-  //   if (faction === 'alliance') {
-  //     factionLogo = allianceLogo;
-  //   } else {
-  //     factionLogo = hordeLogo;
-  //   }
-  //   return factionLogo;
-  // };
+  let factionLogo = '';
+  const determineLogo = () => {
+    if (faction === 'alliance') {
+      factionLogo = allianceLogo;
+    } else {
+      factionLogo = hordeLogo;
+    }
+    return factionLogo;
+  };
+  determineLogo();
 
   // // Inserts faction logo in background
   // useEffect(() => {
@@ -135,7 +136,7 @@ const PlayerProfile = ({ match }) => {
       {loading ? (
         <LoadingSpinner className="text-center" />
       ) : (
-        <div className="test">
+        <div className={factionLogo === 'alliance' ? 'horde' : 'test'}>
           <Container className="d-flex justify-content-center flex-wrap">
             <Col xs={3}>
               <img src={thumbnail} alt="" />
