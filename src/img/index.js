@@ -1,6 +1,8 @@
 import guild from './guild.jpg';
 import alliance from './alliance.png';
+import allianceIcon from './allianceIcon.png';
 import horde from './horde.png';
+import hordeIcon from './hordeIcon.png';
 import character from './character.jpg';
 import europe from './europe.png';
 import usa from './usa.png';
@@ -23,4 +25,16 @@ import china from './chinaFlag.png';
 //   },
 // ];
 
-export { guild, alliance, horde, character, europe, usa, korea, taiwan, china };
+export {
+  guild,
+  alliance,
+  allianceIcon,
+  horde,
+  hordeIcon,
+  character,
+  europe,
+  usa,
+  korea,
+  taiwan,
+  china,
+};

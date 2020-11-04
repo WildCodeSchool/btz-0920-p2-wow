@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import DalApi from '../dal/DalApi';
 
 import './cssPages&Components/ClassColor.css';
-import Faction from './flags/Faction';
+import FactionIcons from './flags/FactionIcons';
 
 const displaysClass = (pjClass) => {
   switch (pjClass) {
@@ -71,7 +71,7 @@ const classColor = (pjClass) => {
 function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
   return (
     <Link
-      to={`/PlayerProfile/${name}/${region}/${realm}`}
+      to={`/Player/${name}/${region}/${realm}`}
       style={{ textDecoration: 'none' }}
     >
       <tr className="row w-100">
@@ -85,7 +85,7 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
           <p>{spec}</p>
         </td>
         <td className="col-1">
-          <Faction faction={faction} />
+          <FactionIcons faction={faction} />
         </td>
       </tr>
     </Link>

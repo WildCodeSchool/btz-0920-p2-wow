@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
-// import { useParams } from 'react-router-dom';
 
 import GuildRow from './GuildRow';
 import ToolsFilters from './ToolsFilters';
@@ -12,29 +11,20 @@ import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
 
 const GuildsArray = () => {
-  // const params = useParams();
   const [results, setResults] = useState([]);
-  const [loadingGuilds, setLoadingGuilds] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [serverSlug, setServerSlug] = useState('');
   const [realmName, setRealmName] = useState('');
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(5);
 
   useEffect(() => {
-    DalApi.getTopGuild(
-      (guildsRes) => {
-        const { rankedGuilds } = guildsRes.raidRankings;
-        setResults(rankedGuilds);
-        setServerSlug(rankedGuilds[0].guild.region.slug);
-        setRealmName(rankedGuilds[0].guild.realm.name);
-        setLoadingGuilds(false);
-      },
-      // params.region,
-      // params.realm,
-      // params.name
-      'us',
-      "Mal'ganis"
-    );
+    DalApi.getTopGuild('us', 'Azshara').then(({ data }) => {
+      setResults(data.raidRankings.rankedGuilds);
+      setServerSlug(data.raidRankings.rankedGuilds[0].guild.region.slug);
+      setRealmName(data.raidRankings.rankedGuilds[0].guild.realm.name);
+      setLoading(false);
+    });
   }, []);
 
   function page1() {
@@ -59,7 +49,7 @@ const GuildsArray = () => {
 
   return (
     <>
-      {loadingGuilds ? (
+      {loading ? (
         <LoadingSpinner />
       ) : (
         <div className="cssStyle d-flex flex-column text-center">
