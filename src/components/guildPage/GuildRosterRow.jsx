@@ -20,9 +20,13 @@ const GuildRosterRow = (props) => {
   const classe = DalApi.getClassesAndSpecsBySlug(slug);
   // console.log(player, classe);
   return (
-    <tr className="d-flex playerRow">
+    <tr className="d-flex playerRow text-left align-items-center">
       <td className="col-md-5 font-weight-bold">
-        <img src={classe.image} alt="class icon" className="w-25 classImage" />
+        <img
+          src={classe.image}
+          alt="class icon"
+          className="w-25 classImage pr-2"
+        />
         <span className={classe.name.replace(' ', '')}>{name}</span>
       </td>
       <td className="col-md-3">{spec.name}</td>
