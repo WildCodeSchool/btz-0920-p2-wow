@@ -50,9 +50,13 @@ const PJArray = () => {
   return (
     <>
       {loading ? (
-        <LoadingSpinner />
+        <div className="cssStyle d-flex flex-column align-items-center">
+          <div style={{ height: '100px', minWidth: '100vw' }} />
+          <LoadingSpinner />
+        </div>
       ) : (
         <div className="cssStyle d-flex flex-column text-center">
+          <div style={{ height: '100px', minWidth: '100vw' }} />
           <div>
             <h2>
               Top <span>{regionName}</span> Characters

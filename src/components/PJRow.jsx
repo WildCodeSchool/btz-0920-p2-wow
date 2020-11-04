@@ -75,16 +75,15 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
       style={{ textDecoration: 'none' }}
     >
       <tr className="row w-100">
-        <td className="col-1">{rank}</td>
-        <td className="col-8">
+        <td className="col-1 d-flex align-items-center">{rank}</td>
+        <td className="col-7 d-flex align-items-center">
           <strong className={classColor(pjClass)}>{name}</strong>
         </td>
-        <td className="col-2">
-          <img src={displaysClass(pjClass)} alt="" height="64px" width="64px" />{' '}
-          <br />
+        <td className="col-3 d-flex align-items-center">
+          <img src={displaysClass(pjClass)} alt="" height="64px" width="64px" />
           <p>{spec}</p>
         </td>
-        <td className="col-1">
+        <td className="col-1 d-flex align-items-center">
           <FactionIcons faction={faction} />
         </td>
       </tr>
