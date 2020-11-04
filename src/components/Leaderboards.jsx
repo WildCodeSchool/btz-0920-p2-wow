@@ -108,6 +108,7 @@ const Leaderboards = () => {
             </thead>
             <tbody>
               {playerResults
+                .filter((_, index) => index < playersToDisplay)
                 .map((result) => {
                   return (
                     <PlayerLeaderboardRow
@@ -118,8 +119,7 @@ const Leaderboards = () => {
                       key={result.character.id}
                     />
                   );
-                })
-                .filter((_, index) => index < playersToDisplay)}
+                })}
             </tbody>
           </Table>
         </div>
