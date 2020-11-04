@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 import Slider from './Slider';
 
-import './SearchPage.css';
 import {
   guild,
   alliance,
@@ -16,6 +15,8 @@ import {
   korea,
   taiwan,
 } from '../../img';
+
+import './SearchPage.css';
 
 const SearchPage = () => {
   const [items] = useState([
@@ -61,7 +62,7 @@ const SearchPage = () => {
   const [factionData, setFactionData] = useState('Faction');
 
   const handleSelection = (e) => {
-    switch (e.target.id || e.target.selectedIndex) {
+    switch (e.target.selectedIndex || e.target.id) {
       case 'Guild':
         setSearchTypeData('Guild');
         break;
@@ -105,7 +106,6 @@ const SearchPage = () => {
         setFactionData('Alliance');
         break;
       default:
-        setServerData('Archimonde');
         break;
     }
   };

@@ -1,5 +1,6 @@
-import './SearchPage.css';
 import PropTypes from 'prop-types';
+
+import './SearchPage.css';
 
 const WildCard = ({ title, image, height, width, handleClick }) => {
   const wildCardStyle = {

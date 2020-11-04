@@ -12,6 +12,8 @@ import PropTypes from 'prop-types';
 
 import WildCard from './WildCard';
 
+import './SearchPage.css';
+
 const Slider = ({ slides, handleSelection }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -53,8 +55,9 @@ const Slider = ({ slides, handleSelection }) => {
               <Input
                 onChange={handleSelection}
                 type="select"
-                className="custom-select custom-select-lg"
+                className="custom-select custom-select-lg serverSelect"
                 name="server"
+                id="serverSelect"
               >
                 {cardNames.map(([label]) => {
                   return (
