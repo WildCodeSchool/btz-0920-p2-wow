@@ -78,7 +78,10 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
           {title === 'Server' ? (
             <FormGroup>
               <Input
-                onChange={(e) => setServer(e.target.value)}
+                onChange={(e) => {
+                  setServer(e.target.value);
+                  next();
+                }}
                 type="select"
                 className="custom-select custom-select-lg serverSelect"
                 name="server"
@@ -104,6 +107,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
               return (
                 <WildCard
                   handleClick={handleSelection}
+                  next={next}
                   key={label}
                   title={label}
                   image={img}
@@ -120,7 +124,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
 
   return (
     <>
-      <p>{`${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[3]}`}</p>
+      <p>{`${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}</p>
       <Carousel
         activeIndex={activeIndex}
         next={next}
