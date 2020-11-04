@@ -1,23 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { GiWorld } from 'react-icons/gi';
+import Faction from './flags/Faction';
 
-import HordeFlag from './flags/HordeFlag';
-import AllianceFlag from './flags/AllianceFlag';
-
-const flag = (faction) => {
-  switch (faction) {
-    case 'horde':
-      return <HordeFlag />;
-    case 'alliance':
-      return <AllianceFlag />;
-    default:
-      return <GiWorld />;
-  }
-};
-
-function GuildRow(props) {
-  const { name, faction, rank, region, realm } = props;
+function GuildRow({ name, faction, rank, region, realm }) {
   return (
     <Link
       to={`/GuildPage/${name}/${region}/${realm}`}
@@ -28,7 +13,9 @@ function GuildRow(props) {
         <th className="col-8">
           <strong style={{ fontSize: '21px' }}>{name}</strong>
         </th>
-        <td className="col-2">{flag(faction)}</td>
+        <td className="col-2">
+          <Faction faction={faction} />
+        </td>
       </tr>
     </Link>
   );

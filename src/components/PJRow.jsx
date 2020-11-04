@@ -1,24 +1,10 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { GiWorld } from 'react-icons/gi';
 
 import DalApi from '../dal/DalApi';
 
-import HordeFlag from './flags/HordeFlag';
-import AllianceFlag from './flags/AllianceFlag';
-
 import './cssPages&Components/ClassColor.css';
-
-const flag = (faction) => {
-  switch (faction) {
-    case 'horde':
-      return <HordeFlag />;
-    case 'alliance':
-      return <AllianceFlag />;
-    default:
-      return <GiWorld />;
-  }
-};
+import Faction from './flags/Faction';
 
 const displaysClass = (pjClass) => {
   switch (pjClass) {
@@ -82,8 +68,7 @@ const classColor = (pjClass) => {
   }
 };
 
-function PJRow(props) {
-  const { name, pjClass, faction, rank, spec, realm, region } = props;
+function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
   return (
     <Link
       to={`/PlayerProfile/${name}/${region}/${realm}`}
@@ -99,7 +84,9 @@ function PJRow(props) {
           <br />
           <p>{spec}</p>
         </td>
-        <td className="col-1">{flag(faction)}</td>
+        <td className="col-1">
+          <Faction faction={faction} />
+        </td>
       </tr>
     </Link>
   );

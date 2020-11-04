@@ -6,6 +6,7 @@ import europe from './europe.png';
 import usa from './usa.png';
 import korea from './korea.png';
 import taiwan from './taiwan.png';
+import china from './chinaFlag.png';
 
 // const images = [
 //   {
@@ -22,4 +23,4 @@ import taiwan from './taiwan.png';
 //   },
 // ];
 
-export { guild, alliance, horde, character, europe, usa, korea, taiwan };
+export { guild, alliance, horde, character, europe, usa, korea, taiwan, china };

@@ -1,39 +1,23 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import EuroFlag from './flags/EuroFlag';
-import ChinaFlag from './flags/ChinaFlag';
-import UsFlag from './flags/UsFlag';
 
-// Display flag image per region
-const displaysFlag = (region) => {
-  switch (region) {
-    case 'Europe':
-      return <EuroFlag />;
-    case 'United States & Oceania':
-      return <UsFlag />;
-    case 'China':
-      return <ChinaFlag />;
-    case 'Russian':
-      return <EuroFlag />;
-    default:
-      return 'error';
-  }
-};
+import Flag from './flags/Flag';
 
-const PlayerLeaderboardRow = (props) => {
-  const { name, realm, region } = props;
+const PlayerLeaderboardRow = ({ name, realm, region }) => {
   return (
     <tr className="d-flex">
       <th className="col-md-5">
         <Link
-          to={`/PlayerProfile/${name}/${region}/${realm}`}
+          to={`/player/${name}/${region}/${realm}`}
           style={{ textDecoration: 'none' }}
         >
           {name}
         </Link>
       </th>
       <th className="col-md-5">{realm}</th>
-      <th className="col-md-2">{displaysFlag(region)}</th>
+      <th className="col-md-2">
+        <Flag slug={region} />
+      </th>
     </tr>
   );
 };
