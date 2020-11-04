@@ -16,6 +16,7 @@ const GuildPage = () => {
   const [raidRankings, setRaidRankings] = useState(null);
   const [raidProgress, setRaidProgress] = useState(null);
   const [roster, setRoster] = useState(null);
+  // console.log(params);
 
   useEffect(() => {
     DalApi.getGuild(

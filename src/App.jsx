@@ -19,7 +19,7 @@ function App() {
             path="/PlayerProfile/:name/:region/:realm"
             component={PlayerProfile}
           />
-          <Route path="/GuildPage/:name/:region/:realm" component={GuildPage} />
+          <Route path="/GuildPage/:region/:realm/:name" component={GuildPage} />
           <Route path="/GuildsArray" component={GuildsArray} />
           <Route path="/SearchPage" component={SearchPage} />
           <Route path="/PJArray" component={PJArray} />

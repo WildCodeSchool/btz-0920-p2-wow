@@ -27,12 +27,12 @@ const displaysFlag = (region) => {
 };
 
 const GuildLeaderboardRow = (props) => {
-  const { name, realm, region } = props;
+  const { realm, region, name } = props;
   return (
     <tr className="d-flex">
       <th className="col-md-5">
         <Link
-          to={`/GuildPage/${name}/${region}/${realm}`}
+          to={`/GuildPage/${region}/${realm}/${name}/`}
           style={{ textDecoration: 'none' }}
         >
           {name}
