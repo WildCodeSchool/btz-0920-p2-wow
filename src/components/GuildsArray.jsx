@@ -1,5 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import {
+  Table,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+  Container,
+} from 'reactstrap';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
 
 import GuildRow from './GuildRow';
@@ -50,18 +56,25 @@ const GuildsArray = () => {
   return (
     <>
       {loading ? (
-        <LoadingSpinner />
+        <div className="cssStyle d-flex flex-column align-items-center">
+          <div style={{ height: '100px', minWidth: '95vw' }} />
+          <LoadingSpinner />
+        </div>
       ) : (
-        <div className="cssStyle d-flex flex-column text-center">
+        <div
+          className="cssStyle d-flex flex-column align-items-center text-center"
+          style={{ maxWidth: '100vw' }}
+        >
+          <div style={{ height: '100px', minWidth: '99vw' }} />
           <div>
             <h2>
               Top <span>{serverSlug}</span> {realmName} Guilds
             </h2>
             <Hr />
           </div>
-          <main className="container min-vw-100">
-            <div className="row w-100">
-              <div className="col-1 align-self-center">
+          <Container>
+            <div className="row align-self-center">
+              <div className="col-1 d-flex align-items-center">
                 <ToolsFilters />
               </div>
               <Table className="col-10" w-auto text-nowrap hover>
@@ -84,7 +97,7 @@ const GuildsArray = () => {
                 </tbody>
               </Table>
             </div>
-          </main>
+          </Container>
           <Pagination className="align-self-center" size="lg clearfix">
             <PaginationItem className="paginationItem">
               <PaginationLink onClick={page1}>

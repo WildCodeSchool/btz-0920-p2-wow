@@ -6,7 +6,7 @@ import WoWildCraftLogo from './flags/WoWildCraftLogo';
 
 const NavBar = () => {
   return (
-    <Navbar className="bg-secondary py-0 h-75">
+    <Navbar className="bg-secondary py-0 fixed-top">
       <Link to="/">
         <WoWildCraftLogo />
       </Link>

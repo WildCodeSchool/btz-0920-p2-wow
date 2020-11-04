@@ -49,9 +49,13 @@ const GuildPage = () => {
     <div>
       <Navbar />
       {loading ? (
-        <LoadingSpinner />
+        <div className="d-flex flex-column align-items-center">
+          <div style={{ height: '100px', minWidth: '95vw' }} />
+          <LoadingSpinner />
+        </div>
       ) : (
         <>
+          <div style={{ height: '100px', minWidth: '95vw' }} />
           <Container fluid className="w-50">
             <Container className="d-flex flex-column justify-content-center">
               <Row>

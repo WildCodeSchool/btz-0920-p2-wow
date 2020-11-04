@@ -10,13 +10,16 @@ const GuildLeaderboardRow = ({ realm, region, name }) => {
       style={{ textDecoration: 'none' }}
     >
       <tr className="d-flex">
-        <th className="col-md-5" style={{ fontSize: 21 }}>
+        <td
+          className="col-md-5 d-flex align-items-center"
+          style={{ fontSize: 21 }}
+        >
           {name}
-        </th>
-        <th className="col-md-5">{realm}</th>
-        <th className="col-md-2">
+        </td>
+        <td className="col-md-5 d-flex align-items-center">{realm}</td>
+        <td className="col-md-2 d-flex align-items-center">
           <Flag slug={region} />
-        </th>
+        </td>
       </tr>
     </Link>
   );

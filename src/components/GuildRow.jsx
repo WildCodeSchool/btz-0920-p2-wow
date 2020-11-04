@@ -9,11 +9,11 @@ function GuildRow({ name, faction, rank, region, realm }) {
       style={{ textDecoration: 'none' }}
     >
       <tr className="row">
-        <td className="col-2">{rank}</td>
-        <th className="col-8">
+        <td className="col-2 d-flex align-items-center">{rank}</td>
+        <th className="col-8 d-flex align-items-center">
           <strong style={{ fontSize: '21px' }}>{name}</strong>
         </th>
-        <td className="col-2">
+        <td className="col-2 d-flex align-items-center">
           <FactionIcons faction={faction} />
         </td>
       </tr>
