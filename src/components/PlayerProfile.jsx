@@ -139,7 +139,12 @@ const PlayerProfile = ({ match }) => {
               </div>
             </div>
           </Container>
-          <Table striped height="750px" opacity="0.5">
+          <Table
+            striped
+            className="d-flex justify-content-center align-items-md-center flex-wrap"
+            height="750px"
+            opacity="0.5"
+          >
             <tbody>
               <tr>
                 <td>
