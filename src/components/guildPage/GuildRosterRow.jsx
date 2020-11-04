@@ -1,7 +1,7 @@
 import propTypes from 'prop-types';
 import DalApi from '../../dal/DalApi';
 import '../cssPages&Components/GuildPage.css';
-// import '../cssPages&Components/GuildsArray.css'
+import '../cssPages&Components/ClassColor.css';
 
 const GuildRosterRow = (props) => {
   const {
@@ -23,7 +23,7 @@ const GuildRosterRow = (props) => {
     <tr className="d-flex playerRow">
       <td className="col-md-5 font-weight-bold">
         <img src={classe.image} alt="class icon" className="w-25 classImage" />
-        <span className="playerName">{name}</span>
+        <span className={classe.name.replace(' ', '')}>{name}</span>
       </td>
       <td className="col-md-3">{spec.name}</td>
       <td className="col-md-2">{race.name}</td>
