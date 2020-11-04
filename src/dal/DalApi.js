@@ -27,6 +27,14 @@ class DalApi {
   }
 
   /**
+   *
+   * @param {string} name
+   */
+  static getRegionByName(name) {
+    return this.getRegions().filter((n) => n.name === name)[0];
+  }
+
+  /**
    * description: return an array of all 2 factions with id, name and request slug
    */
   static getFactions() {

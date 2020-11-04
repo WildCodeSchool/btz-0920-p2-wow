@@ -14,12 +14,11 @@ export default function GuildRankingRow(props) {
   const currentRaid = DalApi.getRaidBySlug(raid.raid);
 
   return (
-    <tr className="d-flex">
-      <td className="col-md-4">{currentRaid.name}</td>
-      <td className="col-md-2">
+    <tr className="d-flex" style={{ fontSize: '20px' }}>
+      <td className="col-md-5 text-left">{currentRaid.name}</td>
+      <td className="col-md-4">
         {mythic.length.toString().concat('/').concat(currentRaid.bossQty)}
       </td>
-      <td className="col-md-3" />
       <td className="col-md-3">{raid.factionRanks.mythic.world}</td>
     </tr>
   );

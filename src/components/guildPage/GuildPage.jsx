@@ -6,6 +6,9 @@ import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
 import LoadingSpinner from '../LoadingSpinner';
 import GuildRoster from './GuildRoster';
+import Flag from '../flags/Flag';
+import FactionIcons from '../flags/FactionIcons';
+import '../cssPages&Components/GuildPage.css';
 
 const GuildPage = () => {
   const params = useParams();
@@ -14,6 +17,8 @@ const GuildPage = () => {
   const [raidRankings, setRaidRankings] = useState(null);
   const [raidProgress, setRaidProgress] = useState(null);
   const [roster, setRoster] = useState(null);
+  const [flagTag, setFlagTag] = useState(null);
+  const [faction, setFaction] = useState(null);
 
   useEffect(() => {
     const getDatas = async () => {
@@ -32,9 +37,12 @@ const GuildPage = () => {
 
         const { guildDetails } = guildRes.data;
         setGuild(guildDetails.guild);
+        // console.log(guild);
         setRaidRankings(guildDetails.raidRankings);
         setRaidProgress(guildDetails.raidProgress);
         setRoster(rosterRes.data.guildRoster.roster);
+        setFlagTag(DalApi.getRegionByName(guildDetails.guild.region.name).slug);
+        setFaction(guildDetails.guild.faction);
       } catch (error) {
         // TODO: handle this error
       } finally {
@@ -53,18 +61,28 @@ const GuildPage = () => {
       ) : (
         <>
           <Container fluid className="w-50">
-            <Container className="d-flex flex-column justify-content-center">
+            <Container className="guildPage d-flex flex-column justify-content-center">
               <Row>
                 <Col xs={12}>
-                  <h1 className="text-center">
+                  <h1 className="text-center'" style={{ fontSize: '48px' }}>
                     {guild.alt_name ? guild.alt_name : guild.name}
                   </h1>
                 </Col>
               </Row>
-              <Row>
-                <Col xs={4}>{guild.region.name}</Col>
-                <Col xs={4}>{guild.realm.name}</Col>
-                <Col xs={4}>{guild.faction}</Col>
+              <Row className="align-items-center text-center">
+                <Col xs={4} className="">
+                  <Flag slug={flagTag} alt={guild.region.name} />
+                </Col>
+                <Col
+                  xs={4}
+                  className="font-weight-bold"
+                  style={{ fontSize: '32px' }}
+                >
+                  {guild.realm.name}
+                </Col>
+                <Col xs={4}>
+                  <FactionIcons faction={faction} />
+                </Col>
               </Row>
             </Container>
             <Hr />
