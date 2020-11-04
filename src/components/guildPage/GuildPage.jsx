@@ -6,6 +6,8 @@ import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
 import LoadingSpinner from '../LoadingSpinner';
 import GuildRoster from './GuildRoster';
+import Flag from '../flags/Flag';
+import Faction from '../flags/Faction';
 
 const GuildPage = () => {
   const params = useParams();
@@ -14,6 +16,8 @@ const GuildPage = () => {
   const [raidRankings, setRaidRankings] = useState(null);
   const [raidProgress, setRaidProgress] = useState(null);
   const [roster, setRoster] = useState(null);
+  const [flagTag, setFlagTag] = useState(null);
+  const [faction, setFaction] = useState(null);
 
   useEffect(() => {
     const getDatas = async () => {
@@ -32,9 +36,13 @@ const GuildPage = () => {
 
         const { guildDetails } = guildRes.data;
         setGuild(guildDetails.guild);
+        // console.log(guild);
         setRaidRankings(guildDetails.raidRankings);
         setRaidProgress(guildDetails.raidProgress);
         setRoster(rosterRes.data.guildRoster.roster);
+        setFlagTag(DalApi.getRegionByName(guildDetails.guild.region.name).slug);
+        // setFaction(guildDetails.guild.faction);
+        setFaction(null);
       } catch (error) {
         // TODO: handle this error
       } finally {
@@ -60,9 +68,13 @@ const GuildPage = () => {
                 </Col>
               </Row>
               <Row>
-                <Col xs={4}>{guild.region.name}</Col>
+                <Col xs={4}>
+                  <Flag slug={flagTag} alt={guild.region.name} />
+                </Col>
                 <Col xs={4}>{guild.realm.name}</Col>
-                <Col xs={4}>{guild.faction}</Col>
+                <Col xs={4}>
+                  <Faction faction={faction} />
+                </Col>
               </Row>
             </Container>
             <Hr />

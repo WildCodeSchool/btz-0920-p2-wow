@@ -1,5 +1,5 @@
 import propTypes from 'prop-types';
-import { Col, Container, Row, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 import GuildRankingRow from './GuildRankingRow';
 
 // const { Container } = require('reactstrap');
@@ -16,11 +16,6 @@ export default function GuildRanking(props) {
           key={ranking.raid}
         />
       ))}
-      <Container>
-        <Row>
-          <Col>sdfsf</Col>
-        </Row>
-      </Container>
     </Table>
   );
 }
