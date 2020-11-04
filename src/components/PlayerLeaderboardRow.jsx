@@ -7,20 +7,20 @@ import './cssPages&Components/ClassColor.css';
 
 const PlayerLeaderboardRow = ({ name, realm, region, playerClass }) => {
   return (
-    <tr className="d-flex">
-      <th className="col-md-5">
-        <Link
-          to={`/player/${name}/${region}/${realm}`}
-          style={{ textDecoration: 'none' }}
-        >
+    <Link
+      to={`/player/${name}/${region}/${realm}`}
+      style={{ textDecoration: 'none' }}
+    >
+      <tr className="d-flex">
+        <th className="col-md-5">
           <p className={playerClass}>{name}</p>
-        </Link>
-      </th>
-      <th className="col-md-5">{realm}</th>
-      <th className="col-md-2">
-        <Flag slug={region} />
-      </th>
-    </tr>
+        </th>
+        <th className="col-md-5">{realm}</th>
+        <th className="col-md-2">
+          <Flag slug={region} />
+        </th>
+      </tr>
+    </Link>
   );
 };
 
