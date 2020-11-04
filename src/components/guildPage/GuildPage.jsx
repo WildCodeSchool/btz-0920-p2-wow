@@ -7,7 +7,8 @@ import GuildRanking from './GuildRanking';
 import LoadingSpinner from '../LoadingSpinner';
 import GuildRoster from './GuildRoster';
 import Flag from '../flags/Flag';
-import Faction from '../flags/Faction';
+import FactionIcons from '../flags/FactionIcons';
+import '../cssPages&Components/GuildPage.css';
 
 const GuildPage = () => {
   const params = useParams();
@@ -41,8 +42,7 @@ const GuildPage = () => {
         setRaidProgress(guildDetails.raidProgress);
         setRoster(rosterRes.data.guildRoster.roster);
         setFlagTag(DalApi.getRegionByName(guildDetails.guild.region.name).slug);
-        // setFaction(guildDetails.guild.faction);
-        setFaction(null);
+        setFaction(guildDetails.guild.faction);
       } catch (error) {
         // TODO: handle this error
       } finally {
@@ -61,21 +61,27 @@ const GuildPage = () => {
       ) : (
         <>
           <Container fluid className="w-50">
-            <Container className="d-flex flex-column justify-content-center">
+            <Container className="guildPage d-flex flex-column justify-content-center">
               <Row>
                 <Col xs={12}>
-                  <h1 className="text-center">
+                  <h1 className="text-center'" style={{ fontSize: '48px' }}>
                     {guild.alt_name ? guild.alt_name : guild.name}
                   </h1>
                 </Col>
               </Row>
-              <Row>
-                <Col xs={4}>
+              <Row className="align-items-center text-center">
+                <Col xs={4} className="">
                   <Flag slug={flagTag} alt={guild.region.name} />
                 </Col>
-                <Col xs={4}>{guild.realm.name}</Col>
+                <Col
+                  xs={4}
+                  className="font-weight-bold"
+                  style={{ fontSize: '32px' }}
+                >
+                  {guild.realm.name}
+                </Col>
                 <Col xs={4}>
-                  <Faction faction={faction} />
+                  <FactionIcons faction={faction} />
                 </Col>
               </Row>
             </Container>
