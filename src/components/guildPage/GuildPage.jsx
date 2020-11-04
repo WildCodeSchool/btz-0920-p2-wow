@@ -56,7 +56,9 @@ const GuildPage = () => {
             <Container className="d-flex flex-column justify-content-center">
               <Row>
                 <Col xs={12}>
-                  <h1 className="text-center">{guild.name}</h1>
+                  <h1 className="text-center">
+                    {guild.alt_name ? guild.alt_name : guild.name}
+                  </h1>
                 </Col>
               </Row>
               <Row>

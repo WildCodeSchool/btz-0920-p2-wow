@@ -121,7 +121,7 @@ const PlayerProfile = ({ match }) => {
         <LoadingSpinner className="text-center" />
       ) : (
         <div className={factionLogo === 'alliance' ? 'horde' : 'test'}>
-          <Container className="d-flex justify-content-center flex-wrap">
+          <Container className="d-flex justify-content-center flex-wrap mt-5">
             <Col xs={3}>
               <img src={thumbnail} alt="" />
             </Col>
@@ -139,7 +139,12 @@ const PlayerProfile = ({ match }) => {
               </div>
             </div>
           </Container>
-          <Table striped height="750px" opacity="0.5">
+          <Table
+            striped
+            className="d-flex justify-content-center align-items-md-center flex-wrap"
+            height="750px"
+            opacity="0.5"
+          >
             <tbody>
               <tr>
                 <td>

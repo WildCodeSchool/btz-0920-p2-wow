@@ -108,17 +108,18 @@ const Leaderboards = () => {
             </thead>
             <tbody>
               {playerResults
+                .filter((_, index) => index < playersToDisplay)
                 .map((result) => {
                   return (
                     <PlayerLeaderboardRow
                       name={result.character.name}
                       realm={result.character.realm.name}
                       region={result.character.region.slug}
+                      playerClass={result.character.class.name}
                       key={result.character.id}
                     />
                   );
-                })
-                .filter((_, index) => index < playersToDisplay)}
+                })}
             </tbody>
           </Table>
         </div>

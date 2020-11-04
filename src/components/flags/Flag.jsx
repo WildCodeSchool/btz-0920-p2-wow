@@ -28,7 +28,7 @@ function Flag({ slug, alt }) {
 
   if (isNull) return <GiWorld />;
 
-  return <img src={selectFlag()} alt={alt} className="w-50" />;
+  return <img src={selectFlag()} alt={alt} height="50px" width="70px" />;
 }
 
 Flag.defaultProps = {
