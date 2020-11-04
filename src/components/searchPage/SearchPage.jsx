@@ -114,8 +114,12 @@ const SearchPage = () => {
 
   return (
     <Container className="d-flex flex-column flex-1">
-      <p>Request Datas : {requestData}</p>
-      <Slider slides={items} handleSelection={handleSelection} />
+      <Slider
+        slides={items}
+        handleSelection={handleSelection}
+        regionData={regionData}
+        requestData={requestData}
+      />
     </Container>
   );
 };

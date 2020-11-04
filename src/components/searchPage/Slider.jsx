@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Carousel,
   CarouselControl,
@@ -9,14 +9,18 @@ import {
   FormGroup,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { eu, us, tw, kr } from '../../dal/realms.json';
 
+// import { factions, regions, searchTypes, server } from '../../dal/staticData';
 import WildCard from './WildCard';
 
 import './SearchPage.css';
 
-const Slider = ({ slides, handleSelection }) => {
+const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const [region, setRegion] = useState(tw);
+  const [server, setServer] = useState('Server');
 
   const next = () => {
     if (animating) return;
@@ -34,6 +38,27 @@ const Slider = ({ slides, handleSelection }) => {
     if (animating) return;
     setActiveIndex(newIndex);
   };
+
+  useEffect(() => {
+    switch (regionData.toLowerCase()) {
+      case 'eu':
+        setRegion(eu);
+        break;
+      case 'us':
+        setRegion(us);
+        break;
+      case 'tw':
+        setRegion(tw);
+        break;
+      case 'kr':
+        setRegion(kr);
+        break;
+      default:
+        break;
+    }
+  }, [region]);
+
+  // console.log(region);
 
   const items = slides.map(({ title, cardNames }) => {
     return (
@@ -53,16 +78,21 @@ const Slider = ({ slides, handleSelection }) => {
           {title === 'Server' ? (
             <FormGroup>
               <Input
-                onChange={handleSelection}
+                onChange={(e) => setServer(e.target.value)}
                 type="select"
                 className="custom-select custom-select-lg serverSelect"
                 name="server"
                 id="serverSelect"
               >
-                {cardNames.map(([label]) => {
+                console.log(server)
+                {region.map((realm) => {
                   return (
-                    <option key={label} value={label} className="text-dark">
-                      {label}
+                    <option
+                      key={realm.slug}
+                      value={realm.name}
+                      className="text-dark"
+                    >
+                      {realm.name}
                     </option>
                   );
                 })}
@@ -89,29 +119,32 @@ const Slider = ({ slides, handleSelection }) => {
   });
 
   return (
-    <Carousel
-      activeIndex={activeIndex}
-      next={next}
-      previous={previous}
-      interval={false}
-    >
-      <CarouselIndicators
-        items={slides}
+    <>
+      <p>{`${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[3]}`}</p>
+      <Carousel
         activeIndex={activeIndex}
-        onClickHandler={goToIndex}
-      />
-      {items}
-      <CarouselControl
-        direction="prev"
-        directionText="Previous"
-        onClickHandler={previous}
-      />
-      <CarouselControl
-        direction="next"
-        directionText="Next"
-        onClickHandler={next}
-      />
-    </Carousel>
+        next={next}
+        previous={previous}
+        interval={false}
+      >
+        <CarouselIndicators
+          items={slides}
+          activeIndex={activeIndex}
+          onClickHandler={goToIndex}
+        />
+        {items}
+        <CarouselControl
+          direction="prev"
+          directionText="Previous"
+          onClickHandler={previous}
+        />
+        <CarouselControl
+          direction="next"
+          directionText="Next"
+          onClickHandler={next}
+        />
+      </Carousel>
+    </>
   );
 };
 
@@ -123,6 +156,8 @@ Slider.propTypes = {
     })
   ).isRequired,
   handleSelection: PropTypes.func.isRequired,
+  regionData: PropTypes.string.isRequired,
+  requestData: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Slider;
