@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Faction from './flags/Faction';
+import FactionIcons from './flags/FactionIcons';
 
 function GuildRow({ name, faction, rank, region, realm }) {
   return (
     <Link
-      to={`/GuildPage/${name}/${region}/${realm}`}
+      to={`/Guild/${region}/${realm}/${name}`}
       style={{ textDecoration: 'none' }}
     >
       <tr className="row">
@@ -14,7 +14,7 @@ function GuildRow({ name, faction, rank, region, realm }) {
           <strong style={{ fontSize: '21px' }}>{name}</strong>
         </th>
         <td className="col-2">
-          <Faction faction={faction} />
+          <FactionIcons faction={faction} />
         </td>
       </tr>
     </Link>

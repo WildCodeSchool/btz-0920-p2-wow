@@ -15,21 +15,16 @@ const PJArray = () => {
   // const params = useParams();
   const [results, setResults] = useState([]);
   const [regionName, setRegionName] = useState('');
-  const [loadingGuilds, setLoadingGuilds] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(5);
 
   useEffect(() => {
-    DalApi.getTopPlayer(
-      (PJRes) => {
-        const { rankings } = PJRes;
-        setResults(rankings.rankedCharacters);
-        setRegionName(rankings.region.name);
-        setLoadingGuilds(false);
-      },
-      // params.region,
-      'eu'
-    );
+    DalApi.getTopPlayer('eu').then(({ data }) => {
+      setResults(data.rankings.rankedCharacters);
+      setRegionName(data.rankings.region.name);
+      setLoading(false);
+    });
   }, []);
 
   function page1() {
@@ -54,7 +49,7 @@ const PJArray = () => {
 
   return (
     <>
-      {loadingGuilds ? (
+      {loading ? (
         <LoadingSpinner />
       ) : (
         <div className="cssStyle d-flex flex-column text-center">

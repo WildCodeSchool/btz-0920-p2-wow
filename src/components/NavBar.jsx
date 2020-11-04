@@ -1,15 +1,15 @@
-import { Navbar, NavbarText } from 'reactstrap';
+import { Navbar } from 'reactstrap';
 import { FaSearch } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+import WoWildCraftLogo from './flags/WoWildCraftLogo';
+
 const NavBar = () => {
   return (
-    <Navbar className="bg-primary">
-      <NavbarText href="#" className="h1 font-weight-bold">
-        <Link to="/">
-          <h1>World Of Wildcraft</h1>
-        </Link>
-      </NavbarText>
+    <Navbar className="bg-secondary py-0 h-75">
+      <Link to="/">
+        <WoWildCraftLogo />
+      </Link>
       <Link to="/SearchPage">
         <FaSearch className="h2" />
       </Link>
