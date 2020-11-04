@@ -6,6 +6,9 @@ import LoadingSpinner from './LoadingSpinner';
 import EuroFlag from './flags/EuroFlag';
 import ChinaFlag from './flags/ChinaFlag';
 import UsFlag from './flags/UsFlag';
+import allianceLogo from '../img/alliance.png';
+import hordeLogo from '../img/horde.png';
+import './cssPages&Components/playerProfile.css';
 
 import './cssPages&Components/test.css';
 
@@ -22,6 +25,7 @@ const PlayerProfile = ({ match }) => {
   const [raidScore, setRaidScore] = useState('');
   const [mythicScore, setMythicScore] = useState('');
   const [loading, setLoading] = useState(true);
+  const [faction] = useState('');
 
   useEffect(() => {
     DalApi.getPlayer(
@@ -38,12 +42,33 @@ const PlayerProfile = ({ match }) => {
         setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
         setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
         setLoading(false);
+        // setFaction(data.faction);
       },
       match.params.region,
       match.params.realm,
       match.params.name
     );
   }, []);
+
+  let factionLogo = '';
+  const determineLogo = () => {
+    if (faction === 'alliance') {
+      factionLogo = allianceLogo;
+    } else {
+      factionLogo = hordeLogo;
+    }
+    return factionLogo;
+  };
+  determineLogo();
+
+  // // Inserts faction logo in background
+  // useEffect(() => {
+  //   document.body.style.background = `url(${determineLogo()}) no-repeat fixed center`;
+  //   document.body.style.backgroundColor = 'rgb(43, 62, 80)';
+  //   return () => {
+  //     document.body.style.background = ``;
+  //   };
+  // }, []);
 
   const displaysFlag = (reg) => {
     switch (reg) {
@@ -109,9 +134,9 @@ const PlayerProfile = ({ match }) => {
   return (
     <Container fluid className="w-50">
       {loading ? (
-        <LoadingSpinner />
+        <LoadingSpinner className="text-center" />
       ) : (
-        <div className="test">
+        <div className={factionLogo === 'alliance' ? 'horde' : 'test'}>
           <Container className="d-flex justify-content-center flex-wrap">
             <Col xs={3}>
               <img src={thumbnail} alt="" />
@@ -128,7 +153,7 @@ const PlayerProfile = ({ match }) => {
               </div>
             </div>
           </Container>
-          <Table striped>
+          <Table striped height="750px" opacity="0.5">
             <tbody>
               <tr>
                 <td>
