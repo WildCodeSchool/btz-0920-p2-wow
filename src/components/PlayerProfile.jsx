@@ -1,15 +1,14 @@
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Col, Table, Container } from 'reactstrap';
+
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
-import EuroFlag from './flags/EuroFlag';
-import ChinaFlag from './flags/ChinaFlag';
-import UsFlag from './flags/UsFlag';
-import allianceLogo from '../img/alliance.png';
-import hordeLogo from '../img/horde.png';
-import './cssPages&Components/playerProfile.css';
+import { alliance, horde } from '../img';
+import Flag from './flags/Flag';
+import Error from './Error';
 
+import './cssPages&Components/playerProfile.css';
 import './cssPages&Components/test.css';
 
 const PlayerProfile = ({ match }) => {
@@ -26,10 +25,11 @@ const PlayerProfile = ({ match }) => {
   const [mythicScore, setMythicScore] = useState('');
   const [loading, setLoading] = useState(true);
   const [faction] = useState('');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    DalApi.getPlayer(
-      (data) => {
+    DalApi.getPlayer(match.params.region, match.params.realm, match.params.name)
+      .then(({ data }) => {
         setPlayerRegion(data.region);
         setPlayerRealm(data.realm);
         setPlayerName(data.name);
@@ -43,19 +43,18 @@ const PlayerProfile = ({ match }) => {
         setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
         setLoading(false);
         // setFaction(data.faction);
-      },
-      match.params.region,
-      match.params.realm,
-      match.params.name
-    );
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, []);
 
   let factionLogo = '';
   const determineLogo = () => {
     if (faction === 'alliance') {
-      factionLogo = allianceLogo;
+      factionLogo = alliance;
     } else {
-      factionLogo = hordeLogo;
+      factionLogo = horde;
     }
     return factionLogo;
   };
@@ -69,23 +68,6 @@ const PlayerProfile = ({ match }) => {
   //     document.body.style.background = ``;
   //   };
   // }, []);
-
-  const displaysFlag = (reg) => {
-    switch (reg) {
-      case 'eu':
-        return <EuroFlag />;
-      case 'de':
-        return <EuroFlag />;
-      case 'us':
-        return <UsFlag />;
-      case 'China':
-        return <ChinaFlag />;
-      case 'Russian':
-        return <EuroFlag />;
-      default:
-        return 'error';
-    }
-  };
 
   const displaysSpecRole = (playerSpecRole) => {
     switch (playerSpecRole) {
@@ -131,6 +113,8 @@ const PlayerProfile = ({ match }) => {
     }
   };
 
+  if (error) return <Error msg={error.response.data.statusText} />;
+
   return (
     <Container fluid className="w-50">
       {loading ? (
@@ -146,7 +130,9 @@ const PlayerProfile = ({ match }) => {
                 <h1>{playerName}</h1>
               </Col>
               <div className="d-flex">
-                <Col xs="3">{displaysFlag(playerRegion)}</Col>
+                <Col xs="3">
+                  <Flag slug={playerRegion} />
+                </Col>
                 <Col>
                   <h3>{playerRealm}</h3>
                 </Col>
