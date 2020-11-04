@@ -10,12 +10,9 @@ const NavBar = () => {
           <h1>World Of Wildcraft</h1>
         </Link>
       </NavbarText>
-      <NavbarText href="#" className="h1 font-weight-bold">
-        <Link to="/SearchPage">
-          <h1>test search</h1>
-        </Link>
-      </NavbarText>
-      <FaSearch className="h2" />
+      <Link to="/SearchPage">
+        <FaSearch className="h2" />
+      </Link>
     </Navbar>
   );
 };
