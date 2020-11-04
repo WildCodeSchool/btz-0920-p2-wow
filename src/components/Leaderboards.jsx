@@ -1,230 +1,129 @@
 import { useEffect, useState } from 'react';
-import uniqid from 'uniqid';
 import {
   ButtonDropdown,
+  Container,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
   Table,
 } from 'reactstrap';
+
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
 import GuildLeaderboardRow from './GuildLeaderboardRow';
 import PlayerLeaderboardRow from './PlayerLeaderboardRow';
+import Error from './Error';
 
 const Leaderboards = () => {
   const [guildResults, setGuildResults] = useState([]);
   const [playerResults, setPlayerResults] = useState([]);
-  const [loadingGuilds, setLoadingGuilds] = useState(true);
-  const [loadingPlayers, setLoadingPlayers] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({});
+  const [loading, setLoading] = useState(true);
   const [dropdownOpen, setOpen] = useState(false);
   const [playersToDisplay, setPlayersToDisplay] = useState(5);
   const [guildsToDisplay, setGuildsToDisplay] = useState(5);
   const [dropdownItems] = useState([5, 10, 15, 20]);
 
   useEffect(() => {
-    DalApi.getTopGuild((data) => {
-      setGuildResults(data.raidRankings.rankedGuilds);
-      setLoadingGuilds(false);
-    });
-  }, []);
+    const getDatas = async () => {
+      try {
+        const topGuilds = await DalApi.getTopGuild();
+        const topPlayers = await DalApi.getTopPlayer();
 
-  useEffect(() => {
-    DalApi.getTopPlayer((data) => {
-      setPlayerResults(data.rankings.rankedCharacters);
-      setLoadingPlayers(false);
-    });
+        setGuildResults(topGuilds.data.raidRankings.rankedGuilds);
+        setPlayerResults(topPlayers.data.rankings.rankedCharacters);
+      } catch (err) {
+        setIsError(true);
+        setError(err.data);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getDatas();
   }, []);
 
   const toggle = () => setOpen(!dropdownOpen);
+
+  if (isError) {
+    return <Error msg={error.data.message} />;
+  }
+
   return (
-    <div>
-      <div className="leaderboard-container container d-flex mt-5 justify-content-center overflow-hidden">
-        {loadingGuilds || loadingPlayers ? (
-          <LoadingSpinner />
-        ) : (
-          <div className="d-flex w-100 flex-wrap">
-            <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-              <DropdownToggle caret>Show more</DropdownToggle>
-              <DropdownMenu>
-                {dropdownItems.map((item) => {
+    <Container className="leaderboard-container d-flex mt-5 justify-content-center overflow-hidden">
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <div className="d-flex w-100 flex-wrap">
+          <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+            <DropdownToggle caret>Show more</DropdownToggle>
+            <DropdownMenu>
+              {dropdownItems.map((item) => {
+                return (
+                  <DropdownItem
+                    onClick={(e) => {
+                      setPlayersToDisplay(e.target.value);
+                      setGuildsToDisplay(e.target.value);
+                    }}
+                    value={item}
+                    key={item}
+                  >
+                    {item}
+                  </DropdownItem>
+                );
+              })}
+            </DropdownMenu>
+          </ButtonDropdown>
+          <Table className="mx-5 w-100" hover>
+            <thead>
+              <tr>
+                <th className="h2 font-weight-bold" colSpan={12}>
+                  Top World Guilds
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {guildResults
+                .filter((_, index) => index < guildsToDisplay)
+                .map((result) => {
                   return (
-                    <DropdownItem
-                      onClick={(e) => {
-                        setPlayersToDisplay(e.target.value);
-                        setGuildsToDisplay(e.target.value);
-                      }}
-                      value={item}
-                      key={uniqid()}
-                    >
-                      {item}
-                    </DropdownItem>
+                    <GuildLeaderboardRow
+                      name={result.guild.name}
+                      realm={result.guild.realm.name}
+                      region={result.guild.region.slug}
+                      key={result.guild.id}
+                    />
                   );
                 })}
-              </DropdownMenu>
-            </ButtonDropdown>
-            <Table className="mx-5 w-100" hover>
-              <thead>
-                <tr>
-                  <th className="h2 font-weight-bold" colSpan={12}>
-                    Top World Guilds
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {guildResults
-                  .map((result) => {
-                    return (
-                      <GuildLeaderboardRow
-                        name={result.guild.name}
-                        realm={result.guild.realm.name}
-                        region={result.guild.region.name}
-                        key={uniqid()}
-                      />
-                    );
-                  })
-                  .filter((_, index) => index < guildsToDisplay)}
-              </tbody>
-            </Table>
-            <Table className="mx-5 w-100 text-nowrap" hover>
-              <thead>
-                <tr>
-                  <th className="h2 font-weight-bold" colSpan={12}>
-                    Top World Players
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {playerResults
-                  .map((result) => {
-                    return (
-                      <PlayerLeaderboardRow
-                        name={result.character.name}
-                        realm={result.character.realm.name}
-                        region={result.character.region.name}
-                        key={uniqid()}
-                      />
-                    );
-                  })
-                  .filter((_, index) => index < playersToDisplay)}
-              </tbody>
-            </Table>
-          </div>
-        )}
-      </div>
-    </div>
+            </tbody>
+          </Table>
+          <Table className="mx-5 w-100 text-nowrap" hover>
+            <thead>
+              <tr>
+                <th className="h2 font-weight-bold" colSpan={12}>
+                  Top World Players
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {playerResults
+                .map((result) => {
+                  return (
+                    <PlayerLeaderboardRow
+                      name={result.character.name}
+                      realm={result.character.realm.name}
+                      region={result.character.region.slug}
+                      key={result.character.id}
+                    />
+                  );
+                })
+                .filter((_, index) => index < playersToDisplay)}
+            </tbody>
+          </Table>
+        </div>
+      )}
+    </Container>
   );
 };
 export default Leaderboards;
-// class Leaderboards extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       guildResults: [],
-//       loadingGuilds: true,
-//       loadingPlayers: true,
-//       dropdownOpen: false,
-//       playersToDisplay: 5,
-//     };
-//     this.toggle = this.toggle.bind(this);
-//   }
-
-//   componentDidMount() {
-//     DalApi.getTopGuild((data) => {
-//       this.setState({
-//         guildResults: data.raidRankings.rankedGuilds,
-//         loadingGuilds: false,
-//       });
-//     });
-//     DalApi.getTopPlayer((data) => {
-//       this.setState({
-//         playerResults: data.rankings.rankedCharacters,
-//         loadingPlayers: false,
-//       });
-//     });
-//   }
-
-//   toggle() {
-//     const { dropdownOpen } = this.state;
-//     this.setState({ dropdownOpen: !dropdownOpen });
-//   }
-
-//   render() {
-//     const {
-//       guildResults,
-//       playerResults,
-//       loadingGuilds,
-//       loadingPlayers,
-//       dropdownOpen,
-//       playersToDisplay,
-//     } = this.state;
-//     return (
-//       <div>
-//         <div className="leaderboard-container container d-flex mt-5 justify-content-center overflow-hidden">
-//           {loadingGuilds || loadingPlayers ? (
-//             <LoadingSpinner />
-//           ) : (
-//             <div className="d-flex w-100 flex-wrap">
-//               <ButtonDropdown isOpen={dropdownOpen} onClick={this.toggle}>
-//                 <DropdownToggle caret>5</DropdownToggle>
-//                 <DropdownMenu>
-//                   <DropdownItem>10</DropdownItem>
-//                   <DropdownItem>15</DropdownItem>
-//                   <DropdownItem>20</DropdownItem>
-//                 </DropdownMenu>
-//               </ButtonDropdown>
-//               <Table className="mx-5 w-100" hover>
-//                 <thead>
-//                   <tr>
-//                     <th className="h2 font-weight-bold" colSpan={12}>
-//                       Top World Guilds
-//                     </th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   {guildResults
-//                     .map((result) => {
-//                       return (
-//                         <GuildLeaderboardRow
-//                           name={result.guild.name}
-//                           realm={result.guild.realm.name}
-//                           region={result.guild.region.name}
-//                           key={uniqid()}
-//                         />
-//                       );
-//                     })
-//                     .filter((_, index) => index < 5)}
-//                 </tbody>
-//               </Table>
-//               <Table className="mx-5 w-100 text-nowrap" hover>
-//                 <thead>
-//                   <tr>
-//                     <th className="h2 font-weight-bold" colSpan={12}>
-//                       Top World Players
-//                     </th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   {playerResults
-//                     .map((result) => {
-//                       return (
-//                         <PlayerLeaderboardRow
-//                           name={result.character.name}
-//                           realm={result.character.realm.name}
-//                           region={result.character.region.name}
-//                           key={uniqid()}
-//                         />
-//                       );
-//                     })
-//                     .filter((_, index) => index < playersToDisplay)}
-//                 </tbody>
-//               </Table>
-//             </div>
-//           )}
-//         </div>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Leaderboards;

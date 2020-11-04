@@ -12,7 +12,9 @@ const NavBar = () => {
           <WoWildCraftLogo />
         </Link>
       </NavbarText>
-      <FaSearch className="h2" />
+      <Link to="/SearchPage">
+        <FaSearch className="h2" />
+      </Link>
     </Navbar>
   );
 };

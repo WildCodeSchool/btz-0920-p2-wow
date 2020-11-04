@@ -1,12 +1,14 @@
-import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Col, Table, Container } from 'reactstrap';
+
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
-import EuroFlag from './flags/EuroFlag';
-import ChinaFlag from './flags/ChinaFlag';
-import UsFlag from './flags/UsFlag';
+import { alliance, horde } from '../img';
+import Flag from './flags/Flag';
+import Error from './Error';
 
+import './cssPages&Components/playerProfile.css';
 import './cssPages&Components/test.css';
 
 const PlayerProfile = ({ match }) => {
@@ -22,10 +24,12 @@ const PlayerProfile = ({ match }) => {
   const [raidScore, setRaidScore] = useState('');
   const [mythicScore, setMythicScore] = useState('');
   const [loading, setLoading] = useState(true);
+  const [faction] = useState('');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    DalApi.getPlayer(
-      (data) => {
+    DalApi.getPlayer(match.params.region, match.params.realm, match.params.name)
+      .then(({ data }) => {
         setPlayerRegion(data.region);
         setPlayerRealm(data.realm);
         setPlayerName(data.name);
@@ -38,29 +42,32 @@ const PlayerProfile = ({ match }) => {
         setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
         setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
         setLoading(false);
-      },
-      match.params.region,
-      match.params.realm,
-      match.params.name
-    );
+        // setFaction(data.faction);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, []);
 
-  const displaysFlag = (reg) => {
-    switch (reg) {
-      case 'eu':
-        return <EuroFlag />;
-      case 'de':
-        return <EuroFlag />;
-      case 'us':
-        return <UsFlag />;
-      case 'China':
-        return <ChinaFlag />;
-      case 'Russian':
-        return <EuroFlag />;
-      default:
-        return 'error';
+  let factionLogo = '';
+  const determineLogo = () => {
+    if (faction === 'alliance') {
+      factionLogo = alliance;
+    } else {
+      factionLogo = horde;
     }
+    return factionLogo;
   };
+  determineLogo();
+
+  // // Inserts faction logo in background
+  // useEffect(() => {
+  //   document.body.style.background = `url(${determineLogo()}) no-repeat fixed center`;
+  //   document.body.style.backgroundColor = 'rgb(43, 62, 80)';
+  //   return () => {
+  //     document.body.style.background = ``;
+  //   };
+  // }, []);
 
   const displaysSpecRole = (playerSpecRole) => {
     switch (playerSpecRole) {
@@ -106,12 +113,14 @@ const PlayerProfile = ({ match }) => {
     }
   };
 
+  if (error) return <Error msg={error.response.data.statusText} />;
+
   return (
     <Container fluid className="w-50">
       {loading ? (
-        <LoadingSpinner />
+        <LoadingSpinner className="text-center" />
       ) : (
-        <div className="test">
+        <div className={factionLogo === 'alliance' ? 'horde' : 'test'}>
           <Container className="d-flex justify-content-center flex-wrap">
             <Col xs={3}>
               <img src={thumbnail} alt="" />
@@ -121,14 +130,16 @@ const PlayerProfile = ({ match }) => {
                 <h1>{playerName}</h1>
               </Col>
               <div className="d-flex">
-                <Col xs="3">{displaysFlag(playerRegion)}</Col>
+                <Col xs="3">
+                  <Flag slug={playerRegion} />
+                </Col>
                 <Col>
                   <h3>{playerRealm}</h3>
                 </Col>
               </div>
             </div>
           </Container>
-          <Table striped>
+          <Table striped height="750px" opacity="0.5">
             <tbody>
               <tr>
                 <td>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Col, Container, Navbar, Row } from 'reactstrap';
-// import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import Hr from '../cssPages&Components/Hr';
 import DalApi from '../../dal/DalApi';
@@ -10,51 +9,46 @@ import GuildRoster from './GuildRoster';
 
 const GuildPage = () => {
   const params = useParams();
-  const [loadingRanking, setLoadingRanking] = useState(true);
-  const [loadingRoster, setLoadingRoster] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [guild, setGuild] = useState(null);
   const [raidRankings, setRaidRankings] = useState(null);
   const [raidProgress, setRaidProgress] = useState(null);
   const [roster, setRoster] = useState(null);
 
   useEffect(() => {
-    DalApi.getGuild(
-      (data) => {
-        const { guildDetails } = data;
+    const getDatas = async () => {
+      try {
+        const guildRes = await DalApi.getGuild(
+          params.region,
+          params.realm,
+          params.name
+        );
+
+        const rosterRes = await DalApi.getGuildRoster(
+          params.region,
+          params.realm,
+          params.name
+        );
+
+        const { guildDetails } = guildRes.data;
         setGuild(guildDetails.guild);
         setRaidRankings(guildDetails.raidRankings);
         setRaidProgress(guildDetails.raidProgress);
-        setLoadingRanking(false);
+        setRoster(rosterRes.data.guildRoster.roster);
+      } catch (error) {
+        // TODO: handle this error
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        // console.log(guildDetails);
-      },
-      params.region,
-      params.realm,
-      params.name
-    );
+    getDatas();
   }, []);
-
-  useEffect(() => {
-    DalApi.getGuildRoster(
-      (data) => {
-        setRoster(data.guildRoster.roster);
-        // console.log(data, roster);
-        setLoadingRoster(false);
-      },
-      params.region,
-      params.realm,
-      params.name
-    );
-  }, []);
-
-  // refreshState(data) {
-  //   set({ guild: data.guildDetails });
-  // }
 
   return (
     <div>
       <Navbar />
-      {loadingRanking || loadingRoster ? (
+      {loading ? (
         <LoadingSpinner />
       ) : (
         <>
@@ -84,13 +78,5 @@ const GuildPage = () => {
     </div>
   );
 };
-
-// GuildPage.propTypes = {
-//   // eslint-disable-next-line react/forbid-prop-types
-//   match: PropTypes.object.isRequired,
-//   name: PropTypes.string.isRequired,
-//   realm: PropTypes.string.isRequired,
-//   region: PropTypes.string.isRequired,
-// };
 
 export default GuildPage;
