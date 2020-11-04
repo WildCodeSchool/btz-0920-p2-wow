@@ -10,8 +10,9 @@ import {
 } from './staticData';
 
 // const TIPS_BASILE = 'https://cors-proxy.htmldriven.com/?url=';
-const TIPS_BASILE = 'https://thingproxy.freeboard.io/fetch/';
-// const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
+// const TIPS_BASILE = 'https://thingproxy.freeboard.io/fetch/';
+const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
+
 const GUILD = 'https://raider.io/api/guilds/';
 const INSTANCE_RANKING = 'https://raider.io/api/raids/instance-rankings?';
 const MYTHIC_PLUS_RANKING_CHARACTER =
@@ -303,7 +304,10 @@ class DalApi {
    * @returns string parameter for realm
    */
   static createReqParamRealm(realm, and = true) {
-    return and ? '&realm='.concat(realm) : 'realm='.concat(realm);
+    const formatedRealm = realm.toLowerCase().replace(' ', '-');
+    return and
+      ? '&realm='.concat(formatedRealm)
+      : 'realm='.concat(formatedRealm);
   }
 
   /**
@@ -357,9 +361,10 @@ class DalApi {
   }
 
   static createReqParamGuild(guildName, and = true) {
+    const encodedGuildName = encodeURIComponent(guildName);
     return and
-      ? '&guild='.concat(guildName.replaceAll(' ', '%20'))
-      : 'guild='.concat(guildName.replaceAll(' ', '%20'));
+      ? '&guild='.concat(encodedGuildName)
+      : 'guild='.concat(encodedGuildName);
   }
 }
 

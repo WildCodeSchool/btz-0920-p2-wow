@@ -27,13 +27,13 @@ const displaysFlag = (region) => {
 };
 
 const GuildLeaderboardRow = (props) => {
-  const { name, realm, region } = props;
+  const { realm, region, name } = props;
   return (
     <tr>
       <th>
         {' '}
         <Link
-          to={`/GuildPage/${name}/${region}/${realm}`}
+          to={`/GuildPage/${region}/${realm}/${name}/`}
           style={{ textDecoration: 'none' }}
         >
           {name}
