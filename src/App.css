@@ -1,6 +1,11 @@
 .App {
-  text-align: center;
   min-height: 100vh;
+  height: 100%;
+  text-align: center;
+  font-family: Ubuntu, sans-serif;
+  background: fixed repeat-y
+      linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(./img/backgroundImage.jpg);
 }
 
 .border-vert {

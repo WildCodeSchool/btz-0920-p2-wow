@@ -10,10 +10,11 @@ import {
 } from './staticData';
 
 const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
-const GUILD_DETAILS = 'https://raider.io/api/guilds/details?';
+const GUILD = 'https://raider.io/api/guilds/';
 const INSTANCE_RANKING = 'https://raider.io/api/raids/instance-rankings?';
 const MYTHIC_PLUS_RANKING_CHARACTER =
   'https://raider.io/api/mythic-plus/rankings/characters?';
+const CHARACTER_DETAILS = 'https://raider.io/api/v1/characters/profile?';
 class DalApi {
   /**
    * description: return an array of all 4 regions with id, name and request slug
@@ -37,6 +38,12 @@ class DalApi {
     return classesAndSpecs;
   }
 
+  static getClassesAndSpecsBySlug(slug) {
+    return slug
+      ? DalApi.getClassesAndSpecs().filter((c) => c.slug === slug)[0]
+      : null;
+  }
+
   /**
    * description: return an array of all 3 roles with id, name and request slug
    */
@@ -56,6 +63,15 @@ class DalApi {
    */
   static getRaids() {
     return raids;
+  }
+
+  /**
+   *
+   * @param {*} slug Slug of the raid to find
+   * @returns an object raid or null
+   */
+  static getRaidBySlug(slug) {
+    return slug ? DalApi.getRaids().filter((r) => r.slug === slug)[0] : null;
   }
 
   /**
@@ -113,16 +129,46 @@ class DalApi {
    * @param {*} guildName
    */
   static getGuild(callback, region, realm, guildName) {
-    const requestBase = TIPS_BASILE.concat(GUILD_DETAILS);
-    const guildParam = guildName.replaceAll(' ', '%20');
-
+    const requestBase = TIPS_BASILE.concat(GUILD).concat('details?');
     // Construct the request
     const request = requestBase
-      .concat(DalApi.createReqParamRegion(region, false))
+      .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
       .concat(DalApi.createReqParamRealm(realm))
-      .concat('&guild=')
-      .concat(guildParam);
+      .concat(DalApi.createReqParamGuild(guildName));
 
+    DalApi.axiosRequest(request, callback);
+  }
+
+  static getGuildRoster(callback, region, realm, guildName) {
+    const requestBase = TIPS_BASILE.concat(GUILD).concat('roster?');
+    // Construct the request
+    const request = requestBase
+      .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
+      .concat(DalApi.createReqParamRealm(realm))
+      .concat(DalApi.createReqParamGuild(guildName));
+
+    DalApi.axiosRequest(request, (data) => {
+      callback(data);
+    });
+  }
+
+  /**
+   * @param {*} callbacl
+   * @param {*} region
+   * @param {*} realm
+   * @param {*} name
+   */
+  static getPlayer(callback, region, realm, name) {
+    const requestBase = CHARACTER_DETAILS;
+    const nameParam = name.replaceAll(' ', '%20');
+    // Construct the request
+    const request = requestBase
+      .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
+      .concat(DalApi.createReqParamRealm(realm))
+      .concat(DalApi.createReqParamName(nameParam))
+      .concat(
+        '&fields=gear%2Cguild%2Cmythic_plus_scores_by_season:current%2Craid_progression'
+      );
     DalApi.axiosRequest(request, callback);
   }
 
@@ -155,13 +201,33 @@ class DalApi {
     DalApi.axiosRequest(request, callback);
   }
 
+  static regionParam(region) {
+    switch (region) {
+      case 'United States & Oceania':
+        return 'us';
+      case 'Europe':
+        return 'eu';
+      case 'China':
+        return 'cn';
+      case 'Taiwan':
+        return 'tw';
+      case 'Korea':
+        return 'kr';
+      default:
+        return 'error';
+    }
+  }
+
   /**
    *
    * @param {*} url url of the request
    * @param {*} callback function or method called when result is ok
    */
   static axiosRequest(url, callback) {
-    axios.get(url).then((response) => callback(response.data));
+    axios.get(url).then((response) => {
+      // console.log(response.data);
+      callback(response.data);
+    });
     // axios.get(url).then((response) => callback(console.log(response.data)));
   }
 
@@ -275,6 +341,22 @@ class DalApi {
    */
   static createReqParamLimit(limit, and = true) {
     return and ? '&limit='.concat(limit) : 'limit='.concat(limit);
+  }
+
+  /**
+   * static method because it don't use 'this' then this méthod is common for all instances
+   * @param {*} name
+   * @param {*} and : liaison '&' for joining parameters
+   * @returns string parameter for recent
+   */
+  static createReqParamName(name, and = true) {
+    return and ? '&name='.concat(name) : 'name='.concat(name);
+  }
+
+  static createReqParamGuild(guildName, and = true) {
+    return and
+      ? '&guild='.concat(guildName.replaceAll(' ', '%20'))
+      : 'guild='.concat(guildName.replaceAll(' ', '%20'));
   }
 }
 
