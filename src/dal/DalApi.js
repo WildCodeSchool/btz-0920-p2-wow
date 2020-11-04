@@ -9,7 +9,9 @@ import {
   seasons,
 } from './staticData';
 
-const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
+// const TIPS_BASILE = 'https://cors-proxy.htmldriven.com/?url=';
+const TIPS_BASILE = 'https://thingproxy.freeboard.io/fetch/';
+// const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
 const GUILD = 'https://raider.io/api/guilds/';
 const INSTANCE_RANKING = 'https://raider.io/api/raids/instance-rankings?';
 const MYTHIC_PLUS_RANKING_CHARACTER =
@@ -224,6 +226,7 @@ class DalApi {
    * @param {*} callback function or method called when result is ok
    */
   static axiosRequest(url, callback) {
+    // console.log(url);
     axios.get(url).then((response) => {
       // console.log(response.data);
       callback(response.data);
