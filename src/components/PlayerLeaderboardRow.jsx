@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 import Flag from './flags/Flag';
 
-const PlayerLeaderboardRow = ({ name, realm, region }) => {
+import './cssPages&Components/ClassColor.css';
+
+const PlayerLeaderboardRow = ({ name, realm, region, playerClass }) => {
   return (
     <tr className="d-flex">
       <th className="col-md-5">
@@ -11,7 +13,7 @@ const PlayerLeaderboardRow = ({ name, realm, region }) => {
           to={`/player/${name}/${region}/${realm}`}
           style={{ textDecoration: 'none' }}
         >
-          {name}
+          <p className={playerClass}>{name}</p>
         </Link>
       </th>
       <th className="col-md-5">{realm}</th>
@@ -26,6 +28,7 @@ PlayerLeaderboardRow.propTypes = {
   name: PropTypes.string.isRequired,
   realm: PropTypes.string.isRequired,
   region: PropTypes.string.isRequired,
+  playerClass: PropTypes.string.isRequired,
 };
 
 export default PlayerLeaderboardRow;

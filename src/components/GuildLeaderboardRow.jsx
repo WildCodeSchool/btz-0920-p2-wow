@@ -6,7 +6,7 @@ import Flag from './flags/Flag';
 const GuildLeaderboardRow = ({ realm, region, name }) => {
   return (
     <tr className="d-flex">
-      <th className="col-md-5">
+      <th className="col-md-5" style={{ fontSize: 21 }}>
         <Link
           to={`/guild/${region}/${realm}/${name}/`}
           style={{ textDecoration: 'none' }}
