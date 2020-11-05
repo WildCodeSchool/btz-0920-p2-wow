@@ -1,5 +1,5 @@
 import propTypes from 'prop-types';
-import { Col, Container, Row, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 import GuildRankingRow from './GuildRankingRow';
 
 // const { Container } = require('reactstrap');
@@ -9,6 +9,13 @@ export default function GuildRanking(props) {
   const { raidRankings, raidProgress } = props;
   return (
     <Table className="d-flex flex-column">
+      <thead>
+        <tr className="d-flex" style={{ fontSize: '24px' }}>
+          <th className="col-md-5">Raid</th>
+          <th className="col-md-4">Progress</th>
+          <th className="col-md-3">rank</th>
+        </tr>
+      </thead>
       {raidRankings.map((ranking, index) => (
         <GuildRankingRow
           raid={ranking}
@@ -16,11 +23,6 @@ export default function GuildRanking(props) {
           key={ranking.raid}
         />
       ))}
-      <Container>
-        <Row>
-          <Col>sdfsf</Col>
-        </Row>
-      </Container>
     </Table>
   );
 }

@@ -116,92 +116,99 @@ const PlayerProfile = ({ match }) => {
   if (error) return <Error msg={error.response.data.statusText} />;
 
   return (
-    <Container fluid className="w-50">
-      {loading ? (
-        <LoadingSpinner className="text-center" />
-      ) : (
-        <div className={factionLogo === 'alliance' ? 'horde' : 'test'}>
-          <Container className="d-flex justify-content-center flex-wrap">
-            <Col xs={3}>
-              <img src={thumbnail} alt="" />
-            </Col>
-            <div className="d-flex flex-column">
-              <Col xs={6}>
-                <h1>{playerName}</h1>
+    <>
+      <div style={{ height: '100px', minWidth: '95vw' }} />
+      <Container fluid className="w-50">
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <div className={factionLogo === 'alliance' ? 'horde' : 'test'}>
+            <Container className="d-flex justify-content-center flex-wrap mt-5">
+              <Col xs={3}>
+                <img src={thumbnail} alt="" />
               </Col>
-              <div className="d-flex">
-                <Col xs="3">
-                  <Flag slug={playerRegion} />
+              <div className="d-flex flex-column">
+                <Col xs={6}>
+                  <h1>{playerName}</h1>
                 </Col>
-                <Col>
-                  <h3>{playerRealm}</h3>
-                </Col>
+                <div className="d-flex">
+                  <Col xs="3">
+                    <Flag slug={playerRegion} />
+                  </Col>
+                  <Col>
+                    <h3>{playerRealm}</h3>
+                  </Col>
+                </div>
               </div>
-            </div>
-          </Container>
-          <Table
-            striped
-            className="d-flex justify-content-center align-items-md-center flex-wrap"
-            height="750px"
-            opacity="0.5"
-          >
-            <tbody>
-              <tr>
-                <td>
-                  <img
-                    src={displaysClass(charClass)}
-                    alt=""
-                    height="64px"
-                    width="64px"
-                  />
-                </td>
+            </Container>
+            <Table
+              striped
+              className="d-flex justify-content-center align-items-md-center flex-wrap"
+              height="750px"
+              opacity="0.5"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    <img
+                      src={displaysClass(charClass)}
+                      alt=""
+                      height="64px"
+                      width="64px"
+                    />
+                  </td>
 
-                <td>
-                  <h4>{specName}</h4>
-                </td>
-                <td>
-                  <img src={displaysSpecRole(specRole)} alt="" height="64px" />
-                </td>
-              </tr>
-              <tr>
-                <td xs={3}>
-                  <h4>Guild</h4>
-                </td>
-                <td xs={9}>
-                  <h4>{guild}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td xs={3}>
-                  <h4>Item level</h4>
-                </td>
-                <td>
-                  <h4>{itemLevel}</h4>
-                </td>
-                <td />
-              </tr>
-              <tr>
-                <td xs={9}>
-                  <h4>Current raid score</h4>
-                </td>
-                <td xs={3}>
-                  <h4>{raidScore}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td xs={9}>
-                  <h4>Current mythic score</h4>
-                </td>
-                <td xs={3}>
-                  <h4>{mythicScore}</h4>
-                </td>
-                <td />
-              </tr>
-            </tbody>
-          </Table>
-        </div>
-      )}
-    </Container>
+                  <td>
+                    <h4>{specName}</h4>
+                  </td>
+                  <td>
+                    <img
+                      src={displaysSpecRole(specRole)}
+                      alt=""
+                      height="64px"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td xs={3}>
+                    <h4>Guild</h4>
+                  </td>
+                  <td xs={9}>
+                    <h4>{guild}</h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td xs={3}>
+                    <h4>Item level</h4>
+                  </td>
+                  <td>
+                    <h4>{itemLevel}</h4>
+                  </td>
+                  <td />
+                </tr>
+                <tr>
+                  <td xs={9}>
+                    <h4>Current raid score</h4>
+                  </td>
+                  <td xs={3}>
+                    <h4>{raidScore}</h4>
+                  </td>
+                </tr>
+                <tr>
+                  <td xs={9}>
+                    <h4>Current mythic score</h4>
+                  </td>
+                  <td xs={3}>
+                    <h4>{mythicScore}</h4>
+                  </td>
+                  <td />
+                </tr>
+              </tbody>
+            </Table>
+          </div>
+        )}
+      </Container>
+    </>
   );
 };
 

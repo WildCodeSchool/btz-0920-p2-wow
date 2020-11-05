@@ -9,6 +9,15 @@ const GuildRoster = (props) => {
   return (
     <>
       <Table className="d-flex flex-column">
+        <thead>
+          <tr className="d-flex" hover style={{ fontSize: '24px' }}>
+            <th className="col-md-5">Player</th>
+            <th className="col-md-3">Spec</th>
+            <th className="col-md-2">rank</th>
+            <th className="col-md-1">Level</th>
+            <th className="col-md-1">rank</th>
+          </tr>
+        </thead>
         {roster
           .filter((elmt, index) => index >= 0 && index < 5)
           .map((player) => (

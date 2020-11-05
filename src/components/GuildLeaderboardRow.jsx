@@ -5,20 +5,23 @@ import Flag from './flags/Flag';
 
 const GuildLeaderboardRow = ({ realm, region, name }) => {
   return (
-    <tr className="d-flex">
-      <th className="col-md-5">
-        <Link
-          to={`/guild/${region}/${realm}/${name}/`}
-          style={{ textDecoration: 'none' }}
+    <Link
+      to={`/guild/${region}/${realm}/${name}/`}
+      style={{ textDecoration: 'none' }}
+    >
+      <tr className="d-flex">
+        <td
+          className="col-md-5 d-flex align-items-center"
+          style={{ fontSize: 21 }}
         >
           {name}
-        </Link>
-      </th>
-      <th className="col-md-5">{realm}</th>
-      <th className="col-md-2">
-        <Flag slug={region} />
-      </th>
-    </tr>
+        </td>
+        <td className="col-md-5 d-flex align-items-center">{realm}</td>
+        <td className="col-md-2 d-flex align-items-center">
+          <Flag slug={region} />
+        </td>
+      </tr>
+    </Link>
   );
 };
 

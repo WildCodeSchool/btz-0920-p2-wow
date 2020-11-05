@@ -3,6 +3,9 @@
   font-family: Ubuntu, sans-serif;
   font-size: 48px;
   font-weight: 700;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .cssStyle div h2 {

@@ -53,9 +53,13 @@ const Leaderboards = () => {
   return (
     <Container className="leaderboard-container d-flex mt-5 justify-content-center overflow-hidden">
       {loading ? (
-        <LoadingSpinner />
+        <div className="d-flex flex-column align-items-center">
+          <div style={{ height: '100px', minWidth: '100vw' }} />
+          <LoadingSpinner />
+        </div>
       ) : (
         <div className="d-flex w-100 flex-wrap">
+          <div style={{ height: '100px', minWidth: '100vw' }} />
           <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
             <DropdownToggle caret>Show more</DropdownToggle>
             <DropdownMenu>
@@ -75,7 +79,7 @@ const Leaderboards = () => {
               })}
             </DropdownMenu>
           </ButtonDropdown>
-          <Table className="mx-5 w-100" hover>
+          <Table className="mx-5 w-100 border-none" hover>
             <thead>
               <tr>
                 <th className="h2 font-weight-bold" colSpan={12}>
@@ -108,17 +112,18 @@ const Leaderboards = () => {
             </thead>
             <tbody>
               {playerResults
+                .filter((_, index) => index < playersToDisplay)
                 .map((result) => {
                   return (
                     <PlayerLeaderboardRow
                       name={result.character.name}
                       realm={result.character.realm.name}
                       region={result.character.region.slug}
+                      playerClass={result.character.class.name}
                       key={result.character.id}
                     />
                   );
-                })
-                .filter((_, index) => index < playersToDisplay)}
+                })}
             </tbody>
           </Table>
         </div>
