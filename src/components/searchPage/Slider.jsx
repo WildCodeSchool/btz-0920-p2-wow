@@ -9,8 +9,9 @@ import {
   FormGroup,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { eu, us, tw, kr } from '../../dal/realms.json';
+import { Link } from 'react-router-dom';
 
+import { eu, us, tw, kr } from '../../dal/realms.json';
 // import { factions, regions, searchTypes, server } from '../../dal/staticData';
 import WildCard from './WildCard';
 
@@ -19,7 +20,7 @@ import './SearchPage.css';
 const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const [region, setRegion] = useState(tw);
+  const [region, setRegion] = useState(eu);
   const [server, setServer] = useState('Server');
 
   const next = () => {
@@ -125,6 +126,12 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   return (
     <>
       <p>{`${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}</p>
+      <Link
+        to={`/GuildsArray/${requestData[1]}/${server}/`}
+        style={{ textDecoration: 'none' }}
+      >
+        GO
+      </Link>
       <Carousel
         activeIndex={activeIndex}
         next={next}
@@ -137,6 +144,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
           onClickHandler={goToIndex}
         />
         {items}
+
         <CarouselControl
           direction="prev"
           directionText="Previous"

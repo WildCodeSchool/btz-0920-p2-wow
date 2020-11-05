@@ -37,14 +37,6 @@ const SearchPage = () => {
       title: 'Region',
     },
     {
-      cardNames: [
-        ['Archimonde', character],
-        ['Sargeras', guild],
-        ["Eldre'thalas", character],
-        ['Hyjal', guild],
-        ['Area 52', character],
-        ['Arthas', guild],
-      ],
       title: 'Server',
     },
     {
