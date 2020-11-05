@@ -1,140 +1,101 @@
 /* eslint-disable react/forbid-prop-types */
 import { useState } from 'react';
-import {
-  Container,
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-} from 'reactstrap';
+import { Carousel, Container } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-import guild from '../../img/guild.jpg';
-import alliance from '../../img/alliance.png';
-import horde from '../../img/horde.png';
-import character from '../../img/character.jpg';
-import europe from '../../img/europe.png';
-import usa from '../../img/usa.png';
-import korea from '../../img/korea.png';
-import taiwan from '../../img/taiwan.png';
-import WildCard from './WildCard';
+import Slider from './Slider';
 
-const items = [
-  {
-    cardNames: [
-      ['Guild', guild],
-      ['Character', character],
-    ],
-    title: 'Guild',
-  },
-  {
-    cardNames: [
-      ['EU', europe],
-      ['US', usa],
-      ['KR', korea],
-      ['TW', taiwan],
-    ],
-    title: 'Region',
-  },
-  {
-    cardNames: [
-      ['Archimonde', character],
-      ['Sargeras', guild],
-      ["Eldre'thalas", character],
-      ['Hyjal', guild],
-      ['Area 52', character],
-      ['Arthas', guild],
-    ],
-    title: 'Server',
-  },
-  {
-    cardNames: [
-      ['Horde', horde],
-      ['Alliance', alliance],
-    ],
-    title: 'Faction',
-  },
-];
+import {
+  guild,
+  alliance,
+  horde,
+  character,
+  europe,
+  usa,
+  korea,
+  taiwan,
+} from '../../img';
+
+import './SearchPage.css';
 
 const SearchPage = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [animating, setAnimating] = useState(false);
+  const [items] = useState([
+    {
+      cardNames: [
+        ['Guild', guild],
+        ['Character', character],
+      ],
+      title: 'Search',
+    },
+    {
+      cardNames: [
+        ['EU', europe],
+        ['US', usa],
+        ['KR', korea],
+        ['TW', taiwan],
+      ],
+      title: 'Region',
+    },
+    {
+      title: 'Server',
+    },
+    {
+      cardNames: [
+        ['Horde', horde],
+        ['Alliance', alliance],
+      ],
+      title: 'Faction',
+    },
+  ]);
 
-  const next = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
-    setActiveIndex(nextIndex);
+  const [searchTypeData, setSearchTypeData] = useState('Search Type');
+  const [regionData, setRegionData] = useState('Region');
+  const [factionData, setFactionData] = useState('Faction');
+
+  const handleSelection = (e) => {
+    switch (e.target.id) {
+      case 'Guild':
+        setSearchTypeData('Guild');
+        break;
+      case 'Character':
+        setSearchTypeData('Character');
+        break;
+      case 'EU':
+        setRegionData('EU');
+        break;
+      case 'US':
+        setRegionData('US');
+        break;
+      case 'KR':
+        setRegionData('KR');
+        break;
+      case 'TW':
+        setRegionData('TW');
+        break;
+      case 'Horde':
+        setFactionData('Horde');
+        break;
+      case 'Alliance':
+        setFactionData('Alliance');
+        break;
+      default:
+        break;
+    }
   };
 
-  const previous = () => {
-    if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
-    setActiveIndex(nextIndex);
-  };
-
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  };
-
-  const slides = items.map((item) => {
-    return (
-      <CarouselItem
-        onExiting={() => setAnimating(false)}
-        onExited={() => setAnimating(false)}
-        key={item.src}
-      >
-        <Container className="d-flex flex-wrap justify-content-center">
-          {item.cardNames.map((cardName) => {
-            return (
-              <WildCard
-                key={cardName[0]}
-                title={cardName[0]}
-                image={cardName[1]}
-                width="240px"
-                height="240px"
-              />
-            );
-          })}
-        </Container>
-      </CarouselItem>
-    );
-  });
+  const requestData = [searchTypeData, regionData, factionData];
 
   return (
     <Container
-      className="d-flex flex-column justify-content-start align-items-center"
-      style={{
-        height: '100vh',
-      }}
+      className="d-flex flex-column flex-1"
+      style={{ marginTop: '120px' }}
     >
-      <div className="d-flex justify-content-center">
-        <h1 className="border-bot-primary title-y m-5 ">Looking For</h1>
-      </div>
-      <Carousel
-        style={{ display: 'contents' }}
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous}
-        interval={false}
-      >
-        <CarouselIndicators
-          items={items}
-          activeIndex={activeIndex}
-          onClickHandler={goToIndex}
-        />
-        {slides}
-        <CarouselControl
-          direction="prev"
-          directionText="Previous"
-          onClickHandler={previous}
-        />
-        <CarouselControl
-          direction="next"
-          directionText="Next"
-          onClickHandler={next}
-        />
-      </Carousel>
+      <Slider
+        slides={items}
+        handleSelection={handleSelection}
+        regionData={regionData}
+        requestData={requestData}
+      />
     </Container>
   );
 };

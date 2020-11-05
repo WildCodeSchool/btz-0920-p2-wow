@@ -1,15 +1,9 @@
 import { useEffect, useState } from 'react';
-import {
-  Table,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  Container,
-} from 'reactstrap';
+import { Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
+// import { useParams } from 'react-router-dom';
 
-import { useParams } from 'react-router-dom';
-import GuildRow from './GuildRow';
+import PJRow from './PJRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 
@@ -17,23 +11,18 @@ import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
 
-const GuildsArray = () => {
-  const params = useParams();
+const PJArray = () => {
+  // const params = useParams();
   const [results, setResults] = useState([]);
+  const [regionName, setRegionName] = useState('');
   const [loading, setLoading] = useState(true);
-  const [serverSlug, setServerSlug] = useState('');
-  const [realmName, setRealmName] = useState('');
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(5);
 
   useEffect(() => {
-    DalApi.getTopGuild(
-      params.region.toLowerCase(),
-      params.realm.toLowerCase()
-    ).then(({ data }) => {
-      setResults(data.raidRankings.rankedGuilds);
-      setServerSlug(params.region);
-      setRealmName(params.realm);
+    DalApi.getTopPlayer('eu').then(({ data }) => {
+      setResults(data.rankings.rankedCharacters);
+      setRegionName(data.rankings.region.name);
       setLoading(false);
     });
   }, []);
@@ -62,24 +51,21 @@ const GuildsArray = () => {
     <>
       {loading ? (
         <div className="cssStyle d-flex flex-column align-items-center">
-          <div style={{ height: '100px', minWidth: '95vw' }} />
+          <div style={{ height: '100px', minWidth: '100vw' }} />
           <LoadingSpinner />
         </div>
       ) : (
-        <div
-          className="cssStyle d-flex flex-column align-items-center text-center"
-          style={{ maxWidth: '100vw' }}
-        >
-          <div style={{ height: '100px', minWidth: '99vw' }} />
+        <div className="cssStyle d-flex flex-column text-center">
+          <div style={{ height: '100px', minWidth: '100vw' }} />
           <div>
             <h2>
-              Top <span>{serverSlug}</span> {realmName} Guilds
+              Top <span>{regionName}</span> Characters
             </h2>
             <Hr />
           </div>
-          <Container>
-            <div className="row align-self-center">
-              <div className="col-1 d-flex align-items-center">
+          <main className="container min-vw-100">
+            <div className="row w-100">
+              <div className="col-1 align-self-center">
                 <ToolsFilters />
               </div>
               <Table className="col-10" w-auto text-nowrap hover>
@@ -87,13 +73,14 @@ const GuildsArray = () => {
                   {results
                     .map((result) => {
                       return (
-                        <GuildRow
-                          name={result.guild.name}
-                          faction={result.guild.faction}
-                          slug={result.guild.region.slug}
+                        <PJRow
+                          name={result.character.name}
+                          pjClass={result.character.class.name}
+                          faction={result.character.faction}
                           rank={result.rank}
-                          region={result.guild.region.name}
-                          realm={result.guild.realm.name}
+                          spec={result.character.spec.name}
+                          realm={result.character.realm.name}
+                          region={regionName}
                           key={result.rank}
                         />
                       );
@@ -102,7 +89,7 @@ const GuildsArray = () => {
                 </tbody>
               </Table>
             </div>
-          </Container>
+          </main>
           <Pagination className="align-self-center" size="lg clearfix">
             <PaginationItem className="paginationItem">
               <PaginationLink onClick={page1}>
@@ -133,4 +120,4 @@ const GuildsArray = () => {
   );
 };
 
-export default GuildsArray;
+export default PJArray;

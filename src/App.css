@@ -1,22 +1,18 @@
 .App {
+  min-height: 100vh;
+  height: 100%;
   text-align: center;
+  font-family: Ubuntu, sans-serif;
+  background: fixed repeat-y url(./img/backgroundImage.jpg);
 }
 
-.slide {
-  display: contents;
+.border-vert {
+  border-left: var(--main-color) 6px solid;
+  padding-left: 15px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.flex-1 {
+  flex: 1;
 }
 
 @media screen and (max-width: 768px) {

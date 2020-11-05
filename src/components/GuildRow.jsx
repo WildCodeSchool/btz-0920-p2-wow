@@ -1,46 +1,32 @@
 import PropTypes from 'prop-types';
-import { GiWorld } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
+import FactionIcons from './flags/FactionIcons';
 
-import EuroFlag from './EuroFlag';
-import ChinaFlag from './ChinaFlag';
-import UsFlag from './UsFlag';
-
-const flag = (slug) => {
-  switch (slug) {
-    case 'eu':
-      return <EuroFlag />;
-    case 'us':
-      return <UsFlag />;
-    case 'ch':
-      return <ChinaFlag />;
-    default:
-      return <GiWorld />;
-  }
-};
-
-function GuildRow(props) {
-  const { name, faction, slug, rank, bckgrdStyle } = props;
+function GuildRow({ name, faction, rank, region, realm }) {
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <tr {...bckgrdStyle}>
-      <td>{rank}</td>
-      <th>
-        <strong style={{ fontSize: '21px' }}>{name}</strong>
-      </th>
-      <td>
-        <p>{faction}</p>
-      </td>
-      <td>{flag(slug)}</td>
-    </tr>
+    <Link
+      to={`/Guild/${region}/${realm}/${name}`}
+      style={{ textDecoration: 'none' }}
+    >
+      <tr className="row">
+        <td className="col-2 d-flex align-items-center">{rank}</td>
+        <th className="col-8 d-flex align-items-center">
+          <strong style={{ fontSize: '21px' }}>{name}</strong>
+        </th>
+        <td className="col-2 d-flex align-items-center">
+          <FactionIcons faction={faction} />
+        </td>
+      </tr>
+    </Link>
   );
 }
 
 GuildRow.propTypes = {
   name: PropTypes.string.isRequired,
   faction: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  bckgrdStyle: PropTypes.string.isRequired,
   rank: PropTypes.number.isRequired,
+  region: PropTypes.string.isRequired,
+  realm: PropTypes.string.isRequired,
 };
 
 export default GuildRow;

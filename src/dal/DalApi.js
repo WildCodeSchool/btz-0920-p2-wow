@@ -9,18 +9,30 @@ import {
   seasons,
 } from './staticData';
 
+// const TIPS_BASILE = 'https://cors-proxy.htmldriven.com/?url=';
+// const TIPS_BASILE = 'https://thingproxy.freeboard.io/fetch/';
 const TIPS_BASILE = 'https://cors-anywhere.herokuapp.com/';
-const GUILD_DETAILS = 'https://raider.io/api/guilds/details?';
+
+const GUILD = 'https://raider.io/api/guilds/';
 const INSTANCE_RANKING = 'https://raider.io/api/raids/instance-rankings?';
 const MYTHIC_PLUS_RANKING_CHARACTER =
   'https://raider.io/api/mythic-plus/rankings/characters?';
 const CHARACTER_DETAILS = 'https://raider.io/api/v1/characters/profile?';
+const REALM = 'https://raider.io/api/connected-realms?';
 class DalApi {
   /**
    * description: return an array of all 4 regions with id, name and request slug
    */
   static getRegions() {
     return regions;
+  }
+
+  /**
+   *
+   * @param {string} name
+   */
+  static getRegionByName(name) {
+    return this.getRegions().filter((n) => n.name === name)[0];
   }
 
   /**
@@ -36,6 +48,12 @@ class DalApi {
    */
   static getClassesAndSpecs() {
     return classesAndSpecs;
+  }
+
+  static getClassesAndSpecsBySlug(slug) {
+    return slug
+      ? DalApi.getClassesAndSpecs().filter((c) => c.slug === slug)[0]
+      : null;
   }
 
   /**
@@ -60,26 +78,42 @@ class DalApi {
   }
 
   /**
+   *
+   * @param {string} slug Slug of the raid to find
+   * @returns an object raid or null
+   */
+  static getRaidBySlug(slug) {
+    return slug ? DalApi.getRaids().filter((r) => r.slug === slug)[0] : null;
+  }
+
+  /**
    * description: return an array of all available seasoons with id, name and request slug
    */
   static getSeasons() {
     return seasons;
   }
 
+  static getRealmsByRegionSlug(slug) {
+    const requestBase = TIPS_BASILE.concat(REALM);
+
+    const request = requestBase.concat(
+      DalApi.createReqParamRegion(slug, false)
+    );
+    return DalApi.axiosRequest(request);
+  }
+
   /**
    *
-   * @param {*} region : region for guild ranking. default = world
-   * @param {*} realm : realm for guild ranking. default = all
-   * @param {*} faction : faction for guild ranking. default = ''
-   * @param {*} page : page numer for request (20 guild/page). default = 0
-   * @param {*} difficulty : difficulty for ranking. default = mythic
-   * @param {*} raid : raid for the ranking. default = nyalotha-the-waking-city
-   * @param {*} recent  : latest boss killed for guild ranking. default = false
-   * @param {*} limit : don't know .... default = 0
-   * @param {*} callback : function or method to execute when result is ok
+   * @param {string} region : region for guild ranking. default = world
+   * @param {string} realm : realm for guild ranking. default = all
+   * @param {string} faction : faction for guild ranking. default = ''
+   * @param {number} page : page numer for request (20 guild/page). default = 0
+   * @param {string} difficulty : difficulty for ranking. default = mythic
+   * @param {string} raid : raid slug for the ranking. default = nyalotha-the-waking-city
+   * @param {string} recent  : latest boss killed for guild ranking. default = false
+   * @param {number} limit : don't know .... default = 0
    */
   static getTopGuild(
-    callback,
     region = 'world',
     realm = 'all',
     faction = '',
@@ -103,77 +137,62 @@ class DalApi {
       .concat(DalApi.createReqParamLimit(limit));
 
     // call the method who return the request result
-    DalApi.axiosRequest(request, callback);
+    return DalApi.axiosRequest(request);
   }
 
   /**
-   *
-   * @param {*} callback
-   * @param {*} region
-   * @param {*} realm
-   * @param {*} guildName
+   * @param {string} region
+   * @param {string} realm
+   * @param {string} guildName
    */
-  static getGuild(callback, region, realm, guildName) {
-    const requestBase = TIPS_BASILE.concat(GUILD_DETAILS);
-    const guildParam = guildName.replaceAll(' ', '%20');
-
+  static getGuild(region, realm, guildName) {
+    const requestBase = TIPS_BASILE.concat(GUILD).concat('details?');
     // Construct the request
     const request = requestBase
-      .concat(DalApi.createReqParamRegion(region, false))
+      .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
       .concat(DalApi.createReqParamRealm(realm))
-      .concat('&guild=')
-      .concat(guildParam);
+      .concat(DalApi.createReqParamGuild(guildName));
 
-    DalApi.axiosRequest(request, callback);
+    return DalApi.axiosRequest(request);
+  }
+
+  static getGuildRoster(region, realm, guildName) {
+    const requestBase = TIPS_BASILE.concat(GUILD).concat('roster?');
+    // Construct the request
+    const request = requestBase
+      .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
+      .concat(DalApi.createReqParamRealm(realm))
+      .concat(DalApi.createReqParamGuild(guildName));
+
+    return DalApi.axiosRequest(request);
   }
 
   /**
-   * @param {*} callbacl
-   * @param {*} region
-   * @param {*} realm
-   * @param {*} name
+   * @param {string} region
+   * @param {string} realm
+   * @param {string} name
    */
-  static getPlayer(callback, region, realm, name) {
+  static getPlayer(region, realm, name) {
     const requestBase = CHARACTER_DETAILS;
     const nameParam = name.replaceAll(' ', '%20');
-    const regionParam = () => {
-      switch (region) {
-        case 'United States & Oceania':
-          return 'us';
-        case 'Europe':
-          return 'eu';
-        case 'China':
-          return 'cn';
-        case 'Taiwan':
-          return 'tw';
-        case 'Korea':
-          return 'kr';
-        default:
-          return 'error';
-      }
-    };
-
     // Construct the request
     const request = requestBase
-      .concat(DalApi.createReqParamRegion(regionParam(), false))
+      .concat(DalApi.createReqParamRegion(DalApi.regionParam(region), false))
       .concat(DalApi.createReqParamRealm(realm))
       .concat(DalApi.createReqParamName(nameParam))
       .concat(
         '&fields=gear%2Cguild%2Cmythic_plus_scores_by_season:current%2Craid_progression'
       );
-    DalApi.axiosRequest(request, callback);
+    return DalApi.axiosRequest(request);
   }
 
   /**
-   *
-   * @param {*} callback function or method to execute when result is ok
-   * @param {*} classe class of the character default = all
-   * @param {*} role role of the character default = all
-   * @param {*} region region for guild ranking. default = world
-   * @param {*} season season for ranking season default = season-bfa-4-post
+   * @param {string} classe class of the character default = all
+   * @param {string} role role of the character default = all
+   * @param {string} region region for guild ranking. default = world
+   * @param {string} season season for ranking season default = season-bfa-4-post
    */
   static getTopPlayer(
-    callback,
     region = 'world',
     classe = 'all',
     role = 'all',
@@ -190,20 +209,33 @@ class DalApi {
       .concat(DalApi.createReqParamSeason(season))
       .concat(DalApi.createReqParamPage(page));
 
-    DalApi.axiosRequest(request, callback);
+    return DalApi.axiosRequest(request);
+  }
+
+  static regionParam(region) {
+    switch (region) {
+      case 'United States & Oceania':
+        return 'us';
+      case 'Europe':
+        return 'eu';
+      case 'China':
+        return 'cn';
+      case 'Taiwan':
+        return 'tw';
+      case 'Korea':
+        return 'kr';
+      default:
+        return region;
+    }
   }
 
   /**
    *
    * @param {*} url url of the request
-   * @param {*} callback function or method called when result is ok
+   * @returns {Promise}
    */
-  static axiosRequest(url, callback) {
-    axios.get(url).then((response) => {
-      // console.log(response.data);
-      callback(response.data);
-    });
-    // axios.get(url).then((response) => callback(console.log(response.data)));
+  static axiosRequest(url) {
+    return axios.get(url);
   }
 
   /**
@@ -275,7 +307,10 @@ class DalApi {
    * @returns string parameter for realm
    */
   static createReqParamRealm(realm, and = true) {
-    return and ? '&realm='.concat(realm) : 'realm='.concat(realm);
+    const formatedRealm = realm.toLowerCase().replace(' ', '-');
+    return and
+      ? '&realm='.concat(formatedRealm)
+      : 'realm='.concat(formatedRealm);
   }
 
   /**
@@ -326,6 +361,13 @@ class DalApi {
    */
   static createReqParamName(name, and = true) {
     return and ? '&name='.concat(name) : 'name='.concat(name);
+  }
+
+  static createReqParamGuild(guildName, and = true) {
+    const encodedGuildName = encodeURIComponent(guildName);
+    return and
+      ? '&guild='.concat(encodedGuildName)
+      : 'guild='.concat(encodedGuildName);
   }
 }
 

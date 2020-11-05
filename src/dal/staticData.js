@@ -3,6 +3,18 @@
  * all arrays contains objects with id, name and slug
  * created on 27-10-2020
  */
+export const searchTypes = [
+  {
+    id: 1,
+    name: 'Guild',
+    slug: 'guild',
+  },
+  {
+    id: 2,
+    name: 'Character',
+    slug: 'character',
+  },
+];
 
 /**
  * array of region
@@ -31,6 +43,17 @@ export const regions = [
 ];
 
 /**
+ * array of server
+ */
+export const server = [
+  {
+    id: 1,
+    name: 'Server',
+    slug: 'server',
+  },
+];
+
+/**
  * array of factions
  */
 export const factions = [
@@ -55,7 +78,7 @@ export const classesAndSpecs = [
     name: 'Death Knight',
     slug: 'death-knight',
     image:
-      'https://static.wikia.nocookie.net/wowpedia/images/e/e5/Ui-charactercreate-classes_deathknight.png/revision/latest/scale-to-width-down/64',
+      'https://static.wikia.nocookie.net/wowpedia/images/e/e5/Ui-charactercreate-classes_deathknight.png',
     specs: [
       {
         id: 1,
@@ -385,51 +408,61 @@ export const raids = [
     id: 1,
     name: "Ny'alotha, the Waking City",
     slug: 'nyalotha-the-waking-city',
+    bossQty: 12,
   },
   {
     id: 2,
     name: 'The Eternal Palace',
     slug: 'the-eternal-palace',
+    bossQty: 8,
   },
   {
     id: 3,
     name: 'Crucible of Storms',
     slug: 'crucible-of-storms',
+    bossQty: 2,
   },
   {
     id: 4,
     name: "Battle of Dazar'alor",
     slug: 'battle-of-dazaralor',
+    bossQty: 9,
   },
   {
     id: 5,
     name: 'Uldir',
     slug: 'uldir',
+    bossQty: 8,
   },
   {
     id: 6,
     name: 'Antorus, the Burning Throne',
-    slug: 'antonus-the-burning-throne',
+    slug: 'antorus-the-burning-throne',
+    bossQty: 11,
   },
   {
     id: 7,
     name: 'Tomb of Sargeras',
     slug: 'tomb-of-sargeras',
+    bossQty: 9,
   },
   {
     id: 8,
     name: 'The Nighthold',
     slug: 'the-nighthold',
+    bossQty: 10,
   },
   {
     id: 9,
     name: 'Trial of Valor',
     slug: 'trial-of-valor',
+    bossQty: 3,
   },
   {
     id: 10,
     name: 'The Emerald Nightmare',
     slug: 'the-emerald-nightmare',
+    bossQty: 7,
   },
 ];
 

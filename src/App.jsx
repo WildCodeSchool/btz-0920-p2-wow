@@ -1,43 +1,30 @@
-import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import GuildPage from './components/guildPage';
+
 import PlayerProfile from './components/PlayerProfile';
 import Leaderboards from './components/Leaderboards';
 import NavBar from './components/NavBar';
 import GuildsArray from './components/GuildsArray';
-import GuildPage from './components/guildPage';
+import GuildPage from './components/guildPage/GuildPage';
 import SearchPage from './components/searchPage/SearchPage';
+import PJArray from './components/PJArray';
+
+import './App.css';
 
 function App() {
   return (
     <Router>
-      <div
-        className="App"
-        // style={{
-        //   fontFamily: 'Ubuntu',
-        //   fontSize: '48px',
-        //   fontStyle: 'normal',
-        //   fontWeight: '700',
-        //   lineHeight: '55px',
-        //   letterSpacing: '0em',
-        //   textAlign: 'center',
-        // }}
-      >
+      <div className="App d-flex flex-column">
         <NavBar />
         <Switch>
           <Route path="/" exact component={Leaderboards} />
           <Route
-            path="/PlayerProfile/:name/:region/:realm"
+            path="/player/:name/:region/:realm"
             component={PlayerProfile}
           />
-          <Route path="/GuildsArray" component={GuildsArray} />
-          <Route path="/GuildPage" component={GuildPage} />
-          <Route path="/SearchPage" component={SearchPage} />
-          {/* <PlayerProfile /> */}
-          {/* <GuildsArray /> */}
-          {/* <GuildPage /> */}
-          {/* <Leaderboards /> */}
-          {/* <SearchPage /> */}
+          <Route path="/guild/:region/:realm/:name" component={GuildPage} />
+          <Route path="/GuildsArray/:region/:realm" component={GuildsArray} />
+          <Route path="/search" component={SearchPage} />
+          <Route path="/PJArray" component={PJArray} />
         </Switch>
       </div>
     </Router>
