@@ -18,6 +18,7 @@ const INSTANCE_RANKING = 'https://raider.io/api/raids/instance-rankings?';
 const MYTHIC_PLUS_RANKING_CHARACTER =
   'https://raider.io/api/mythic-plus/rankings/characters?';
 const CHARACTER_DETAILS = 'https://raider.io/api/v1/characters/profile?';
+const REALM = 'https://raider.io/api/connected-realms?';
 class DalApi {
   /**
    * description: return an array of all 4 regions with id, name and request slug
@@ -90,6 +91,15 @@ class DalApi {
    */
   static getSeasons() {
     return seasons;
+  }
+
+  static getRealmsByRegionSlug(slug) {
+    const requestBase = TIPS_BASILE.concat(REALM);
+
+    const request = requestBase.concat(
+      DalApi.createReqParamRegion(slug, false)
+    );
+    return DalApi.axiosRequest(request);
   }
 
   /**
