@@ -41,7 +41,7 @@ const GuildPage = () => {
         setRaidRankings(guildDetails.raidRankings);
         setRaidProgress(guildDetails.raidProgress);
         setRoster(rosterRes.data.guildRoster.roster);
-        setFlagTag(DalApi.getRegionByName(guildDetails.guild.region.name).slug);
+        setFlagTag(guildDetails.guild.region.slug);
         setFaction(guildDetails.guild.faction);
       } catch (error) {
         // TODO: handle this error
