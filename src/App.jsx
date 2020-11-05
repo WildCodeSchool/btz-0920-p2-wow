@@ -22,7 +22,7 @@ function App() {
             component={PlayerProfile}
           />
           <Route path="/guild/:region/:realm/:name" component={GuildPage} />
-          <Route path="/GuildsArray" component={GuildsArray} />
+          <Route path="/GuildsArray/:region/:realm" component={GuildsArray} />
           <Route path="/search" component={SearchPage} />
           <Route path="/PJArray" component={PJArray} />
         </Switch>

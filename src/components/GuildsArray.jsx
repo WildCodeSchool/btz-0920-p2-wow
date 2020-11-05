@@ -8,6 +8,7 @@ import {
 } from 'reactstrap';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
 
+import { useParams } from 'react-router-dom';
 import GuildRow from './GuildRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
@@ -17,6 +18,7 @@ import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
 
 const GuildsArray = () => {
+  const params = useParams();
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [serverSlug, setServerSlug] = useState('');
@@ -25,10 +27,13 @@ const GuildsArray = () => {
   const [max, setMax] = useState(5);
 
   useEffect(() => {
-    DalApi.getTopGuild('us', 'Azshara').then(({ data }) => {
+    DalApi.getTopGuild(
+      params.region.toLowerCase(),
+      params.realm.toLowerCase()
+    ).then(({ data }) => {
       setResults(data.raidRankings.rankedGuilds);
-      setServerSlug(data.raidRankings.rankedGuilds[0].guild.region.slug);
-      setRealmName(data.raidRankings.rankedGuilds[0].guild.realm.name);
+      setServerSlug(params.region);
+      setRealmName(params.realm);
       setLoading(false);
     });
   }, []);
