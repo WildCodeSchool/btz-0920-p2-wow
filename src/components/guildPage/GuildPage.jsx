@@ -95,7 +95,11 @@ const GuildPage = () => {
               raidProgress={raidProgress}
             />
             <Hr />
-            <GuildRoster roster={roster} />
+            <GuildRoster
+              roster={roster}
+              region={params.region}
+              realm={params.realm}
+            />
           </Container>
         </>
       )}

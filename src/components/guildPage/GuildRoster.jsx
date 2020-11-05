@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import GuildRosterRow from './GuildRosterRow';
 
 const GuildRoster = (props) => {
-  const { roster } = props;
+  const { roster, region, realm } = props;
 
   return (
     <>
@@ -21,7 +21,12 @@ const GuildRoster = (props) => {
         {roster
           .filter((elmt, index) => index >= 0 && index < 5)
           .map((player) => (
-            <GuildRosterRow player={player} key={player.character.name} />
+            <GuildRosterRow
+              player={player}
+              key={player.character.name}
+              region={region}
+              realm={realm}
+            />
           ))}
       </Table>
       <Pagination className="pagination" size="lg clearfix">
@@ -55,5 +60,7 @@ const GuildRoster = (props) => {
 GuildRoster.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   roster: propTypes.array.isRequired,
+  region: propTypes.string.isRequired,
+  realm: propTypes.string.isRequired,
 };
 export default GuildRoster;
