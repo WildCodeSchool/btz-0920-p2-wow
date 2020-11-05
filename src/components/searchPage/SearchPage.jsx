@@ -94,7 +94,10 @@ const SearchPage = () => {
   const requestData = [searchTypeData, regionData, factionData];
 
   return (
-    <Container className="d-flex flex-column flex-1">
+    <Container
+      className="d-flex flex-column flex-1"
+      style={{ marginTop: '120px' }}
+    >
       <Slider
         slides={items}
         handleSelection={handleSelection}
