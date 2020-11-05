@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Table, Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
@@ -148,7 +149,7 @@ const PlayerProfile = ({ match }) => {
               opacity="0.5"
             >
               <tbody>
-                <tr>
+                <tr className="d-flex justify-content-around align-items-center">
                   <td>
                     <img
                       src={displaysClass(charClass)}
@@ -169,14 +170,19 @@ const PlayerProfile = ({ match }) => {
                     />
                   </td>
                 </tr>
-                <tr>
-                  <td xs={3}>
-                    <h4>Guild</h4>
-                  </td>
-                  <td xs={9}>
-                    <h4>{guild}</h4>
-                  </td>
-                </tr>
+                <Link
+                  to={`/guild/${playerRegion}/${playerRealm.toLowerCase()}/${guild}/`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <tr>
+                    <td xs={3}>
+                      <h4>Guild</h4>
+                    </td>
+                    <td xs={9}>
+                      <h4>{guild}</h4>
+                    </td>
+                  </tr>
+                </Link>
                 <tr>
                   <td xs={3}>
                     <h4>Item level</h4>
