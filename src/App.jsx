@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App d-flex flex-column">
         <NavBar />
         <Switch>
           <Route path="/" exact component={Leaderboards} />

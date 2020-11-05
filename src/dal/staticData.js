@@ -3,6 +3,18 @@
  * all arrays contains objects with id, name and slug
  * created on 27-10-2020
  */
+export const searchTypes = [
+  {
+    id: 1,
+    name: 'Guild',
+    slug: 'guild',
+  },
+  {
+    id: 2,
+    name: 'Character',
+    slug: 'character',
+  },
+];
 
 /**
  * array of region
@@ -27,6 +39,17 @@ export const regions = [
     id: 4,
     name: 'Taiwan',
     slug: 'tw',
+  },
+];
+
+/**
+ * array of server
+ */
+export const server = [
+  {
+    id: 1,
+    name: 'Server',
+    slug: 'server',
   },
 ];
 
