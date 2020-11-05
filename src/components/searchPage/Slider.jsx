@@ -20,7 +20,7 @@ import './SearchPage.css';
 const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-  const [region, setRegion] = useState(eu);
+  const [region, setRegion] = useState([]);
   const [server, setServer] = useState('Server');
 
   const next = () => {
@@ -57,9 +57,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
       default:
         break;
     }
-  }, [region]);
-
-  // console.log(region);
+  }, [regionData]);
 
   const items = slides.map(({ title, cardNames }) => {
     return (
