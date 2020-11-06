@@ -10,8 +10,8 @@ const GuildRoster = (props) => {
   const [playerPerPage] = useState(10);
 
   return (
-    <>
-      <Table className="d-flex flex-column">
+    <div className="d-flex flex-column align-items-center">
+      <Table className="d-flex flex-column" hover>
         <thead>
           <tr className="d-flex" hover style={{ fontSize: '24px' }}>
             <th className="col-md-5">Player</th>
@@ -20,21 +20,23 @@ const GuildRoster = (props) => {
             <th className="col-md-2">I-Level</th>
           </tr>
         </thead>
-        {roster
-          .filter(
-            (elmt, index) =>
-              index >= (currentPage - 1) * playerPerPage &&
-              index < currentPage * playerPerPage
-          )
-          .map((player) => (
-            <GuildRosterRow
-              player={player}
-              s
-              key={player.character.name}
-              region={region}
-              realm={realm}
-            />
-          ))}
+        <tbody>
+          {roster
+            .filter(
+              (elmt, index) =>
+                index >= (currentPage - 1) * playerPerPage &&
+                index < currentPage * playerPerPage
+            )
+            .map((player) => (
+              <GuildRosterRow
+                player={player}
+                s
+                key={player.character.name}
+                region={region}
+                realm={realm}
+              />
+            ))}
+        </tbody>
       </Table>
       <Pagin
         page={currentPage}
@@ -42,7 +44,7 @@ const GuildRoster = (props) => {
         totalPlayers={roster.length}
         updatePage={setCurrentPage}
       />
-    </>
+    </div>
   );
 };
 
