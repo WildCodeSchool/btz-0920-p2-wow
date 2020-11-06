@@ -11,7 +11,6 @@ const GuildRosterRow = (props) => {
     realm,
     player: {
       character: {
-        level,
         name,
         class: { slug },
         race,
@@ -38,8 +37,7 @@ const GuildRosterRow = (props) => {
         </td>
         <td className="col-md-3">{spec.name}</td>
         <td className="col-md-2">{race.name}</td>
-        <td className="col-md-1">{level}</td>
-        <td className="col-md-1">{itemLevelEquipped}</td>
+        <td className="col-md-2 text-center">{itemLevelEquipped}</td>
       </tr>
     </Link>
   );

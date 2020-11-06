@@ -13,7 +13,7 @@ export default function GuildRanking(props) {
         <tr className="d-flex" style={{ fontSize: '24px' }}>
           <th className="col-md-5">Raid</th>
           <th className="col-md-4">Progress</th>
-          <th className="col-md-3">rank</th>
+          <th className="col-md-3">Rank</th>
         </tr>
       </thead>
       {raidRankings.map((ranking, index) => (
