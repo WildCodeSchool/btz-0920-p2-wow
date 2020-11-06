@@ -1,14 +1,17 @@
-import { Pagination, PaginationItem, PaginationLink, Table } from 'reactstrap';
-import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
+import { Table } from 'reactstrap';
 import propTypes from 'prop-types';
+import { useState } from 'react';
 import GuildRosterRow from './GuildRosterRow';
+import Pagin from '../cssPages&Components/Pagin';
 
 const GuildRoster = (props) => {
   const { roster, region, realm } = props;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [playerPerPage] = useState(10);
 
   return (
-    <>
-      <Table className="d-flex flex-column">
+    <div className="d-flex flex-column align-items-center">
+      <Table className="d-flex flex-column" hover>
         <thead>
           <tr className="d-flex" hover style={{ fontSize: '24px' }}>
             <th className="col-md-5">Player</th>
@@ -17,42 +20,31 @@ const GuildRoster = (props) => {
             <th className="col-md-2">I-Level</th>
           </tr>
         </thead>
-        {roster
-          .filter((elmt, index) => index >= 0 && index < 5)
-          .map((player) => (
-            <GuildRosterRow
-              player={player}
-              key={player.character.name}
-              region={region}
-              realm={realm}
-            />
-          ))}
+        <tbody>
+          {roster
+            .filter(
+              (elmt, index) =>
+                index >= (currentPage - 1) * playerPerPage &&
+                index < currentPage * playerPerPage
+            )
+            .map((player) => (
+              <GuildRosterRow
+                player={player}
+                s
+                key={player.character.name}
+                region={region}
+                realm={realm}
+              />
+            ))}
+        </tbody>
       </Table>
-      <Pagination className="pagination" size="lg clearfix">
-        <PaginationItem className="paginationItem">
-          <PaginationLink>
-            <BsFillSkipBackwardFill />
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>2</PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>4</PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>
-            <BsFillSkipForwardFill />
-          </PaginationLink>
-        </PaginationItem>
-      </Pagination>
-    </>
+      <Pagin
+        page={currentPage}
+        playerPerPage={playerPerPage}
+        totalPlayers={roster.length}
+        updatePage={setCurrentPage}
+      />
+    </div>
   );
 };
 
