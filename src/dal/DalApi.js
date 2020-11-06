@@ -297,7 +297,9 @@ class DalApi {
    * @returns string parameter for realm
    */
   static createReqParamRealm(realm, and = true) {
-    const formatedRealm = realm.toLowerCase().replace(' ', '-');
+    const formatedRealm =
+      realm.toLowerCase().replace(' ', '-') &&
+      realm.toLowerCase().replace("'", '');
     return and
       ? '&realm='.concat(formatedRealm)
       : 'realm='.concat(formatedRealm);
