@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createBrowserHistory } from 'history';
 import {
   Carousel,
   CarouselControl,
@@ -9,10 +10,8 @@ import {
   FormGroup,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { eu, us, tw, kr } from '../../dal/realms.json';
-// import { factions, regions, searchTypes, server } from '../../dal/staticData';
 import WildCard from './WildCard';
 
 import './SearchPage.css';
@@ -121,15 +120,22 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     );
   });
 
+  const history = createBrowserHistory({ forceRefresh: true });
+  const dataCheck = () => {
+    if (
+      requestData[0] !== 'Search Type' &&
+      requestData[1] !== 'Region' &&
+      server !== 'Server' &&
+      requestData[2] !== 'Faction'
+    ) {
+      history.push(`/GuildsArray/${requestData[1]}/${server}/`);
+    }
+    return false;
+  };
+  dataCheck();
   return (
     <>
       <p>{`${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}</p>
-      <Link
-        to={`/GuildsArray/${requestData[1]}/${server}/`}
-        style={{ textDecoration: 'none' }}
-      >
-        GO
-      </Link>
       <Carousel
         activeIndex={activeIndex}
         next={next}
