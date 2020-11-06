@@ -7,12 +7,15 @@ import {
   DropdownToggle,
   Table,
 } from 'reactstrap';
+import { CSSTransition } from 'react-transition-group';
 
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
 import GuildLeaderboardRow from './GuildLeaderboardRow';
 import PlayerLeaderboardRow from './PlayerLeaderboardRow';
 import Error from './Error';
+
+import './cssPages&Components/transitions.css';
 
 const Leaderboards = () => {
   const [guildResults, setGuildResults] = useState([]);
@@ -24,6 +27,7 @@ const Leaderboards = () => {
   const [playersToDisplay, setPlayersToDisplay] = useState(5);
   const [guildsToDisplay, setGuildsToDisplay] = useState(5);
   const [dropdownItems] = useState([5, 10, 15, 20]);
+  const [transitionStart, setTransitionStart] = useState(false);
 
   useEffect(() => {
     const getDatas = async () => {
@@ -38,6 +42,7 @@ const Leaderboards = () => {
         setError(err.data);
       } finally {
         setLoading(false);
+        setTransitionStart(true);
       }
     };
 
@@ -58,75 +63,81 @@ const Leaderboards = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="d-flex w-100 flex-wrap">
-          <div style={{ height: '100px', minWidth: '100vw' }} />
-          <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-            <DropdownToggle caret>Show more</DropdownToggle>
-            <DropdownMenu>
-              {dropdownItems.map((item) => {
-                return (
-                  <DropdownItem
-                    onClick={(e) => {
-                      setPlayersToDisplay(e.target.value);
-                      setGuildsToDisplay(e.target.value);
-                    }}
-                    value={item}
-                    key={item}
-                  >
-                    {item}
-                  </DropdownItem>
-                );
-              })}
-            </DropdownMenu>
-          </ButtonDropdown>
-          <Table className="mx-5 w-100 border-none" hover>
-            <thead>
-              <tr>
-                <th className="h2 font-weight-bold" colSpan={12}>
-                  Top World Guilds
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {guildResults
-                .filter((_, index) => index < guildsToDisplay)
-                .map((result) => {
+        <CSSTransition
+          in={transitionStart}
+          timeout={1000}
+          classNames="leaderboards"
+        >
+          <div className="d-flex w-100 flex-wrap">
+            <div style={{ height: '100px', minWidth: '100vw' }} />
+            <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+              <DropdownToggle caret>Show more</DropdownToggle>
+              <DropdownMenu>
+                {dropdownItems.map((item) => {
                   return (
-                    <GuildLeaderboardRow
-                      name={result.guild.name}
-                      realm={result.guild.realm.name}
-                      region={result.guild.region.slug}
-                      key={result.guild.id}
-                    />
+                    <DropdownItem
+                      onClick={(e) => {
+                        setPlayersToDisplay(e.target.value);
+                        setGuildsToDisplay(e.target.value);
+                      }}
+                      value={item}
+                      key={item}
+                    >
+                      {item}
+                    </DropdownItem>
                   );
                 })}
-            </tbody>
-          </Table>
-          <Table className="mx-5 w-100 text-nowrap" hover>
-            <thead>
-              <tr>
-                <th className="h2 font-weight-bold" colSpan={12}>
-                  Top World Players
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {playerResults
-                .filter((_, index) => index < playersToDisplay)
-                .map((result) => {
-                  return (
-                    <PlayerLeaderboardRow
-                      name={result.character.name}
-                      realm={result.character.realm.name}
-                      region={result.character.region.slug}
-                      playerClass={result.character.class.name}
-                      key={result.character.id}
-                    />
-                  );
-                })}
-            </tbody>
-          </Table>
-        </div>
+              </DropdownMenu>
+            </ButtonDropdown>
+            <Table className="mx-5 w-100 border-none" hover>
+              <thead>
+                <tr>
+                  <th className="h2 font-weight-bold" colSpan={12}>
+                    Top World Guilds
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {guildResults
+                  .filter((_, index) => index < guildsToDisplay)
+                  .map((result) => {
+                    return (
+                      <GuildLeaderboardRow
+                        name={result.guild.name}
+                        realm={result.guild.realm.name}
+                        region={result.guild.region.slug}
+                        key={result.guild.id}
+                      />
+                    );
+                  })}
+              </tbody>
+            </Table>
+            <Table className="mx-5 w-100 text-nowrap" hover>
+              <thead>
+                <tr>
+                  <th className="h2 font-weight-bold" colSpan={12}>
+                    Top World Players
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {playerResults
+                  .filter((_, index) => index < playersToDisplay)
+                  .map((result) => {
+                    return (
+                      <PlayerLeaderboardRow
+                        name={result.character.name}
+                        realm={result.character.realm.name}
+                        region={result.character.region.slug}
+                        playerClass={result.character.class.name}
+                        key={result.character.id}
+                      />
+                    );
+                  })}
+              </tbody>
+            </Table>
+          </div>
+        </CSSTransition>
       )}
     </Container>
   );
