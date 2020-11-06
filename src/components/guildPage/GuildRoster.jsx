@@ -1,10 +1,13 @@
-import { Pagination, PaginationItem, PaginationLink, Table } from 'reactstrap';
-import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
+import { Table } from 'reactstrap';
 import propTypes from 'prop-types';
+import { useState } from 'react';
 import GuildRosterRow from './GuildRosterRow';
+import Pagin from '../cssPages&Components/Pagin';
 
 const GuildRoster = (props) => {
   const { roster, region, realm } = props;
+  const [currentPage, setCurrentPage] = useState(1);
+  const [playerPerPage] = useState(2);
 
   return (
     <>
@@ -18,40 +21,27 @@ const GuildRoster = (props) => {
           </tr>
         </thead>
         {roster
-          .filter((elmt, index) => index >= 0 && index < 5)
+          .filter(
+            (elmt, index) =>
+              index >= (currentPage - 1) * playerPerPage &&
+              index < currentPage * playerPerPage
+          )
           .map((player) => (
             <GuildRosterRow
               player={player}
+              s
               key={player.character.name}
               region={region}
               realm={realm}
             />
           ))}
       </Table>
-      <Pagination className="pagination" size="lg clearfix">
-        <PaginationItem className="paginationItem">
-          <PaginationLink>
-            <BsFillSkipBackwardFill />
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>2</PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>4</PaginationLink>
-        </PaginationItem>
-        <PaginationItem className="paginationItem">
-          <PaginationLink>
-            <BsFillSkipForwardFill />
-          </PaginationLink>
-        </PaginationItem>
-      </Pagination>
+      <Pagin
+        page={currentPage}
+        playerPerPage={playerPerPage}
+        totalPlayers={roster.length}
+        updatePage={setCurrentPage}
+      />
     </>
   );
 };
