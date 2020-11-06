@@ -1,0 +1,10 @@
+.leaderboards-enter {
+  opacity: 0;
+}
+.leaderboards-enter-active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.leaderboards-enter-done {
+  opacity: 1;
+}

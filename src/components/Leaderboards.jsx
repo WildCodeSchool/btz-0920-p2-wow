@@ -35,7 +35,7 @@ const Leaderboards = () => {
         setPlayerResults(topPlayers.data.rankings.rankedCharacters);
       } catch (err) {
         setIsError(true);
-        setError(err.data);
+        setError(err);
       } finally {
         setLoading(false);
       }
@@ -47,7 +47,7 @@ const Leaderboards = () => {
   const toggle = () => setOpen(!dropdownOpen);
 
   if (isError) {
-    return <Error msg={error.data.message} />;
+    return <Error msg={error.message} />;
   }
 
   return (

@@ -5,26 +5,14 @@ import PropTypes from 'prop-types';
 
 import Slider from './Slider';
 
-import {
-  guild,
-  alliance,
-  horde,
-  character,
-  europe,
-  usa,
-  korea,
-  taiwan,
-} from '../../img';
+import { guild, alliance, horde, europe, usa, korea, taiwan } from '../../img';
 
 import './SearchPage.css';
 
 const SearchPage = () => {
   const [items] = useState([
     {
-      cardNames: [
-        ['Guild', guild],
-        ['Character', character],
-      ],
+      cardNames: [['Guild', guild]],
       title: 'Search',
     },
     {

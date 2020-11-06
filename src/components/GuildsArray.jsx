@@ -1,17 +1,11 @@
 import { useEffect, useState } from 'react';
-import {
-  Table,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
-  Container,
-} from 'reactstrap';
-import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
+import { Table, Container } from 'reactstrap';
 
 import { useParams } from 'react-router-dom';
 import GuildRow from './GuildRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
+import Pagin from './cssPages&Components/Pagin';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
@@ -23,8 +17,10 @@ const GuildsArray = () => {
   const [loading, setLoading] = useState(true);
   const [serverSlug, setServerSlug] = useState('');
   const [realmName, setRealmName] = useState('');
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(5);
+  // const [min, setMin] = useState(0);
+  // const [max, setMax] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [playerPerPage] = useState(5);
 
   useEffect(() => {
     DalApi.getTopGuild(
@@ -38,25 +34,25 @@ const GuildsArray = () => {
     });
   }, []);
 
-  function page1() {
-    setMin(0);
-    setMax(5);
-  }
+  // function page1() {
+  //   setMin(0);
+  //   setMax(5);
+  // }
 
-  function page2() {
-    setMin(5);
-    setMax(10);
-  }
+  // function page2() {
+  //   setMin(5);
+  //   setMax(10);
+  // }
 
-  function page3() {
-    setMin(10);
-    setMax(15);
-  }
+  // function page3() {
+  //   setMin(10);
+  //   setMax(15);
+  // }
 
-  function page4() {
-    setMin(15);
-    setMax(20);
-  }
+  // function page4() {
+  //   setMin(15);
+  //   setMax(20);
+  // }
 
   return (
     <>
@@ -85,6 +81,11 @@ const GuildsArray = () => {
               <Table className="col-10" w-auto text-nowrap hover>
                 <tbody className="container">
                   {results
+                    .filter(
+                      (_, index) =>
+                        index >= (currentPage - 1) * playerPerPage &&
+                        index < currentPage * playerPerPage
+                    )
                     .map((result) => {
                       return (
                         <GuildRow
@@ -97,36 +98,17 @@ const GuildsArray = () => {
                           key={result.rank}
                         />
                       );
-                    })
-                    .filter((_, index) => index >= min && index < max)}
+                    })}
                 </tbody>
               </Table>
             </div>
           </Container>
-          <Pagination className="align-self-center" size="lg clearfix">
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page1}>
-                <BsFillSkipBackwardFill />
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page1}>1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page2}>2</PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page3}>3</PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page4}>4</PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page4}>
-                <BsFillSkipForwardFill />
-              </PaginationLink>
-            </PaginationItem>
-          </Pagination>
+          <Pagin
+            page={currentPage}
+            playerPerPage={playerPerPage}
+            totalPlayers={results.length}
+            updatePage={setCurrentPage}
+          />
         </div>
       )}
     </>

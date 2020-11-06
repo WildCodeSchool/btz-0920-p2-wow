@@ -7,13 +7,14 @@ import GuildRankingRow from './GuildRankingRow';
 export default function GuildRanking(props) {
   // eslint-disable-next-line react/prop-types
   const { raidRankings, raidProgress } = props;
+
   return (
     <Table className="d-flex flex-column">
       <thead>
         <tr className="d-flex" style={{ fontSize: '24px' }}>
-          <th className="col-md-5">Raid</th>
-          <th className="col-md-4">Progress</th>
-          <th className="col-md-3">rank</th>
+          <th className="col-md-6">Raid</th>
+          <th className="col-md-3">Progress</th>
+          <th className="col-md-3">Rank</th>
         </tr>
       </thead>
       {raidRankings.map((ranking, index) => (
