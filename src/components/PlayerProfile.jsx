@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Table, Container } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
@@ -12,7 +12,8 @@ import Error from './Error';
 import './cssPages&Components/playerProfile.css';
 import './cssPages&Components/test.css';
 
-const PlayerProfile = ({ match }) => {
+const PlayerProfile = () => {
+  const params = useParams();
   const [playerRegion, setPlayerRegion] = useState('');
   const [playerRealm, setPlayerRealm] = useState('');
   const [playerName, setPlayerName] = useState('');
@@ -29,7 +30,7 @@ const PlayerProfile = ({ match }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    DalApi.getPlayer(match.params.region, match.params.realm, match.params.name)
+    DalApi.getPlayer(params.region, params.realm, params.name)
       .then(({ data }) => {
         setPlayerRegion(data.region);
         setPlayerRealm(data.realm);
@@ -219,12 +220,10 @@ const PlayerProfile = ({ match }) => {
 };
 
 PlayerProfile.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      realm: PropTypes.string.isRequired,
-      region: PropTypes.string.isRequired,
-    }),
+  params: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    realm: PropTypes.string.isRequired,
+    region: PropTypes.string.isRequired,
   }).isRequired,
 };
 
