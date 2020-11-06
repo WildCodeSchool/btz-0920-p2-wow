@@ -7,7 +7,7 @@ import Pagin from '../cssPages&Components/Pagin';
 const GuildRoster = (props) => {
   const { roster, region, realm } = props;
   const [currentPage, setCurrentPage] = useState(1);
-  const [playerPerPage] = useState(2);
+  const [playerPerPage] = useState(10);
 
   return (
     <>
