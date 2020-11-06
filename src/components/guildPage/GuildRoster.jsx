@@ -14,7 +14,7 @@ const GuildRoster = (props) => {
             <th className="col-md-5">Player</th>
             <th className="col-md-3">Spec</th>
             <th className="col-md-2">Race</th>
-            <th className="col-md-2">E-rank</th>
+            <th className="col-md-2">I-Level</th>
           </tr>
         </thead>
         {roster
