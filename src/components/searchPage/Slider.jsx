@@ -10,6 +10,7 @@ import {
   FormGroup,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { eu, us, tw, kr } from '../../dal/realms.json';
 import WildCard from './WildCard';
@@ -136,6 +137,12 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   return (
     <>
       <p>{`${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}</p>
+      <Link
+        to={`/GuildsArray/${requestData[1]}/${server}/`}
+        style={{ textDecoration: 'none' }}
+      >
+        GO
+      </Link>
       <Carousel
         activeIndex={activeIndex}
         next={next}
