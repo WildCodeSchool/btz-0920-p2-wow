@@ -25,6 +25,9 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
     } else if (currentPage === btnMax) {
       setBtnMin(currentPage);
       setBtnMax(currentPage + 4);
+    } else if (currentPage === btnMax - 4) {
+      setBtnMin(currentPage - 4);
+      setBtnMax(currentPage);
     }
     updatePage(currentPage);
   }, [currentPage]);
