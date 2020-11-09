@@ -14,9 +14,9 @@ const GuildRoster = (props) => {
       <Table className="d-flex flex-column" hover>
         <thead>
           <tr className="d-flex" hover style={{ fontSize: '24px' }}>
-            <td className="col-md-5">Player</td>
+            <td className="col-md-4">Player</td>
             <td className="col-md-3">Spec</td>
-            <td className="col-md-2">Race</td>
+            <td className="col-md-3">Race</td>
             <td className="col-md-2">I-Level</td>
           </tr>
         </thead>
