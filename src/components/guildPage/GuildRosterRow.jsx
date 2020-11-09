@@ -16,10 +16,14 @@ const GuildRosterRow = (props) => {
         race,
         itemLevelEquipped,
         spec,
+        thumbnail,
       },
     },
   } = props;
   const classe = DalApi.getClassesAndSpecsBySlug(slug);
+  const imgSrc = '//render-'
+    .concat(region)
+    .concat('.worldofwarcraft.com/character/');
   // console.log(player, classe);
   return (
     <Link
@@ -29,10 +33,13 @@ const GuildRosterRow = (props) => {
       <tr className="d-flex playerRow text-left align-items-center">
         <td className="col-md-4 font-weight-bold">
           <img
-            src={classe.image}
+            // src={classe.image}
+            src={imgSrc.concat(thumbnail)}
             alt="class icon"
-            className="w-25 classImage pr-2"
+            className=" classImage pr-2"
+            style={{ height: '40px' }}
           />
+
           <span className={classe.name.replace(' ', '')}>{name}</span>
         </td>
         <td className="col-md-3">{spec.name}</td>

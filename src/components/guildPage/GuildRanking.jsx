@@ -10,7 +10,7 @@ export default function GuildRanking(props) {
   const { raidRankings, raidProgress } = props;
 
   return (
-    <Table className="d-flex flex-column">
+    <Table className="d-flex flex-column" borderless>
       <thead>
         <tr className="d-flex" style={{ fontSize: '24px' }}>
           <td className="col-md-6">Raid</td>

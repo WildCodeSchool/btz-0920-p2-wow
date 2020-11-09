@@ -1,6 +1,6 @@
 import { Table } from 'reactstrap';
 import propTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GuildRosterRow from './GuildRosterRow';
 import Pagin from '../cssPages&Components/Pagin';
 
@@ -8,10 +8,17 @@ const GuildRoster = (props) => {
   const { roster, region, realm } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(10);
+  const [rosterState, setRosterState] = useState([]);
+
+  useEffect(() => {
+    setRosterState(
+      roster.filter((elmt) => elmt.character.itemLevelEquipped < 200)
+    );
+  }, []);
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <Table className="d-flex flex-column" hover>
+      <Table className="d-flex flex-column collapse" hover borderless>
         <thead>
           <tr className="d-flex" hover style={{ fontSize: '24px' }}>
             <td className="col-md-4">Player</td>
@@ -21,13 +28,12 @@ const GuildRoster = (props) => {
           </tr>
         </thead>
         <tbody>
-          {roster
+          {rosterState
             .sort((a, b) => {
               return (
-                a.character.itemLevelEquipped - b.character.itemLevelEquipped
+                b.character.itemLevelEquipped - a.character.itemLevelEquipped
               );
             })
-            .reverse()
             .filter(
               (elmt, index) =>
                 index >= (currentPage - 1) * playerPerPage &&
@@ -47,7 +53,7 @@ const GuildRoster = (props) => {
       <Pagin
         page={currentPage}
         playerPerPage={playerPerPage}
-        totalPlayers={roster.length}
+        totalPlayers={rosterState.length}
         updatePage={setCurrentPage}
       />
     </div>

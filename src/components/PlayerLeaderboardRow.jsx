@@ -12,13 +12,13 @@ const PlayerLeaderboardRow = ({ name, realm, region, playerClass }) => {
       style={{ textDecoration: 'none' }}
     >
       <tr className="d-flex">
-        <th className="col-md-5 d-flex align-items-center">
+        <td className="col-md-5 d-flex align-items-center">
           <p className={playerClass}>{name}</p>
-        </th>
-        <th className="col-md-5 d-flex align-items-center">{realm}</th>
-        <th className="col-md-2 d-flex align-items-center">
+        </td>
+        <td className="col-md-5 d-flex align-items-center">{realm}</td>
+        <td className="col-md-2 d-flex align-items-center">
           <Flag slug={region} />
-        </th>
+        </td>
       </tr>
     </Link>
   );
