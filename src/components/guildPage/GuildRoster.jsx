@@ -22,6 +22,12 @@ const GuildRoster = (props) => {
         </thead>
         <tbody>
           {roster
+            .sort((a, b) => {
+              return (
+                a.character.itemLevelEquipped - b.character.itemLevelEquipped
+              );
+            })
+            .reverse()
             .filter(
               (elmt, index) =>
                 index >= (currentPage - 1) * playerPerPage &&
