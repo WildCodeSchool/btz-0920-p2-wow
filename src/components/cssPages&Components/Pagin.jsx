@@ -8,23 +8,16 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
   const totalPages = Math.ceil(totalPlayers / playerPerPage);
   const pageTab = [];
   const btnQty = totalPages > 5 ? 5 : totalPages;
-  const [isStartDisabled, setIsStartDisabled] = useState(false);
-  const [isEndDisabled, setIsEndDisabled] = useState(false);
-  for (let i = 0; i < totalPages; i += 1) {
-    pageTab[i] = i + 1;
-  }
+  const [isStartDisabled, setIsStartDisabled] = useState(true);
+  const [isEndDisabled, setIsEndDisabled] = useState(true);
   const [btnMin, setBtnMin] = useState(1);
   const [btnMax, setBtnMax] = useState(btnQty);
-  //   console.log(pageTab);
+
+  for (let i = 0; i < totalPages; i += 1) pageTab[i] = i + 1;
 
   useEffect(() => {
-    if (btnQty <= 5) {
-      setIsStartDisabled(true);
-      setIsEndDisabled(true);
-    } else {
-      setIsStartDisabled(false);
-      setIsEndDisabled(false);
-    }
+    setIsStartDisabled(btnQty < 5 || currentPage === 1);
+    setIsEndDisabled(btnQty < 5 || currentPage === totalPages);
 
     if (currentPage === 1) {
       setBtnMin(currentPage);
@@ -44,8 +37,6 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
         setBtnMax(currentPage + 2);
       }
     }
-    if (currentPage === totalPages) setIsEndDisabled(true);
-    if (currentPage === 1) setIsStartDisabled(true);
 
     updatePage(currentPage);
   }, [currentPage]);
