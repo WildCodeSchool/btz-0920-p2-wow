@@ -26,7 +26,7 @@ const GuildRosterRow = (props) => {
       to={`/player/${name}/${region}/${realm}/`}
       style={{ textDecoration: 'none' }}
     >
-      <tr className="d-flex playerRow text-left align-items-center">
+      <tr className="d-flex playerRow text-left">
         <td className="col-md-5 font-weight-bold">
           <img
             src={classe.image}
@@ -35,9 +35,11 @@ const GuildRosterRow = (props) => {
           />
           <span className={classe.name.replace(' ', '')}>{name}</span>
         </td>
-        <td className="col-md-3">{spec.name}</td>
-        <td className="col-md-2">{race.name}</td>
-        <td className="col-md-2 text-center">{itemLevelEquipped}</td>
+        <td className="col-md-3 d-flex align-items-center">{spec.name}</td>
+        <td className="col-md-2 d-flex align-items-center">{race.name}</td>
+        <td className="col-md-2 d-flex align-items-center justify-content-center">
+          {itemLevelEquipped}
+        </td>
       </tr>
     </Link>
   );
