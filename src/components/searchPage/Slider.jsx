@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { createBrowserHistory } from 'history';
 import {
   Carousel,
   CarouselControl,
@@ -10,7 +9,7 @@ import {
   FormGroup,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { eu, us, tw, kr } from '../../dal/realms.json';
 import WildCard from './WildCard';
@@ -59,7 +58,35 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     }
   }, [regionData]);
 
-  const items = slides.map(({ title, cardNames }) => {
+  const history = useHistory();
+  useEffect(() => {
+    const dataCheck = () => {
+      if (
+        requestData[0] !== 'Search Type' &&
+        requestData[0] !== 'Character' &&
+        requestData[1] !== 'Region' &&
+        server !== 'Server' &&
+        requestData[2] !== 'Faction'
+      ) {
+        history.push(`/GuildsArray/${requestData[1]}/${server}/`);
+      } else if (
+        requestData[0] === 'Character' &&
+        requestData[1] !== 'Region' &&
+        server !== 'Server' &&
+        requestData[2] !== 'Faction' &&
+        requestData[3] !== 'Class'
+      ) {
+        history.push(`/PJArray/${requestData[1]}/${server}/${requestData[3]}`);
+      }
+      return false;
+    };
+    dataCheck();
+  }, [next]);
+
+  const items = (requestData[0] !== 'Character'
+    ? slides.slice(0, 4)
+    : slides
+  ).map(({ title, cardNames }) => {
     return (
       <CarouselItem
         appear
@@ -121,28 +148,13 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     );
   });
 
-  const history = createBrowserHistory({ forceRefresh: true });
-  const dataCheck = () => {
-    if (
-      requestData[0] !== 'Search Type' &&
-      requestData[1] !== 'Region' &&
-      server !== 'Server' &&
-      requestData[2] !== 'Faction'
-    ) {
-      history.push(`/GuildsArray/${requestData[1]}/${server}/`);
-    }
-    return false;
-  };
-  dataCheck();
   return (
     <>
-      <p>{`${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}</p>
-      <Link
-        to={`/GuildsArray/${requestData[1]}/${server}/`}
-        style={{ textDecoration: 'none' }}
-      >
-        GO
-      </Link>
+      <p>
+        {requestData[0] === 'Character'
+          ? `${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]} / ${requestData[3]}`
+          : `${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}
+      </p>
       <Carousel
         activeIndex={activeIndex}
         next={next}
