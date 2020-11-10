@@ -31,13 +31,13 @@ const GuildRosterRow = (props) => {
       style={{ textDecoration: 'none' }}
     >
       <tr className="d-flex playerRow text-left align-items-center">
-        <td className="col-md-4 font-weight-bold">
+        <td className="col-md-4 p-0">
           <img
             // src={classe.image}
             src={imgSrc.concat(thumbnail)}
             alt="class icon"
             className=" classImage pr-2"
-            style={{ height: '40px' }}
+            style={{ height: '44px' }}
           />
 
           <span className={classe.name.replace(' ', '')}>{name}</span>
