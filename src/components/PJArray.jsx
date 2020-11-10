@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Table } from 'reactstrap';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import PJRow from './PJRow';
 import ToolsFilters from './ToolsFilters';
@@ -12,42 +12,20 @@ import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
 
 const PJArray = () => {
-  // const params = useParams();
+  const params = useParams();
   const [results, setResults] = useState([]);
   const [regionName, setRegionName] = useState('');
   const [loading, setLoading] = useState(true);
-  // const [min, setMin] = useState(0);
-  // const [max, setMax] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
 
   useEffect(() => {
-    DalApi.getTopPlayer('eu').then(({ data }) => {
+    DalApi.getTopPlayer(params.region.toLowerCase()).then(({ data }) => {
       setResults(data.rankings.rankedCharacters);
       setRegionName(data.rankings.region.name);
       setLoading(false);
     });
   }, []);
-
-  // function page1() {
-  //   setMin(0);
-  //   setMax(5);
-  // }
-
-  // function page2() {
-  //   setMin(5);
-  //   setMax(10);
-  // }
-
-  // function page3() {
-  //   setMin(10);
-  //   setMax(15);
-  // }
-
-  // function page4() {
-  //   setMin(15);
-  //   setMax(20);
-  // }
 
   return (
     <>
@@ -67,10 +45,10 @@ const PJArray = () => {
           </div>
           <main className="container min-vw-100">
             <div className="row w-100">
-              <div className="col-1 align-self-center">
+              <div className="col-3 align-self-center">
                 <ToolsFilters />
               </div>
-              <Table className="col-10" w-auto text-nowrap hover>
+              <Table className="col-8" w-auto text-nowrap hover>
                 <tbody className="container">
                   {results
                     .filter(

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Table, Container } from 'reactstrap';
-
 import { useParams } from 'react-router-dom';
+
 import GuildRow from './GuildRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
@@ -17,8 +17,6 @@ const GuildsArray = () => {
   const [loading, setLoading] = useState(true);
   const [serverSlug, setServerSlug] = useState('');
   const [realmName, setRealmName] = useState('');
-  // const [min, setMin] = useState(0);
-  // const [max, setMax] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
 
@@ -33,26 +31,6 @@ const GuildsArray = () => {
       setLoading(false);
     });
   }, []);
-
-  // function page1() {
-  //   setMin(0);
-  //   setMax(5);
-  // }
-
-  // function page2() {
-  //   setMin(5);
-  //   setMax(10);
-  // }
-
-  // function page3() {
-  //   setMin(10);
-  //   setMax(15);
-  // }
-
-  // function page4() {
-  //   setMin(15);
-  //   setMax(20);
-  // }
 
   return (
     <>
