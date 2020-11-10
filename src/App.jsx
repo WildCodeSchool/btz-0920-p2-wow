@@ -14,7 +14,7 @@ import './App.css';
 const routes = [
   { path: '/', name: 'Leaderboards', Component: Leaderboards },
   {
-    path: '/player/:name/:region/:realm',
+    path: '/player/:region/:realm/:name',
     name: 'PlayerProfile',
     Component: PlayerProfile,
   },

@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 import Flag from './flags/Flag';
 
 const GuildLeaderboardRow = ({ realm, region, name }) => {
+  const history = useHistory();
+
+  const rowLink = () => {
+    history.push(`/guild/${region}/${realm}/${name}/`);
+  };
   return (
-    <tr className="d-flex" to={`/guild/${region}/${realm}/${name}/`}>
+    <tr className="d-flex" onClick={rowLink}>
       <td
         className="col-md-5 d-flex align-items-center"
         style={{ fontSize: 21 }}

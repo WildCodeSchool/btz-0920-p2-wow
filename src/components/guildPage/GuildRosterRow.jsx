@@ -27,7 +27,7 @@ const GuildRosterRow = (props) => {
   // console.log(player, classe);
   return (
     <Link
-      to={`/player/${name}/${region}/${realm}/`}
+      to={`/player/${region}/${realm}/${name}/`}
       style={{ textDecoration: 'none' }}
     >
       <tr className="d-flex playerRow text-left align-items-center">

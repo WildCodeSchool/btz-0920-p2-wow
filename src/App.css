@@ -51,3 +51,7 @@
   transform: scale(0.9) translateX(100%);
   transition: opacity 1000ms, transform 1000ms;
 }
+
+td {
+  cursor: pointer;
+}

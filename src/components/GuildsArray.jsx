@@ -56,7 +56,7 @@ const GuildsArray = () => {
               <div className="col-1 d-flex align-items-center">
                 <ToolsFilters />
               </div>
-              <Table className="col-10" w-auto text-nowrap hover>
+              <Table className="col-10 w-auto text-wrap" hover borderless>
                 <tbody className="container">
                   {results
                     .filter(
