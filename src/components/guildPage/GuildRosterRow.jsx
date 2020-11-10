@@ -2,7 +2,6 @@ import propTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import DalApi from '../../dal/DalApi';
 
-import '../cssPages&Components/GuildPage.css';
 import '../cssPages&Components/ClassColor.css';
 
 const GuildRosterRow = (props) => {

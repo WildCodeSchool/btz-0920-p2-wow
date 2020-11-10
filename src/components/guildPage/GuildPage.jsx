@@ -9,7 +9,6 @@ import GuildRoster from './GuildRoster';
 import Error from '../Error';
 import Flag from '../flags/Flag';
 import FactionIcons from '../flags/FactionIcons';
-import '../cssPages&Components/GuildPage.css';
 
 const GuildPage = () => {
   const params = useParams();
