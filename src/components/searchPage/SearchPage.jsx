@@ -5,14 +5,27 @@ import PropTypes from 'prop-types';
 
 import Slider from './Slider';
 
-import { guild, alliance, horde, europe, usa, korea, taiwan } from '../../img';
+import {
+  guild,
+  character,
+  alliance,
+  horde,
+  europe,
+  usa,
+  korea,
+  taiwan,
+} from '../../img';
+import { classesAndSpecs } from '../../dal/staticData';
 
 import './SearchPage.css';
 
 const SearchPage = () => {
   const [items] = useState([
     {
-      cardNames: [['Guild', guild]],
+      cardNames: [
+        ['Guild', guild],
+        ['Character', character],
+      ],
       title: 'Search',
     },
     {
@@ -34,11 +47,37 @@ const SearchPage = () => {
       ],
       title: 'Faction',
     },
+    {
+      cardNames: [
+        [classesAndSpecs[0].name, classesAndSpecs[0].image],
+        [classesAndSpecs[1].name, classesAndSpecs[1].image],
+        [classesAndSpecs[2].name, classesAndSpecs[2].image],
+        [classesAndSpecs[3].name, classesAndSpecs[3].image],
+        [classesAndSpecs[4].name, classesAndSpecs[4].image],
+        [classesAndSpecs[5].name, classesAndSpecs[5].image],
+        [classesAndSpecs[6].name, classesAndSpecs[6].image],
+        [classesAndSpecs[7].name, classesAndSpecs[7].image],
+        [classesAndSpecs[8].name, classesAndSpecs[8].image],
+        [classesAndSpecs[9].name, classesAndSpecs[9].image],
+        [classesAndSpecs[10].name, classesAndSpecs[10].image],
+        [classesAndSpecs[11].name, classesAndSpecs[11].image],
+      ],
+      title: 'Class',
+    },
+    // {
+    //   cardNames: [
+    //     classesAndSpecs.map((item) => {
+    //       return item.name, item.image;
+    //     }),
+    //   ],
+    //   title: 'Class',
+    // },
   ]);
 
   const [searchTypeData, setSearchTypeData] = useState('Search Type');
   const [regionData, setRegionData] = useState('Region');
   const [factionData, setFactionData] = useState('Faction');
+  const [classData, setClassData] = useState('Class');
 
   const handleSelection = (e) => {
     switch (e.target.id) {
@@ -66,12 +105,48 @@ const SearchPage = () => {
       case 'Alliance':
         setFactionData('Alliance');
         break;
+      case 'Death Knight':
+        setClassData('Death Knight');
+        break;
+      case 'Demon Hunter':
+        setClassData('Demon Hunter');
+        break;
+      case 'Druid':
+        setClassData('Druid');
+        break;
+      case 'Hunter':
+        setClassData('Hunter');
+        break;
+      case 'Mage':
+        setClassData('Mage');
+        break;
+      case 'Monk':
+        setClassData('Monk');
+        break;
+      case 'Paladin':
+        setClassData('Paladin');
+        break;
+      case 'Priest':
+        setClassData('Priest');
+        break;
+      case 'Rogue':
+        setClassData('Rogue');
+        break;
+      case 'Shaman':
+        setClassData('Shaman');
+        break;
+      case 'Warlock':
+        setClassData('Warlock');
+        break;
+      case 'Warrior':
+        setClassData('Warrior');
+        break;
       default:
         break;
     }
   };
 
-  const requestData = [searchTypeData, regionData, factionData];
+  const requestData = [searchTypeData, regionData, factionData, classData];
 
   return (
     <Container
