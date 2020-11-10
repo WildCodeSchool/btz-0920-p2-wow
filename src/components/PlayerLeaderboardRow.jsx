@@ -13,7 +13,9 @@ const PlayerLeaderboardRow = ({ name, realm, region, playerClass }) => {
     >
       <tr className="d-flex">
         <td className="col-md-5 d-flex align-items-center">
-          <p className={playerClass}>{name}</p>
+          <p className={`d-flex align-items-center m-0 ${playerClass}`}>
+            {name}
+          </p>
         </td>
         <td className="col-md-5 d-flex align-items-center">{realm}</td>
         <td className="col-md-2 d-flex align-items-center">
