@@ -63,18 +63,30 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     const dataCheck = () => {
       if (
         requestData[0] !== 'Search Type' &&
+        requestData[0] !== 'Character' &&
         requestData[1] !== 'Region' &&
         server !== 'Server' &&
         requestData[2] !== 'Faction'
       ) {
         history.push(`/GuildsArray/${requestData[1]}/${server}/`);
+      } else if (
+        requestData[0] === 'Character' &&
+        requestData[1] !== 'Region' &&
+        server !== 'Server' &&
+        requestData[2] !== 'Faction' &&
+        requestData[3] !== 'Class'
+      ) {
+        history.push(`/PJArray/${requestData[1]}/${server}/${requestData[3]}`);
       }
       return false;
     };
     dataCheck();
   }, [next]);
 
-  const items = slides.map(({ title, cardNames }) => {
+  const items = (requestData[0] !== 'Character'
+    ? slides.slice(0, 4)
+    : slides
+  ).map(({ title, cardNames }) => {
     return (
       <CarouselItem
         appear
@@ -138,7 +150,11 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
 
   return (
     <>
-      <p>{`${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}</p>
+      <p>
+        {requestData[0] === 'Character'
+          ? `${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]} / ${requestData[3]}`
+          : `${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}
+      </p>
       <Carousel
         activeIndex={activeIndex}
         next={next}
