@@ -6,6 +6,7 @@ import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
 import LoadingSpinner from '../LoadingSpinner';
 import GuildRoster from './GuildRoster';
+import Error from '../Error';
 import Flag from '../flags/Flag';
 import FactionIcons from '../flags/FactionIcons';
 import '../cssPages&Components/GuildPage.css';
@@ -19,6 +20,8 @@ const GuildPage = () => {
   const [roster, setRoster] = useState(null);
   const [flagTag, setFlagTag] = useState(null);
   const [faction, setFaction] = useState(null);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({});
 
   useEffect(() => {
     const getDatas = async () => {
@@ -43,8 +46,9 @@ const GuildPage = () => {
         setRoster(rosterRes.data.guildRoster.roster);
         setFlagTag(guildDetails.guild.region.slug);
         setFaction(guildDetails.guild.faction);
-      } catch (error) {
-        // TODO: handle this error
+      } catch (err) {
+        setIsError(true);
+        setError(err);
       } finally {
         setLoading(false);
       }
@@ -52,6 +56,10 @@ const GuildPage = () => {
 
     getDatas();
   }, []);
+
+  if (isError) {
+    return <Error msg={error.message} />;
+  }
 
   return (
     <div>
