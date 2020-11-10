@@ -16,6 +16,7 @@
 
 .wildCard {
   background: center / cover no-repeat;
+  font-size: 2rem;
 }
 
 .wildCard:hover {
