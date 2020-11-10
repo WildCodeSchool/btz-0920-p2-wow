@@ -47,24 +47,6 @@ function ToolsFilters() {
                             id="exampleCustomCheckbox"
                             label="Check this custom checkbox"
                           />
-                          <CustomInput
-                            type="checkbox"
-                            id="exampleCustomCheckbox2"
-                            label="Or this one"
-                          />
-                          <CustomInput
-                            type="checkbox"
-                            id="exampleCustomCheckbox3"
-                            label="But not this disabled one"
-                            disabled
-                          />
-                          <CustomInput
-                            type="checkbox"
-                            id="exampleCustomCheckbox4"
-                            label="Can't click this label to check!"
-                            htmlFor="exampleCustomCheckbox4_X"
-                            disabled
-                          />
                         </div>
                       </FormGroup>
                     </Card>

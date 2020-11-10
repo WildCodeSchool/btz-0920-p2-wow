@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Table } from 'reactstrap';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 import PJRow from './PJRow';
 import ToolsFilters from './ToolsFilters';
@@ -12,7 +12,7 @@ import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
 
 const PJArray = () => {
-  const params = useParams();
+  // const params = useParams();
   const [results, setResults] = useState([]);
   const [regionName, setRegionName] = useState('');
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ const PJArray = () => {
   const [playerPerPage] = useState(5);
 
   useEffect(() => {
-    DalApi.getTopPlayer(params.region.toLowerCase()).then(({ data }) => {
+    DalApi.getTopPlayer('eu').then(({ data }) => {
       setResults(data.rankings.rankedCharacters);
       setRegionName(data.rankings.region.name);
       setLoading(false);
