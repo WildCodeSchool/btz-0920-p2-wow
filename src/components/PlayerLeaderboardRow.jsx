@@ -8,9 +8,11 @@ import './cssPages&Components/ClassColor.css';
 const PlayerLeaderboardRow = ({ name, realm, region, playerClass }) => {
   const history = useHistory();
 
+  // link to player page
   const rowLink = () => {
     history.push(`/player/${region}/${realm}/${name}/`);
   };
+
   return (
     <tr className="d-flex" onClick={rowLink}>
       <td className="col-md-5 d-flex align-items-center">

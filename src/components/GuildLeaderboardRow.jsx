@@ -7,6 +7,7 @@ import Flag from './flags/Flag';
 const GuildLeaderboardRow = ({ realm, region, name }) => {
   const history = useHistory();
 
+  // link to guild page
   const rowLink = () => {
     history.push(`/guild/${region}/${realm}/${name}/`);
   };
