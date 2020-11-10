@@ -72,11 +72,9 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
       } else if (
         requestData[0] === 'Character' &&
         requestData[1] !== 'Region' &&
-        server !== 'Server' &&
-        requestData[2] !== 'Faction' &&
         requestData[3] !== 'Class'
       ) {
-        history.push(`/PJArray/${requestData[1]}/${server}/${requestData[3]}`);
+        history.push(`/PJArray/${requestData[1]}/${requestData[3]}`);
       }
       return false;
     };
@@ -152,7 +150,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     <>
       <p>
         {requestData[0] === 'Character'
-          ? `${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]} / ${requestData[3]}`
+          ? `${requestData[0]} / ${requestData[1]} / ${requestData[3]}`
           : `${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}
       </p>
       <Carousel

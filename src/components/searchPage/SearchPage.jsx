@@ -154,7 +154,13 @@ const SearchPage = () => {
       style={{ marginTop: '120px' }}
     >
       <Slider
-        slides={searchTypeData !== 'Character' ? items.slice(0, 4) : items}
+        slides={
+          searchTypeData === 'Character'
+            ? items.filter(
+                (item) => item.title !== 'Server' && item.title !== 'Faction'
+              )
+            : items.slice(0, 4)
+        }
         handleSelection={handleSelection}
         regionData={regionData}
         requestData={requestData}
