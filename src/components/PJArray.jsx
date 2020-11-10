@@ -20,7 +20,10 @@ const PJArray = () => {
   const [playerPerPage] = useState(5);
 
   useEffect(() => {
-    DalApi.getTopPlayer(params.region.toLowerCase()).then(({ data }) => {
+    DalApi.getTopPlayer(
+      params.region.toLowerCase(),
+      params.class.toLowerCase()
+    ).then(({ data }) => {
       setResults(data.rankings.rankedCharacters);
       setRegionName(data.rankings.region.name);
       setLoading(false);
@@ -46,7 +49,7 @@ const PJArray = () => {
           <main className="container min-vw-100">
             <div className="row w-100">
               <div className="col-3 align-self-center">
-                <ToolsFilters />
+                <ToolsFilters results={results} />
               </div>
               <Table className="col-8" w-auto text-nowrap hover>
                 <tbody className="container">

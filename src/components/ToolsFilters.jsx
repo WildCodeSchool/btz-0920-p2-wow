@@ -1,22 +1,28 @@
-import { useState } from 'react';
-import {
-  Collapse,
-  Button,
-  Card,
-  FormGroup,
-  Label,
-  CustomInput,
-} from 'reactstrap';
+import { useEffect, useState } from 'react';
+import { Collapse, Button } from 'reactstrap';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import FactionIcons from './flags/FactionIcons';
 
-import DalApi from '../dal/DalApi';
-
-function ToolsFilters() {
+function ToolsFilters(results) {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => setIsOpen(!isOpen);
+  const [factionState] = useState(results);
 
-  const classes = DalApi.getClassesAndSpecs();
+  // console.log(factionState.results[0].character.faction);
+
+  const handleClick = () => {
+    useEffect(() => {
+      factionState.results.filter(
+        (elmt) => elmt.character.faction === Button.target.value
+      );
+    }, []);
+  };
+
+  // const toto = factionState.results.filter(
+  //   (pjFaction) => pjFaction.character.faction === 'horde'
+  // );
+
+  // console.log(toto);
 
   return (
     <div>
@@ -24,43 +30,22 @@ function ToolsFilters() {
         <BsThreeDotsVertical />
       </Button>
       <Collapse isOpen={isOpen}>
-        <Card>
-          <Button color="secondary" style={{ marginBottom: '1rem' }}>
-            {classes.map((classe) => {
-              return (
-                <>
-                  <Button>
-                    <img
-                      src={classe.image}
-                      alt={classe.name}
-                      style={{ height: '50px' }}
-                      title={classe.name}
-                    />
-                  </Button>
-                  <Collapse isOpen={isOpen}>
-                    <Card>
-                      <FormGroup>
-                        <Label for="exampleCheckbox">Specs</Label>
-                        <div>
-                          <CustomInput
-                            type="checkbox"
-                            id="exampleCustomCheckbox"
-                            label="Check this custom checkbox"
-                          />
-                        </div>
-                      </FormGroup>
-                    </Card>
-                  </Collapse>
-                </>
-              );
-            })}
-          </Button>
-          {/* <CardBody>
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-            terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-            labore wes anderson cred nesciunt sapiente ea proident.
-          </CardBody> */}
-        </Card>
+        <Button
+          value="horde"
+          onClick={handleClick}
+          color="secondary"
+          className="p-0"
+        >
+          <FactionIcons faction="horde" />
+        </Button>
+        <Button
+          value="alliance"
+          onClick={handleClick}
+          color="secondary"
+          className="p-0"
+        >
+          <FactionIcons faction="alliance" />
+        </Button>
       </Collapse>
     </div>
   );
