@@ -79,7 +79,7 @@ const Leaderboards = () => {
               })}
             </DropdownMenu>
           </ButtonDropdown>
-          <Table className="mx-5 w-100 border-none" hover>
+          <Table className="mx-5 w-100 border-none" hover borderless>
             <thead>
               <tr>
                 <th className="h2 font-weight-bold" colSpan={12}>
@@ -102,7 +102,7 @@ const Leaderboards = () => {
                 })}
             </tbody>
           </Table>
-          <Table className="mx-5 w-100 text-nowrap" hover>
+          <Table className="mx-5 w-100 text-nowrap" hover borderless>
             <thead>
               <tr>
                 <th className="h2 font-weight-bold" colSpan={12}>

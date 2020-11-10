@@ -6,6 +6,7 @@ import GuildRow from './GuildRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
+import Error from './Error';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
@@ -17,22 +18,36 @@ const GuildsArray = () => {
   const [loading, setLoading] = useState(true);
   const [serverSlug, setServerSlug] = useState('');
   const [realmName, setRealmName] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({});
   // const [min, setMin] = useState(0);
   // const [max, setMax] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
 
   useEffect(() => {
-    DalApi.getTopGuild(
-      params.region.toLowerCase(),
-      params.realm.toLowerCase()
-    ).then(({ data }) => {
-      setResults(data.raidRankings.rankedGuilds);
-      setServerSlug(params.region);
-      setRealmName(params.realm);
-      setLoading(false);
-    });
+    const getDatas = async () => {
+      try {
+        const guild = await DalApi.getTopGuild(
+          params.region.toLowerCase(),
+          params.realm.toLowerCase()
+        );
+        setResults(guild.data.raidRankings.rankedGuilds);
+        setServerSlug(params.region);
+        setRealmName(params.realm);
+      } catch (err) {
+        setIsError(true);
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getDatas();
   }, []);
+
+  if (isError) {
+    return <Error msg={error.message} />;
+  }
 
   // function page1() {
   //   setMin(0);

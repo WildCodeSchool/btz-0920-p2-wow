@@ -28,28 +28,45 @@ const PlayerProfile = () => {
   const [loading, setLoading] = useState(true);
   const [faction] = useState('');
   const [error, setError] = useState(null);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    DalApi.getPlayer(params.region, params.realm, params.name)
-      .then(({ data }) => {
-        setPlayerRegion(data.region);
-        setPlayerRealm(data.realm);
-        setPlayerName(data.name);
-        setThumbnail(data.thumbnail_url);
-        setCharClass(data.class);
-        setSpecName(data.active_spec_name);
-        setSpecRole(data.active_spec_role);
-        setGuild(data.guild.name);
-        setItemLevel(data.gear.item_level_equipped);
-        setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
-        setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
+    const getDatas = async () => {
+      try {
+        const player = await DalApi.getPlayer(
+          params.region,
+          params.realm,
+          params.name
+        );
+
+        setPlayerRegion(player.data.region);
+        setPlayerRealm(player.data.realm);
+        setPlayerName(player.data.name);
+        setThumbnail(player.data.thumbnail_url);
+        setCharClass(player.data.class);
+        setSpecName(player.data.active_spec_name);
+        setSpecRole(player.data.active_spec_role);
+        setGuild(player.data.guild.name);
+        setItemLevel(player.data.gear.item_level_equipped);
+        setRaidScore(
+          player.data.raid_progression['nyalotha-the-waking-city'].summary
+        );
+        setMythicScore(player.data.mythic_plus_scores_by_season[0].scores.all);
         setLoading(false);
-        // setFaction(data.faction);
-      })
-      .catch((err) => {
+      } catch (err) {
+        setIsError(true);
         setError(err);
-      });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getDatas();
   }, []);
+
+  if (isError) {
+    return <Error msg={error.message} />;
+  }
 
   let factionLogo = '';
   const determineLogo = () => {
@@ -144,10 +161,10 @@ const PlayerProfile = () => {
               </div>
             </Container>
             <Table
-              striped
               className="d-flex justify-content-center align-items-md-center flex-wrap"
               height="750px"
               opacity="0.5"
+              borderless
             >
               <tbody>
                 <tr className="d-flex justify-content-around align-items-center">
