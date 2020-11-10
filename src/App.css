@@ -20,6 +20,10 @@
   max-width: 1400px;
 }
 
+.guild-container td {
+  font-size: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .leaderboard-container {
     flex-wrap: wrap;

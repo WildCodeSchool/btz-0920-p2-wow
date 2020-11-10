@@ -36,7 +36,7 @@ const GuildRosterRow = (props) => {
 
   return (
     <tr
-      className="d-flex playerRow text-left align-items-center"
+      className="d-flex playerRow text-left align-items-center my-1"
       onClick={rowLink}
     >
       <td className="col-md-4 p-0">
