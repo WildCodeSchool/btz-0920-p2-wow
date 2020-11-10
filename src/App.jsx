@@ -35,7 +35,7 @@ const routes = [
 function App() {
   return (
     <Router>
-      <div className="App d-flex flex-column">
+      <div className="App d-flex flex-column container-fluid">
         <NavBar />
         <>
           {routes.map(({ path, Component }) => (

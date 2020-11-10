@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { Col, Table, Container } from 'reactstrap';
-import { Link, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
@@ -29,6 +29,13 @@ const PlayerProfile = () => {
   const [faction] = useState('');
   const [error, setError] = useState(null);
   const [isError, setIsError] = useState(false);
+
+  const history = useHistory();
+
+  // link to player page
+  const guildLink = () => {
+    history.push(`/guild/${region}/${realm}/${guild}/`);
+  };
 
   useEffect(() => {
     const getDatas = async () => {
@@ -184,19 +191,14 @@ const PlayerProfile = () => {
                     />
                   </td>
                 </tr>
-                <Link
-                  to={`/guild/${playerRegion}/${playerRealm.toLowerCase()}/${guild}/`}
-                  style={{ textDecoration: 'none' }}
-                >
-                  <tr>
-                    <td xs={3}>
-                      <h4>Guild</h4>
-                    </td>
-                    <td xs={9}>
-                      <h4>{guild}</h4>
-                    </td>
-                  </tr>
-                </Link>
+                <tr onClick={guildLink}>
+                  <td xs={3}>
+                    <h4>Guild</h4>
+                  </td>
+                  <td xs={9}>
+                    <h4>{guild}</h4>
+                  </td>
+                </tr>
                 <tr>
                   <td xs={3}>
                     <h4>Item level</h4>

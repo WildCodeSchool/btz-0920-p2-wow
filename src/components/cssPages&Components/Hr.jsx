@@ -9,6 +9,7 @@ function Hr() {
         left: '112px',
         top: '98px',
         borderRadius: '0px',
+        // minWidth: '800px',
       }}
     />
   );

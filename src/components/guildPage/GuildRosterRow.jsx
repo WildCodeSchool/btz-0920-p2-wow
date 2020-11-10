@@ -27,6 +27,7 @@ const GuildRosterRow = (props) => {
   const rowLink = () => {
     history.push(`/player/${region}/${realm}/${name}/`);
   };
+
   const classe = DalApi.getClassesAndSpecsBySlug(slug);
 
   // create avatar image source

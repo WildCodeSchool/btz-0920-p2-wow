@@ -71,7 +71,7 @@ const GuildPage = () => {
       ) : (
         <>
           <div style={{ height: '100px', minWidth: '95vw' }} />
-          <Container fluid className="w-50">
+          <Container fluid className="w-50 guild-container">
             <Container className="guildPage d-flex flex-column justify-content-center">
               <Row>
                 <Col xs={12}>
