@@ -20,8 +20,6 @@ const GuildsArray = () => {
   const [realmName, setRealmName] = useState('');
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState({});
-  // const [min, setMin] = useState(0);
-  // const [max, setMax] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
 
@@ -49,26 +47,6 @@ const GuildsArray = () => {
     return <Error msg={error.message} />;
   }
 
-  // function page1() {
-  //   setMin(0);
-  //   setMax(5);
-  // }
-
-  // function page2() {
-  //   setMin(5);
-  //   setMax(10);
-  // }
-
-  // function page3() {
-  //   setMin(10);
-  //   setMax(15);
-  // }
-
-  // function page4() {
-  //   setMin(15);
-  //   setMax(20);
-  // }
-
   return (
     <>
       {loading ? (
@@ -93,7 +71,7 @@ const GuildsArray = () => {
               <div className="col-1 d-flex align-items-center">
                 <ToolsFilters />
               </div>
-              <Table className="col-10" w-auto text-nowrap hover>
+              <Table className="col-10 w-auto text-wrap" hover borderless>
                 <tbody className="container">
                   {results
                     .filter(

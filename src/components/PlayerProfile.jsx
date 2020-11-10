@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Col, Table, Container } from 'reactstrap';
-import { Link, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
@@ -13,7 +13,7 @@ import './cssPages&Components/playerProfile.css';
 import './cssPages&Components/test.css';
 
 const PlayerProfile = () => {
-  const params = useParams();
+  const { name, realm, region } = useParams();
   const [playerRegion, setPlayerRegion] = useState('');
   const [playerRealm, setPlayerRealm] = useState('');
   const [playerName, setPlayerName] = useState('');
@@ -30,14 +30,17 @@ const PlayerProfile = () => {
   const [error, setError] = useState(null);
   const [isError, setIsError] = useState(false);
 
+  const history = useHistory();
+
+  // link to player page
+  const guildLink = () => {
+    history.push(`/guild/${region}/${realm}/${guild}/`);
+  };
+
   useEffect(() => {
     const getDatas = async () => {
       try {
-        const player = await DalApi.getPlayer(
-          params.region,
-          params.realm,
-          params.name
-        );
+        const player = await DalApi.getPlayer(region, realm, name);
 
         setPlayerRegion(player.data.region);
         setPlayerRealm(player.data.realm);
@@ -188,19 +191,14 @@ const PlayerProfile = () => {
                     />
                   </td>
                 </tr>
-                <Link
-                  to={`/guild/${playerRegion}/${playerRealm.toLowerCase()}/${guild}/`}
-                  style={{ textDecoration: 'none' }}
-                >
-                  <tr>
-                    <td xs={3}>
-                      <h4>Guild</h4>
-                    </td>
-                    <td xs={9}>
-                      <h4>{guild}</h4>
-                    </td>
-                  </tr>
-                </Link>
+                <tr onClick={guildLink}>
+                  <td xs={3}>
+                    <h4>Guild</h4>
+                  </td>
+                  <td xs={9}>
+                    <h4>{guild}</h4>
+                  </td>
+                </tr>
                 <tr>
                   <td xs={3}>
                     <h4>Item level</h4>
@@ -236,12 +234,12 @@ const PlayerProfile = () => {
   );
 };
 
-PlayerProfile.propTypes = {
-  params: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    realm: PropTypes.string.isRequired,
-    region: PropTypes.string.isRequired,
-  }).isRequired,
-};
+// PlayerProfile.propTypes = {
+//   params: PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     realm: PropTypes.string.isRequired,
+//     region: PropTypes.string.isRequired,
+//   }).isRequired,
+// };
 
 export default PlayerProfile;

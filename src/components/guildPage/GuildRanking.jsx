@@ -3,10 +3,7 @@ import { Table } from 'reactstrap';
 import DalApi from '../../dal/DalApi';
 import GuildRankingRow from './GuildRankingRow';
 
-// const { Container } = require('reactstrap');
-
 export default function GuildRanking(props) {
-  // eslint-disable-next-line react/prop-types
   const { raidRankings, raidProgress } = props;
 
   return (
@@ -18,31 +15,24 @@ export default function GuildRanking(props) {
           <td className="col-md-3">Rank</td>
         </tr>
       </thead>
-      {DalApi.getRaids()
-        .map((raid) => {
-          return raidRankings.find((r) => r.raid === raid.slug) ? (
-            <GuildRankingRow
-              raid={raidRankings.find((r) => r.raid === raid.slug)}
-              raidProgress={raidProgress.find((r) => r.raid === raid.slug)}
-              key={raid.slug}
-            />
-          ) : null;
-        })
-        .filter((elmt, index) => index < 5)}
-      {/* // {raidRankings.map((ranking, index) => (
-      //   <GuildRankingRow
-      //     raid={ranking}
-      //     raidProgress={raidProgress[index]}
-      //     key={ranking.raid}
-      //   />
-      // ))} */}
+      <tbody>
+        {DalApi.getRaids()
+          .map((raid) => {
+            return raidRankings.find((r) => r.raid === raid.slug) ? (
+              <GuildRankingRow
+                raid={raidRankings.find((r) => r.raid === raid.slug)}
+                raidProgress={raidProgress.find((r) => r.raid === raid.slug)}
+                key={raid.slug}
+              />
+            ) : null;
+          })
+          .filter((elmt, index) => index < 5)}
+      </tbody>
     </Table>
   );
 }
 
 GuildRanking.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  raidProgress: propTypes.array.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  raidRankings: propTypes.array.isRequired,
+  raidProgress: propTypes.arrayOf(propTypes.object).isRequired,
+  raidRankings: propTypes.arrayOf(propTypes.object).isRequired,
 };

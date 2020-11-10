@@ -14,7 +14,7 @@ import './App.css';
 const routes = [
   { path: '/', name: 'Leaderboards', Component: Leaderboards },
   {
-    path: '/player/:name/:region/:realm',
+    path: '/player/:region/:realm/:name',
     name: 'PlayerProfile',
     Component: PlayerProfile,
   },
@@ -35,7 +35,7 @@ const routes = [
 function App() {
   return (
     <Router>
-      <div className="App d-flex flex-column">
+      <div className="App d-flex flex-column container-fluid">
         <NavBar />
         <>
           {routes.map(({ path, Component }) => (

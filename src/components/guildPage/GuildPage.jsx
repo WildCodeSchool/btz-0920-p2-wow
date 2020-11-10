@@ -9,7 +9,6 @@ import GuildRoster from './GuildRoster';
 import Error from '../Error';
 import Flag from '../flags/Flag';
 import FactionIcons from '../flags/FactionIcons';
-import '../cssPages&Components/GuildPage.css';
 
 const GuildPage = () => {
   const params = useParams();
@@ -40,7 +39,6 @@ const GuildPage = () => {
 
         const { guildDetails } = guildRes.data;
         setGuild(guildDetails.guild);
-        // console.log(guild);
         setRaidRankings(guildDetails.raidRankings);
         setRaidProgress(guildDetails.raidProgress);
         setRoster(rosterRes.data.guildRoster.roster);
@@ -72,7 +70,7 @@ const GuildPage = () => {
       ) : (
         <>
           <div style={{ height: '100px', minWidth: '95vw' }} />
-          <Container fluid className="w-50">
+          <Container fluid className="w-50 guild-container">
             <Container className="guildPage d-flex flex-column justify-content-center">
               <Row>
                 <Col xs={12}>
