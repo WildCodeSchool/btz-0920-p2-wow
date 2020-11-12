@@ -98,11 +98,20 @@ const PJArray = () => {
                       >
                         <FactionIcons faction="alliance" />
                       </Button>
+                      <Button
+                        type="button"
+                        value="alliance"
+                        onClick={() => setFilterRes(results)}
+                        color="secondary"
+                        className="p-0 bg-transparent border-0 button-hover"
+                      >
+                        <FactionIcons faction="alliance" />
+                      </Button>
                     </CardBody>
                   </Card>
                 </UncontrolledCollapse>
               </div>
-              <Table className="col-8" w-auto text-nowrap hover>
+              <Table className="col-8 w-auto text-nowrap" hover borderless>
                 <tbody className="container">
                   {filterRes
                     .filter(
