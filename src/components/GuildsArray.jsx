@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Table, Container } from 'reactstrap';
-
 import { useParams } from 'react-router-dom';
+
 import GuildRow from './GuildRow';
 import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';

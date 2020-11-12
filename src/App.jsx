@@ -29,7 +29,11 @@ const routes = [
     Component: GuildsArray,
   },
   { path: '/search', name: 'SearchPage', Component: SearchPage },
-  { path: '/PJArray', name: 'PJArray', Component: PJArray },
+  {
+    path: '/PJArray/:region/:realm/:class',
+    name: 'PJArray',
+    Component: PJArray,
+  },
 ];
 
 function App() {

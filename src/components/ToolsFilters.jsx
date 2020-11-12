@@ -1,10 +1,11 @@
+import { Button } from 'reactstrap';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 function ToolsFilters() {
   return (
-    <a href="http://www.untestseo.com/" target="_blank" rel="noreferrer">
+    <Button>
       <BsThreeDotsVertical />
-    </a>
+    </Button>
   );
 }
 

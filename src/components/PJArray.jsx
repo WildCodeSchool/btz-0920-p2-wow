@@ -1,53 +1,43 @@
 import { useEffect, useState } from 'react';
-import { Table } from 'reactstrap';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import {
+  Table,
+  UncontrolledCollapse,
+  Button,
+  CardBody,
+  Card,
+} from 'reactstrap';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 
 import PJRow from './PJRow';
-import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
+import FactionIcons from './flags/FactionIcons';
 
 const PJArray = () => {
-  // const params = useParams();
+  const params = useParams();
   const [results, setResults] = useState([]);
   const [regionName, setRegionName] = useState('');
   const [loading, setLoading] = useState(true);
-  // const [min, setMin] = useState(0);
-  // const [max, setMax] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
+  const [filterRes, setFilterRes] = useState([]);
 
   useEffect(() => {
-    DalApi.getTopPlayer('eu').then(({ data }) => {
+    DalApi.getTopPlayer(
+      params.region.toLowerCase(),
+      params.class.toLowerCase()
+    ).then(({ data }) => {
       setResults(data.rankings.rankedCharacters);
       setRegionName(data.rankings.region.name);
+      setFilterRes(data.rankings.rankedCharacters);
       setLoading(false);
     });
   }, []);
-
-  // function page1() {
-  //   setMin(0);
-  //   setMax(5);
-  // }
-
-  // function page2() {
-  //   setMin(5);
-  //   setMax(10);
-  // }
-
-  // function page3() {
-  //   setMin(10);
-  //   setMax(15);
-  // }
-
-  // function page4() {
-  //   setMin(15);
-  //   setMax(20);
-  // }
 
   return (
     <>
@@ -67,12 +57,54 @@ const PJArray = () => {
           </div>
           <main className="container min-vw-100">
             <div className="row w-100">
-              <div className="col-1 align-self-center">
-                <ToolsFilters />
+              <div className="col-3 align-self-center">
+                <Button
+                  color="primary"
+                  id="toggler"
+                  style={{ marginBottom: '1rem' }}
+                >
+                  <BsThreeDotsVertical />
+                </Button>
+                <UncontrolledCollapse toggler="#toggler">
+                  <Card className="bg-transparent">
+                    <CardBody className="p-0 bg-transparent">
+                      <Button
+                        type="button"
+                        value="horde"
+                        onClick={() =>
+                          setFilterRes(
+                            results.filter(
+                              (elmt) => elmt.character.faction === 'horde'
+                            )
+                          )
+                        }
+                        color="secondary"
+                        className="p-0 bg-transparent border-0 button-hover"
+                      >
+                        <FactionIcons faction="horde" />
+                      </Button>
+                      <Button
+                        type="button"
+                        value="alliance"
+                        onClick={() =>
+                          setFilterRes(
+                            results.filter(
+                              (elmt) => elmt.character.faction === 'alliance'
+                            )
+                          )
+                        }
+                        color="secondary"
+                        className="p-0 bg-transparent border-0 button-hover"
+                      >
+                        <FactionIcons faction="alliance" />
+                      </Button>
+                    </CardBody>
+                  </Card>
+                </UncontrolledCollapse>
               </div>
-              <Table className="col-10" w-auto text-nowrap hover>
+              <Table className="col-8" w-auto text-nowrap hover>
                 <tbody className="container">
-                  {results
+                  {filterRes
                     .filter(
                       (_, index) =>
                         index >= (currentPage - 1) * playerPerPage &&
@@ -99,7 +131,7 @@ const PJArray = () => {
           <Pagin
             page={currentPage}
             playerPerPage={playerPerPage}
-            totalPlayers={results.length}
+            totalPlayers={filterRes.length}
             updatePage={setCurrentPage}
           />
         </div>
