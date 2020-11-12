@@ -34,7 +34,7 @@ const PlayerProfile = () => {
 
   // link to player page
   const guildLink = () => {
-    history.push(`/guild/${region}/${realm}/${guild}/`);
+    history.push(`/guild/${playerRegion}/${realm}/${guild}/`);
   };
 
   useEffect(() => {
