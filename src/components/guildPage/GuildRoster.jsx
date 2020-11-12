@@ -23,7 +23,7 @@ const GuildRoster = (props) => {
           <tr className="d-flex" style={{ fontSize: '24px' }}>
             <td className="col-md-4">Player</td>
             <td className="col-md-3">Spec</td>
-            <td className="col-md-3">Race</td>
+            <td className="col-md-3 d-none d-md-block">Race</td>
             <td className="col-md-2">I-Level</td>
           </tr>
         </thead>

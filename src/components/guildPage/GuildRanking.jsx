@@ -9,10 +9,18 @@ export default function GuildRanking(props) {
   return (
     <Table className="d-flex flex-column" borderless>
       <thead>
-        <tr className="d-flex" style={{ fontSize: '24px' }}>
-          <td className="col-md-6">Raid</td>
-          <td className="col-md-3">Progress</td>
-          <td className="col-md-3">Rank</td>
+        <tr
+          className="d-flex justify-content-center"
+          style={{ fontSize: '24px' }}
+        >
+          <td className="col-md-4">Raid</td>
+          <td
+            className="col-md-4 
+              d-none d-md-block"
+          >
+            Progress
+          </td>
+          <td className="col-md-4">Rank</td>
         </tr>
       </thead>
       <tbody>

@@ -20,13 +20,13 @@ export default function GuildRankingRow(props) {
 
   return (
     <tr className="d-flex" style={{ fontSize: '20px' }}>
-      <td className="col-md-5 text-left font-weight-bold">
+      <td className="col-md-4 text-center font-weight-bold">
         {currentRaid.name}
       </td>
-      <td className="col-md-4">
+      <td className="col-md-4 d-none d-md-block">
         {mythic.length.toString().concat('/').concat(currentRaid.bossQty)}
       </td>
-      <td className="col-md-3">{world}</td>
+      <td className="col-md-4">{world}</td>
     </tr>
   );
 }
