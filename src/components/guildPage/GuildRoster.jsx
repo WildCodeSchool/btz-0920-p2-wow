@@ -59,10 +59,15 @@ const GuildRoster = (props) => {
   );
 };
 
+GuildRoster.defaultProps = {
+  roster: [],
+  region: '',
+  realm: '',
+};
+
 GuildRoster.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  roster: propTypes.array.isRequired,
-  region: propTypes.string.isRequired,
-  realm: propTypes.string.isRequired,
+  roster: propTypes.arrayOf(propTypes.object),
+  region: propTypes.string,
+  realm: propTypes.string,
 };
 export default GuildRoster;
