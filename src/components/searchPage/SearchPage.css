@@ -9,6 +9,7 @@
 .slide {
   display: flex;
   flex: 1;
+  margin-top: 90px;
 }
 
 .carousel-inner,
