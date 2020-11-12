@@ -1,22 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {
-  Table,
-  UncontrolledCollapse,
-  Button,
-  CardBody,
-  Card,
-} from 'reactstrap';
-import { BsThreeDotsVertical } from 'react-icons/bs';
+import { Table } from 'reactstrap';
 
 import PJRow from './PJRow';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
+import ToolsFilters from './ToolsFilters';
+import Error from './Error';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
-import FactionIcons from './flags/FactionIcons';
 
 const PJArray = () => {
   const params = useParams();
@@ -26,18 +20,34 @@ const PJArray = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
   const [filterRes, setFilterRes] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({});
 
   useEffect(() => {
-    DalApi.getTopPlayer(
-      params.region.toLowerCase(),
-      params.class.toLowerCase()
-    ).then(({ data }) => {
-      setResults(data.rankings.rankedCharacters);
-      setRegionName(data.rankings.region.name);
-      setFilterRes(data.rankings.rankedCharacters);
-      setLoading(false);
-    });
+    const getDatas = async () => {
+      try {
+        DalApi.getTopPlayer(
+          params.region.toLowerCase(),
+          params.class.toLowerCase().replace(' ', '-')
+        ).then(({ data }) => {
+          setResults(data.rankings.rankedCharacters);
+          setRegionName(data.rankings.region.name);
+          setFilterRes(data.rankings.rankedCharacters);
+          setLoading(false);
+        });
+      } catch (err) {
+        setIsError(true);
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getDatas();
   }, []);
+
+  if (isError) {
+    return <Error msg={error.message} />;
+  }
 
   return (
     <>
@@ -58,58 +68,7 @@ const PJArray = () => {
           <main className="container min-vw-100">
             <div className="row w-100">
               <div className="col-3 align-self-center">
-                <Button
-                  color="primary"
-                  id="toggler"
-                  style={{ marginBottom: '1rem' }}
-                >
-                  <BsThreeDotsVertical />
-                </Button>
-                <UncontrolledCollapse toggler="#toggler">
-                  <Card className="bg-transparent">
-                    <CardBody className="p-0 bg-transparent">
-                      <Button
-                        type="button"
-                        value="horde"
-                        onClick={() =>
-                          setFilterRes(
-                            results.filter(
-                              (elmt) => elmt.character.faction === 'horde'
-                            )
-                          )
-                        }
-                        color="secondary"
-                        className="p-0 bg-transparent border-0 button-hover"
-                      >
-                        <FactionIcons faction="horde" />
-                      </Button>
-                      <Button
-                        type="button"
-                        value="alliance"
-                        onClick={() =>
-                          setFilterRes(
-                            results.filter(
-                              (elmt) => elmt.character.faction === 'alliance'
-                            )
-                          )
-                        }
-                        color="secondary"
-                        className="p-0 bg-transparent border-0 button-hover"
-                      >
-                        <FactionIcons faction="alliance" />
-                      </Button>
-                      <Button
-                        type="button"
-                        value="alliance"
-                        onClick={() => setFilterRes(results)}
-                        color="secondary"
-                        className="p-0 bg-transparent border-0 button-hover"
-                      >
-                        <FactionIcons faction="alliance" />
-                      </Button>
-                    </CardBody>
-                  </Card>
-                </UncontrolledCollapse>
+                <ToolsFilters results={results} setFilterRes={setFilterRes} />
               </div>
               <Table className="col-8 w-auto text-nowrap" hover borderless>
                 <tbody className="container">

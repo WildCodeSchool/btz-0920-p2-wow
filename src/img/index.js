@@ -6,11 +6,12 @@ import horde from './horde.png';
 import hordeCard from './horde.jpg';
 import hordeIcon from './hordeIcon.png';
 import character from './character.jpg';
-import europe from './europe.jpg';
-import usa from './usa.jpg';
-import korea from './korea.jpg';
-import taiwan from './taiwan.jpg';
-import china from './china.jpg';
+import europe from './europe.png';
+import usa from './usa.png';
+import korea from './korea.png';
+import taiwan from './taiwan.png';
+import china from './chinaFlag.png';
+import allianceHordeIcon from './allianceHordeIcon.png';
 
 export {
   guild,
@@ -26,4 +27,5 @@ export {
   korea,
   taiwan,
   china,
+  allianceHordeIcon,
 };
