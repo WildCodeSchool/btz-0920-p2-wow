@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { GiWorld } from 'react-icons/gi';
 
-import { allianceIcon, hordeIcon } from '../../img';
+import { allianceIcon, hordeIcon, allianceHordeIcon } from '../../img';
 
 const FactionIcons = ({ faction }) => {
   const [isNull, setIsNull] = useState(false);
@@ -14,6 +14,8 @@ const FactionIcons = ({ faction }) => {
         return hordeIcon;
       case 'alliance':
         return allianceIcon;
+      case 'both':
+        return allianceHordeIcon;
       default:
         setIsNull(true);
         break;

@@ -9,6 +9,7 @@ import usa from './usa.png';
 import korea from './korea.png';
 import taiwan from './taiwan.png';
 import china from './chinaFlag.png';
+import allianceHordeIcon from './allianceHordeIcon.png';
 
 // const images = [
 //   {
@@ -37,4 +38,5 @@ export {
   korea,
   taiwan,
   china,
+  allianceHordeIcon,
 };
