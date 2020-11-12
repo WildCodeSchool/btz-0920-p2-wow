@@ -15,6 +15,15 @@
   flex: 1;
 }
 
+.guild-container {
+  min-width: 800px;
+  max-width: 1400px;
+}
+
+.guild-container td {
+  font-size: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .leaderboard-container {
     flex-wrap: wrap;
@@ -50,4 +59,8 @@
   opacity: 0;
   transform: scale(0.9) translateX(100%);
   transition: opacity 1000ms, transform 1000ms;
+}
+
+td {
+  cursor: pointer;
 }

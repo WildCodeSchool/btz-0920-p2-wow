@@ -20,7 +20,7 @@ const GuildRoster = (props) => {
     <div className="d-flex flex-column align-items-center">
       <Table className="d-flex flex-column collapse" hover borderless>
         <thead>
-          <tr className="d-flex" hover style={{ fontSize: '24px' }}>
+          <tr className="d-flex" style={{ fontSize: '24px' }}>
             <td className="col-md-4">Player</td>
             <td className="col-md-3">Spec</td>
             <td className="col-md-3">Race</td>
@@ -42,7 +42,6 @@ const GuildRoster = (props) => {
             .map((player) => (
               <GuildRosterRow
                 player={player}
-                s
                 key={player.character.name}
                 region={region}
                 realm={realm}

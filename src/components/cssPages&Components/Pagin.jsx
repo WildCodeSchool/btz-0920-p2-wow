@@ -57,6 +57,7 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
           <PaginationItem
             className="paginationItem"
             active={currentPage === elmt}
+            key={elmt}
           >
             <PaginationLink onClick={() => setCurrentPage(elmt)}>
               {elmt}

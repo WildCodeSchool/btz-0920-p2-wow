@@ -19,7 +19,7 @@ const WildCard = ({ title, image, height, width, handleClick, next }) => {
       className="wildCard d-flex align-items-center justify-content-center m-3 border border-primary"
       style={wildCardStyle}
     >
-      <h2>{title}</h2>
+      {title}
     </button>
   );
 };
