@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import { useState } from 'react';
-import { Carousel, Container } from 'reactstrap';
+import { Carousel } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import Slider from './Slider';
@@ -149,9 +149,9 @@ const SearchPage = () => {
   const requestData = [searchTypeData, regionData, factionData, classData];
 
   return (
-    <Container
-      className="d-flex flex-column flex-1"
-      style={{ marginTop: '120px' }}
+    <div
+      className="d-flex flex-column flex-1 container-fluid"
+      style={{ marginTop: '100px' }}
     >
       <Slider
         slides={
@@ -165,7 +165,7 @@ const SearchPage = () => {
         regionData={regionData}
         requestData={requestData}
       />
-    </Container>
+    </div>
   );
 };
 

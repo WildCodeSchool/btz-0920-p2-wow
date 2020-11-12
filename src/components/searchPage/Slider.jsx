@@ -97,7 +97,14 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
           <h1 className="border-vert m-5">{title}</h1>
         </div>
         {/* Slide Content */}
-        <Container className="d-flex flex-wrap justify-content-center">
+        <Container
+          className="cardsContainer d-flex flex-wrap justify-content-center flex-1"
+          style={{
+            alignItems: 'center',
+            alignContent: 'center',
+            marginBottom: '50px',
+          }}
+        >
           {/* Slide Server Select Input */}
           {title === 'Server' ? (
             <FormGroup>
@@ -135,8 +142,8 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
                   key={label}
                   title={label}
                   image={img}
-                  width={cardNames.length > 3 ? '200px' : '240px'}
-                  height={cardNames.length > 3 ? '200px' : '240px'}
+                  width={cardNames.length === 12 ? '120px' : '240px'}
+                  height={cardNames.length === 12 ? '120px' : '240px'}
                 />
               );
             })
@@ -148,11 +155,11 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
 
   return (
     <>
-      <p>
+      {/* <p>
         {requestData[0] === 'Character'
           ? `${requestData[0]} / ${requestData[1]} / ${requestData[3]}`
           : `${requestData[0]} / ${requestData[1]} / ${server} / ${requestData[2]}`}
-      </p>
+      </p> */}
       <Carousel
         activeIndex={activeIndex}
         next={next}
