@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import { useState } from 'react';
-import { Carousel, Container } from 'reactstrap';
+import { Carousel } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import Slider from './Slider';
@@ -8,8 +8,8 @@ import Slider from './Slider';
 import {
   guild,
   character,
-  alliance,
-  horde,
+  allianceCard,
+  hordeCard,
   europe,
   usa,
   korea,
@@ -42,8 +42,8 @@ const SearchPage = () => {
     },
     {
       cardNames: [
-        ['Horde', horde],
-        ['Alliance', alliance],
+        ['Horde', hordeCard],
+        ['Alliance', allianceCard],
       ],
       title: 'Faction',
     },
@@ -149,17 +149,23 @@ const SearchPage = () => {
   const requestData = [searchTypeData, regionData, factionData, classData];
 
   return (
-    <Container
-      className="d-flex flex-column flex-1"
-      style={{ marginTop: '120px' }}
+    <div
+      className="d-flex flex-column flex-1 container-fluid"
+      style={{ marginTop: '10px' }}
     >
       <Slider
-        slides={searchTypeData !== 'Character' ? items.slice(0, 4) : items}
+        slides={
+          searchTypeData === 'Character'
+            ? items.filter(
+                (item) => item.title !== 'Server' && item.title !== 'Faction'
+              )
+            : items.slice(0, 4)
+        }
         handleSelection={handleSelection}
         regionData={regionData}
         requestData={requestData}
       />
-    </Container>
+    </div>
   );
 };
 
