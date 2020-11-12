@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import DalApi from '../dal/DalApi';
 
@@ -69,26 +69,27 @@ const classColor = (pjClass) => {
 };
 
 function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
+  const history = useHistory();
+
+  // link to player page
+  const rowLink = () => {
+    history.push(`/player/${region}/${realm}/${name}/`);
+  };
   return (
-    <Link
-      to={`/Player/${name}/${region}/${realm}`}
-      style={{ textDecoration: 'none' }}
-    >
-      <tr className="row w-100">
-        <td className="col-1 d-flex align-items-center">{rank}</td>
-        <td className="col-5 d-flex align-items-center">
-          <strong className={classColor(pjClass)}>{name}</strong>
-        </td>
-        <td className="col-2 d-flex align-items-center">{realm}</td>
-        <td className="col-3 d-flex align-items-center">
-          <img src={displaysClass(pjClass)} alt="" height="64px" width="64px" />
-          <p>{spec}</p>
-        </td>
-        <td className="col-1 d-flex align-items-center">
-          <FactionIcons faction={faction} />
-        </td>
-      </tr>
-    </Link>
+    <tr className="row w-100" onClick={rowLink}>
+      <td className="col-1 d-flex align-items-center">{rank}</td>
+      <td className="col-5 d-flex align-items-center">
+        <strong className={classColor(pjClass)}>{name}</strong>
+      </td>
+      <td className="col-2 d-flex align-items-center">{realm}</td>
+      <td className="col-3 d-flex align-items-center">
+        <img src={displaysClass(pjClass)} alt="" height="64px" width="64px" />
+        <p>{spec}</p>
+      </td>
+      <td className="col-1 d-flex align-items-center">
+        <FactionIcons faction={faction} />
+      </td>
+    </tr>
   );
 }
 
