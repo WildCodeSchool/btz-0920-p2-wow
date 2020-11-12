@@ -66,7 +66,7 @@ GuildRoster.defaultProps = {
 };
 
 GuildRoster.propTypes = {
-  roster: propTypes.arrayOf(propTypes.objects),
+  roster: propTypes.arrayOf(propTypes.object),
   region: propTypes.string,
   realm: propTypes.string,
 };
