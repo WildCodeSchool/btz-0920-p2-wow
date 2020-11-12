@@ -76,9 +76,10 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
     >
       <tr className="row w-100">
         <td className="col-1 d-flex align-items-center">{rank}</td>
-        <td className="col-7 d-flex align-items-center">
+        <td className="col-5 d-flex align-items-center">
           <strong className={classColor(pjClass)}>{name}</strong>
         </td>
+        <td className="col-2 d-flex align-items-center">{realm}</td>
         <td className="col-3 d-flex align-items-center">
           <img src={displaysClass(pjClass)} alt="" height="64px" width="64px" />
           <p>{spec}</p>
