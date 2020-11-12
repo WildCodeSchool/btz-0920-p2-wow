@@ -70,7 +70,7 @@ const PJArray = () => {
               <div className="col-3 align-self-center">
                 <ToolsFilters results={results} setFilterRes={setFilterRes} />
               </div>
-              <Table className="col-8" w-auto text-nowrap hover>
+              <Table className="col-8 w-auto text-nowrap" hover borderless>
                 <tbody className="container">
                   {filterRes
                     .filter(

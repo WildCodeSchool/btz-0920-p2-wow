@@ -7,7 +7,27 @@
 }
 
 .slide {
+  display: flex;
   flex: 1;
+  margin-top: 90px;
+}
+
+.carousel-inner,
+.carousel-item.active {
+  display: flex !important;
+  flex-direction: column;
+  flex: 1;
+}
+
+.cardsContainer {
+  align-items: 'center';
+  align-content: 'center';
+  margin-bottom: '50px';
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  padding-top: 72px;
 }
 
 .title-y {
