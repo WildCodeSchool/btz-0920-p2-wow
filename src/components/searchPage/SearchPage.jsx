@@ -8,8 +8,8 @@ import Slider from './Slider';
 import {
   guild,
   character,
-  alliance,
-  horde,
+  allianceCard,
+  hordeCard,
   europe,
   usa,
   korea,
@@ -42,8 +42,8 @@ const SearchPage = () => {
     },
     {
       cardNames: [
-        ['Horde', horde],
-        ['Alliance', alliance],
+        ['Horde', hordeCard],
+        ['Alliance', allianceCard],
       ],
       title: 'Faction',
     },
@@ -151,7 +151,7 @@ const SearchPage = () => {
   return (
     <div
       className="d-flex flex-column flex-1 container-fluid"
-      style={{ marginTop: '100px' }}
+      style={{ marginTop: '10px' }}
     >
       <Slider
         slides={
