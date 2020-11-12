@@ -22,7 +22,6 @@ const GuildsArray = () => {
   const [error, setError] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
-
   useEffect(() => {
     const getDatas = async () => {
       try {
