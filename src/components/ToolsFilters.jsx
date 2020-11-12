@@ -13,6 +13,8 @@ import {
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
+//  il faut arriver à permettre de conserver les précédent paramettre de filtre et d'en rajouter de nouveau.
+
 // import DalApi from '../dal/DalApi';
 import FactionIcons from './flags/FactionIcons';
 
