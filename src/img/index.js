@@ -10,7 +10,7 @@ import europe from './europe.jpg';
 import usa from './usa.jpg';
 import korea from './korea.jpg';
 import taiwan from './taiwan.jpg';
-import china from './chinaFlag.png';
+import china from './china.jpg';
 
 export {
   guild,
