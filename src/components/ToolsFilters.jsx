@@ -24,21 +24,23 @@ function ToolsFilters({ results, setFilterRes }) {
 
   const factionFilter = (faction) => {
     return faction === ''
-      ? setFilterRes(results)
+      ? setFilterRes(results) // replace setFilterRes by setCurrentResult
       : setFilterRes(
+          // replace setFilterRes by setCurrentResult
           results.filter((fact) => fact.character.faction === faction)
         );
   };
 
   // const classFilter = (parm) => {
-  //   setFilterRes(
+  //   currentResult.splice(
+  //     1,
+  //     0,
   //     results.filter(
   //       (cl) => cl.character.class.slug === parm.toLowerCase().replace(' ', '-')
   //     )
   //   );
+  //   setFilterRes(currentResult);
   // };
-
-  // setFilterRes(results);
 
   return (
     <>
