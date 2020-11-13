@@ -12,6 +12,19 @@ import korea from './korea.jpg';
 import taiwan from './taiwan.jpg';
 import china from './china.jpg';
 
+import dh from './classIcon/dh.png';
+import dk from './classIcon/dk.png';
+import druid from './classIcon/druid.png';
+import hunter from './classIcon/hunter.png';
+import mage from './classIcon/mage.png';
+import monk from './classIcon/monk.png';
+import paladin from './classIcon/paladin.png';
+import priest from './classIcon/priest.png';
+import rogue from './classIcon/rogue.png';
+import shaman from './classIcon/shaman.png';
+import warlock from './classIcon/warlock.png';
+import warrior from './classIcon/warrior.png';
+
 export {
   guild,
   alliance,
@@ -26,4 +39,16 @@ export {
   korea,
   taiwan,
   china,
+  dh,
+  dk,
+  druid,
+  hunter,
+  mage,
+  monk,
+  paladin,
+  priest,
+  rogue,
+  shaman,
+  warlock,
+  warrior,
 };
