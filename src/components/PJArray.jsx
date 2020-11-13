@@ -88,7 +88,6 @@ const PJArray = () => {
                           spec={result.character.spec.name}
                           realm={result.character.realm.name}
                           region={regionName}
-                          score={result.score}
                           key={result.rank}
                         />
                       );
