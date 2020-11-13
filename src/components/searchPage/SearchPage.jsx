@@ -5,7 +5,26 @@ import PropTypes from 'prop-types';
 
 import Slider from './Slider';
 
-import { guild, character, europe, usa, korea, taiwan } from '../../img';
+import {
+  guild,
+  character,
+  europe,
+  usa,
+  korea,
+  taiwan,
+  dh,
+  dk,
+  druid,
+  hunter,
+  mage,
+  monk,
+  paladin,
+  priest,
+  rogue,
+  shaman,
+  warlock,
+  warrior,
+} from '../../img';
 import { classesAndSpecs } from '../../dal/staticData';
 
 import './SearchPage.css';
@@ -33,18 +52,18 @@ const SearchPage = () => {
     },
     {
       cardNames: [
-        [classesAndSpecs[0].name, classesAndSpecs[0].image],
-        [classesAndSpecs[1].name, classesAndSpecs[1].image],
-        [classesAndSpecs[2].name, classesAndSpecs[2].image],
-        [classesAndSpecs[3].name, classesAndSpecs[3].image],
-        [classesAndSpecs[4].name, classesAndSpecs[4].image],
-        [classesAndSpecs[5].name, classesAndSpecs[5].image],
-        [classesAndSpecs[6].name, classesAndSpecs[6].image],
-        [classesAndSpecs[7].name, classesAndSpecs[7].image],
-        [classesAndSpecs[8].name, classesAndSpecs[8].image],
-        [classesAndSpecs[9].name, classesAndSpecs[9].image],
-        [classesAndSpecs[10].name, classesAndSpecs[10].image],
-        [classesAndSpecs[11].name, classesAndSpecs[11].image],
+        [classesAndSpecs[0].name, dh],
+        [classesAndSpecs[1].name, dk],
+        [classesAndSpecs[2].name, druid],
+        [classesAndSpecs[3].name, hunter],
+        [classesAndSpecs[4].name, mage],
+        [classesAndSpecs[5].name, monk],
+        [classesAndSpecs[6].name, paladin],
+        [classesAndSpecs[7].name, priest],
+        [classesAndSpecs[8].name, rogue],
+        [classesAndSpecs[9].name, shaman],
+        [classesAndSpecs[10].name, warlock],
+        [classesAndSpecs[11].name, warrior],
       ],
       title: 'Class',
     },
