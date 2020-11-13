@@ -46,7 +46,7 @@ function ToolsFilters({ results, setFilterRes }) {
         <BsThreeDotsVertical />
       </Button>
       <UncontrolledCollapse toggler="#toggler">
-        <Card className="bg-transparent">
+        <Card className="bg-transparent border-0">
           <CardBody className="p-0 bg-transparent">
             <Button
               onClick={() => factionFilter('horde')}
