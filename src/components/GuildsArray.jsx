@@ -66,7 +66,7 @@ const GuildsArray = () => {
             <Hr />
           </div>
           <Container fluid className="d-flex flex-column align-items-center">
-            <Row className="w-100">
+            <Row className="w-75">
               <div className="col-12 d-flex justify-content-start p-0 m-2">
                 <ToolsFilters />
               </div>
@@ -74,7 +74,7 @@ const GuildsArray = () => {
             <Row className="align-self-center">
               <Table
                 className="col-12 text-wrap table-striped"
-                style={{ width: '90vw' }}
+                style={{ width: '75vw' }}
                 hover
                 borderless
               >

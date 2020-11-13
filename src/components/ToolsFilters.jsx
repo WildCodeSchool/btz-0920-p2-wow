@@ -49,7 +49,7 @@ function ToolsFilters({ results, setFilterRes }) {
       >
         <BsThreeDotsVertical />
       </Button>
-      <UncontrolledCollapse toggler="#toggler" className="ml-2">
+      <UncontrolledCollapse toggler="#toggler">
         <Card>
           <CardBody className="p-0 ">
             <Button

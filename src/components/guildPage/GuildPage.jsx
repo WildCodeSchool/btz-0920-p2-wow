@@ -72,7 +72,10 @@ const GuildPage = () => {
           <div
             style={{ height: '100px', maxWidth: '100%', overflow: 'hidden' }}
           />
-          <Container fluid className="w-sm-100 leaderboard-container">
+          <Container
+            fluid
+            className="w-sm-100 leaderboard-container d-flex flex-column align-items-center"
+          >
             <Container className="guildPage d-flex flex-column justify-content-center ">
               <Row>
                 <Col xs={12}>
