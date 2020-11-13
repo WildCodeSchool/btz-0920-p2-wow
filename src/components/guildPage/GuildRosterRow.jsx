@@ -39,7 +39,7 @@ const GuildRosterRow = (props) => {
       className="d-flex playerRow text-left align-items-center my-1 "
       onClick={rowLink}
     >
-      <td className="col-md-4 p-0 d-md-flex text-center d-flex-xs-column ">
+      <td className="col-md-4 p-0 d-md-flex text-center d-flex-xs-column align-items-center">
         <img
           // src={classe.image}
           src={imgSrc.concat(thumbnail)}

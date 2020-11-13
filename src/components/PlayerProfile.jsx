@@ -146,18 +146,18 @@ const PlayerProfile = () => {
         ) : (
           <div className={factionLogo === 'alliance' ? 'alliance' : 'horde'}>
             <Container className="d-flex justify-content-center flex-wrap mt-5">
-              <Col xs={3}>
+              <Col xs={3} className="d-flex justify-content-around">
                 <img src={thumbnail} alt="" />
               </Col>
               <div className="d-flex flex-column">
-                <Col xs={6}>
+                <Col xs={12}>
                   <h1>{playerName}</h1>
                 </Col>
                 <div className="d-flex">
                   <Col xs="3">
                     <Flag slug={playerRegion} />
                   </Col>
-                  <Col>
+                  <Col className="d-flex flex-column justify-content-center">
                     <h3>{playerRealm}</h3>
                   </Col>
                 </div>
