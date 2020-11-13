@@ -48,7 +48,7 @@ const GuildRosterRow = (props) => {
           style={{ height: '44px' }}
         />
 
-        <p className={classe.name.replace(' ', '')}>{name}</p>
+        <p className={`mb-0 ${classe.name.replace(' ', '')}`}>{name}</p>
       </td>
       <td className="col-md-3 d-flex justify-content-center">{spec.name}</td>
       <td className="col-md-3 d-none d-md-flex justify-content-center">
