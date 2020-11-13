@@ -92,14 +92,14 @@ export const classesAndSpecs = [
         name: 'Frost',
         slug: 'frost',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_death-knight_frost.png',
       },
       {
         id: 3,
         name: 'Unholdy',
         slug: 'unholdy',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_death-knight_unholy.png',
       },
     ],
   },
@@ -115,14 +115,14 @@ export const classesAndSpecs = [
         name: 'Havoc',
         slug: 'havoc',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_demon-hunter_havoc.png',
       },
       {
         id: 5,
         name: 'Vengeance',
         slug: 'vengeance',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_demon-hunter_vengeance.png',
       },
     ],
   },
@@ -138,21 +138,21 @@ export const classesAndSpecs = [
         name: 'Balance',
         slug: 'balance',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_druid_balance.png',
       },
       {
         id: 7,
         name: 'Guardian',
         slug: 'guardian',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_druid_guardian.png',
       },
       {
         id: 8,
         name: 'Restoration',
         slug: 'restoration',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_druid_restoration.png',
       },
     ],
   },
@@ -168,21 +168,21 @@ export const classesAndSpecs = [
         name: 'Beast Mastery',
         slug: 'beastmastery',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_hunter_beast-mastery.png',
       },
       {
         id: 10,
         name: 'Marksmanship',
         slug: 'marksmanship',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_hunter_marksmanship.png',
       },
       {
         id: 11,
         name: 'Survival',
         slug: 'survival',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_hunter_survival.png',
       },
     ],
   },
@@ -198,21 +198,19 @@ export const classesAndSpecs = [
         name: 'Arcade',
         slug: 'arcade',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_mage_arcade.png',
       },
       {
         id: 13,
         name: 'Fire',
         slug: 'fire',
-        image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+        image: 'https://cdnassets.raider.io/images/classes/spec_mage_fire.png',
       },
       {
         id: 14,
         name: 'Frost',
         slug: 'frost',
-        image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+        image: 'https://cdnassets.raider.io/images/classes/spec_mage_frost.png',
       },
     ],
   },
@@ -228,21 +226,21 @@ export const classesAndSpecs = [
         name: 'Brewmaster',
         slug: 'brewmaster',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_monk_brewmaster.png',
       },
       {
         id: 16,
         name: 'Windwalker',
         slug: 'windwalker',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_monk_windwalker.png',
       },
       {
         id: 17,
         name: 'Mistweaver',
         slug: 'mistweaver',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_monk_mistweaver.png',
       },
     ],
   },
@@ -258,21 +256,21 @@ export const classesAndSpecs = [
         name: 'Holy',
         slug: 'holy',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_paladin_blood.png',
       },
       {
         id: 19,
         name: 'Protection',
         slug: 'protection',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_paladin_protection.png',
       },
       {
         id: 20,
         name: 'Retribution',
         slug: 'retribution',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_paladin_retribution.png',
       },
     ],
   },
@@ -288,21 +286,21 @@ export const classesAndSpecs = [
         name: 'Discipline',
         slug: 'discipline',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_priest_discipline.png',
       },
       {
         id: 22,
         name: 'Holy',
         slug: 'holy',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_priest_holy.png',
       },
       {
         id: 23,
         name: 'Shadow',
         slug: 'shadow',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_priest_shadow.png',
       },
     ],
   },
@@ -318,21 +316,21 @@ export const classesAndSpecs = [
         name: 'Assassination',
         slug: 'assassination',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_rogue_assassination.png',
       },
       {
         id: 25,
         name: 'Outlaw',
         slug: 'outlaw',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_rogue_outlaw.png',
       },
       {
         id: 26,
         name: 'Subtlety',
         slug: 'subtlety',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_rogue_subtlety.png',
       },
     ],
   },
@@ -348,21 +346,21 @@ export const classesAndSpecs = [
         name: 'Elemental',
         slug: 'elemental',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_shaman_elemental.png',
       },
       {
         id: 28,
         name: 'Enhancement',
         slug: 'enhancement',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_shaman_enhancement.png',
       },
       {
         id: 29,
         name: 'Restoration',
         slug: 'restoration',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_shaman_restoration.png',
       },
     ],
   },
@@ -378,21 +376,21 @@ export const classesAndSpecs = [
         name: 'Affliction',
         slug: 'affliction',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_warlock_affliction.png',
       },
       {
         id: 31,
         name: 'Demonology',
         slug: 'demonology',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_warlock_demonology.png',
       },
       {
         id: 32,
         name: 'Destruction',
         slug: 'destruction',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_warlock_destruction.png',
       },
     ],
   },
@@ -408,21 +406,21 @@ export const classesAndSpecs = [
         name: 'Arms',
         slug: 'arms',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_warrior_arms.png',
       },
       {
         id: 34,
         name: 'Fury',
         slug: 'fury',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_warrior_fury.png',
       },
       {
         id: 35,
         name: 'Protection',
         slug: 'protection',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_death-knight_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_warrior_protection.png',
       },
     ],
   },
