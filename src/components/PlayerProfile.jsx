@@ -140,17 +140,17 @@ const PlayerProfile = () => {
   return (
     <>
       <div style={{ height: '100px', minWidth: '95vw' }} />
-      <Container fluid className="w-50">
+      <Container fluid className="w-100">
         {loading ? (
           <LoadingSpinner />
         ) : (
           <div className={factionLogo === 'alliance' ? 'alliance' : 'horde'}>
             <Container className="d-flex justify-content-center flex-wrap mt-5">
-              <Col xs={3}>
+              <Col xs="3">
                 <img src={thumbnail} alt="" />
               </Col>
               <div className="d-flex flex-column">
-                <Col xs={6}>
+                <Col xs="6">
                   <h1>{playerName}</h1>
                 </Col>
                 <div className="d-flex">
