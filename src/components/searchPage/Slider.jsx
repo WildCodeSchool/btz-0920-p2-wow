@@ -65,16 +65,15 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
         requestData[0] !== 'Search Type' &&
         requestData[0] !== 'Character' &&
         requestData[1] !== 'Region' &&
-        server !== 'Server' &&
-        requestData[2] !== 'Faction'
+        server !== 'Server'
       ) {
         history.push(`/GuildsArray/${requestData[1]}/${server}/`);
       } else if (
         requestData[0] === 'Character' &&
         requestData[1] !== 'Region' &&
-        requestData[3] !== 'Class'
+        requestData[2] !== 'Class'
       ) {
-        history.push(`/PJArray/${requestData[1]}/${requestData[3]}`);
+        history.push(`/PJArray/${requestData[1]}/${requestData[2]}`);
       }
       return false;
     };
@@ -82,7 +81,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   }, [next]);
 
   const items = (requestData[0] !== 'Character'
-    ? slides.slice(0, 4)
+    ? slides.slice(0, 3)
     : slides
   ).map(({ title, cardNames }) => {
     return (

@@ -5,16 +5,7 @@ import PropTypes from 'prop-types';
 
 import Slider from './Slider';
 
-import {
-  guild,
-  character,
-  allianceCard,
-  hordeCard,
-  europe,
-  usa,
-  korea,
-  taiwan,
-} from '../../img';
+import { guild, character, europe, usa, korea, taiwan } from '../../img';
 import { classesAndSpecs } from '../../dal/staticData';
 
 import './SearchPage.css';
@@ -39,13 +30,6 @@ const SearchPage = () => {
     },
     {
       title: 'Server',
-    },
-    {
-      cardNames: [
-        ['Horde', hordeCard],
-        ['Alliance', allianceCard],
-      ],
-      title: 'Faction',
     },
     {
       cardNames: [
@@ -76,7 +60,6 @@ const SearchPage = () => {
 
   const [searchTypeData, setSearchTypeData] = useState('Search Type');
   const [regionData, setRegionData] = useState('Region');
-  const [factionData, setFactionData] = useState('Faction');
   const [classData, setClassData] = useState('Class');
 
   const handleSelection = (e) => {
@@ -98,12 +81,6 @@ const SearchPage = () => {
         break;
       case 'TW':
         setRegionData('TW');
-        break;
-      case 'Horde':
-        setFactionData('Horde');
-        break;
-      case 'Alliance':
-        setFactionData('Alliance');
         break;
       case 'Death Knight':
         setClassData('Death Knight');
@@ -146,7 +123,7 @@ const SearchPage = () => {
     }
   };
 
-  const requestData = [searchTypeData, regionData, factionData, classData];
+  const requestData = [searchTypeData, regionData, classData];
 
   return (
     <div
@@ -156,10 +133,8 @@ const SearchPage = () => {
       <Slider
         slides={
           searchTypeData === 'Character'
-            ? items.filter(
-                (item) => item.title !== 'Server' && item.title !== 'Faction'
-              )
-            : items.slice(0, 4)
+            ? items.filter((item) => item.title !== 'Server')
+            : items.slice(0, 3)
         }
         handleSelection={handleSelection}
         regionData={regionData}
