@@ -23,17 +23,20 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
   };
   return (
     <tr className="row w-100" onClick={rowLink}>
-      <td className="col-1 d-flex align-items-center">{rank}</td>
-      <td className="col-1 d-flex align-items-center">
+      <td className="col-1 d-flex align-items-center justify-content-center">
+        {rank}
+      </td>
+      <td className="col-1 d-flex align-items-center justify-content-center">
         <FactionIcons faction={faction} />
       </td>
       <td className="col-3 d-flex align-items-center">
-        <strong className={classOfApi.name.replace(' ', '')}>{name}</strong>
+        <strong className={`ml-2git add . ${classOfApi.name.replace(' ', '')}`}>
+          {name}
+        </strong>
       </td>
       <td className="col-2 d-flex align-items-center">{realm}</td>
-      <td className="col-2 d-flex align-items-center">
-        <img src={specOfClass.image} alt={name} />
-        <span className="ml-2">{spec}</span>
+      <td className="col-2 d-flex align-items-center justify-content-center">
+        <img src={specOfClass.image} alt={name} title={specOfClass.name} />
       </td>
     </tr>
   );
