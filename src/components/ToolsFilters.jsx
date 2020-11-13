@@ -1,28 +1,27 @@
-// import { useParams } from 'react-router-dom';
-// import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import {
   Button,
   UncontrolledCollapse,
   CardBody,
   Card,
-  // Form,
-  // FormGroup,
+  Form,
+  FormGroup,
   // Label,
-  // Input,
+  CustomInput,
 } from 'reactstrap';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
+import DalApi from '../dal/DalApi';
+import FactionIcons from './flags/FactionIcons';
 //  il faut arriver à permettre de conserver les précédent paramettre de filtre et d'en rajouter de nouveau.
 
-// import DalApi from '../dal/DalApi';
-import FactionIcons from './flags/FactionIcons';
-
 function ToolsFilters({ results, setFilterRes }) {
-  // const params = useParams();
-  // const [classArray] = useState(DalApi.getClassesAndSpecsByName(params.class));
+  const params = useParams();
+  const [classArray] = useState(DalApi.getClassesAndSpecsByName(params.class));
 
-  // const [currentResult, setCurrentResult] = useState(results);
+  const [currentResult] = useState(results);
 
   const factionFilter = (faction) => {
     return faction === ''
@@ -33,16 +32,12 @@ function ToolsFilters({ results, setFilterRes }) {
         );
   };
 
-  // const classFilter = (parm) => {
-  //   currentResult.splice(
-  //     1,
-  //     0,
-  //     results.filter(
-  //       (cl) => cl.character.class.slug === parm.toLowerCase().replace(' ', '-')
-  //     )
-  //   );
-  //   setFilterRes(currentResult);
-  // };
+  const classFilter = (parm) => {
+    results.filter(
+      (cl) => cl.character.class.slug === parm.toLowerCase().replace(' ', '-')
+    );
+    setFilterRes(currentResult);
+  };
 
   return (
     <>
@@ -74,24 +69,22 @@ function ToolsFilters({ results, setFilterRes }) {
               <FactionIcons faction="both" />
             </Button>
           </CardBody>
-          {/* <CardBody>
-            <Form>
+
+          <Form>
+            <FormGroup radio inline>
               {classArray.specs.map((res) => {
                 const { name } = res;
                 return (
-                  <FormGroup check inline>
-                    <Label check>
-                      <Input
-                        type="checkbox"
-                        onChange={() => classFilter(name)}
-                      />
-                      {name}
-                    </Label>
-                  </FormGroup>
+                  <CustomInput
+                    type="radio"
+                    id={name}
+                    label={name}
+                    onClick={() => classFilter(name)}
+                  />
                 );
               })}
-            </Form>
-          </CardBody> */}
+            </FormGroup>
+          </Form>
         </Card>
       </UncontrolledCollapse>
     </>
