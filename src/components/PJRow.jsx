@@ -14,7 +14,6 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
 
   // get selected spec of classOfApi
   const specOfClass = classOfApi.specs.filter((cl) => cl.name === spec)[0];
-
   const history = useHistory();
 
   // link to player page

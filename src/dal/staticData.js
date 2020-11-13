@@ -154,6 +154,13 @@ export const classesAndSpecs = [
         image:
           'https://cdnassets.raider.io/images/classes/spec_druid_restoration.png',
       },
+      {
+        id: 8,
+        name: 'Feral',
+        slug: 'feral',
+        image:
+          'https://cdnassets.raider.io/images/classes/spec_druid_feral.png',
+      },
     ],
   },
   {
