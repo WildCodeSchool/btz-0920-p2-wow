@@ -68,10 +68,13 @@ import FactionIcons from './flags/FactionIcons';
 //   }
 // };
 
-function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
+function PJRow({ name, pjClass, faction, rank, spec, realm, region, score }) {
+  // get class form api static data
   const classOfApi = DalApi.getClassesAndSpecs().filter(
     (elmt) => elmt.name === pjClass
   )[0];
+
+  // get selected spec of classOfApi
   const specOfClass = classOfApi.specs.filter((cl) => cl.name === spec)[0];
 
   const history = useHistory();
@@ -83,20 +86,19 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
   return (
     <tr className="row w-100" onClick={rowLink}>
       <td className="col-1 d-flex align-items-center">{rank}</td>
-      <td className="col-5 d-flex align-items-center">
-        <strong className={classOfApi.name.replace(' ', '')}>{name}</strong>
-      </td>
-      <td className="col-2 d-flex align-items-center">{realm}</td>
-      <td className="col-3 d-flex align-items-center">
-        <img src={classOfApi.image} alt="" height="64px" width="64px" />
-        <p>
-          <img src={specOfClass.image} alt={name} />
-          {spec}
-        </p>
-      </td>
       <td className="col-1 d-flex align-items-center">
         <FactionIcons faction={faction} />
       </td>
+      <td className="col-3 d-flex align-items-center">
+        <strong className={classOfApi.name.replace(' ', '')}>{name}</strong>
+      </td>
+      <td className="col-2 d-flex align-items-center">{realm}</td>
+      <td className="col-2 d-flex align-items-center">
+        <img src={classOfApi.image} alt={name} className="mr-1 classIcon" />
+        <img src={specOfClass.image} alt={name} />
+        {/* <span className="ml-4">{spec}</span> */}
+      </td>
+      <td className="col-1 d-flex align-items-center">{score}</td>
     </tr>
   );
 }
@@ -106,6 +108,7 @@ PJRow.propTypes = {
   pjClass: PropTypes.string.isRequired,
   faction: PropTypes.string.isRequired,
   rank: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
   spec: PropTypes.string.isRequired,
   realm: PropTypes.string.isRequired,
   region: PropTypes.string.isRequired,
