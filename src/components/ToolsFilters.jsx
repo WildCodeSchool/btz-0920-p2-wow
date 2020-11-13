@@ -42,30 +42,34 @@ function ToolsFilters({ results, setFilterRes }) {
 
   return (
     <>
-      <Button color="primary" id="toggler" style={{ marginBottom: '1rem' }}>
+      <Button
+        color="primary"
+        id="toggler"
+        style={{ marginBottom: '1rem', height: '60px', width: '60px' }}
+      >
         <BsThreeDotsVertical />
       </Button>
-      <UncontrolledCollapse toggler="#toggler">
-        <Card className="bg-transparent">
-          <CardBody className="p-0 bg-transparent">
+      <UncontrolledCollapse toggler="#toggler" className="ml-2">
+        <Card>
+          <CardBody className="p-0 ">
             <Button
               onClick={() => factionFilter('horde')}
               color="secondary"
-              className="p-0 bg-transparent border-0 button-hover"
+              className="p-0  border-0 button-hover"
             >
               <FactionIcons faction="horde" />
             </Button>
             <Button
               onClick={() => factionFilter('alliance')}
               color="secondary"
-              className="p-0 bg-transparent border-0 button-hover"
+              className="p-0  border-0 button-hover"
             >
               <FactionIcons faction="alliance" />
             </Button>
             <Button
               onClick={() => factionFilter('')}
               color="secondary"
-              className="p-0 bg-transparent border-0 button-hover"
+              className="p-0  border-0 button-hover"
             >
               <FactionIcons faction="both" />
             </Button>

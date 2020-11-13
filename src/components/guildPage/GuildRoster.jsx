@@ -18,13 +18,17 @@ const GuildRoster = (props) => {
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <Table className="d-flex flex-column collapse" hover borderless>
-        <thead>
+      <Table
+        className="d-flex flex-column collapse table-striped"
+        hover
+        borderless
+      >
+        <thead className="table-primary">
           <tr className="d-flex" style={{ fontSize: '24px' }}>
-            <td className="col-md-4">Player</td>
-            <td className="col-md-3">Spec</td>
-            <td className="col-md-3 d-none d-md-block">Race</td>
-            <td className="col-md-2">I-Level</td>
+            <th className="col-md-4">Player</th>
+            <th className="col-md-3">Spec</th>
+            <th className="col-md-3 d-none d-md-block">Race</th>
+            <th className="col-md-2">I-Level</th>
           </tr>
         </thead>
         <tbody>

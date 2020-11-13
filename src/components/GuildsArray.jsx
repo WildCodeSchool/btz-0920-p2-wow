@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Table, Container } from 'reactstrap';
+import { Table, Container, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 
 import GuildRow from './GuildRow';
@@ -59,19 +59,26 @@ const GuildsArray = () => {
           style={{ maxWidth: '100vw' }}
         >
           <div style={{ height: '100px', minWidth: '99vw' }} />
-          <div>
+          <div className="m-5">
             <h2>
               Top <span>{serverSlug}</span> {realmName} Guilds
             </h2>
             <Hr />
           </div>
-          <Container>
-            <div className="row align-self-center">
-              <div className="col-1 d-flex align-items-center">
+          <Container fluid className="d-flex flex-column align-items-center">
+            <Row className="w-100">
+              <div className="col-12 d-flex justify-content-start p-0 m-2">
                 <ToolsFilters />
               </div>
-              <Table className="col-10 w-100 text-wrap" hover borderless>
-                <tbody className="container">
+            </Row>
+            <Row className="align-self-center">
+              <Table
+                className="col-12 text-wrap table-striped"
+                style={{ width: '90vw' }}
+                hover
+                borderless
+              >
+                <tbody>
                   {results
                     .filter(
                       (_, index) =>
@@ -93,7 +100,7 @@ const GuildsArray = () => {
                     })}
                 </tbody>
               </Table>
-            </div>
+            </Row>
           </Container>
           <Pagin
             page={currentPage}
