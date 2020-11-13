@@ -1,7 +1,9 @@
 import guild from './guild.jpg';
 import alliance from './alliance.png';
+import allianceCard from './alliance.jpg';
 import allianceIcon from './allianceIcon.png';
 import horde from './horde.png';
+import hordeCard from './horde.jpg';
 import hordeIcon from './hordeIcon.png';
 import character from './character.jpg';
 import europe from './europe.png';
@@ -9,27 +11,15 @@ import usa from './usa.png';
 import korea from './korea.png';
 import taiwan from './taiwan.png';
 import china from './chinaFlag.png';
-
-// const images = [
-//   {
-//     id: 0,
-//     src: './guild.jpg',
-//     title: 'guild',
-//     description: 'Wow guild members defeating a Boss',
-//   },
-//   {
-//     id: 1,
-//     src: './character.jpg',
-//     title: 'character',
-//     description: 'Wow characters',
-//   },
-// ];
+import allianceHordeIcon from './allianceHordeIcon.png';
 
 export {
   guild,
   alliance,
+  allianceCard,
   allianceIcon,
   horde,
+  hordeCard,
   hordeIcon,
   character,
   europe,
@@ -37,4 +27,5 @@ export {
   korea,
   taiwan,
   china,
+  allianceHordeIcon,
 };
