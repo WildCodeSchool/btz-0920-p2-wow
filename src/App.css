@@ -3,7 +3,8 @@
   height: 100%;
   text-align: center;
   font-family: Ubuntu, sans-serif;
-  background: fixed repeat-y url(./img/backgroundImage.jpg);
+  overflow-x: hidden;
+  /* background: fixed repeat-y url(./img/backgroundImage.jpg); */
 }
 
 .border-vert {
