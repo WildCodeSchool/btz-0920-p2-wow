@@ -6,9 +6,9 @@ import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
 import LoadingSpinner from '../LoadingSpinner';
 import GuildRoster from './GuildRoster';
+import Error from '../Error';
 import Flag from '../flags/Flag';
 import FactionIcons from '../flags/FactionIcons';
-import '../cssPages&Components/GuildPage.css';
 
 const GuildPage = () => {
   const params = useParams();
@@ -19,6 +19,8 @@ const GuildPage = () => {
   const [roster, setRoster] = useState(null);
   const [flagTag, setFlagTag] = useState(null);
   const [faction, setFaction] = useState(null);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({});
 
   useEffect(() => {
     const getDatas = async () => {
@@ -37,14 +39,14 @@ const GuildPage = () => {
 
         const { guildDetails } = guildRes.data;
         setGuild(guildDetails.guild);
-        // console.log(guild);
         setRaidRankings(guildDetails.raidRankings);
         setRaidProgress(guildDetails.raidProgress);
         setRoster(rosterRes.data.guildRoster.roster);
-        setFlagTag(DalApi.getRegionByName(guildDetails.guild.region.name).slug);
+        setFlagTag(guildDetails.guild.region.slug);
         setFaction(guildDetails.guild.faction);
-      } catch (error) {
-        // TODO: handle this error
+      } catch (err) {
+        setIsError(true);
+        setError(err);
       } finally {
         setLoading(false);
       }
@@ -52,6 +54,10 @@ const GuildPage = () => {
 
     getDatas();
   }, []);
+
+  if (isError) {
+    return <Error msg={error.message} />;
+  }
 
   return (
     <div>
@@ -63,24 +69,25 @@ const GuildPage = () => {
         </div>
       ) : (
         <>
-          <div style={{ height: '100px', minWidth: '95vw' }} />
-          <Container fluid className="w-50">
-            <Container className="guildPage d-flex flex-column justify-content-center">
+          <div
+            style={{ height: '100px', maxWidth: '100%', overflow: 'hidden' }}
+          />
+          <Container fluid className="w-sm-100 leaderboard-container">
+            <Container className="guildPage d-flex flex-column justify-content-center ">
               <Row>
                 <Col xs={12}>
-                  <h1 className="text-center'" style={{ fontSize: '48px' }}>
+                  <h1 style={{ fontSize: '48px' }}>
                     {guild.alt_name ? guild.alt_name : guild.name}
                   </h1>
                 </Col>
               </Row>
-              <Row className="align-items-center text-center">
-                <Col xs={4} className="">
+              <Row className="align-items-center d-flex flex-column flex-sm-row justify-content-center">
+                <Col xs={4}>
                   <Flag slug={flagTag} alt={guild.region.name} />
                 </Col>
                 <Col
                   xs={4}
-                  className="font-weight-bold"
-                  style={{ fontSize: '32px' }}
+                  className="font-weight-bold pt-3 h2 sm-p d-flex justify-content-center"
                 >
                   {guild.realm.name}
                 </Col>
@@ -95,7 +102,11 @@ const GuildPage = () => {
               raidProgress={raidProgress}
             />
             <Hr />
-            <GuildRoster roster={roster} />
+            <GuildRoster
+              roster={roster}
+              region={params.region}
+              realm={params.realm}
+            />
           </Container>
         </>
       )}

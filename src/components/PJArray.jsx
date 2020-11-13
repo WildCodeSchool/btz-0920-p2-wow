@@ -1,50 +1,52 @@
 import { useEffect, useState } from 'react';
-import { Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Table } from 'reactstrap';
 
 import PJRow from './PJRow';
-import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
+import Pagin from './cssPages&Components/Pagin';
+import ToolsFilters from './ToolsFilters';
+import Error from './Error';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
 
 const PJArray = () => {
-  // const params = useParams();
+  const params = useParams();
   const [results, setResults] = useState([]);
   const [regionName, setRegionName] = useState('');
   const [loading, setLoading] = useState(true);
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [playerPerPage] = useState(5);
+  const [filterRes, setFilterRes] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({});
 
   useEffect(() => {
-    DalApi.getTopPlayer('eu').then(({ data }) => {
-      setResults(data.rankings.rankedCharacters);
-      setRegionName(data.rankings.region.name);
-      setLoading(false);
-    });
+    const getDatas = async () => {
+      try {
+        DalApi.getTopPlayer(
+          params.region.toLowerCase(),
+          params.class.toLowerCase().replace(' ', '-')
+        ).then(({ data }) => {
+          setResults(data.rankings.rankedCharacters);
+          setRegionName(data.rankings.region.name);
+          setFilterRes(data.rankings.rankedCharacters);
+          setLoading(false);
+        });
+      } catch (err) {
+        setIsError(true);
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getDatas();
   }, []);
 
-  function page1() {
-    setMin(0);
-    setMax(5);
-  }
-
-  function page2() {
-    setMin(5);
-    setMax(10);
-  }
-
-  function page3() {
-    setMin(10);
-    setMax(15);
-  }
-
-  function page4() {
-    setMin(15);
-    setMax(20);
+  if (isError) {
+    return <Error msg={error.message} />;
   }
 
   return (
@@ -55,7 +57,7 @@ const PJArray = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="cssStyle d-flex flex-column text-center">
+        <div className="cssStyle d-flex flex-column align-items-center text-center">
           <div style={{ height: '100px', minWidth: '100vw' }} />
           <div>
             <h2>
@@ -65,12 +67,17 @@ const PJArray = () => {
           </div>
           <main className="container min-vw-100">
             <div className="row w-100">
-              <div className="col-1 align-self-center">
-                <ToolsFilters />
+              <div className="col-3 align-self-center">
+                <ToolsFilters results={results} setFilterRes={setFilterRes} />
               </div>
-              <Table className="col-10" w-auto text-nowrap hover>
+              <Table className="col-8 text-nowrap" hover borderless>
                 <tbody className="container">
-                  {results
+                  {filterRes
+                    .filter(
+                      (_, index) =>
+                        index >= (currentPage - 1) * playerPerPage &&
+                        index < currentPage * playerPerPage
+                    )
                     .map((result) => {
                       return (
                         <PJRow
@@ -84,36 +91,17 @@ const PJArray = () => {
                           key={result.rank}
                         />
                       );
-                    })
-                    .filter((_, index) => index >= min && index < max)}
+                    })}
                 </tbody>
               </Table>
             </div>
           </main>
-          <Pagination className="align-self-center" size="lg clearfix">
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page1}>
-                <BsFillSkipBackwardFill />
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page1}>1</PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page2}>2</PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page3}>3</PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page4}>4</PaginationLink>
-            </PaginationItem>
-            <PaginationItem className="paginationItem">
-              <PaginationLink onClick={page4}>
-                <BsFillSkipForwardFill />
-              </PaginationLink>
-            </PaginationItem>
-          </Pagination>
+          <Pagin
+            page={currentPage}
+            playerPerPage={playerPerPage}
+            totalPlayers={filterRes.length}
+            updatePage={setCurrentPage}
+          />
         </div>
       )}
     </>

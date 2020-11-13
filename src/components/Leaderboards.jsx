@@ -35,7 +35,7 @@ const Leaderboards = () => {
         setPlayerResults(topPlayers.data.rankings.rankedCharacters);
       } catch (err) {
         setIsError(true);
-        setError(err.data);
+        setError(err);
       } finally {
         setLoading(false);
       }
@@ -47,7 +47,7 @@ const Leaderboards = () => {
   const toggle = () => setOpen(!dropdownOpen);
 
   if (isError) {
-    return <Error msg={error.data.message} />;
+    return <Error msg={error.message} />;
   }
 
   return (
@@ -79,7 +79,7 @@ const Leaderboards = () => {
               })}
             </DropdownMenu>
           </ButtonDropdown>
-          <Table className="mx-5 w-100 border-none" hover>
+          <Table className="mx-5 w-100 border-none" hover borderless>
             <thead>
               <tr>
                 <th className="h2 font-weight-bold" colSpan={12}>
@@ -102,7 +102,7 @@ const Leaderboards = () => {
                 })}
             </tbody>
           </Table>
-          <Table className="mx-5 w-100 text-nowrap" hover>
+          <Table className="mx-5 w-100 text-nowrap" hover borderless>
             <thead>
               <tr>
                 <th className="h2 font-weight-bold" colSpan={12}>

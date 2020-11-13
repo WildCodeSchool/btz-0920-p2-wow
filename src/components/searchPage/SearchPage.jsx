@@ -183,12 +183,16 @@ Carousel.propTypes = {
   ride: PropTypes.oneOf(['carousel', false]),
   // the interval at which the carousel automatically cycles (default: 5000)
   // If set to false, carousel will not Autoplay (i.e. will not automatically cycle).
-  interval: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.bool,
-    false,
-  ]),
+  // ********************************************************************************************************
+  // ******************* modified in only bool because error in console  ***********************************
+  // ********************************************************************************************************
+  // interval: PropTypes.oneOfType([
+  //   PropTypes.number,
+  //   PropTypes.string,
+  //   PropTypes.bool,
+  //   false,
+  // ]),
+  interval: PropTypes.bool,
   children: PropTypes.array,
   // called when the mouse enters the Carousel
   mouseEnter: PropTypes.func,

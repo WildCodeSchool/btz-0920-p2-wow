@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Col, Table, Container } from 'reactstrap';
+import { useHistory, useParams } from 'react-router-dom';
 
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
@@ -11,7 +12,8 @@ import Error from './Error';
 import './cssPages&Components/playerProfile.css';
 import './cssPages&Components/test.css';
 
-const PlayerProfile = ({ match }) => {
+const PlayerProfile = () => {
+  const { name, realm, region } = useParams();
   const [playerRegion, setPlayerRegion] = useState('');
   const [playerRealm, setPlayerRealm] = useState('');
   const [playerName, setPlayerName] = useState('');
@@ -26,28 +28,48 @@ const PlayerProfile = ({ match }) => {
   const [loading, setLoading] = useState(true);
   const [faction] = useState('');
   const [error, setError] = useState(null);
+  const [isError, setIsError] = useState(false);
+
+  const history = useHistory();
+
+  // link to player page
+  const guildLink = () => {
+    history.push(`/guild/${playerRegion}/${realm}/${guild}/`);
+  };
 
   useEffect(() => {
-    DalApi.getPlayer(match.params.region, match.params.realm, match.params.name)
-      .then(({ data }) => {
-        setPlayerRegion(data.region);
-        setPlayerRealm(data.realm);
-        setPlayerName(data.name);
-        setThumbnail(data.thumbnail_url);
-        setCharClass(data.class);
-        setSpecName(data.active_spec_name);
-        setSpecRole(data.active_spec_role);
-        setGuild(data.guild.name);
-        setItemLevel(data.gear.item_level_equipped);
-        setRaidScore(data.raid_progression['nyalotha-the-waking-city'].summary);
-        setMythicScore(data.mythic_plus_scores_by_season[0].scores.all);
+    const getDatas = async () => {
+      try {
+        const player = await DalApi.getPlayer(region, realm, name);
+
+        setPlayerRegion(player.data.region);
+        setPlayerRealm(player.data.realm);
+        setPlayerName(player.data.name);
+        setThumbnail(player.data.thumbnail_url);
+        setCharClass(player.data.class);
+        setSpecName(player.data.active_spec_name);
+        setSpecRole(player.data.active_spec_role);
+        setGuild(player.data.guild.name);
+        setItemLevel(player.data.gear.item_level_equipped);
+        setRaidScore(
+          player.data.raid_progression['nyalotha-the-waking-city'].summary
+        );
+        setMythicScore(player.data.mythic_plus_scores_by_season[0].scores.all);
         setLoading(false);
-        // setFaction(data.faction);
-      })
-      .catch((err) => {
+      } catch (err) {
+        setIsError(true);
         setError(err);
-      });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getDatas();
   }, []);
+
+  if (isError) {
+    return <Error msg={error.message} />;
+  }
 
   let factionLogo = '';
   const determineLogo = () => {
@@ -122,7 +144,7 @@ const PlayerProfile = ({ match }) => {
         {loading ? (
           <LoadingSpinner />
         ) : (
-          <div className={factionLogo === 'alliance' ? 'horde' : 'test'}>
+          <div className={factionLogo === 'alliance' ? 'alliance' : 'horde'}>
             <Container className="d-flex justify-content-center flex-wrap mt-5">
               <Col xs={3}>
                 <img src={thumbnail} alt="" />
@@ -142,13 +164,13 @@ const PlayerProfile = ({ match }) => {
               </div>
             </Container>
             <Table
-              striped
               className="d-flex justify-content-center align-items-md-center flex-wrap"
               height="750px"
               opacity="0.5"
+              borderless
             >
               <tbody>
-                <tr>
+                <tr className="d-flex justify-content-around align-items-center">
                   <td>
                     <img
                       src={displaysClass(charClass)}
@@ -169,7 +191,7 @@ const PlayerProfile = ({ match }) => {
                     />
                   </td>
                 </tr>
-                <tr>
+                <tr onClick={guildLink}>
                   <td xs={3}>
                     <h4>Guild</h4>
                   </td>
@@ -212,14 +234,12 @@ const PlayerProfile = ({ match }) => {
   );
 };
 
-PlayerProfile.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      realm: PropTypes.string.isRequired,
-      region: PropTypes.string.isRequired,
-    }),
-  }).isRequired,
-};
+// PlayerProfile.propTypes = {
+//   params: PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     realm: PropTypes.string.isRequired,
+//     region: PropTypes.string.isRequired,
+//   }).isRequired,
+// };
 
 export default PlayerProfile;

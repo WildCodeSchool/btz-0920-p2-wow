@@ -16,8 +16,10 @@
     "react-icons": "^3.11.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-transition-group": "^4.4.1",
     "reactstrap": "^8.6.0",
     "uniqid": "^5.2.0",
+    "use-state-with-callback": "^2.0.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

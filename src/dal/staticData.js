@@ -87,8 +87,8 @@ export const classesAndSpecs = [
       },
       {
         id: 2,
-        name: 'Blood',
-        slug: 'blood',
+        name: 'Frost',
+        slug: 'frost',
       },
       {
         id: 3,
