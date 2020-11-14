@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Pagination, PaginationLink, PaginationItem } from 'reactstrap';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
 import PropTypes from 'prop-types';
+import pjArrayContext from '../../contexts/pjArray';
 
-const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
-  const [currentPage, setCurrentPage] = useState(page);
-  const totalPages = Math.ceil(totalPlayers / playerPerPage);
+const Pagin = ({ playerPerPage }) => {
+  const { currentPage, setCurrentPage, filterRes } = useContext(pjArrayContext);
+  const totalPages = Math.ceil(filterRes.length / playerPerPage);
   const pageTab = [];
   const btnQty = totalPages > 5 ? 5 : totalPages;
   const [isStartDisabled, setIsStartDisabled] = useState(true);
@@ -38,7 +39,7 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
       }
     }
 
-    updatePage(currentPage);
+    setCurrentPage(currentPage);
   }, [currentPage]);
 
   return (
@@ -75,9 +76,6 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
 };
 
 Pagin.propTypes = {
-  page: PropTypes.number.isRequired,
-  updatePage: PropTypes.func.isRequired,
-  totalPlayers: PropTypes.number.isRequired,
   playerPerPage: PropTypes.number.isRequired,
 };
 export default Pagin;

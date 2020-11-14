@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Table } from 'reactstrap';
 
-import PJRow from './PJRow';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
-import ToolsFilters from './ToolsFilters';
+// import ToolsFilters from './ToolsFilters';
 import Error from './Error';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
+import PjArrayList from './PjArrayList';
+import pjArrayContext from '../contexts/pjArray';
 
 const PJArray = () => {
   const params = useParams();
@@ -32,8 +32,9 @@ const PJArray = () => {
         ).then(({ data }) => {
           setResults(data.rankings.rankedCharacters);
           setRegionName(data.rankings.region.name);
-          setFilterRes(data.rankings.rankedCharacters);
+          // setFilterRes(data.rankings.rankedCharacters);
           setLoading(false);
+          // console.log(data.rankings.rankedCharacters);
         });
       } catch (err) {
         setIsError(true);
@@ -67,41 +68,27 @@ const PJArray = () => {
           </div>
           <main className="container min-vw-100">
             <div className="row w-100">
-              <div className="col-3 align-self-center">
-                <ToolsFilters results={results} setFilterRes={setFilterRes} />
-              </div>
-              <Table className="col-8 text-nowrap" hover borderless>
-                <tbody className="container">
-                  {filterRes
-                    .filter(
-                      (_, index) =>
-                        index >= (currentPage - 1) * playerPerPage &&
-                        index < currentPage * playerPerPage
-                    )
-                    .map((result) => {
-                      return (
-                        <PJRow
-                          name={result.character.name}
-                          pjClass={result.character.class.name}
-                          faction={result.character.faction}
-                          rank={result.rank}
-                          spec={result.character.spec.name}
-                          realm={result.character.realm.name}
-                          region={regionName}
-                          key={result.rank}
-                        />
-                      );
-                    })}
-                </tbody>
-              </Table>
+              <pjArrayContext.Provider
+                value={{
+                  filterRes,
+                  setFilterRes,
+                  regionName,
+                  currentPage,
+                  setCurrentPage,
+                  playerPerPage,
+                  results,
+                }}
+              >
+                {/* <ToolsFilters
+                  results={results}
+                  className="col-3 align-self-center"
+                /> */}
+                <PjArrayList />
+
+                <Pagin playerPerPage={playerPerPage} />
+              </pjArrayContext.Provider>
             </div>
           </main>
-          <Pagin
-            page={currentPage}
-            playerPerPage={playerPerPage}
-            totalPlayers={filterRes.length}
-            updatePage={setCurrentPage}
-          />
         </div>
       )}
     </>

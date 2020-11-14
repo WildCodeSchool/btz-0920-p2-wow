@@ -20,6 +20,7 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
   const rowLink = () => {
     history.push(`/player/${region}/${realm}/${name}/`);
   };
+
   return (
     <tr className="row w-100" onClick={rowLink}>
       <td className="col-1 d-flex align-items-center justify-content-center">

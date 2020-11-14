@@ -1,26 +1,15 @@
-// import { useParams } from 'react-router-dom';
-// import { useState } from 'react';
-import {
-  Button,
-  UncontrolledCollapse,
-  CardBody,
-  Card,
-  // Form,
-  // FormGroup,
-  // Label,
-  // Input,
-} from 'reactstrap';
+import { Button, UncontrolledCollapse, CardBody, Card } from 'reactstrap';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
 
-// import DalApi from '../dal/DalApi';
 import FactionIcons from './flags/FactionIcons';
+import pjArrayContext from '../contexts/pjArray';
 
-function ToolsFilters({ results, setFilterRes }) {
-  // const params = useParams();
-  // const [classArray] = useState(DalApi.getClassesAndSpecsByName(params.class));
-
-  // const [currentResult, setCurrentResult] = useState(results);
+function ToolsFilters({ results }) {
+  const { setFilterRes } = useContext(pjArrayContext);
+  // const [activeFaction, setActiveFaction] = useState(null);
+  // const [activeSpec, setActiveSpec] = useState(null);
 
   const factionFilter = (faction) => {
     return faction === ''
@@ -29,17 +18,7 @@ function ToolsFilters({ results, setFilterRes }) {
           results.filter((fact) => fact.character.faction === faction)
         );
   };
-
-  // const classFilter = (parm) => {
-  //   setFilterRes(
-  //     results.filter(
-  //       (cl) => cl.character.class.slug === parm.toLowerCase().replace(' ', '-')
-  //     )
-  //   );
-  // };
-
   // setFilterRes(results);
-
   return (
     <>
       <Button color="primary" id="toggler" style={{ marginBottom: '1rem' }}>
@@ -96,7 +75,6 @@ function ToolsFilters({ results, setFilterRes }) {
 
 ToolsFilters.propTypes = {
   results: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setFilterRes: PropTypes.func.isRequired,
 };
 
 export default ToolsFilters;
