@@ -80,14 +80,16 @@ const PJArray = () => {
                   results,
                 }}
               >
-                <ToolsFilters
-                  results={results}
-                  playerClass={params.class}
-                  className="col-3 align-self-center"
-                />
-                <PjArrayList />
+                <div>
+                  <ToolsFilters
+                    results={results}
+                    playerClass={params.class}
+                    className="col-3 align-self-center"
+                  />
+                  <PjArrayList />
 
-                <Pagin playerPerPage={playerPerPage} />
+                  <Pagin playerPerPage={playerPerPage} />
+                </div>
               </pjArrayContext.Provider>
             </div>
           </main>
