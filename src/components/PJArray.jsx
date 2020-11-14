@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
-// import ToolsFilters from './ToolsFilters';
+import ToolsFilters from './ToolsFilters';
 import Error from './Error';
 
 import Hr from './cssPages&Components/Hr';
@@ -15,11 +15,12 @@ import pjArrayContext from '../contexts/pjArray';
 const PJArray = () => {
   const params = useParams();
   const [results, setResults] = useState([]);
+  const [filterRes, setFilterRes] = useState([]);
+
   const [regionName, setRegionName] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
-  const [filterRes, setFilterRes] = useState([]);
   const [isError, setIsError] = useState(false);
   const [error, setError] = useState({});
 
@@ -32,7 +33,7 @@ const PJArray = () => {
         ).then(({ data }) => {
           setResults(data.rankings.rankedCharacters);
           setRegionName(data.rankings.region.name);
-          // setFilterRes(data.rankings.rankedCharacters);
+          setFilterRes(data.rankings.rankedCharacters);
           setLoading(false);
           // console.log(data.rankings.rankedCharacters);
         });
@@ -79,10 +80,10 @@ const PJArray = () => {
                   results,
                 }}
               >
-                {/* <ToolsFilters
+                <ToolsFilters
                   results={results}
                   className="col-3 align-self-center"
-                /> */}
+                />
                 <PjArrayList />
 
                 <Pagin playerPerPage={playerPerPage} />

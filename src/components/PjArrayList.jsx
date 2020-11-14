@@ -4,15 +4,16 @@ import pjArrayContext from '../contexts/pjArray';
 import PJRow from './PJRow';
 
 const PjArrayList = () => {
-  const { currentPage, playerPerPage, regionName, results } = useContext(
+  const { currentPage, playerPerPage, regionName, filterRes } = useContext(
     pjArrayContext
   );
+
   // console.log('results', results, currentPage, playerPerPage, 'end');
 
   return (
     <Table className="col-8 text-nowrap" hover borderless>
       <tbody className="container">
-        {results
+        {filterRes
           .filter(
             (_, index) =>
               index >= (currentPage - 1) * playerPerPage &&

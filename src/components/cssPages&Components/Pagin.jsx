@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import pjArrayContext from '../../contexts/pjArray';
 
 const Pagin = ({ playerPerPage }) => {
-  const { currentPage, setCurrentPage, results } = useContext(pjArrayContext);
-  const totalPages = Math.ceil(results.length / playerPerPage);
+  const { currentPage, setCurrentPage, filterRes } = useContext(pjArrayContext);
+
+  const totalPages = Math.ceil(filterRes.length / playerPerPage);
   const pageTab = [];
   const btnQty = totalPages > 5 ? 5 : totalPages;
   const [isStartDisabled, setIsStartDisabled] = useState(true);
