@@ -21,7 +21,7 @@ function ToolsFilters({ results, playerClass }) {
     tabTemp = tabTemp.filter((elmt) => {
       return (
         activeFactions.indexOf(elmt.character.faction) !== -1 ||
-        activeFactions === 0
+        activeFactions.length === 0
       );
     });
 
