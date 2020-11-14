@@ -82,6 +82,7 @@ const PJArray = () => {
               >
                 <ToolsFilters
                   results={results}
+                  playerClass={params.class}
                   className="col-3 align-self-center"
                 />
                 <PjArrayList />
