@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
-import DalApi from '../dal/DalApi';
+import DalApi from '../../dal/DalApi';
 
-import './cssPages&Components/ClassColor.css';
-import FactionIcons from './flags/FactionIcons';
+import '../cssPages&Components/ClassColor.css';
+import FactionIcons from '../flags/FactionIcons';
 
 function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
   // get class form api static data

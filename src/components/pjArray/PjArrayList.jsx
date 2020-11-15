@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import Table from 'reactstrap/lib/Table';
-import pjArrayContext from '../contexts/pjArray';
+import pjArrayContext from '../../contexts/pjArray';
 import PJRow from './PJRow';
 
 const PjArrayList = () => {

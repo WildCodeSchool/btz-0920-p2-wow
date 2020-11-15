@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import DalApi from '../dal/DalApi';
-import Pagin from './cssPages&Components/Pagin';
-import ToolsFilters from './ToolsFilters';
-import Error from './Error';
+import DalApi from '../../dal/DalApi';
+import Pagin from '../cssPages&Components/Pagin';
+import ToolsFilters from '../ToolsFilters';
+import Error from '../Error';
 
-import Hr from './cssPages&Components/Hr';
-import LoadingSpinner from './LoadingSpinner';
-import './cssPages&Components/GuildsArray.css';
+import Hr from '../cssPages&Components/Hr';
+import LoadingSpinner from '../LoadingSpinner';
+import '../cssPages&Components/GuildsArray.css';
 import PjArrayList from './PjArrayList';
-import pjArrayContext from '../contexts/pjArray';
+import pjArrayContext from '../../contexts/pjArray';
 
 const PJArray = () => {
   const params = useParams();

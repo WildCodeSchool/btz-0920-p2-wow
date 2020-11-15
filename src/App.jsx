@@ -7,7 +7,7 @@ import NavBar from './components/NavBar';
 import GuildsArray from './components/GuildsArray';
 import GuildPage from './components/guildPage/GuildPage';
 import SearchPage from './components/searchPage/SearchPage';
-import PJArray from './components/PJArray';
+import PJArray from './components/pjArray/PJArray';
 
 import './App.css';
 
