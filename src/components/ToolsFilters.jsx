@@ -48,35 +48,43 @@ function ToolsFilters({ results, playerClass }) {
       <UncontrolledCollapse toggler="#toggler">
         {/* choix faction */}
         <div>
-          {factions.map((faction) => (
-            <Button
-              className="p-0 bg-transparent border-0 button-hover"
-              onClick={() => {
-                const index = activeFactions.indexOf(faction.slug);
-                return setActiveFactions(
-                  index === -1
-                    ? activeFactions.concat(faction.slug)
-                    : activeFactions.filter(
-                        (factionSlug) => factionSlug !== faction.slug
-                      )
-                );
-              }}
-              title={faction.name}
-              key={faction.name}
-            >
-              <FactionIcons faction={faction.slug} />
-            </Button>
-          ))}
+          {factions.map((faction) => {
+            // return <0 if not selected >0 if selected
+            // used for condition in onClick
+            // used for condition in container className (button here)
+            const index = activeFactions.indexOf(faction.slug);
+            return (
+              <Button
+                className="p-0 bg-transparent border-0 button-hover"
+                onClick={() => {
+                  return setActiveFactions(
+                    index === -1
+                      ? activeFactions.concat(faction.slug)
+                      : activeFactions.filter(
+                          (factionSlug) => factionSlug !== faction.slug
+                        )
+                  );
+                }}
+                title={faction.name}
+                key={faction.name}
+              >
+                <FactionIcons faction={faction.slug} />
+              </Button>
+            );
+          })}
         </div>
 
         {/* choix specs */}
         <div>
           {specs.map((spec) => {
+            // return <0 if not selected >0 if selected
+            // used for condition in onClick
+            // used for condition in container className (button here)
+            const index = activeSpecs.indexOf(spec.name);
             return (
               <Button
                 className="p-0 bg-transparent border-0 button-hover"
                 onClick={() => {
-                  const index = activeSpecs.indexOf(spec.name);
                   return setActiveSpecs(
                     index === -1
                       ? activeSpecs.concat(spec.name)
