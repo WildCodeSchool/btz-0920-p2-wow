@@ -29,12 +29,12 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
       <td className="col-1 d-flex align-items-center justify-content-center">
         <FactionIcons faction={faction} />
       </td>
-      <td className="col-3 d-flex align-items-center">
+      <td className="col-5 d-flex align-items-center">
         <strong className={`ml-2git add . ${classOfApi.name.replace(' ', '')}`}>
           {name}
         </strong>
       </td>
-      <td className="col-2 d-flex align-items-center">{realm}</td>
+      <td className="col-3 d-flex align-items-center">{realm}</td>
       <td className="col-2 d-flex align-items-center justify-content-center">
         <img src={specOfClass.image} alt={name} title={specOfClass.name} />
       </td>

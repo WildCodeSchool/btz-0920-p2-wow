@@ -14,7 +14,6 @@ import ArrayContext from '../../contexts/array';
 
 const GuildsArray = () => {
   const params = useParams();
-
   const [results, setResults] = useState([]);
   const [filterRes, setFilterRes] = useState([]);
 
@@ -70,7 +69,7 @@ const GuildsArray = () => {
             </h2>
             <Hr />
           </div>
-          <Container>
+          <Container className="d-flex flex-row">
             <ArrayContext.Provider
               value={{
                 filterRes,
@@ -80,14 +79,10 @@ const GuildsArray = () => {
                 playerPerPage,
               }}
             >
-              <div className="row align-self-center">
-                <div className="col-1 d-flex align-items-center">
-                  <ToolsFilters
-                    type="guilds"
-                    results={results}
-                    className="col-3 align-self-center"
-                  />
-                </div>
+              <div className="col-3 align-items-center">
+                <ToolsFilters type="guilds" results={results} playerClass="" />
+              </div>
+              <div className="col-9">
                 <GuildsArrayList />
               </div>
             </ArrayContext.Provider>

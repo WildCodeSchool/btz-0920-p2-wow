@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Table from 'reactstrap/lib/Table';
+import Container from 'reactstrap/lib/Container';
 
 import DalApi from '../../dal/DalApi';
 import ToolsFilters from '../ToolsFilters';
@@ -67,32 +67,30 @@ const PJArray = () => {
             </h2>
             <Hr />
           </div>
-          <main className="container min-vw-100">
-            <div className="row w-100">
-              <arrayContext.Provider
-                value={{
-                  filterRes,
-                  setFilterRes,
-                  regionName,
-                  currentPage,
-                  setCurrentPage,
-                  playerPerPage,
-                }}
-              >
-                <div>
-                  <ToolsFilters
-                    type="players"
-                    results={results}
-                    playerClass={params.class}
-                    className="col-3 align-self-center"
-                  />
-                  <Table className="col-8 text-nowrap" hover borderless>
-                    <PjArrayList />
-                  </Table>
-                </div>
-              </arrayContext.Provider>
-            </div>
-          </main>
+          <Container className="d-flex flex-row">
+            <arrayContext.Provider
+              value={{
+                filterRes,
+                setFilterRes,
+                regionName,
+                currentPage,
+                setCurrentPage,
+                playerPerPage,
+              }}
+            >
+              <div className="col-3 d-flex align-items-center">
+                <ToolsFilters
+                  type="players"
+                  results={results}
+                  playerClass={params.class}
+                />
+              </div>
+
+              <div className="col-9">
+                <PjArrayList />
+              </div>
+            </arrayContext.Provider>
+          </Container>
         </div>
       )}
     </>
