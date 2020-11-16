@@ -68,7 +68,11 @@ const PJArray = () => {
           <main className="container min-vw-100">
             <div className="row w-100">
               <div className="col-3 align-self-center">
-                <ToolsFilters results={results} setFilterRes={setFilterRes} />
+                <ToolsFilters
+                  results={results}
+                  filterRes={filterRes}
+                  setFilterRes={setFilterRes}
+                />
               </div>
               <Table className="col-8 text-nowrap" hover borderless>
                 <tbody className="container">

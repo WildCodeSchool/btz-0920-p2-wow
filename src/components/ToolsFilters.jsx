@@ -5,86 +5,85 @@ import {
   UncontrolledCollapse,
   CardBody,
   Card,
-  Form,
-  FormGroup,
+  // Form,
+  // FormGroup,
   // Label,
-  CustomInput,
+  // Input,
 } from 'reactstrap';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
 import DalApi from '../dal/DalApi';
 import FactionIcons from './flags/FactionIcons';
-//  il faut arriver à permettre de conserver les précédent paramettre de filtre et d'en rajouter de nouveau.
 
 function ToolsFilters({ results, setFilterRes }) {
   const params = useParams();
   const [classArray] = useState(DalApi.getClassesAndSpecsByName(params.class));
 
-  const [currentResult] = useState(results);
+  // const [currentResult, setCurrentResult] = useState([]);
+  //   console.log(currentResult);
+
+  // useEffect(() => {
+  //   setCurrentResult(results);
+  // }, []);
 
   const factionFilter = (faction) => {
     return faction === ''
-      ? setFilterRes(results) // replace setFilterRes by setCurrentResult
+      ? setFilterRes(results)
       : setFilterRes(
-          // replace setFilterRes by setCurrentResult
           results.filter((fact) => fact.character.faction === faction)
         );
   };
 
   const classFilter = (parm) => {
-    results.filter(
-      (cl) => cl.character.class.slug === parm.toLowerCase().replace(' ', '-')
+    setFilterRes(
+      results.filter(
+        (cl) => cl.character.spec.slug === parm.toLowerCase().replace(' ', '-')
+      )
     );
-    setFilterRes(currentResult);
   };
 
+  // setFilterRes(currentResult);
   return (
     <>
-      <Button color="primary" id="toggler" style={{ marginBottom: '1rem' }}>
+      <Button
+        color="primary"
+        id="toggler"
+        style={{ marginBottom: '1rem', height: '60px', width: '60px' }}
+      >
         <BsThreeDotsVertical />
       </Button>
       <UncontrolledCollapse toggler="#toggler">
-        <Card className="bg-transparent">
-          <CardBody className="p-0 bg-transparent">
+        <Card>
+          <CardBody className="p-0 ">
             <Button
               onClick={() => factionFilter('horde')}
               color="secondary"
-              className="p-0 bg-transparent border-0 button-hover"
+              className="p-0  border-0 button-hover"
             >
               <FactionIcons faction="horde" />
             </Button>
             <Button
               onClick={() => factionFilter('alliance')}
               color="secondary"
-              className="p-0 bg-transparent border-0 button-hover"
+              className="p-0  border-0 button-hover"
             >
               <FactionIcons faction="alliance" />
             </Button>
             <Button
               onClick={() => factionFilter('')}
               color="secondary"
-              className="p-0 bg-transparent border-0 button-hover"
+              className="p-0  border-0 button-hover"
             >
               <FactionIcons faction="both" />
             </Button>
           </CardBody>
-
-          <Form>
-            <FormGroup radio inline>
-              {classArray.specs.map((res) => {
-                const { name } = res;
-                return (
-                  <CustomInput
-                    type="radio"
-                    id={name}
-                    label={name}
-                    onClick={() => classFilter(name)}
-                  />
-                );
-              })}
-            </FormGroup>
-          </Form>
+          <CardBody>
+            {classArray.specs.map((res) => {
+              const { name } = res;
+              return <Button onClick={() => classFilter(name)}>{name}</Button>;
+            })}
+          </CardBody>
         </Card>
       </UncontrolledCollapse>
     </>
