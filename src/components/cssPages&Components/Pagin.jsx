@@ -1,13 +1,10 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Pagination, PaginationLink, PaginationItem } from 'reactstrap';
 import { BsFillSkipBackwardFill, BsFillSkipForwardFill } from 'react-icons/bs';
 import PropTypes from 'prop-types';
-import pjArrayContext from '../../contexts/pjArray';
 
-const Pagin = ({ playerPerPage }) => {
-  const { currentPage, setCurrentPage, filterRes } = useContext(pjArrayContext);
-
-  const totalPages = Math.ceil(filterRes.length / playerPerPage);
+const Pagin = ({ page, totalPlayers, playerPerPage, updatePage }) => {
+  const totalPages = Math.ceil(totalPlayers / playerPerPage);
   const pageTab = [];
   const btnQty = totalPages > 5 ? 5 : totalPages;
   const [isStartDisabled, setIsStartDisabled] = useState(true);
@@ -18,36 +15,36 @@ const Pagin = ({ playerPerPage }) => {
   for (let i = 0; i < totalPages; i += 1) pageTab[i] = i + 1;
 
   useEffect(() => {
-    setIsStartDisabled(btnQty < 5 || currentPage === 1);
-    setIsEndDisabled(btnQty < 5 || currentPage === totalPages);
+    setIsStartDisabled(btnQty < 5 || page === 1);
+    setIsEndDisabled(btnQty < 5 || page === totalPages);
 
-    if (currentPage === 1) {
-      setBtnMin(currentPage);
-      setBtnMax(currentPage + 4);
-    } else if (currentPage === totalPages) {
-      setBtnMin(currentPage - 4);
-      setBtnMax(currentPage);
-    } else if (currentPage === btnMax) {
-      setBtnMin(currentPage - 2);
-      setBtnMax(currentPage + 2);
-    } else if (currentPage === btnMin) {
+    if (page === 1) {
+      setBtnMin(page);
+      setBtnMax(page + 4);
+    } else if (page === totalPages) {
+      setBtnMin(page - 4);
+      setBtnMax(page);
+    } else if (page === btnMax) {
+      setBtnMin(page - 2);
+      setBtnMax(page + 2);
+    } else if (page === btnMin) {
       if (btnMax - 4 === 1) {
         setBtnMin(1);
         setBtnMax(5);
       } else {
-        setBtnMin(currentPage - 2);
-        setBtnMax(currentPage + 2);
+        setBtnMin(page - 2);
+        setBtnMax(page + 2);
       }
     }
 
-    setCurrentPage(currentPage);
-  }, [currentPage]);
+    updatePage(page);
+  }, [page]);
 
   return (
     // go to first page
     <Pagination className="pagination" size="lg clearfix">
       <PaginationItem className="paginationItem" disabled={isStartDisabled}>
-        <PaginationLink onClick={() => setCurrentPage(1)}>
+        <PaginationLink onClick={() => updatePage(1)}>
           <BsFillSkipBackwardFill />
         </PaginationLink>
       </PaginationItem>
@@ -58,17 +55,17 @@ const Pagin = ({ playerPerPage }) => {
         .map((elmt) => (
           <PaginationItem
             className="paginationItem"
-            active={currentPage === elmt}
+            active={page === elmt}
             key={elmt}
           >
-            <PaginationLink onClick={() => setCurrentPage(elmt)}>
+            <PaginationLink onClick={() => updatePage(elmt)}>
               {elmt}
             </PaginationLink>
           </PaginationItem>
         ))}
       {/* go to last page */}
       <PaginationItem className="paginationItem" disabled={isEndDisabled}>
-        <PaginationLink onClick={() => setCurrentPage(totalPages)}>
+        <PaginationLink onClick={() => updatePage(totalPages)}>
           <BsFillSkipForwardFill />
         </PaginationLink>
       </PaginationItem>
@@ -77,6 +74,9 @@ const Pagin = ({ playerPerPage }) => {
 };
 
 Pagin.propTypes = {
+  page: PropTypes.number.isRequired,
+  totalPlayers: PropTypes.number.isRequired,
   playerPerPage: PropTypes.number.isRequired,
+  updatePage: PropTypes.func.isRequired,
 };
 export default Pagin;

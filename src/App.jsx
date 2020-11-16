@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import PlayerProfile from './components/PlayerProfile';
 import Leaderboards from './components/Leaderboards';
 import NavBar from './components/NavBar';
-import GuildsArray from './components/GuildsArray';
+import GuildsArray from './components/guildsArray/GuildsArray';
 import GuildPage from './components/guildPage/GuildPage';
 import SearchPage from './components/searchPage/SearchPage';
 import PJArray from './components/pjArray/PJArray';

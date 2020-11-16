@@ -1,40 +1,48 @@
 import { useContext } from 'react';
-import Table from 'reactstrap/lib/Table';
-import pjArrayContext from '../../contexts/pjArray';
+import arrayContext from '../../contexts/array';
 import PJRow from './PJRow';
+import Pagin from '../cssPages&Components/Pagin';
 
 const PjArrayList = () => {
-  const { currentPage, playerPerPage, regionName, filterRes } = useContext(
-    pjArrayContext
-  );
+  const {
+    currentPage,
+    setCurrentPage,
+    playerPerPage,
+    regionName,
+    filterRes,
+  } = useContext(arrayContext);
 
   // console.log('results', results, currentPage, playerPerPage, 'end');
 
   return (
-    <Table className="col-8 text-nowrap" hover borderless>
-      <tbody className="container">
-        {filterRes
-          .filter(
-            (_, index) =>
-              index >= (currentPage - 1) * playerPerPage &&
-              index < currentPage * playerPerPage
-          )
-          .map((result) => {
-            return (
-              <PJRow
-                name={result.character.name}
-                pjClass={result.character.class.name}
-                faction={result.character.faction}
-                rank={result.rank}
-                spec={result.character.spec.name}
-                realm={result.character.realm.name}
-                region={regionName}
-                key={result.rank}
-              />
-            );
-          })}
-      </tbody>
-    </Table>
+    <tbody className="container">
+      {filterRes
+        .filter(
+          (_, index) =>
+            index >= (currentPage - 1) * playerPerPage &&
+            index < currentPage * playerPerPage
+        )
+        .map((result) => {
+          return (
+            <PJRow
+              name={result.character.name}
+              pjClass={result.character.class.name}
+              faction={result.character.faction}
+              rank={result.rank}
+              spec={result.character.spec.name}
+              realm={result.character.realm.name}
+              region={regionName}
+              key={result.rank}
+            />
+          );
+        })}
+      <Pagin
+        page={currentPage}
+        playerPerPage={playerPerPage}
+        totalPlayers={filterRes.length}
+        updatePage={setCurrentPage}
+      />
+    </tbody>
   );
 };
 

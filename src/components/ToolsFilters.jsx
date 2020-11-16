@@ -4,34 +4,41 @@ import PropTypes from 'prop-types';
 import { useContext, useEffect, useState } from 'react';
 
 import FactionIcons from './flags/FactionIcons';
-import pjArrayContext from '../contexts/pjArray';
+import pjArrayContext from '../contexts/array';
 import DalApi from '../dal/DalApi';
 
-function ToolsFilters({ results, playerClass }) {
+function ToolsFilters({ results, playerClass, type }) {
   const { setFilterRes, setCurrentPage } = useContext(pjArrayContext);
 
   const [activeFactions, setActiveFactions] = useState([]);
   const [activeSpecs, setActiveSpecs] = useState([]);
-  const [specs] = useState(DalApi.getClassesAndSpecsByName(playerClass).specs);
+  const [specs] = useState(
+    type === 'guilds' ? '' : DalApi.getClassesAndSpecsByName(playerClass).specs
+  );
   const [factions] = useState(DalApi.getFactions());
 
   useEffect(() => {
     let tabTemp = results;
     // first filter faction : 0 selected = all. can clic or unclic a faction and multi select
     tabTemp = tabTemp.filter((elmt) => {
+      const factionName =
+        type === 'guilds' ? elmt.guild.faction : elmt.character.faction;
+
       return (
-        activeFactions.indexOf(elmt.character.faction) !== -1 ||
+        activeFactions.indexOf(factionName) !== -1 ||
         activeFactions.length === 0
       );
     });
 
     // second filter specs : 0 selected = all. can select or unselect a spec and multi select
-    tabTemp = tabTemp.filter((elmt) => {
-      return (
-        activeSpecs.indexOf(elmt.character.spec.name) !== -1 ||
-        activeSpecs.length === 0
-      );
-    });
+    if (type === 'players') {
+      tabTemp = tabTemp.filter((elmt) => {
+        return (
+          activeSpecs.indexOf(elmt.character.spec.name) !== -1 ||
+          activeSpecs.length === 0
+        );
+      });
+    }
 
     // display update
     setFilterRes(tabTemp);
@@ -74,31 +81,37 @@ function ToolsFilters({ results, playerClass }) {
           })}
         </div>
 
-        {/* choix specs */}
-        <div>
-          {specs.map((spec) => {
-            // return <0 if not selected >0 if selected
-            // used for condition in onClick
-            // used for condition in container className (button here)
-            const index = activeSpecs.indexOf(spec.name);
-            return (
-              <Button
-                className="p-0 bg-transparent border-0 button-hover"
-                onClick={() => {
-                  return setActiveSpecs(
-                    index === -1
-                      ? activeSpecs.concat(spec.name)
-                      : activeSpecs.filter((specName) => specName !== spec.name)
-                  );
-                }}
-                title={spec.name}
-                key={spec.name}
-              >
-                <img src={spec.image} alt={spec.name} title={spec.name} />
-              </Button>
-            );
-          })}
-        </div>
+        {/* choix specs if player list */}
+        {type === 'players' ? (
+          <div>
+            {specs.map((spec) => {
+              // return <0 if not selected >0 if selected
+              // used for condition in onClick
+              // used for condition in container className (button here)
+              const index = activeSpecs.indexOf(spec.name);
+              return (
+                <Button
+                  className="p-0 bg-transparent border-0 button-hover"
+                  onClick={() => {
+                    return setActiveSpecs(
+                      index === -1
+                        ? activeSpecs.concat(spec.name)
+                        : activeSpecs.filter(
+                            (specName) => specName !== spec.name
+                          )
+                    );
+                  }}
+                  title={spec.name}
+                  key={spec.name}
+                >
+                  <img src={spec.image} alt={spec.name} title={spec.name} />
+                </Button>
+              );
+            })}
+          </div>
+        ) : (
+          ''
+        )}
       </UncontrolledCollapse>
     </>
   );
@@ -107,6 +120,7 @@ function ToolsFilters({ results, playerClass }) {
 ToolsFilters.propTypes = {
   results: PropTypes.arrayOf(PropTypes.object).isRequired,
   playerClass: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default ToolsFilters;

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Table from 'reactstrap/lib/Table';
 
 import DalApi from '../../dal/DalApi';
-import Pagin from '../cssPages&Components/Pagin';
 import ToolsFilters from '../ToolsFilters';
 import Error from '../Error';
 
@@ -10,7 +10,7 @@ import Hr from '../cssPages&Components/Hr';
 import LoadingSpinner from '../LoadingSpinner';
 import '../cssPages&Components/GuildsArray.css';
 import PjArrayList from './PjArrayList';
-import pjArrayContext from '../../contexts/pjArray';
+import arrayContext from '../../contexts/array';
 
 const PJArray = () => {
   const params = useParams();
@@ -69,7 +69,7 @@ const PJArray = () => {
           </div>
           <main className="container min-vw-100">
             <div className="row w-100">
-              <pjArrayContext.Provider
+              <arrayContext.Provider
                 value={{
                   filterRes,
                   setFilterRes,
@@ -77,20 +77,20 @@ const PJArray = () => {
                   currentPage,
                   setCurrentPage,
                   playerPerPage,
-                  results,
                 }}
               >
                 <div>
                   <ToolsFilters
+                    type="players"
                     results={results}
                     playerClass={params.class}
                     className="col-3 align-self-center"
                   />
-                  <PjArrayList />
-
-                  <Pagin playerPerPage={playerPerPage} />
+                  <Table className="col-8 text-nowrap" hover borderless>
+                    <PjArrayList />
+                  </Table>
                 </div>
-              </pjArrayContext.Provider>
+              </arrayContext.Provider>
             </div>
           </main>
         </div>
