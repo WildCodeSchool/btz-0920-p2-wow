@@ -112,12 +112,12 @@ const PlayerProfile = () => {
   if (error) return <Error msg={error.response.data.statusText} />;
 
   return (
-    <Container fluid className="w100" style={{ marginTop: '90px' }}>
+    <Container fluid className="w100" style={{ marginTop: '100px' }}>
       {loading ? (
         <LoadingSpinner />
       ) : (
         <>
-          <Row className="d-flex justify-content-center flex-wrap mt-5">
+          <Row className="d-flex justify-content-center flex-wrap pt-5">
             <Col
               xs="6"
               className="d-flex flex-column align-items-end justify-content-center"
@@ -134,17 +134,17 @@ const PlayerProfile = () => {
                 </Col>
               </Row>
               <Row>
-                <Col xs="4" className="d-flex align-items-start">
+                <Col xs="12" md="4" className="d-flex align-items-start">
                   <Flag slug={playerRegion} />
                 </Col>
-                <Col xs="8" className="d-flex align-items-start">
+                <Col xs="12" md="8" className="d-flex align-items-start">
                   <h3>{playerRealm}</h3>
                 </Col>
               </Row>
             </Col>
           </Row>
-          <Row className="mt-5">
-            <Col className="col-8 offset-2">
+          <Row className="mt-5 justify-content-center">
+            <Col xs="12" md="8">
               <Table className="table table-striped" opacity="0.5" borderless>
                 <thead>
                   <tr className="table-primary">
