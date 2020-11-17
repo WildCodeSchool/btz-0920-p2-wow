@@ -5,12 +5,8 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
-import { alliance, horde } from '../img';
 import Flag from './flags/Flag';
 import Error from './Error';
-
-import './cssPages&Components/playerProfile.css';
-import './cssPages&Components/test.css';
 
 const PlayerProfile = () => {
   const { name, realm, region } = useParams();
@@ -26,7 +22,6 @@ const PlayerProfile = () => {
   const [raidScore, setRaidScore] = useState('');
   const [mythicScore, setMythicScore] = useState('');
   const [loading, setLoading] = useState(true);
-  const [faction] = useState('');
   const [error, setError] = useState(null);
   const [isError, setIsError] = useState(false);
 
@@ -36,7 +31,6 @@ const PlayerProfile = () => {
   const guildLink = () => {
     history.push(`/guild/${playerRegion}/${realm}/${guild}/`);
   };
-
   useEffect(() => {
     const getDatas = async () => {
       try {
@@ -70,26 +64,6 @@ const PlayerProfile = () => {
   if (isError) {
     return <Error msg={error.message} />;
   }
-
-  let factionLogo = '';
-  const determineLogo = () => {
-    if (faction === 'alliance') {
-      factionLogo = alliance;
-    } else {
-      factionLogo = horde;
-    }
-    return factionLogo;
-  };
-  determineLogo();
-
-  // // Inserts faction logo in background
-  // useEffect(() => {
-  //   document.body.style.background = `url(${determineLogo()}) no-repeat fixed center`;
-  //   document.body.style.backgroundColor = 'rgb(43, 62, 80)';
-  //   return () => {
-  //     document.body.style.background = ``;
-  //   };
-  // }, []);
 
   const displaysSpecRole = (playerSpecRole) => {
     switch (playerSpecRole) {
@@ -138,11 +112,7 @@ const PlayerProfile = () => {
   if (error) return <Error msg={error.response.data.statusText} />;
 
   return (
-    <Container
-      fluid
-      className={factionLogo === 'alliance' ? 'alliance w100' : 'horde w100'}
-      style={{ marginTop: '90px' }}
-    >
+    <Container fluid className="w100" style={{ marginTop: '90px' }}>
       {loading ? (
         <LoadingSpinner />
       ) : (
@@ -185,7 +155,7 @@ const PlayerProfile = () => {
                         height="64px"
                         width="64px"
                       />
-                      <h4>{specName}</h4>
+                      <h4 className="ml-2">{specName}</h4>
                     </th>
                     <th>
                       <img
