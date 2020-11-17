@@ -1,49 +1,38 @@
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Button,
   UncontrolledCollapse,
   CardBody,
   Card,
-  // Form,
-  // FormGroup,
-  // Label,
-  // Input,
+  Input,
 } from 'reactstrap';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 
 import DalApi from '../dal/DalApi';
+// import realms from '../dal/realms.json';
 import FactionIcons from './flags/FactionIcons';
 
-function ToolsFilters({ results, setFilterRes }) {
+function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
   const params = useParams();
   const [classArray] = useState(DalApi.getClassesAndSpecsByName(params.class));
+  // const [realmsArray] = useState(realms);
+  const [faction, setFaction] = useState('');
+  const [spec, setSpec] = useState('');
 
-  // const [currentResult, setCurrentResult] = useState([]);
-  //   console.log(currentResult);
-
-  // useEffect(() => {
-  //   setCurrentResult(results);
-  // }, []);
-
-  const factionFilter = (faction) => {
-    return faction === ''
-      ? setFilterRes(results)
-      : setFilterRes(
-          results.filter((fact) => fact.character.faction === faction)
-        );
-  };
-
-  const classFilter = (parm) => {
-    setFilterRes(
-      results.filter(
-        (cl) => cl.character.spec.slug === parm.toLowerCase().replace(' ', '-')
-      )
+  useEffect(() => {
+    let currentResult = results;
+    currentResult = currentResult.filter((fact) =>
+      faction === '' ? true : fact.character.faction === faction
     );
-  };
+    currentResult = currentResult.filter((elmt) =>
+      spec === '' ? true : elmt.character.spec.slug === spec
+    );
+    setFilterRes(currentResult);
+    setCurrentPage(1);
+  }, [faction, spec]);
 
-  // setFilterRes(currentResult);
   return (
     <>
       <Button
@@ -57,21 +46,21 @@ function ToolsFilters({ results, setFilterRes }) {
         <Card>
           <CardBody className="p-0 ">
             <Button
-              onClick={() => factionFilter('horde')}
+              onClick={() => setFaction('horde')}
               color="secondary"
               className="p-0  border-0 button-hover"
             >
               <FactionIcons faction="horde" />
             </Button>
             <Button
-              onClick={() => factionFilter('alliance')}
+              onClick={() => setFaction('alliance')}
               color="secondary"
               className="p-0  border-0 button-hover"
             >
               <FactionIcons faction="alliance" />
             </Button>
             <Button
-              onClick={() => factionFilter('')}
+              onClick={() => setFaction('')}
               color="secondary"
               className="p-0  border-0 button-hover"
             >
@@ -81,8 +70,22 @@ function ToolsFilters({ results, setFilterRes }) {
           <CardBody>
             {classArray.specs.map((res) => {
               const { name } = res;
-              return <Button onClick={() => classFilter(name)}>{name}</Button>;
+              return (
+                <Button onClick={() => setSpec(name.toLocaleLowerCase())}>
+                  {name}
+                </Button>
+              );
             })}
+            <Button onClick={() => setSpec('')}>Reset</Button>
+          </CardBody>
+          <CardBody>
+            <Input type="select" name="select" id="exampleSelect">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </Input>
           </CardBody>
         </Card>
       </UncontrolledCollapse>
@@ -92,6 +95,7 @@ function ToolsFilters({ results, setFilterRes }) {
 
 ToolsFilters.propTypes = {
   results: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setCurrentPage: PropTypes.func.isRequired,
   setFilterRes: PropTypes.func.isRequired,
 };
 

@@ -72,6 +72,7 @@ const PJArray = () => {
                   results={results}
                   filterRes={filterRes}
                   setFilterRes={setFilterRes}
+                  setCurrentPage={setCurrentPage}
                 />
               </div>
               <Table className="col-8 text-nowrap" hover borderless>
