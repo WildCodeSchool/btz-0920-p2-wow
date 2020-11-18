@@ -71,7 +71,11 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
             {classArray.specs.map((res) => {
               const { name } = res;
               return (
-                <Button onClick={() => setSpec(name.toLocaleLowerCase())}>
+                <Button
+                  onClick={() =>
+                    setSpec(name.toLocaleLowerCase().replace(' ', '-'))
+                  }
+                >
                   {name}
                 </Button>
               );
