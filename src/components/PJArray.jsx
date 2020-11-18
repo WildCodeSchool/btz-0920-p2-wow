@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Table } from 'reactstrap';
+import { Container, Row, Table } from 'reactstrap';
 
 import PJRow from './PJRow';
 import DalApi from '../dal/DalApi';
@@ -59,15 +59,15 @@ const PJArray = () => {
       ) : (
         <div className="cssStyle d-flex flex-column align-items-center text-center">
           <div style={{ height: '100px', minWidth: '100vw' }} />
-          <div>
+          <div className="m-5">
             <h2>
               Top <span>{regionName}</span> Characters
             </h2>
             <Hr />
           </div>
-          <main className="container min-vw-100">
-            <div className="row w-100">
-              <div className="col-3 align-self-center">
+          <Container fluid className="d-flex flex-column align-items-center">
+            <Row className="w-75">
+              <div className="col-12 d-flex justify-content-start p-0 m-2">
                 <ToolsFilters
                   results={results}
                   filterRes={filterRes}
@@ -75,8 +75,15 @@ const PJArray = () => {
                   setCurrentPage={setCurrentPage}
                 />
               </div>
-              <Table className="col-8 text-nowrap" hover borderless>
-                <tbody className="container">
+            </Row>
+            <Row className="align-self-center">
+              <Table
+                className="col-12 text-wrap table-striped"
+                style={{ width: '75vw' }}
+                hover
+                borderless
+              >
+                <tbody>
                   {filterRes
                     .filter(
                       (_, index) =>
@@ -99,8 +106,8 @@ const PJArray = () => {
                     })}
                 </tbody>
               </Table>
-            </div>
-          </main>
+            </Row>
+          </Container>
           <Pagin
             page={currentPage}
             playerPerPage={playerPerPage}

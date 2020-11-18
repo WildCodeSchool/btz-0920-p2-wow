@@ -72,11 +72,14 @@ const GuildPage = () => {
           <div
             style={{ height: '100px', maxWidth: '100%', overflow: 'hidden' }}
           />
-          <Container fluid className="w-sm-100 leaderboard-container">
+          <Container
+            fluid
+            className="w-sm-100 leaderboard-container d-flex flex-column align-items-center"
+          >
             <Container className="guildPage d-flex flex-column justify-content-center ">
               <Row>
                 <Col xs={12}>
-                  <h1 style={{ fontSize: '48px' }}>
+                  <h1 className="m-5" style={{ fontSize: '48px' }}>
                     {guild.alt_name ? guild.alt_name : guild.name}
                   </h1>
                 </Col>

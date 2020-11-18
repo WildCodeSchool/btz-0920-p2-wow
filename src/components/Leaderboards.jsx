@@ -60,7 +60,11 @@ const Leaderboards = () => {
       ) : (
         <div className="d-flex w-100 flex-wrap">
           <div style={{ height: '100px', minWidth: '100vw' }} />
-          <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+          <ButtonDropdown
+            isOpen={dropdownOpen}
+            toggle={toggle}
+            className="mx-5 mb-5"
+          >
             <DropdownToggle caret>Show more</DropdownToggle>
             <DropdownMenu>
               {dropdownItems.map((item) => {
@@ -79,10 +83,14 @@ const Leaderboards = () => {
               })}
             </DropdownMenu>
           </ButtonDropdown>
-          <Table className="mx-5 w-100 border-none" hover borderless>
+          <Table
+            className="mx-5 w-100 border-none table-striped"
+            hover
+            borderless
+          >
             <thead>
               <tr>
-                <th className="h2 font-weight-bold" colSpan={12}>
+                <th className="h2 font-weight-bold table-primary" colSpan={12}>
                   Top World Guilds
                 </th>
               </tr>
@@ -102,10 +110,14 @@ const Leaderboards = () => {
                 })}
             </tbody>
           </Table>
-          <Table className="mx-5 w-100 text-nowrap" hover borderless>
+          <Table
+            className="mx-5 w-100 text-nowrap table-striped my-5"
+            hover
+            borderless
+          >
             <thead>
               <tr>
-                <th className="h2 font-weight-bold" colSpan={12}>
+                <th className="h2 font-weight-bold table-primary" colSpan={12}>
                   Top World Players
                 </th>
               </tr>

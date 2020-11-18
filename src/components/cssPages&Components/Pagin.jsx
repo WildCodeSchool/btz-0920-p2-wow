@@ -43,7 +43,7 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
 
   return (
     // go to first page
-    <Pagination className="pagination" size="lg clearfix">
+    <Pagination className="pagination mt-5 mb-3" size="lg clearfix">
       <PaginationItem className="paginationItem" disabled={isStartDisabled}>
         <PaginationLink onClick={() => setCurrentPage(1)}>
           <BsFillSkipBackwardFill />

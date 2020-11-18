@@ -1,7 +1,7 @@
 function Hr() {
   return (
     <hr
-      className="hr"
+      className="hr my-5"
       style={{
         background: '#4e5d6c',
         height: '10px',

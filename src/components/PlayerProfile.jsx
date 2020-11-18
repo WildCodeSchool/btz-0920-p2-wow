@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
-import { Col, Table, Container } from 'reactstrap';
+import { Col, Table, Container, Row } from 'reactstrap';
 import { useHistory, useParams } from 'react-router-dom';
 
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
-import { alliance, horde } from '../img';
 import Flag from './flags/Flag';
 import Error from './Error';
-
-import './cssPages&Components/playerProfile.css';
-import './cssPages&Components/test.css';
 
 const PlayerProfile = () => {
   const { name, realm, region } = useParams();
@@ -26,7 +22,6 @@ const PlayerProfile = () => {
   const [raidScore, setRaidScore] = useState('');
   const [mythicScore, setMythicScore] = useState('');
   const [loading, setLoading] = useState(true);
-  const [faction] = useState('');
   const [error, setError] = useState(null);
   const [isError, setIsError] = useState(false);
 
@@ -36,7 +31,6 @@ const PlayerProfile = () => {
   const guildLink = () => {
     history.push(`/guild/${playerRegion}/${realm}/${guild}/`);
   };
-
   useEffect(() => {
     const getDatas = async () => {
       try {
@@ -70,26 +64,6 @@ const PlayerProfile = () => {
   if (isError) {
     return <Error msg={error.message} />;
   }
-
-  let factionLogo = '';
-  const determineLogo = () => {
-    if (faction === 'alliance') {
-      factionLogo = alliance;
-    } else {
-      factionLogo = horde;
-    }
-    return factionLogo;
-  };
-  determineLogo();
-
-  // // Inserts faction logo in background
-  // useEffect(() => {
-  //   document.body.style.background = `url(${determineLogo()}) no-repeat fixed center`;
-  //   document.body.style.backgroundColor = 'rgb(43, 62, 80)';
-  //   return () => {
-  //     document.body.style.background = ``;
-  //   };
-  // }, []);
 
   const displaysSpecRole = (playerSpecRole) => {
     switch (playerSpecRole) {
@@ -138,99 +112,102 @@ const PlayerProfile = () => {
   if (error) return <Error msg={error.response.data.statusText} />;
 
   return (
-    <>
-      <div style={{ height: '100px', minWidth: '95vw' }} />
-      <Container fluid className="w-50">
-        {loading ? (
-          <LoadingSpinner />
-        ) : (
-          <div className={factionLogo === 'alliance' ? 'alliance' : 'horde'}>
-            <Container className="d-flex justify-content-center flex-wrap mt-5">
-              <Col xs={3} className="d-flex justify-content-around">
-                <img src={thumbnail} alt="" />
-              </Col>
-              <div className="d-flex flex-column">
-                <Col xs={12}>
+    <Container fluid className="w100" style={{ marginTop: '100px' }}>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <Row className="d-flex justify-content-center flex-wrap pt-5">
+            <Col
+              xs="6"
+              className="d-flex flex-column align-items-end justify-content-center"
+            >
+              <img src={thumbnail} alt="" className="border border-primary" />
+            </Col>
+            <Col
+              xs="6"
+              className="d-flex flex-column align-items-start justify-content-center border-vert"
+            >
+              <Row>
+                <Col xs="12">
                   <h1>{playerName}</h1>
                 </Col>
-                <div className="d-flex">
-                  <Col xs="3">
-                    <Flag slug={playerRegion} />
-                  </Col>
-                  <Col className="d-flex flex-column justify-content-center">
-                    <h3>{playerRealm}</h3>
-                  </Col>
-                </div>
-              </div>
-            </Container>
-            <Table
-              className="d-flex justify-content-center align-items-md-center flex-wrap"
-              height="750px"
-              opacity="0.5"
-              borderless
-            >
-              <tbody>
-                <tr className="d-flex justify-content-around align-items-center">
-                  <td>
-                    <img
-                      src={displaysClass(charClass)}
-                      alt=""
-                      height="64px"
-                      width="64px"
-                    />
-                  </td>
-
-                  <td>
-                    <h4>{specName}</h4>
-                  </td>
-                  <td>
-                    <img
-                      src={displaysSpecRole(specRole)}
-                      alt=""
-                      height="64px"
-                    />
-                  </td>
-                </tr>
-                <tr onClick={guildLink}>
-                  <td xs={3}>
-                    <h4>Guild</h4>
-                  </td>
-                  <td xs={9}>
-                    <h4>{guild}</h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td xs={3}>
-                    <h4>Item level</h4>
-                  </td>
-                  <td>
-                    <h4>{itemLevel}</h4>
-                  </td>
-                  <td />
-                </tr>
-                <tr>
-                  <td xs={9}>
-                    <h4>Current raid score</h4>
-                  </td>
-                  <td xs={3}>
-                    <h4>{raidScore}</h4>
-                  </td>
-                </tr>
-                <tr>
-                  <td xs={9}>
-                    <h4>Current mythic score</h4>
-                  </td>
-                  <td xs={3}>
-                    <h4>{mythicScore}</h4>
-                  </td>
-                  <td />
-                </tr>
-              </tbody>
-            </Table>
-          </div>
-        )}
-      </Container>
-    </>
+              </Row>
+              <Row>
+                <Col xs="12" md="4" className="d-flex align-items-start">
+                  <Flag slug={playerRegion} />
+                </Col>
+                <Col xs="12" md="8" className="d-flex align-items-start">
+                  <h3>{playerRealm}</h3>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row className="mt-5 justify-content-center">
+            <Col xs="12" md="8">
+              <Table className="table table-striped" opacity="0.5" borderless>
+                <thead>
+                  <tr className="table-primary">
+                    <th className="d-flex align-items-center">
+                      <img
+                        src={displaysClass(charClass)}
+                        alt=""
+                        height="64px"
+                        width="64px"
+                      />
+                      <h4 className="ml-2">{specName}</h4>
+                    </th>
+                    <th>
+                      <img
+                        src={displaysSpecRole(specRole)}
+                        alt=""
+                        height="64px"
+                      />
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr onClick={guildLink}>
+                    <td className="d-flex align-items-start">
+                      <h4>Guild</h4>
+                    </td>
+                    <td>
+                      <h4>{guild}</h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="d-flex align-items-start">
+                      <h4>Item level</h4>
+                    </td>
+                    <td>
+                      <h4>{itemLevel}</h4>
+                    </td>
+                    <td />
+                  </tr>
+                  <tr>
+                    <td className="d-flex align-items-start">
+                      <h4>Current raid score</h4>
+                    </td>
+                    <td>
+                      <h4>{raidScore}</h4>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="d-flex align-items-start">
+                      <h4>Current mythic score</h4>
+                    </td>
+                    <td>
+                      <h4>{mythicScore}</h4>
+                    </td>
+                    <td />
+                  </tr>
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+        </>
+      )}
+    </Container>
   );
 };
 
