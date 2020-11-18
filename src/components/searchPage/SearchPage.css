@@ -12,6 +12,12 @@
   margin-top: 90px;
 }
 
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: none !important;
+}
+
 .carousel-inner,
 .carousel-item.active {
   display: flex !important;

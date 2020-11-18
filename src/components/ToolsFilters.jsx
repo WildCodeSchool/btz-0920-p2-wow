@@ -43,8 +43,8 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
         <BsThreeDotsVertical />
       </Button>
       <UncontrolledCollapse toggler="#toggler">
-        <Card>
-          <CardBody className="p-0 ">
+        <Card className="bg-transparent border-0">
+          <CardBody className="p-0 bg-transparent">
             <Button
               onClick={() => setFaction('horde')}
               color="secondary"

@@ -4,7 +4,7 @@ import './SearchPage.css';
 
 const WildCard = ({ title, image, height, width, handleClick, next }) => {
   const wildCardStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(255, 255,255, 0.25)),url(${image})`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.15)),url(${image})`,
     height: `${height}`,
     width: `${width}`,
   };
