@@ -23,6 +23,7 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
   // const [realmsArray] = useState(realms);
   const [faction, setFaction] = useState('');
   const [spec, setSpec] = useState('');
+  const [realm, setRealm] = useState('');
 
   useEffect(() => {
     let currentResult = results;
@@ -32,9 +33,12 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
     currentResult = currentResult.filter((elmt) =>
       spec === '' ? true : elmt.character.spec.slug === spec
     );
+    currentResult = currentResult.filter((serv) =>
+      realm === '' ? true : serv.character.realm.slug === realm
+    );
     setFilterRes(currentResult);
     setCurrentPage(1);
-  }, [faction, spec]);
+  }, [faction, spec, realm]);
 
   return (
     <div
@@ -121,12 +125,13 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
               // className="col-8"
               type="select"
               name="select"
-              className="bg-secondary border border-primary text-white"
+              className="bg-secondary text-white"
               style={{ maxHeight: '50px' }}
-              multiple
             >
-              {results.map((realm) => {
-                return <option>{realm.character.realm.name}</option>;
+              <option onClick={() => setRealm('')}>All Realms</option>
+              {results.map((serv) => {
+                const { name, slug } = serv.character.realm;
+                return <option onClick={() => setRealm(slug)}>{name}</option>;
               })}
             </Input>
           </div>
