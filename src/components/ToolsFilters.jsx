@@ -12,8 +12,11 @@ function ToolsFilters({ results, playerClass, type }) {
 
   const [activeFactions, setActiveFactions] = useState([]);
   const [activeSpecs, setActiveSpecs] = useState([]);
+
+  // in case of playerClass undedfined we have an error
+  // the '?' test if specs exists and solve the error
   const [specs] = useState(
-    type === 'guilds' ? '' : DalApi.getClassesAndSpecsByName(playerClass).specs
+    type === 'guilds' ? '' : DalApi.getClassesAndSpecsByName(playerClass)?.specs
   );
   const [factions] = useState(DalApi.getFactions());
 

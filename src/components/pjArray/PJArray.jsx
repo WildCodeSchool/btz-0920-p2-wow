@@ -82,7 +82,7 @@ const PJArray = () => {
                 <ToolsFilters
                   type="players"
                   results={results}
-                  playerClass={params.class}
+                  playerClass={params.class || ''}
                 />
               </div>
 
