@@ -3,7 +3,7 @@ import { Table, Container } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 
 import GuildRow from './GuildRow';
-import ToolsFilters from './ToolsFilters';
+// import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
 import Error from './Error';
@@ -67,9 +67,9 @@ const GuildsArray = () => {
           </div>
           <Container>
             <div className="row align-self-center">
-              <div className="col-1 d-flex align-items-center">
+              {/* <div className="col-1 d-flex align-items-center">
                 <ToolsFilters />
-              </div>
+              </div> */}
               <Table className="col-10 w-100 text-wrap" hover borderless>
                 <tbody className="container">
                   {results
