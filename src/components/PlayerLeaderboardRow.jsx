@@ -14,7 +14,7 @@ const PlayerLeaderboardRow = ({ name, realm, region, playerClass }) => {
   };
 
   return (
-    <tr className="d-flex" onClick={rowLink}>
+    <tr className="d-flex clickable" onClick={rowLink}>
       <td className="col-md-5 d-flex align-items-center">
         <p className={playerClass}>{name}</p>
       </td>

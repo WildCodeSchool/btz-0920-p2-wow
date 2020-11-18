@@ -12,7 +12,7 @@ const GuildLeaderboardRow = ({ realm, region, name }) => {
     history.push(`/guild/${region}/${realm}/${name}/`);
   };
   return (
-    <tr className="d-flex" onClick={rowLink}>
+    <tr className="d-flex clickable" onClick={rowLink}>
       <td
         className="col-md-5 d-flex align-items-center"
         style={{ fontSize: 21 }}
