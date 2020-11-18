@@ -7,12 +7,14 @@ import {
   DropdownToggle,
   Table,
 } from 'reactstrap';
+import { motion } from 'framer-motion';
 
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
 import GuildLeaderboardRow from './GuildLeaderboardRow';
 import PlayerLeaderboardRow from './PlayerLeaderboardRow';
 import Error from './Error';
+import { enterBottom } from './animations';
 
 const Leaderboards = () => {
   const [guildResults, setGuildResults] = useState([]);
@@ -58,7 +60,13 @@ const Leaderboards = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="d-flex w-100 flex-wrap">
+        <motion.div
+          className="d-flex w-100 flex-wrap"
+          variants={enterBottom}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
           <div style={{ height: '100px', minWidth: '100vw' }} />
           <ButtonDropdown
             isOpen={dropdownOpen}
@@ -138,7 +146,7 @@ const Leaderboards = () => {
                 })}
             </tbody>
           </Table>
-        </div>
+        </motion.div>
       )}
     </Container>
   );
