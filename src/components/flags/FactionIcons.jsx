@@ -24,7 +24,14 @@ const FactionIcons = ({ faction }) => {
 
   if (isNull) return <GiWorld />;
 
-  return <img src={selectFaction()} style={{ height: '60px' }} alt={faction} />;
+  return (
+    <img
+      src={selectFaction()}
+      style={{ height: '60px' }}
+      alt={faction}
+      title={faction}
+    />
+  );
 };
 
 FactionIcons.propTypes = {
