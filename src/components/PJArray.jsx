@@ -68,7 +68,12 @@ const PJArray = () => {
           <Container fluid className="d-flex flex-column align-items-center">
             <Row className="w-75">
               <div className="col-12 d-flex justify-content-start p-0 m-2">
-                <ToolsFilters results={results} setFilterRes={setFilterRes} />
+                <ToolsFilters
+                  results={results}
+                  filterRes={filterRes}
+                  setFilterRes={setFilterRes}
+                  setCurrentPage={setCurrentPage}
+                />
               </div>
             </Row>
             <Row className="align-self-center">

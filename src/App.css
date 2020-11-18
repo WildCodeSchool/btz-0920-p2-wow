@@ -25,6 +25,10 @@
   font-size: 20px;
 }
 
+.classIcon {
+  width: 64px;
+  height: 64px;
+}
 @media screen and (max-width: 768px) {
   .leaderboard-container {
     flex-wrap: wrap;

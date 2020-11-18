@@ -3,7 +3,7 @@ import { Table, Container, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 
 import GuildRow from './GuildRow';
-import ToolsFilters from './ToolsFilters';
+// import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
 import Error from './Error';
@@ -68,7 +68,7 @@ const GuildsArray = () => {
           <Container fluid className="d-flex flex-column align-items-center">
             <Row className="w-75">
               <div className="col-12 d-flex justify-content-start p-0 m-2">
-                <ToolsFilters />
+                {/* <ToolsFilters /> */}
               </div>
             </Row>
             <Row className="align-self-center">
