@@ -5,7 +5,7 @@ import {
   UncontrolledCollapse,
   CardBody,
   Card,
-  Input,
+  // Input,
 } from 'reactstrap';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import PropTypes from 'prop-types';
@@ -78,7 +78,7 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
             })}
             <Button onClick={() => setSpec('')}>Reset</Button>
           </CardBody>
-          <CardBody>
+          {/* <CardBody>
             <Input type="select" name="select" id="exampleSelect">
               <option>1</option>
               <option>2</option>
@@ -86,7 +86,7 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
               <option>4</option>
               <option>5</option>
             </Input>
-          </CardBody>
+          </CardBody> */}
         </Card>
       </UncontrolledCollapse>
     </>
