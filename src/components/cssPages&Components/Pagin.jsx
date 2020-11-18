@@ -37,9 +37,9 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
         setBtnMax(currentPage + 2);
       }
     }
-
+    if (currentPage > totalPages) setCurrentPage(1);
     updatePage(currentPage);
-  }, [currentPage]);
+  }, [currentPage, totalPages]);
 
   return (
     // go to first page
