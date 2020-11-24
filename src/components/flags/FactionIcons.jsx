@@ -28,7 +28,7 @@ const FactionIcons = ({ faction }) => {
 };
 
 FactionIcons.propTypes = {
-  faction: PropTypes.oneOf(['horde', 'alliance']).isRequired,
+  faction: PropTypes.oneOf(['horde', 'alliance', 'both']).isRequired,
 };
 
 export default FactionIcons;
