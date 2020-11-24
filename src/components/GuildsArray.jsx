@@ -60,8 +60,8 @@ const GuildsArray = () => {
         >
           <div style={{ height: '100px', minWidth: '99vw' }} />
           <div className="m-5">
-            <h2>
-              Top <span>{serverSlug}</span> {realmName} Guilds
+            <h2 className="h1">
+              Top {serverSlug} {realmName} Guilds
             </h2>
             <Hr />
           </div>
