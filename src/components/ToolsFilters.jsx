@@ -7,8 +7,8 @@ import {
   // Card,
   ButtonToolbar,
   ButtonGroup,
-  Input,
   Table,
+  CustomInput,
 } from 'reactstrap';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import PropTypes from 'prop-types';
@@ -129,20 +129,20 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
               <td>
                 <ButtonToolbar className="d-flex flex-column flex-md-row flex-fill">
                   <div className="flex-fill mx-3">
-                    <Input
+                    <CustomInput
                       type="select"
                       name="select"
                       className="bg-secondary text-white"
                       style={{ maxHeight: '50px' }}
                     >
-                      <option onClick={() => setRealm('')}>All Realms</option>
+                      <option onClick={() => setRealm('')}>All</option>
                       {currentRealmsArray.map((serv) => {
                         const { name, slug } = serv.character.realm;
                         return (
                           <option onClick={() => setRealm(slug)}>{name}</option>
                         );
                       })}
-                    </Input>
+                    </CustomInput>
                   </div>
                 </ButtonToolbar>
               </td>
