@@ -67,12 +67,12 @@ const PJArray = () => {
           exit="exit"
         >
           <div style={{ height: '100px', minWidth: '100vw' }} />
-          <div className="m-5">
+          <div className="mt-5">
             <h2>Top {regionName}Characters</h2>
             <Hr />
           </div>
           <Container fluid className="d-flex flex-column align-items-center">
-            <Row className="w-75">
+            <Row>
               <div className="col-12 d-flex justify-content-start p-0 m-2">
                 <ToolsFilters
                   results={results}
