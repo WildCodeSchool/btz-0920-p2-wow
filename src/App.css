@@ -74,4 +74,8 @@ td {
   * {
     font-size: 12px;
   }
+
+  .w-75 {
+    width: 100% !important;
+  }
 }

@@ -79,18 +79,18 @@ const GuildPage = () => {
             <Container className="guildPage d-flex flex-column justify-content-center ">
               <Row>
                 <Col xs={12}>
-                  <h1 className="m-5" style={{ fontSize: '48px' }}>
+                  <h1 className="my-5">
                     {guild.alt_name ? guild.alt_name : guild.name}
                   </h1>
                 </Col>
               </Row>
-              <Row className="align-items-center d-flex flex-column flex-sm-row justify-content-center">
+              <Row className="align-items-center d-flex  flex-sm-row justify-content-center">
                 <Col xs={4}>
                   <Flag slug={flagTag} alt={guild.region.name} />
                 </Col>
                 <Col
                   xs={4}
-                  className="font-weight-bold pt-3 h2 sm-p d-flex justify-content-center"
+                  className="font-weight-bold pt-3 h3 sm-p d-flex justify-content-center"
                 >
                   {guild.realm.name}
                 </Col>

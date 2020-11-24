@@ -19,7 +19,7 @@ const GuildRoster = (props) => {
   return (
     <div className="d-flex flex-column align-items-center w-100">
       <Table
-        className="d-flex flex-column collapse table-striped w-75"
+        className="d-flex flex-column collapse table-striped"
         hover
         borderless
       >

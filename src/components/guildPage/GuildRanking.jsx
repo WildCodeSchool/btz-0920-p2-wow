@@ -7,7 +7,7 @@ export default function GuildRanking(props) {
   const { raidRankings, raidProgress } = props;
 
   return (
-    <Table className="d-flex flex-column table-striped w-75" borderless>
+    <Table className="d-flex flex-column table-striped " borderless>
       <thead className="table-primary">
         <tr
           className="d-flex justify-content-center"
