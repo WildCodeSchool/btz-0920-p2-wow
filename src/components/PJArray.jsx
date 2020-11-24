@@ -67,7 +67,7 @@ const PJArray = () => {
           exit="exit"
         >
           <div style={{ height: '100px', minWidth: '100vw' }} />
-          <div className="m-5">
+          <div className="mx-5 mt-5">
             <h2>
               Top <span>{regionName}</span> Characters
             </h2>

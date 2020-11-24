@@ -12,6 +12,7 @@ import korea from './korea.jpg';
 import taiwan from './taiwan.jpg';
 import china from './china.jpg';
 import allianceHordeIcon from './allianceHordeIcon.png';
+import resetIcon from './resetIcon.png';
 
 import dh from './classIcon/dh.png';
 import dk from './classIcon/dk.png';
@@ -53,4 +54,5 @@ export {
   warlock,
   warrior,
   allianceHordeIcon,
+  resetIcon,
 };
