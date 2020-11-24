@@ -68,7 +68,7 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
           <thead>
             <tr className="table-primary">
               <th>Factions</th>
-              <th>Class Specs</th>
+              <th>Specs</th>
               <th>Realms</th>
               <th>Reset</th>
             </tr>
