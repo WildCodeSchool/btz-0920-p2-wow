@@ -65,9 +65,12 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
         requestData[0] !== 'Search Type' &&
         requestData[0] !== 'Character' &&
         requestData[1] !== 'Region' &&
-        server !== 'Server'
+        server !== 'Server' &&
+        requestData[3] !== 'Faction'
       ) {
-        history.push(`/GuildsArray/${requestData[1]}/${server}/`);
+        history.push(
+          `/GuildsArray/${requestData[1]}/${server}/${requestData[3]}`
+        );
       } else if (
         requestData[0] === 'Character' &&
         requestData[1] !== 'Region' &&
@@ -81,7 +84,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   }, [next]);
 
   const items = (requestData[0] !== 'Character'
-    ? slides.slice(0, 3)
+    ? slides.slice(0, 4)
     : slides
   ).map(({ title, cardNames }) => {
     return (

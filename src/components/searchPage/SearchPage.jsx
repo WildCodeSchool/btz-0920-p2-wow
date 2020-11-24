@@ -24,8 +24,10 @@ import {
   shaman,
   warlock,
   warrior,
+  horde,
+  alliance,
 } from '../../img';
-import { classesAndSpecs } from '../../dal/staticData';
+import { classesAndSpecs, factions } from '../../dal/staticData';
 
 import './SearchPage.css';
 
@@ -52,6 +54,13 @@ const SearchPage = () => {
     },
     {
       cardNames: [
+        [factions[0].name, alliance],
+        [factions[1].name, horde],
+      ],
+      title: 'Faction',
+    },
+    {
+      cardNames: [
         [classesAndSpecs[0].name, dh],
         [classesAndSpecs[1].name, dk],
         [classesAndSpecs[2].name, druid],
@@ -67,18 +76,11 @@ const SearchPage = () => {
       ],
       title: 'Class',
     },
-    // {
-    //   cardNames: [
-    //     classesAndSpecs.map((item) => {
-    //       return item.name, item.image;
-    //     }),
-    //   ],
-    //   title: 'Class',
-    // },
   ]);
 
   const [searchTypeData, setSearchTypeData] = useState('Search Type');
   const [regionData, setRegionData] = useState('Region');
+  const [factionData, setFactionData] = useState('Faction');
   const [classData, setClassData] = useState('Class');
 
   const handleSelection = (e) => {
@@ -100,6 +102,12 @@ const SearchPage = () => {
         break;
       case 'TW':
         setRegionData('TW');
+        break;
+      case 'Horde':
+        setFactionData('Horde');
+        break;
+      case 'Alliance':
+        setFactionData('Alliance');
         break;
       case 'Death Knight':
         setClassData('Death Knight');
@@ -142,7 +150,7 @@ const SearchPage = () => {
     }
   };
 
-  const requestData = [searchTypeData, regionData, classData];
+  const requestData = [searchTypeData, regionData, classData, factionData];
 
   return (
     <div
@@ -152,8 +160,10 @@ const SearchPage = () => {
       <Slider
         slides={
           searchTypeData === 'Character'
-            ? items.filter((item) => item.title !== 'Server')
-            : items.slice(0, 3)
+            ? items.filter(
+                (item) => item.title !== 'Server' && item.title !== 'Faction'
+              )
+            : items.slice(0, 4)
         }
         handleSelection={handleSelection}
         regionData={regionData}
