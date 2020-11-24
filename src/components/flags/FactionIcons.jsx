@@ -24,11 +24,18 @@ const FactionIcons = ({ faction }) => {
 
   if (isNull) return <GiWorld />;
 
-  return <img src={selectFaction()} style={{ height: '40px' }} alt={faction} />;
+  return (
+    <img
+      src={selectFaction()}
+      style={{ height: '40px' }}
+      alt={faction}
+      title={faction}
+    />
+  );
 };
 
 FactionIcons.propTypes = {
-  faction: PropTypes.oneOf(['horde', 'alliance']).isRequired,
+  faction: PropTypes.oneOf(['horde', 'alliance', 'both']).isRequired,
 };
 
 export default FactionIcons;

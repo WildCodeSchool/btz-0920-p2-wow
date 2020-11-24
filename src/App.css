@@ -66,7 +66,7 @@
   transition: opacity 1000ms, transform 1000ms;
 }
 
-td {
+.clickable {
   cursor: pointer;
 }
 

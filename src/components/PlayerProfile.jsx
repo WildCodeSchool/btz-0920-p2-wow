@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import { Col, Table, Container, Row } from 'reactstrap';
 import { useHistory, useParams } from 'react-router-dom';
 
+import { motion } from 'framer-motion';
 import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
 import Flag from './flags/Flag';
 import Error from './Error';
 import Hr from './cssPages&Components/Hr';
+import { enterBottom } from './animations';
 
 const PlayerProfile = () => {
   const { name, realm, region } = useParams();
@@ -117,7 +119,12 @@ const PlayerProfile = () => {
       {loading ? (
         <LoadingSpinner />
       ) : (
-        <>
+        <motion.div
+          variants={enterBottom}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
           <Row className="d-flex justify-content-center flex-wrap pt-5">
             <Col
               xs="6"
@@ -170,7 +177,10 @@ const PlayerProfile = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="d-flex align-items-center" onClick={guildLink}>
+                  <tr
+                    className="d-flex align-items-center clickable"
+                    onClick={guildLink}
+                  >
                     <td className="flex-1 d-flex justify-content-start">
                       <h4>Guild</h4>
                     </td>
@@ -208,7 +218,7 @@ const PlayerProfile = () => {
               </Table>
             </Col>
           </Row>
-        </>
+        </motion.div>
       )}
     </Container>
   );

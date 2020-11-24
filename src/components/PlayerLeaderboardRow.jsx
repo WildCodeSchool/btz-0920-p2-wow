@@ -14,7 +14,7 @@ const PlayerLeaderboardRow = ({ name, realm, region, playerClass }) => {
   };
 
   return (
-    <tr className="d-flex justify-content-between" onClick={rowLink}>
+    <tr className="d-flex justify-content-between clickable" onClick={rowLink}>
       <td className="col-xs-6 d-flex align-items-center justify-content-end h5">
         <span className={playerClass}>{name}</span>
       </td>

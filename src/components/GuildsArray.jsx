@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Table, Container, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import GuildRow from './GuildRow';
 // import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
 import Error from './Error';
+import { enterBottom } from './animations';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
@@ -54,7 +56,11 @@ const GuildsArray = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div
+        <motion.div
+          variants={enterBottom}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
           className="cssStyle d-flex flex-column align-items-center text-center"
           style={{ maxWidth: '100vw' }}
         >
@@ -108,7 +114,7 @@ const GuildsArray = () => {
             totalPlayers={results.length}
             updatePage={setCurrentPage}
           />
-        </div>
+        </motion.div>
       )}
     </>
   );

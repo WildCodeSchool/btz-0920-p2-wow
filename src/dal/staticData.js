@@ -96,8 +96,8 @@ export const classesAndSpecs = [
       },
       {
         id: 3,
-        name: 'Unholdy',
-        slug: 'unholdy',
+        name: 'Unholy',
+        slug: 'unholy',
         image:
           'https://cdnassets.raider.io/images/classes/spec_death-knight_unholy.png',
       },
@@ -202,7 +202,7 @@ export const classesAndSpecs = [
     specs: [
       {
         id: 12,
-        name: 'Arcade',
+        name: 'Arcane',
         slug: 'arcade',
         image:
           'https://cdnassets.raider.io/images/classes/spec_mage_arcade.png',
