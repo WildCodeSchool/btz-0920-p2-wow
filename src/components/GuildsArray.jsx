@@ -29,7 +29,8 @@ const GuildsArray = () => {
       try {
         const guild = await DalApi.getTopGuild(
           params.region.toLowerCase(),
-          params.realm.toLowerCase()
+          params.realm.toLowerCase(),
+          params.faction.toLowerCase()
         );
         setResults(guild.data.raidRankings.rankedGuilds);
         setServerSlug(params.region);
