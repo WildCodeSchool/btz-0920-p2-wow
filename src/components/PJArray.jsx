@@ -68,7 +68,9 @@ const PJArray = () => {
         >
           <div style={{ height: '100px', minWidth: '100vw' }} />
           <div className="m-5">
-            <h2>Top {regionName}Characters</h2>
+            <h2>
+              Top {regionName} {params.class} Characters
+            </h2>
             <Hr />
           </div>
           <Container fluid className="d-flex flex-column align-items-center">
