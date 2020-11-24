@@ -71,6 +71,8 @@ const GuildPage = () => {
         </div>
       ) : (
         <motion.div
+          className="container mob-100 leaderboard-container"
+          style={{ style: '75%' }}
           variants={enterBottom}
           initial="hidden"
           animate="visible"
@@ -79,45 +81,41 @@ const GuildPage = () => {
           <div
             style={{ height: '100px', maxWidth: '100%', overflow: 'hidden' }}
           />
-          <Container
-            fluid
-            className="w-sm-100 leaderboard-container d-flex flex-column align-items-center"
-          >
-            <Container className="guildPage d-flex flex-column justify-content-center ">
-              <Row>
-                <Col xs={12}>
-                  <h1 className="my-5">
-                    {guild.alt_name ? guild.alt_name : guild.name}
-                  </h1>
-                </Col>
-              </Row>
-              <Row className="align-items-center d-flex  flex-sm-row justify-content-center">
-                <Col xs={4}>
-                  <Flag slug={flagTag} alt={guild.region.name} />
-                </Col>
-                <Col
-                  xs={4}
-                  className="font-weight-bold pt-3 h3 sm-p d-flex justify-content-center"
-                >
-                  {guild.realm.name}
-                </Col>
-                <Col xs={4}>
-                  <FactionIcons faction={faction} />
-                </Col>
-              </Row>
-            </Container>
-            <Hr />
-            <GuildRanking
-              raidRankings={raidRankings}
-              raidProgress={raidProgress}
-            />
-            <Hr />
-            <GuildRoster
-              roster={roster}
-              region={params.region}
-              realm={params.realm}
-            />
+
+          <Container className="guildPage d-flex flex-column justify-content-center ">
+            <Row>
+              <Col xs={12}>
+                <h1 className="my-5">
+                  {guild.alt_name ? guild.alt_name : guild.name}
+                </h1>
+              </Col>
+            </Row>
+            <Row className="align-items-center d-flex  flex-sm-row justify-content-center">
+              <Col xs={4}>
+                <Flag slug={flagTag} alt={guild.region.name} />
+              </Col>
+              <Col
+                xs={4}
+                className="font-weight-bold pt-3 h3 sm-p d-flex justify-content-center"
+              >
+                {guild.realm.name}
+              </Col>
+              <Col xs={4}>
+                <FactionIcons faction={faction} />
+              </Col>
+            </Row>
           </Container>
+          <Hr />
+          <GuildRanking
+            raidRankings={raidRankings}
+            raidProgress={raidProgress}
+          />
+          <Hr />
+          <GuildRoster
+            roster={roster}
+            region={params.region}
+            realm={params.realm}
+          />
         </motion.div>
       )}
     </div>

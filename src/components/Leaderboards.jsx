@@ -62,7 +62,7 @@ const Leaderboards = () => {
       ) : (
         <AnimatePresence>
           <motion.div
-            className="d-flex w-100 flex-wrap"
+            className="container-fluid d-flex w-100 flex-wrap"
             variants={enterBottom}
             initial="hidden"
             animate="visible"
@@ -72,7 +72,7 @@ const Leaderboards = () => {
             <ButtonDropdown
               isOpen={dropdownOpen}
               toggle={toggle}
-              className="mx-5 mb-5"
+              className="mb-5"
             >
               <DropdownToggle caret>Show more</DropdownToggle>
               <DropdownMenu>
