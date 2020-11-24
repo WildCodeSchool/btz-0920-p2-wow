@@ -150,12 +150,12 @@ const PlayerProfile = () => {
               <Table className="table table-striped" opacity="0.5" borderless>
                 <thead>
                   <tr className="table-primary d-flex align-items-center">
-                    <th className="flex-1 d-flex justify-content-start">
+                    <th className="flex-1 d-flex justify-content-start align-items-center">
                       <img
                         src={displaysClass(charClass)}
                         alt=""
-                        height="64px"
-                        width="64px"
+                        height="48px"
+                        width="48px"
                       />
                       <h4 className="ml-2">{specName}</h4>
                     </th>
@@ -163,7 +163,8 @@ const PlayerProfile = () => {
                       <img
                         src={displaysSpecRole(specRole)}
                         alt=""
-                        height="64px"
+                        height="48px"
+                        width="48px"
                       />
                     </th>
                   </tr>
