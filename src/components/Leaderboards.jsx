@@ -60,7 +60,7 @@ const Leaderboards = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence>
           <motion.div
             className="d-flex w-100 flex-wrap"
             variants={enterBottom}
