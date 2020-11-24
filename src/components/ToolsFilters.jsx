@@ -108,6 +108,7 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
               return (
                 <Button
                   className="py-0 px-1 border-0 bg-transparent"
+                  key={image}
                   onClick={() =>
                     setSpec(name.toLocaleLowerCase().replace(' ', '-'))
                   }

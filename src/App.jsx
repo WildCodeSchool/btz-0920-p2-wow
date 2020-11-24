@@ -24,7 +24,7 @@ const routes = [
     Component: GuildPage,
   },
   {
-    path: '/GuildsArray/:region/:realm',
+    path: '/GuildsArray/:region/:realm/:faction',
     name: 'GuildsArray',
     Component: GuildsArray,
   },
