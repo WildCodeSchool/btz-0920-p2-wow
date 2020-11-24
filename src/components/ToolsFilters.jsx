@@ -132,8 +132,10 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
                     <CustomInput
                       type="select"
                       name="select"
-                      className="bg-secondary text-white"
-                      style={{ maxHeight: '50px' }}
+                      className="text-white bg-secondary"
+                      style={{
+                        maxHeight: '50px',
+                      }}
                     >
                       <option onClick={() => setRealm('')}>All</option>
                       {currentRealmsArray.map((serv) => {
