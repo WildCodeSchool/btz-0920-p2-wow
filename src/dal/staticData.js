@@ -263,7 +263,7 @@ export const classesAndSpecs = [
         name: 'Holy',
         slug: 'holy',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_paladin_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_paladin_holy.png',
       },
       {
         id: 19,
