@@ -143,7 +143,11 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
               <option onClick={() => setRealm('')}>All Realms</option>
               {currentRealmsArray.map((serv) => {
                 const { name, slug } = serv.character.realm;
-                return <option onClick={() => setRealm(slug)}>{name}</option>;
+                return (
+                  <option key={slug} onClick={() => setRealm(slug)}>
+                    {name}
+                  </option>
+                );
               })}
             </Input>
           </div>
