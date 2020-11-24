@@ -3,6 +3,7 @@ function Hr() {
     <hr
       className="hr my-5"
       style={{
+        opacity: '0.7',
         background: '#4e5d6c',
         height: '5px',
         width: '50vw',

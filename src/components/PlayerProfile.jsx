@@ -9,7 +9,6 @@ import LoadingSpinner from './LoadingSpinner';
 import Flag from './flags/Flag';
 import Error from './Error';
 import Hr from './cssPages&Components/Hr';
-import './cssPages&Components/PlayerProfile.css';
 import { enterBottom } from './animations';
 
 const PlayerProfile = () => {
@@ -163,7 +162,7 @@ const PlayerProfile = () => {
             <Col xs="12" md="8">
               <Table className="table table-striped" opacity="0.5" borderless>
                 <thead>
-                  <tr className="table-primary d-flex align-items-center">
+                  <tr className="d-flex align-items-center test">
                     <th className="flex-1 d-flex justify-content-start align-items-center">
                       <img
                         src={displaysClass(charClass)}
