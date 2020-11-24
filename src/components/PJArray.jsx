@@ -41,7 +41,7 @@ const PJArray = () => {
         setIsError(true);
         setError(err);
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
     getDatas();
