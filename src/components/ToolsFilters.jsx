@@ -70,7 +70,6 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
               <th>Factions</th>
               <th>Specs</th>
               <th>Realms</th>
-              <th>Reset</th>
             </tr>
           </thead>
           <tbody>
@@ -124,6 +123,17 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
                       </Button>
                     );
                   })}
+                  <Button
+                    className="py-0 px-1 border-0 bg-transparent"
+                    onClick={() => setSpec('')}
+                  >
+                    <img
+                      src={resetIcon}
+                      alt="reset button"
+                      title="Reset Class Spec"
+                      height="40px"
+                    />
+                  </Button>
                 </ButtonGroup>
               </td>
               <td>
@@ -147,19 +157,6 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
                     </CustomInput>
                   </div>
                 </ButtonToolbar>
-              </td>
-              <td>
-                <Button
-                  className="py-0 px-1 border-0 bg-transparent"
-                  onClick={() => setSpec('')}
-                >
-                  <img
-                    src={resetIcon}
-                    alt="reset button"
-                    title="Reset Class Spec"
-                    height="40px"
-                  />
-                </Button>
               </td>
             </tr>
           </tbody>
