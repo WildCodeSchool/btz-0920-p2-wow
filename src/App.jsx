@@ -44,7 +44,7 @@ function App() {
       <NavBar />
       <AnimatePresence exitBeforeEnter>
         {routes.map(({ path, Component }) => (
-          <Route key={location} location={location} exact path={path}>
+          <Route key={path} exact path={path} location={location}>
             <Component />
           </Route>
         ))}

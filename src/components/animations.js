@@ -12,8 +12,9 @@ export const enterBottom = {
     },
   },
   exit: {
-    y: '100vw',
+    y: '-300',
     transition: {
+      duration: 1,
       ease: 'easeInOut',
     },
   },
