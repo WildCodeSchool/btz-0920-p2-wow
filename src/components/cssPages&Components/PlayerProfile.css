@@ -1,0 +1,11 @@
+.bgAlliance {
+  background: left / contain no-repeat url('../../img/alliance.png');
+  background-position-x: -267px;
+  background-position-y: center;
+}
+
+.bgHorde {
+  background: left / contain no-repeat url('../../img/horde.png');
+  background-position-x: -273px;
+  background-position-y: center;
+}

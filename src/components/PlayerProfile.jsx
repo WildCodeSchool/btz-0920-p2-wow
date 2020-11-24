@@ -9,6 +9,7 @@ import LoadingSpinner from './LoadingSpinner';
 import Flag from './flags/Flag';
 import Error from './Error';
 import Hr from './cssPages&Components/Hr';
+import './cssPages&Components/PlayerProfile.css';
 import { enterBottom } from './animations';
 
 const PlayerProfile = () => {
@@ -18,6 +19,7 @@ const PlayerProfile = () => {
   const [playerName, setPlayerName] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [charClass, setCharClass] = useState('');
+  const [faction, setFaction] = useState('');
   const [specName, setSpecName] = useState('');
   const [specRole, setSpecRole] = useState('');
   const [guild, setGuild] = useState('');
@@ -41,6 +43,7 @@ const PlayerProfile = () => {
 
         setPlayerRegion(player.data.region);
         setPlayerRealm(player.data.realm);
+        setFaction(player.data.faction);
         setPlayerName(player.data.name);
         setThumbnail(player.data.thumbnail_url);
         setCharClass(player.data.class);
@@ -115,7 +118,11 @@ const PlayerProfile = () => {
   if (error) return <Error msg={error.response.data.statusText} />;
 
   return (
-    <Container fluid className="w100" style={{ marginTop: '100px' }}>
+    <Container
+      fluid
+      className={faction === 'alliance' ? 'w100 bgAlliance' : 'w100 bgHorde'}
+      style={{ marginTop: '100px' }}
+    >
       {loading ? (
         <LoadingSpinner />
       ) : (
