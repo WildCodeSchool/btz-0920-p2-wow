@@ -13,7 +13,7 @@ function GuildRow({ name, faction, rank, realm, slug }) {
     <tr className="row clickable" onClick={rowLink}>
       <td className="col-2 d-flex align-items-center">{rank}</td>
       <td className="col-8 d-flex align-items-center">
-        <strong style={{ fontSize: '21px' }}>{name}</strong>
+        <strong className="h4">{name}</strong>
       </td>
       <td className="col-2 d-flex align-items-center">
         <FactionIcons faction={faction} />

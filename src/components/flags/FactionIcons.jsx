@@ -27,7 +27,7 @@ const FactionIcons = ({ faction }) => {
   return (
     <img
       src={selectFaction()}
-      style={{ height: '60px' }}
+      style={{ height: '40px' }}
       alt={faction}
       title={faction}
     />

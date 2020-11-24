@@ -92,11 +92,7 @@ const Leaderboards = () => {
                 })}
               </DropdownMenu>
             </ButtonDropdown>
-            <Table
-              className="mx-5 w-100 border-none table-striped"
-              hover
-              borderless
-            >
+            <Table className="w-100 border-none table-striped" hover borderless>
               <thead>
                 <tr>
                   <th
@@ -123,7 +119,7 @@ const Leaderboards = () => {
               </tbody>
             </Table>
             <Table
-              className="mx-5 w-100 text-nowrap table-striped my-5"
+              className="w-100 border-none table-striped my-5"
               hover
               borderless
             >

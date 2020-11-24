@@ -21,21 +21,26 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
     history.push(`/player/${region}/${realm}/${name}/`);
   };
   return (
-    <tr className="row w-100" onClick={rowLink}>
+    <tr className="row" onClick={rowLink}>
       <td className="col-1 d-flex align-items-center justify-content-center">
         {rank}
       </td>
-      <td className="xcol-2 d-flex align-items-center justify-content-center">
-        <FactionIcons faction={faction} />
+      <td className="col-2 d-flex align-items-center justify-content-center">
+        <FactionIcons faction={faction} height="40px" />
       </td>
       <td className="col-4 d-flex align-items-center">
-        <strong className={`ml-2git add . ${classOfApi.name.replace(' ', '')}`}>
+        <strong className={`h5 ${classOfApi.name.replace(' ', '')}`}>
           {name}
         </strong>
       </td>
-      <td className="col-4 d-flex align-items-center">{realm}</td>
-      <td className="col-1 d-flex align-items-end justify-content-center">
-        <img src={specOfClass.image} alt={name} title={specOfClass.name} />
+      <td className="col-3 d-flex align-items-center">{realm}</td>
+      <td className="col-2 d-flex align-items-end justify-content-center">
+        <img
+          src={specOfClass.image}
+          alt={name}
+          title={specOfClass.name}
+          height="40px"
+        />
       </td>
     </tr>
   );

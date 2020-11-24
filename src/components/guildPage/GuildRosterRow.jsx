@@ -36,10 +36,10 @@ const GuildRosterRow = (props) => {
 
   return (
     <tr
-      className="d-flex playerRow text-left align-items-center my-1 "
+      className="d-flex playerRow text-left align-items-center my-1 clickable"
       onClick={rowLink}
     >
-      <td className="col-md-4 p-0 d-md-flex text-center d-flex-xs-column align-items-center clickable">
+      <td className="col-md-6 col-5 p-0 d-flex text-center align-items-center">
         <img
           // src={classe.image}
           src={imgSrc.concat(thumbnail)}
@@ -48,13 +48,17 @@ const GuildRosterRow = (props) => {
           style={{ height: '44px' }}
         />
 
-        <p className={`mb-0 ${classe.name.replace(' ', '')}`}>{name}</p>
+        <span className={`h5 mb-0 ${classe.name.replace(' ', '')}`}>
+          {name}
+        </span>
       </td>
-      <td className="col-md-3 d-flex justify-content-center">{spec.name}</td>
-      <td className="col-md-3 d-none d-md-flex justify-content-center">
+      <td className="col-md-2 col-4 d-flex justify-content-center">
+        {spec.name}
+      </td>
+      <td className="col-md-2 col-0 d-none d-md-flex justify-content-center">
         {race.name}
       </td>
-      <td className="col-md-2 text-center">{itemLevelEquipped}</td>
+      <td className="col-md-2 col-3 text-center">{itemLevelEquipped}</td>
     </tr>
   );
 };
