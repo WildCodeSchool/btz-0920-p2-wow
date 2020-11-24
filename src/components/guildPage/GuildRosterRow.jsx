@@ -39,7 +39,7 @@ const GuildRosterRow = (props) => {
       className="d-flex playerRow text-left align-items-center my-1"
       onClick={rowLink}
     >
-      <td className="col-md-4 col-xs-6 p-0 d-flex text-center align-items-center">
+      <td className="col-md-6 col-5 p-0 d-flex text-center align-items-center">
         <img
           // src={classe.image}
           src={imgSrc.concat(thumbnail)}
@@ -52,13 +52,13 @@ const GuildRosterRow = (props) => {
           {name}
         </span>
       </td>
-      <td className="col-md-3 col-xs-4 d-flex justify-content-center">
+      <td className="col-md-2 col-4 d-flex justify-content-center">
         {spec.name}
       </td>
-      <td className="col-md-3 col-xs-0 d-none d-md-flex justify-content-center">
+      <td className="col-md-2 col-0 d-none d-md-flex justify-content-center">
         {race.name}
       </td>
-      <td className="col-md-2 col-xs-2 text-center">{itemLevelEquipped}</td>
+      <td className="col-md-2 col-3 text-center">{itemLevelEquipped}</td>
     </tr>
   );
 };

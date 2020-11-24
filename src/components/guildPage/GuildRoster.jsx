@@ -25,10 +25,18 @@ const GuildRoster = (props) => {
       >
         <thead className="table-primary">
           <tr className="d-flex" style={{ fontSize: '24px' }}>
-            <th className="col-md-4">Player</th>
-            <th className="col-md-3">Spec</th>
-            <th className="col-md-3 d-none d-md-block">Race</th>
-            <th className="col-md-2">I-Level</th>
+            <th className="col-md-4 col-5 d-flex text-center align-items-center">
+              Player
+            </th>
+            <th className="col-md-3 col-4 d-flex justify-content-center">
+              Spec
+            </th>
+            <th className="col-md-3 col-0 d-none d-md-flex justify-content-center">
+              Race
+            </th>
+            <th className="col-3 col-md-2 d-flex align-items-end justify-content-center">
+              I-Level
+            </th>
           </tr>
         </thead>
         <tbody>
