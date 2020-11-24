@@ -174,7 +174,7 @@ const PlayerProfile = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr onClick={guildLink}>
+                  <tr className="clickable" onClick={guildLink}>
                     <td className="d-flex align-items-start">
                       <h4>Guild</h4>
                     </td>
