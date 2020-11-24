@@ -9,6 +9,7 @@
     "axios": "^0.21.0",
     "bootswatch": "^4.5.3",
     "create-react-context": "^0.3.0",
+    "framer-motion": "^2.9.4",
     "history": "^5.0.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

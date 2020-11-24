@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Table } from 'reactstrap';
 
+import { motion } from 'framer-motion';
 import PJRow from './PJRow';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
@@ -11,6 +12,7 @@ import Error from './Error';
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
+import { enterBottom } from './animations';
 
 const PJArray = () => {
   const params = useParams();
@@ -57,7 +59,13 @@ const PJArray = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="cssStyle d-flex flex-column align-items-center text-center">
+        <motion.div
+          className="cssStyle d-flex flex-column align-items-center text-center"
+          variants={enterBottom}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
           <div style={{ height: '100px', minWidth: '100vw' }} />
           <div className="mx-5 mt-5">
             <h2>
@@ -114,7 +122,7 @@ const PJArray = () => {
             totalPlayers={filterRes.length}
             updatePage={setCurrentPage}
           />
-        </div>
+        </motion.div>
       )}
     </>
   );

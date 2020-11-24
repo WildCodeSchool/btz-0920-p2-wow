@@ -10,7 +10,7 @@ function GuildRow({ name, faction, rank, realm, slug }) {
     history.push(`/guild/${slug}/${realm}/${name}/`);
   };
   return (
-    <tr className="row" onClick={rowLink}>
+    <tr className="row clickable" onClick={rowLink}>
       <td className="col-2 d-flex align-items-center">{rank}</td>
       <td className="col-8 d-flex align-items-center">
         <strong style={{ fontSize: '21px' }}>{name}</strong>
