@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Col, Container, Navbar, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Hr from '../cssPages&Components/Hr';
 import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
@@ -9,6 +10,7 @@ import GuildRoster from './GuildRoster';
 import Error from '../Error';
 import Flag from '../flags/Flag';
 import FactionIcons from '../flags/FactionIcons';
+import { enterBottom } from '../animations';
 
 const GuildPage = () => {
   const params = useParams();
@@ -68,7 +70,12 @@ const GuildPage = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <>
+        <motion.div
+          variants={enterBottom}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
           <div
             style={{ height: '100px', maxWidth: '100%', overflow: 'hidden' }}
           />
@@ -111,7 +118,7 @@ const GuildPage = () => {
               realm={params.realm}
             />
           </Container>
-        </>
+        </motion.div>
       )}
     </div>
   );
