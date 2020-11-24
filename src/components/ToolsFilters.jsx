@@ -69,9 +69,10 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
           </CardBody>
           <CardBody>
             {classArray.specs.map((res) => {
-              const { name } = res;
+              const { name, image } = res;
               return (
                 <Button
+                  key={image}
                   onClick={() =>
                     setSpec(name.toLocaleLowerCase().replace(' ', '-'))
                   }
