@@ -14,16 +14,15 @@ import PropTypes from 'prop-types';
 
 import { resetIcon } from '../img';
 import DalApi from '../dal/DalApi';
-// import realms from '../dal/realms.json';
 import FactionIcons from './flags/FactionIcons';
 
 function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
   const params = useParams();
   const [classArray] = useState(DalApi.getClassesAndSpecsByName(params.class));
-  // const [realmsArray] = useState(realms);
   const [faction, setFaction] = useState('');
   const [spec, setSpec] = useState('');
   const [realm, setRealm] = useState('');
+  const [currentRealmsArray, setCurrentRealmsArray] = useState([]);
 
   useEffect(() => {
     let currentResult = results;
@@ -33,12 +32,24 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
     currentResult = currentResult.filter((elmt) =>
       spec === '' ? true : elmt.character.spec.slug === spec
     );
+
+    const tempArray = [];
+    setCurrentRealmsArray(
+      currentResult.filter((realmSlug) => {
+        if (tempArray.indexOf(realmSlug.character.realm.slug) === -1) {
+          tempArray.push(realmSlug.character.realm.slug);
+          return true;
+        }
+        return false;
+      })
+    );
+
     currentResult = currentResult.filter((serv) =>
       realm === '' ? true : serv.character.realm.slug === realm
     );
     setFilterRes(currentResult);
     setCurrentPage(1);
-  }, [faction, spec, realm]);
+  }, [faction, spec, realm, results]);
 
   return (
     <div
@@ -129,7 +140,7 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
               style={{ maxHeight: '50px' }}
             >
               <option onClick={() => setRealm('')}>All Realms</option>
-              {results.map((serv) => {
+              {currentRealmsArray.map((serv) => {
                 const { name, slug } = serv.character.realm;
                 return <option onClick={() => setRealm(slug)}>{name}</option>;
               })}
