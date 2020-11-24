@@ -125,7 +125,7 @@ const PlayerProfile = () => {
           animate="visible"
           exit="exit"
         >
-          <Row className="d-flex justify-content-center flex-wrap pt-5">
+          <Row className="d-flex justify-content-center flex-wrap pt-3">
             <Col
               xs="6"
               className="d-flex flex-column align-items-end justify-content-center"
