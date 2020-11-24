@@ -7,6 +7,7 @@ import DalApi from '../dal/DalApi';
 import LoadingSpinner from './LoadingSpinner';
 import Flag from './flags/Flag';
 import Error from './Error';
+import Hr from './cssPages&Components/Hr';
 
 const PlayerProfile = () => {
   const { name, realm, region } = useParams();
@@ -134,7 +135,7 @@ const PlayerProfile = () => {
                 </Col>
               </Row>
               <Row>
-                <Col xs="12" md="4" className="d-flex align-items-start">
+                <Col xs="12" md="4" className="d-flex align-items-start my-2">
                   <Flag slug={playerRegion} />
                 </Col>
                 <Col xs="12" md="8" className="d-flex align-items-start">
@@ -143,12 +144,13 @@ const PlayerProfile = () => {
               </Row>
             </Col>
           </Row>
+          <Hr />
           <Row className="mt-5 justify-content-center">
             <Col xs="12" md="8">
               <Table className="table table-striped" opacity="0.5" borderless>
                 <thead>
-                  <tr className="table-primary">
-                    <th className="d-flex align-items-center">
+                  <tr className="table-primary d-flex align-items-center">
+                    <th className="flex-1 d-flex justify-content-start">
                       <img
                         src={displaysClass(charClass)}
                         alt=""
@@ -167,16 +169,16 @@ const PlayerProfile = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr onClick={guildLink}>
-                    <td className="d-flex align-items-start">
+                  <tr className="d-flex align-items-center" onClick={guildLink}>
+                    <td className="flex-1 d-flex justify-content-start">
                       <h4>Guild</h4>
                     </td>
                     <td>
                       <h4>{guild}</h4>
                     </td>
                   </tr>
-                  <tr>
-                    <td className="d-flex align-items-start">
+                  <tr className="d-flex align-items-center">
+                    <td className="flex-1 d-flex justify-content-start">
                       <h4>Item level</h4>
                     </td>
                     <td>
@@ -184,16 +186,16 @@ const PlayerProfile = () => {
                     </td>
                     <td />
                   </tr>
-                  <tr>
-                    <td className="d-flex align-items-start">
+                  <tr className="d-flex align-items-center">
+                    <td className="flex-1 d-flex justify-content-start">
                       <h4>Current raid score</h4>
                     </td>
                     <td>
                       <h4>{raidScore}</h4>
                     </td>
                   </tr>
-                  <tr>
-                    <td className="d-flex align-items-start">
+                  <tr className="d-flex align-items-center">
+                    <td className="flex-1 d-flex justify-content-start">
                       <h4>Current mythic score</h4>
                     </td>
                     <td>
