@@ -1,11 +1,3 @@
-* {
-  --main-color: #df6924;
-  --main-bg-color: #2b3e50;
-  --sec-color: #4e5d6c;
-  --sec-color-light: #808b96;
-  color: white;
-}
-
 .slide {
   display: flex;
   flex: 1;
