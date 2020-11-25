@@ -14,6 +14,10 @@
   overflow-x: hidden;
 }
 
+.killPadding {
+  padding: 0 !important;
+}
+
 .border-vert {
   border-left: var(--main-color) 6px solid;
   padding-left: 15px;
@@ -86,12 +90,14 @@
   background: left / contain no-repeat url('../src/img/alliance.png');
   background-position-x: -267px;
   background-position-y: center;
+  /* padding: 0 !important; */
 }
 
 .bgHorde {
   background: left / contain no-repeat url('../src/img/horde.png');
   background-position-x: -273px;
   background-position-y: center;
+  /* padding: 0 !important; */
 }
 
 @media screen and (max-width: 768px) {
@@ -105,10 +111,12 @@
 
   .bgAlliance {
     background: bottom / contain no-repeat url('../src/img/alliance.png');
+    /* padding: 0 !important; */
   }
 
   .bgHorde {
     background: bottom / contain no-repeat url('../src/img/horde.png');
+    /* padding: 0 !important; */
     /* background-position-y: 85px; */
   }
   /* essai couleur th avec transparence */
