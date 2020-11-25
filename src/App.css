@@ -12,7 +12,6 @@
   text-align: center;
   font-family: Ubuntu, sans-serif;
   overflow-x: hidden;
-  /* background: fixed repeat-y url(./img/backgroundImage.jpg); */
 }
 
 .border-vert {
@@ -37,6 +36,11 @@
   width: 64px;
   height: 64px;
 }
+
+.test {
+  background: rgba(223, 105, 26, 0.9);
+}
+
 @media screen and (max-width: 768px) {
   .leaderboard-container {
     flex-wrap: wrap;
@@ -78,6 +82,18 @@
   cursor: pointer;
 }
 
+.bgAlliance {
+  background: left / contain no-repeat url('../src/img/alliance.png');
+  background-position-x: -267px;
+  background-position-y: center;
+}
+
+.bgHorde {
+  background: left / contain no-repeat url('../src/img/horde.png');
+  background-position-x: -273px;
+  background-position-y: center;
+}
+
 @media screen and (max-width: 768px) {
   * {
     font-size: 12px;
@@ -85,5 +101,18 @@
 
   .mob-100 {
     width: 100% !important;
+  }
+
+  .bgAlliance {
+    background: bottom / contain no-repeat url('../src/img/alliance.png');
+  }
+
+  .bgHorde {
+    background: bottom / contain no-repeat url('../src/img/horde.png');
+    /* background-position-y: 85px; */
+  }
+  /* essai couleur th avec transparence */
+  .test {
+    background: rgba(223, 105, 26, 0.7);
   }
 }

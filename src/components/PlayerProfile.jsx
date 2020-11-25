@@ -18,6 +18,7 @@ const PlayerProfile = () => {
   const [playerName, setPlayerName] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [charClass, setCharClass] = useState('');
+  const [faction, setFaction] = useState('');
   const [specName, setSpecName] = useState('');
   const [specRole, setSpecRole] = useState('');
   const [guild, setGuild] = useState('');
@@ -41,6 +42,7 @@ const PlayerProfile = () => {
 
         setPlayerRegion(player.data.region);
         setPlayerRealm(player.data.realm);
+        setFaction(player.data.faction);
         setPlayerName(player.data.name);
         setThumbnail(player.data.thumbnail_url);
         setCharClass(player.data.class);
@@ -115,7 +117,11 @@ const PlayerProfile = () => {
   if (error) return <Error msg={error.response.data.statusText} />;
 
   return (
-    <Container fluid className="w100" style={{ marginTop: '100px' }}>
+    <Container
+      fluid
+      className={faction === 'alliance' ? 'w100 bgAlliance' : 'w100 bgHorde'}
+      style={{ marginTop: '100px' }}
+    >
       {loading ? (
         <LoadingSpinner />
       ) : (
@@ -156,7 +162,7 @@ const PlayerProfile = () => {
             <Col xs="12" md="8">
               <Table className="table table-striped" opacity="0.5" borderless>
                 <thead>
-                  <tr className="table-primary d-flex align-items-center">
+                  <tr className="d-flex align-items-center test">
                     <th className="flex-1 d-flex justify-content-start align-items-center">
                       <img
                         src={displaysClass(charClass)}
