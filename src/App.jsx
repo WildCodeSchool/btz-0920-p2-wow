@@ -10,6 +10,7 @@ import SearchPage from './components/searchPage/SearchPage';
 import PJArray from './components/PJArray';
 
 import './App.css';
+import Debugger from './components/Debugger';
 
 const routes = [
   { path: '/', name: 'Leaderboards', Component: Leaderboards },
@@ -17,6 +18,11 @@ const routes = [
     path: '/Player/:region/:realm/:name',
     name: 'PlayerProfile',
     Component: PlayerProfile,
+  },
+  {
+    path: '/debugger',
+    name: 'Debugger',
+    Component: Debugger,
   },
   {
     path: '/Guild/:region/:realm/:name',
