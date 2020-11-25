@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { CSSTransition } from 'react-transition-group';
+import { Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import PlayerProfile from './components/PlayerProfile';
 import Leaderboards from './components/Leaderboards';
@@ -14,49 +14,42 @@ import './App.css';
 const routes = [
   { path: '/', name: 'Leaderboards', Component: Leaderboards },
   {
-    path: '/player/:name/:region/:realm',
+    path: '/Player/:region/:realm/:name',
     name: 'PlayerProfile',
     Component: PlayerProfile,
   },
   {
-    path: '/guild/:region/:realm/:name',
+    path: '/Guild/:region/:realm/:name',
     name: 'GuildPage',
     Component: GuildPage,
   },
   {
-    path: '/GuildsArray/:region/:realm',
+    path: '/TopGuilds/:region/:realm/:faction',
     name: 'GuildsArray',
     Component: GuildsArray,
   },
-  { path: '/search', name: 'SearchPage', Component: SearchPage },
-  { path: '/PJArray', name: 'PJArray', Component: PJArray },
+  { path: '/Search', name: 'SearchPage', Component: SearchPage },
+  {
+    path: '/TopPlayers/:region/:class',
+    name: 'PJArray',
+    Component: PJArray,
+  },
 ];
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Router>
-      <div className="App d-flex flex-column">
-        <NavBar />
-        <>
-          {routes.map(({ path, Component }) => (
-            <Route key={path} exact path={path}>
-              {({ match }) => (
-                <CSSTransition
-                  in={match != null}
-                  timeout={1000}
-                  classNames="page"
-                  unmountOnExit
-                >
-                  <div>
-                    <Component />
-                  </div>
-                </CSSTransition>
-              )}
-            </Route>
-          ))}
-        </>
-      </div>
-    </Router>
+    <div className="killPadding App d-flex flex-column container-fluid">
+      <NavBar />
+      <AnimatePresence exitBeforeEnter>
+        {routes.map(({ path, Component }) => (
+          <Route key={path} exact path={path} location={location}>
+            <Component />
+          </Route>
+        ))}
+      </AnimatePresence>
+    </div>
   );
 }
 

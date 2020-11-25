@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Col, Container, Navbar, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Hr from '../cssPages&Components/Hr';
 import DalApi from '../../dal/DalApi';
 import GuildRanking from './GuildRanking';
 import LoadingSpinner from '../LoadingSpinner';
 import GuildRoster from './GuildRoster';
+import Error from '../Error';
 import Flag from '../flags/Flag';
 import FactionIcons from '../flags/FactionIcons';
-import '../cssPages&Components/GuildPage.css';
+import { enterBottom } from '../animations';
 
 const GuildPage = () => {
   const params = useParams();
@@ -19,6 +21,8 @@ const GuildPage = () => {
   const [roster, setRoster] = useState(null);
   const [flagTag, setFlagTag] = useState(null);
   const [faction, setFaction] = useState(null);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({});
 
   useEffect(() => {
     const getDatas = async () => {
@@ -37,14 +41,14 @@ const GuildPage = () => {
 
         const { guildDetails } = guildRes.data;
         setGuild(guildDetails.guild);
-        // console.log(guild);
         setRaidRankings(guildDetails.raidRankings);
         setRaidProgress(guildDetails.raidProgress);
         setRoster(rosterRes.data.guildRoster.roster);
         setFlagTag(guildDetails.guild.region.slug);
         setFaction(guildDetails.guild.faction);
-      } catch (error) {
-        // TODO: handle this error
+      } catch (err) {
+        setIsError(true);
+        setError(err);
       } finally {
         setLoading(false);
       }
@@ -52,6 +56,10 @@ const GuildPage = () => {
 
     getDatas();
   }, []);
+
+  if (isError) {
+    return <Error msg={error.message} />;
+  }
 
   return (
     <div>
@@ -62,46 +70,53 @@ const GuildPage = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <>
-          <div style={{ height: '100px', minWidth: '95vw' }} />
-          <Container fluid className="w-50">
-            <Container className="guildPage d-flex flex-column justify-content-center">
-              <Row>
-                <Col xs={12}>
-                  <h1 className="text-center'" style={{ fontSize: '48px' }}>
-                    {guild.alt_name ? guild.alt_name : guild.name}
-                  </h1>
-                </Col>
-              </Row>
-              <Row className="align-items-center text-center">
-                <Col xs={4} className="">
-                  <Flag slug={flagTag} alt={guild.region.name} />
-                </Col>
-                <Col
-                  xs={4}
-                  className="font-weight-bold"
-                  style={{ fontSize: '32px' }}
-                >
-                  {guild.realm.name}
-                </Col>
-                <Col xs={4}>
-                  <FactionIcons faction={faction} />
-                </Col>
-              </Row>
-            </Container>
-            <Hr />
-            <GuildRanking
-              raidRankings={raidRankings}
-              raidProgress={raidProgress}
-            />
-            <Hr />
-            <GuildRoster
-              roster={roster}
-              region={params.region}
-              realm={params.realm}
-            />
+        <motion.div
+          className="container mob-100 leaderboard-container"
+          style={{ style: '75%' }}
+          variants={enterBottom}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <div
+            style={{ height: '100px', maxWidth: '100%', overflow: 'hidden' }}
+          />
+
+          <Container className="guildPage d-flex flex-column justify-content-center ">
+            <Row>
+              <Col xs={12}>
+                <h1 className="my-5">
+                  {guild.alt_name ? guild.alt_name : guild.name}
+                </h1>
+              </Col>
+            </Row>
+            <Row className="align-items-center d-flex  flex-sm-row justify-content-center">
+              <Col xs={4}>
+                <Flag slug={flagTag} alt={guild.region.name} />
+              </Col>
+              <Col
+                xs={4}
+                className="font-weight-bold pt-3 h3 sm-p d-flex justify-content-center"
+              >
+                {guild.realm.name}
+              </Col>
+              <Col xs={4}>
+                <FactionIcons faction={faction} />
+              </Col>
+            </Row>
           </Container>
-        </>
+          <Hr />
+          <GuildRanking
+            raidRankings={raidRankings}
+            raidProgress={raidProgress}
+          />
+          <Hr />
+          <GuildRoster
+            roster={roster}
+            region={params.region}
+            realm={params.realm}
+          />
+        </motion.div>
       )}
     </div>
   );

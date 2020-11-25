@@ -1,26 +1,30 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import Flag from './flags/Flag';
 
 import './cssPages&Components/ClassColor.css';
 
 const PlayerLeaderboardRow = ({ name, realm, region, playerClass }) => {
+  const history = useHistory();
+
+  // link to player page
+  const rowLink = () => {
+    history.push(`/Player/${region}/${realm}/${name}/`);
+  };
+
   return (
-    <Link
-      to={`/player/${name}/${region}/${realm}`}
-      style={{ textDecoration: 'none' }}
-    >
-      <tr className="d-flex">
-        <th className="col-md-5 d-flex align-items-center">
-          <p className={playerClass}>{name}</p>
-        </th>
-        <th className="col-md-5 d-flex align-items-center">{realm}</th>
-        <th className="col-md-2 d-flex align-items-center">
-          <Flag slug={region} />
-        </th>
-      </tr>
-    </Link>
+    <tr className="d-flex justify-content-between clickable" onClick={rowLink}>
+      <td className="col-xs-6 d-flex align-items-center justify-content-end h5">
+        <span className={playerClass}>{name}</span>
+      </td>
+      <td className="col-xs-3 d-flex flex-1 align-items-center justify-content-end">
+        {realm}
+      </td>
+      <td className="col-xs-6 d-flex align-items-center justify-content-end">
+        <Flag slug={region} />
+      </td>
+    </tr>
   );
 };
 

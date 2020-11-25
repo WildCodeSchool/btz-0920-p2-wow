@@ -6,11 +6,11 @@ import WoWildCraftLogo from './flags/WoWildCraftLogo';
 
 const NavBar = () => {
   return (
-    <Navbar className="bg-secondary py-0 fixed-top">
+    <Navbar className="bg-secondary py-0 fixed-top" style={{ height: '100px' }}>
       <Link to="/">
         <WoWildCraftLogo />
       </Link>
-      <Link to="/search">
+      <Link to="/Search">
         <FaSearch className="h2" />
       </Link>
     </Navbar>

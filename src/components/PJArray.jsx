@@ -1,53 +1,56 @@
 import { useEffect, useState } from 'react';
-import { Table } from 'reactstrap';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Container, Row, Table } from 'reactstrap';
 
+import { motion } from 'framer-motion';
 import PJRow from './PJRow';
-import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
+import ToolsFilters from './ToolsFilters';
+import Error from './Error';
+import NoResults from './NoResults';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
 import './cssPages&Components/GuildsArray.css';
+import { enterBottom } from './animations';
 
 const PJArray = () => {
-  // const params = useParams();
+  const params = useParams();
   const [results, setResults] = useState([]);
   const [regionName, setRegionName] = useState('');
   const [loading, setLoading] = useState(true);
-  // const [min, setMin] = useState(0);
-  // const [max, setMax] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
+  const [filterRes, setFilterRes] = useState([]);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({});
 
   useEffect(() => {
-    DalApi.getTopPlayer('eu').then(({ data }) => {
-      setResults(data.rankings.rankedCharacters);
-      setRegionName(data.rankings.region.name);
-      setLoading(false);
-    });
+    const getDatas = async () => {
+      try {
+        DalApi.getTopPlayer(
+          params.region.toLowerCase(),
+          params.class.toLowerCase().replace(' ', '-')
+        ).then(({ data }) => {
+          setResults(data.rankings.rankedCharacters);
+          setRegionName(data.rankings.region.name);
+          setFilterRes(data.rankings.rankedCharacters);
+          setLoading(false);
+        });
+      } catch (err) {
+        setIsError(true);
+        setError(err);
+      } finally {
+        // setLoading(false);
+      }
+    };
+    getDatas();
   }, []);
 
-  // function page1() {
-  //   setMin(0);
-  //   setMax(5);
-  // }
-
-  // function page2() {
-  //   setMin(5);
-  //   setMax(10);
-  // }
-
-  // function page3() {
-  //   setMin(10);
-  //   setMax(15);
-  // }
-
-  // function page4() {
-  //   setMin(15);
-  //   setMax(20);
-  // }
+  if (isError) {
+    return <Error msg={error.message} />;
+  }
 
   return (
     <>
@@ -57,52 +60,74 @@ const PJArray = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="cssStyle d-flex flex-column align-items-center text-center">
+        <motion.div
+          className="cssStyle d-flex flex-column align-items-center text-center"
+          variants={enterBottom}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
           <div style={{ height: '100px', minWidth: '100vw' }} />
-          <div>
+          <div className="m-5">
             <h2>
-              Top <span>{regionName}</span> Characters
+              Top {regionName} {params.class} Characters
             </h2>
             <Hr />
           </div>
-          <main className="container min-vw-100">
-            <div className="row w-100">
-              <div className="col-1 align-self-center">
-                <ToolsFilters />
+          <Container fluid className="d-flex flex-column align-items-center">
+            <Row>
+              <div className="col-12 d-flex justify-content-start p-0 m-2">
+                <ToolsFilters
+                  results={results}
+                  filterRes={filterRes}
+                  setFilterRes={setFilterRes}
+                  setCurrentPage={setCurrentPage}
+                />
               </div>
-              <Table className="col-10" w-auto text-nowrap hover>
-                <tbody className="container">
-                  {results
-                    .filter(
-                      (_, index) =>
-                        index >= (currentPage - 1) * playerPerPage &&
-                        index < currentPage * playerPerPage
-                    )
-                    .map((result) => {
-                      return (
-                        <PJRow
-                          name={result.character.name}
-                          pjClass={result.character.class.name}
-                          faction={result.character.faction}
-                          rank={result.rank}
-                          spec={result.character.spec.name}
-                          realm={result.character.realm.name}
-                          region={regionName}
-                          key={result.rank}
-                        />
-                      );
-                    })}
+            </Row>
+            <Row className="align-self-center">
+              <Table
+                className="col-12 text-wrap table-striped"
+                style={{ width: '75vw' }}
+                hover
+                borderless
+              >
+                <tbody>
+                  {filterRes.length === 0 ? (
+                    <NoResults />
+                  ) : (
+                    filterRes
+                      .filter(
+                        (_, index) =>
+                          index >= (currentPage - 1) * playerPerPage &&
+                          index < currentPage * playerPerPage
+                      )
+                      .map((result) => {
+                        return (
+                          <PJRow
+                            name={result.character.name}
+                            pjClass={result.character.class.name}
+                            faction={result.character.faction}
+                            rank={result.rank}
+                            spec={result.character.spec.name}
+                            realm={result.character.realm.name}
+                            region={regionName}
+                            key={result.rank}
+                          />
+                        );
+                      })
+                  )}
                 </tbody>
               </Table>
-            </div>
-          </main>
+            </Row>
+          </Container>
           <Pagin
             page={currentPage}
             playerPerPage={playerPerPage}
-            totalPlayers={results.length}
+            totalPlayers={filterRes.length}
             updatePage={setCurrentPage}
           />
-        </div>
+        </motion.div>
       )}
     </>
   );

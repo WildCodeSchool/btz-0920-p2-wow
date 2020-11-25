@@ -1,13 +1,31 @@
-* {
-  --main-color: #df6924;
-  --main-bg-color: #2b3e50;
-  --sec-color: #4e5d6c;
-  --sec-color-light: #808b96;
-  color: white;
+.slide {
+  display: flex;
+  flex: 1;
+  margin-top: 90px;
 }
 
-.slide {
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: none !important;
+}
+
+.carousel-inner,
+.carousel-item.active {
+  display: flex !important;
+  flex-direction: column;
   flex: 1;
+}
+
+.cardsContainer {
+  align-items: 'center';
+  align-content: 'center';
+  margin-bottom: '50px';
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  padding-top: 72px;
 }
 
 .title-y {
@@ -16,6 +34,7 @@
 
 .wildCard {
   background: center / cover no-repeat;
+  font-size: 2rem;
 }
 
 .wildCard:hover {

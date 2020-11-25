@@ -4,7 +4,7 @@ import './SearchPage.css';
 
 const WildCard = ({ title, image, height, width, handleClick, next }) => {
   const wildCardStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(255, 255,255, 0.25)),url(${image})`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.15)),url(${image})`,
     height: `${height}`,
     width: `${width}`,
   };
@@ -19,7 +19,7 @@ const WildCard = ({ title, image, height, width, handleClick, next }) => {
       className="wildCard d-flex align-items-center justify-content-center m-3 border border-primary"
       style={wildCardStyle}
     >
-      <h2>{title}</h2>
+      {title}
     </button>
   );
 };

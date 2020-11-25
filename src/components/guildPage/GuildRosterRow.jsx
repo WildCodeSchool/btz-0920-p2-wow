@@ -1,8 +1,7 @@
 import propTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import DalApi from '../../dal/DalApi';
 
-import '../cssPages&Components/GuildPage.css';
 import '../cssPages&Components/ClassColor.css';
 
 const GuildRosterRow = (props) => {
@@ -16,40 +15,71 @@ const GuildRosterRow = (props) => {
         race,
         itemLevelEquipped,
         spec,
+        thumbnail,
       },
     },
   } = props;
+
+  const history = useHistory();
+
+  // link to player page
+  const rowLink = () => {
+    history.push(`/Player/${region}/${realm}/${name}/`);
+  };
+
   const classe = DalApi.getClassesAndSpecsBySlug(slug);
-  // console.log(player, classe);
+
+  // create avatar image source
+  const imgSrc = '//render-'
+    .concat(region)
+    .concat('.worldofwarcraft.com/character/');
+
   return (
-    <Link
-      to={`/player/${name}/${region}/${realm}/`}
-      style={{ textDecoration: 'none' }}
+    <tr
+      className="d-flex playerRow text-left align-items-center my-1 clickable"
+      onClick={rowLink}
     >
-      <tr className="d-flex playerRow text-left align-items-center">
-        <td className="col-md-5 font-weight-bold">
-          <img
-            src={classe.image}
-            alt="class icon"
-            className="w-25 classImage pr-2"
-          />
-          <span className={classe.name.replace(' ', '')}>{name}</span>
-        </td>
-        <td className="col-md-3">{spec.name}</td>
-        <td className="col-md-2">{race.name}</td>
-        <td className="col-md-2 text-center">{itemLevelEquipped}</td>
-      </tr>
-    </Link>
+      <td className="col-md-6 col-5 p-0 d-flex text-center align-items-center">
+        <img
+          // src={classe.image}
+          src={imgSrc.concat(thumbnail)}
+          alt="class icon"
+          className=" classImage pr-2"
+          style={{ height: '44px' }}
+        />
+
+        <span className={`h5 mb-0 ${classe.name.replace(' ', '')}`}>
+          {name}
+        </span>
+      </td>
+      <td className="col-md-2 col-4 d-flex justify-content-center">
+        {spec.name}
+      </td>
+      <td className="col-md-2 col-0 d-none d-md-flex justify-content-center">
+        {race.name}
+      </td>
+      <td className="col-md-2 col-3 text-center">{itemLevelEquipped}</td>
+    </tr>
   );
 };
 
 export default GuildRosterRow;
 
 GuildRosterRow.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  player: propTypes.object.isRequired,
   region: propTypes.string.isRequired,
   realm: propTypes.string.isRequired,
-  name: propTypes.string.isRequired,
-  // slug: propTypes.string.isRequired,
+  player: propTypes.shape({
+    character: propTypes.shape({
+      name: propTypes.string.isRequired,
+      race: propTypes.shape({
+        name: propTypes.string.isRequired,
+      }).isRequired,
+      spec: propTypes.objectOf(propTypes.string.isRequired).isRequired,
+      itemLevelEquipped: propTypes.number.isRequired,
+      thumbnail: propTypes.string.isRequired,
+      class: propTypes.shape({
+        slug: propTypes.string.isRequired,
+      }).isRequired,
+    }),
+  }).isRequired,
 };

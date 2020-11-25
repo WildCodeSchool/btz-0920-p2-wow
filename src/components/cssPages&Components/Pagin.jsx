@@ -8,14 +8,17 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
   const totalPages = Math.ceil(totalPlayers / playerPerPage);
   const pageTab = [];
   const btnQty = totalPages > 5 ? 5 : totalPages;
-  for (let i = 0; i < totalPages; i += 1) {
-    pageTab[i] = i + 1;
-  }
+  const [isStartDisabled, setIsStartDisabled] = useState(true);
+  const [isEndDisabled, setIsEndDisabled] = useState(true);
   const [btnMin, setBtnMin] = useState(1);
   const [btnMax, setBtnMax] = useState(btnQty);
-  //   console.log(pageTab);
+
+  for (let i = 0; i < totalPages; i += 1) pageTab[i] = i + 1;
 
   useEffect(() => {
+    setIsStartDisabled(btnQty < 5 || currentPage === 1);
+    setIsEndDisabled(btnQty < 5 || currentPage === totalPages);
+
     if (currentPage === 1) {
       setBtnMin(currentPage);
       setBtnMax(currentPage + 4);
@@ -23,16 +26,25 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
       setBtnMin(currentPage - 4);
       setBtnMax(currentPage);
     } else if (currentPage === btnMax) {
-      setBtnMin(currentPage);
-      setBtnMax(currentPage + 4);
+      setBtnMin(currentPage - 2);
+      setBtnMax(currentPage + 2);
+    } else if (currentPage === btnMin) {
+      if (btnMax - 4 === 1) {
+        setBtnMin(1);
+        setBtnMax(5);
+      } else {
+        setBtnMin(currentPage - 2);
+        setBtnMax(currentPage + 2);
+      }
     }
+    if (currentPage > totalPages) setCurrentPage(1);
     updatePage(currentPage);
-  }, [currentPage]);
+  }, [currentPage, totalPages]);
 
   return (
     // go to first page
-    <Pagination className="pagination" size="lg clearfix">
-      <PaginationItem className="paginationItem">
+    <Pagination className="pagination mt-5 mb-3" size="lg clearfix">
+      <PaginationItem className="paginationItem" disabled={isStartDisabled}>
         <PaginationLink onClick={() => setCurrentPage(1)}>
           <BsFillSkipBackwardFill />
         </PaginationLink>
@@ -42,14 +54,18 @@ const Pagin = ({ page, updatePage, totalPlayers, playerPerPage }) => {
           return p >= btnMin && p <= btnMax;
         })
         .map((elmt) => (
-          <PaginationItem className="paginationItem">
+          <PaginationItem
+            className="paginationItem"
+            active={currentPage === elmt}
+            key={elmt}
+          >
             <PaginationLink onClick={() => setCurrentPage(elmt)}>
               {elmt}
             </PaginationLink>
           </PaginationItem>
         ))}
       {/* go to last page */}
-      <PaginationItem className="paginationItem">
+      <PaginationItem className="paginationItem" disabled={isEndDisabled}>
         <PaginationLink onClick={() => setCurrentPage(totalPages)}>
           <BsFillSkipForwardFill />
         </PaginationLink>

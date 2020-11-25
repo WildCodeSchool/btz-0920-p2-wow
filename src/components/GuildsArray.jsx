@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Table, Container } from 'reactstrap';
-
+import { Table, Container, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import GuildRow from './GuildRow';
-import ToolsFilters from './ToolsFilters';
+// import ToolsFilters from './ToolsFilters';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
+import Error from './Error';
+import NoResults from './NoResults';
+import { enterBottom } from './animations';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
@@ -17,42 +21,34 @@ const GuildsArray = () => {
   const [loading, setLoading] = useState(true);
   const [serverSlug, setServerSlug] = useState('');
   const [realmName, setRealmName] = useState('');
-  // const [min, setMin] = useState(0);
-  // const [max, setMax] = useState(5);
+  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
-
   useEffect(() => {
-    DalApi.getTopGuild(
-      params.region.toLowerCase(),
-      params.realm.toLowerCase()
-    ).then(({ data }) => {
-      setResults(data.raidRankings.rankedGuilds);
-      setServerSlug(params.region);
-      setRealmName(params.realm);
-      setLoading(false);
-    });
+    const getDatas = async () => {
+      try {
+        const guild = await DalApi.getTopGuild(
+          params.region.toLowerCase(),
+          params.realm.toLowerCase(),
+          params.faction.toLowerCase()
+        );
+        setResults(guild.data.raidRankings.rankedGuilds);
+        setServerSlug(params.region);
+        setRealmName(params.realm);
+      } catch (err) {
+        setIsError(true);
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getDatas();
   }, []);
 
-  // function page1() {
-  //   setMin(0);
-  //   setMax(5);
-  // }
-
-  // function page2() {
-  //   setMin(5);
-  //   setMax(10);
-  // }
-
-  // function page3() {
-  //   setMin(10);
-  //   setMax(15);
-  // }
-
-  // function page4() {
-  //   setMin(15);
-  //   setMax(20);
-  // }
+  if (isError) {
+    return <Error msg={error.message} />;
+  }
 
   return (
     <>
@@ -62,46 +58,61 @@ const GuildsArray = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div
+        <motion.div
+          variants={enterBottom}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
           className="cssStyle d-flex flex-column align-items-center text-center"
           style={{ maxWidth: '100vw' }}
         >
           <div style={{ height: '100px', minWidth: '99vw' }} />
-          <div>
-            <h2>
-              Top <span>{serverSlug}</span> {realmName} Guilds
+          <div className="m-5">
+            <h2 className="h1">
+              Top {serverSlug} {realmName} {params.faction} Guilds
             </h2>
             <Hr />
           </div>
-          <Container>
-            <div className="row align-self-center">
-              <div className="col-1 d-flex align-items-center">
-                <ToolsFilters />
+          <Container fluid className="d-flex flex-column align-items-center">
+            <Row className="w-75">
+              <div className="col-12 d-flex justify-content-start p-0 m-2">
+                {/* <ToolsFilters /> */}
               </div>
-              <Table className="col-10" w-auto text-nowrap hover>
-                <tbody className="container">
-                  {results
-                    .filter(
-                      (_, index) =>
-                        index >= (currentPage - 1) * playerPerPage &&
-                        index < currentPage * playerPerPage
-                    )
-                    .map((result) => {
-                      return (
-                        <GuildRow
-                          name={result.guild.name}
-                          faction={result.guild.faction}
-                          slug={result.guild.region.slug}
-                          rank={result.rank}
-                          region={result.guild.region.name}
-                          realm={result.guild.realm.name}
-                          key={result.rank}
-                        />
-                      );
-                    })}
+            </Row>
+            <Row className="align-self-center">
+              <Table
+                className="col-12 text-wrap table-striped"
+                style={{ width: '75vw' }}
+                hover
+                borderless
+              >
+                <tbody>
+                  {results.length === 0 ? (
+                    <NoResults />
+                  ) : (
+                    results
+                      .filter(
+                        (_, index) =>
+                          index >= (currentPage - 1) * playerPerPage &&
+                          index < currentPage * playerPerPage
+                      )
+                      .map((result) => {
+                        return (
+                          <GuildRow
+                            name={result.guild.name}
+                            faction={result.guild.faction}
+                            slug={result.guild.region.slug}
+                            rank={result.rank}
+                            region={result.guild.region.name}
+                            realm={result.guild.realm.name}
+                            key={result.rank}
+                          />
+                        );
+                      })
+                  )}
                 </tbody>
               </Table>
-            </div>
+            </Row>
           </Container>
           <Pagin
             page={currentPage}
@@ -109,7 +120,7 @@ const GuildsArray = () => {
             totalPlayers={results.length}
             updatePage={setCurrentPage}
           />
-        </div>
+        </motion.div>
       )}
     </>
   );

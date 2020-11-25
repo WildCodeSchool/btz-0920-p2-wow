@@ -1,18 +1,43 @@
 /* eslint-disable react/forbid-prop-types */
 import { useState } from 'react';
-import { Carousel, Container } from 'reactstrap';
+import { Carousel } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import Slider from './Slider';
 
-import { guild, alliance, horde, europe, usa, korea, taiwan } from '../../img';
+import {
+  guild,
+  character,
+  europe,
+  usa,
+  korea,
+  taiwan,
+  dh,
+  dk,
+  druid,
+  hunter,
+  mage,
+  monk,
+  paladin,
+  priest,
+  rogue,
+  shaman,
+  warlock,
+  warrior,
+  horde,
+  alliance,
+} from '../../img';
+import { classesAndSpecs, factions } from '../../dal/staticData';
 
 import './SearchPage.css';
 
 const SearchPage = () => {
   const [items] = useState([
     {
-      cardNames: [['Guild', guild]],
+      cardNames: [
+        ['Guild', guild],
+        ['Character', character],
+      ],
       title: 'Search',
     },
     {
@@ -29,16 +54,34 @@ const SearchPage = () => {
     },
     {
       cardNames: [
-        ['Horde', horde],
-        ['Alliance', alliance],
+        [factions[0].name, alliance],
+        [factions[1].name, horde],
       ],
       title: 'Faction',
+    },
+    {
+      cardNames: [
+        [classesAndSpecs[0].name, dh],
+        [classesAndSpecs[1].name, dk],
+        [classesAndSpecs[2].name, druid],
+        [classesAndSpecs[3].name, hunter],
+        [classesAndSpecs[4].name, mage],
+        [classesAndSpecs[5].name, monk],
+        [classesAndSpecs[6].name, paladin],
+        [classesAndSpecs[7].name, priest],
+        [classesAndSpecs[8].name, rogue],
+        [classesAndSpecs[9].name, shaman],
+        [classesAndSpecs[10].name, warlock],
+        [classesAndSpecs[11].name, warrior],
+      ],
+      title: 'Class',
     },
   ]);
 
   const [searchTypeData, setSearchTypeData] = useState('Search Type');
   const [regionData, setRegionData] = useState('Region');
   const [factionData, setFactionData] = useState('Faction');
+  const [classData, setClassData] = useState('Class');
 
   const handleSelection = (e) => {
     switch (e.target.id) {
@@ -66,25 +109,67 @@ const SearchPage = () => {
       case 'Alliance':
         setFactionData('Alliance');
         break;
+      case 'Death Knight':
+        setClassData('Death Knight');
+        break;
+      case 'Demon Hunter':
+        setClassData('Demon Hunter');
+        break;
+      case 'Druid':
+        setClassData('Druid');
+        break;
+      case 'Hunter':
+        setClassData('Hunter');
+        break;
+      case 'Mage':
+        setClassData('Mage');
+        break;
+      case 'Monk':
+        setClassData('Monk');
+        break;
+      case 'Paladin':
+        setClassData('Paladin');
+        break;
+      case 'Priest':
+        setClassData('Priest');
+        break;
+      case 'Rogue':
+        setClassData('Rogue');
+        break;
+      case 'Shaman':
+        setClassData('Shaman');
+        break;
+      case 'Warlock':
+        setClassData('Warlock');
+        break;
+      case 'Warrior':
+        setClassData('Warrior');
+        break;
       default:
         break;
     }
   };
 
-  const requestData = [searchTypeData, regionData, factionData];
+  const requestData = [searchTypeData, regionData, classData, factionData];
 
   return (
-    <Container
-      className="d-flex flex-column flex-1"
-      style={{ marginTop: '120px' }}
+    <div
+      className="d-flex flex-column flex-1 container-fluid"
+      style={{ marginTop: '10px' }}
     >
       <Slider
-        slides={items}
+        slides={
+          searchTypeData === 'Character'
+            ? items.filter(
+                (item) => item.title !== 'Server' && item.title !== 'Faction'
+              )
+            : items.slice(0, 4)
+        }
         handleSelection={handleSelection}
         regionData={regionData}
         requestData={requestData}
       />
-    </Container>
+    </div>
   );
 };
 
@@ -108,12 +193,16 @@ Carousel.propTypes = {
   ride: PropTypes.oneOf(['carousel', false]),
   // the interval at which the carousel automatically cycles (default: 5000)
   // If set to false, carousel will not Autoplay (i.e. will not automatically cycle).
-  interval: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.bool,
-    false,
-  ]),
+  // ********************************************************************************************************
+  // ******************* modified in only bool because error in console  ***********************************
+  // ********************************************************************************************************
+  // interval: PropTypes.oneOfType([
+  //   PropTypes.number,
+  //   PropTypes.string,
+  //   PropTypes.bool,
+  //   false,
+  // ]),
+  interval: PropTypes.bool,
   children: PropTypes.array,
   // called when the mouse enters the Carousel
   mouseEnter: PropTypes.func,

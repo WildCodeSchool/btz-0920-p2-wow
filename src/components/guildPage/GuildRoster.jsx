@@ -1,6 +1,6 @@
 import { Table } from 'reactstrap';
 import propTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GuildRosterRow from './GuildRosterRow';
 import Pagin from '../cssPages&Components/Pagin';
 
@@ -8,20 +8,44 @@ const GuildRoster = (props) => {
   const { roster, region, realm } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(10);
+  const [rosterState, setRosterState] = useState([]);
+
+  useEffect(() => {
+    setRosterState(
+      roster.filter((elmt) => elmt.character.itemLevelEquipped < 200)
+    );
+  }, []);
 
   return (
-    <div className="d-flex flex-column align-items-center">
-      <Table className="d-flex flex-column" hover>
-        <thead>
-          <tr className="d-flex" hover style={{ fontSize: '24px' }}>
-            <th className="col-md-5">Player</th>
-            <th className="col-md-3">Spec</th>
-            <th className="col-md-2">Race</th>
-            <th className="col-md-2">I-Level</th>
+    <div className="d-flex flex-column align-items-center w-100">
+      <Table
+        className="d-flex flex-column collapse table-striped"
+        hover
+        borderless
+      >
+        <thead className="table-primary">
+          <tr className="d-flex" style={{ fontSize: '24px' }}>
+            <th className="col-md-6 col-5 d-flex text-center align-items-center">
+              Player
+            </th>
+            <th className="col-md-2 col-4 d-flex justify-content-center">
+              Spec
+            </th>
+            <th className="col-md-2 col-0 d-none d-md-flex justify-content-center">
+              Race
+            </th>
+            <th className="col-3 col-md-2 d-flex align-items-center justify-content-center">
+              iLvl
+            </th>
           </tr>
         </thead>
         <tbody>
-          {roster
+          {rosterState
+            .sort((a, b) => {
+              return (
+                b.character.itemLevelEquipped - a.character.itemLevelEquipped
+              );
+            })
             .filter(
               (elmt, index) =>
                 index >= (currentPage - 1) * playerPerPage &&
@@ -30,7 +54,6 @@ const GuildRoster = (props) => {
             .map((player) => (
               <GuildRosterRow
                 player={player}
-                s
                 key={player.character.name}
                 region={region}
                 realm={realm}
@@ -41,17 +64,22 @@ const GuildRoster = (props) => {
       <Pagin
         page={currentPage}
         playerPerPage={playerPerPage}
-        totalPlayers={roster.length}
+        totalPlayers={rosterState.length}
         updatePage={setCurrentPage}
       />
     </div>
   );
 };
 
+GuildRoster.defaultProps = {
+  roster: [],
+  region: '',
+  realm: '',
+};
+
 GuildRoster.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  roster: propTypes.array.isRequired,
-  region: propTypes.string.isRequired,
-  realm: propTypes.string.isRequired,
+  roster: propTypes.arrayOf(propTypes.object),
+  region: propTypes.string,
+  realm: propTypes.string,
 };
 export default GuildRoster;
