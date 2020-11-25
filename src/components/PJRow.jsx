@@ -21,7 +21,7 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
     history.push(`/player/${region}/${realm}/${name}/`);
   };
   return (
-    <tr className="row" onClick={rowLink}>
+    <tr className="row clickable" onClick={rowLink}>
       <td className="col-1 d-flex align-items-center justify-content-center">
         {rank}
       </td>

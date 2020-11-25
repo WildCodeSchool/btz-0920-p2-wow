@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 import {
   Button,
   UncontrolledCollapse,
-  // CardBody,
-  // Card,
   ButtonToolbar,
   ButtonGroup,
-  Input,
+  Table,
+  CustomInput,
 } from 'reactstrap';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import PropTypes from 'prop-types';
@@ -52,108 +51,118 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
   }, [faction, spec, realm, results]);
 
   return (
-    <div
-      className="d-flex flex-column w-100 col-12 wrap-nowrap"
-      style={{ height: '138px' }}
-    >
+    <div className="d-flex flex-column w-100 col-12 wrap-nowrap">
       <Button
         color="primary"
         id="toggler"
-        style={{ marginBottom: '1rem', height: '60px', width: '60px' }}
-        className="align-self-center p-0 rounded-circle"
+        style={{ marginBottom: '1rem', height: '50px', width: '50px' }}
+        className="align-self-center p-0"
       >
-        <BsThreeDotsVertical style={{ height: '50px', width: '50px' }} />
+        <BsThreeDotsVertical style={{ height: '30px', width: '30px' }} />
       </Button>
       <UncontrolledCollapse className="w-100" toggler="#toggler">
         {/* <Card> */}
-        <ButtonToolbar className="d-flex w-100">
-          <ButtonGroup className="flex-fill">
-            <h6 className="px-0 mb-0 col-5 d-flex align-items-center justify-content-center">
-              Factions :
-            </h6>
-            {/* <CardBody className="p-0 "> */}
-            <Button
-              onClick={() => setFaction('horde')}
-              color="secondary"
-              className="p-0 border-0 bg-transparent"
-              height="10px"
-            >
-              <FactionIcons faction="horde" />
-            </Button>
-            <Button
-              onClick={() => setFaction('alliance')}
-              color="secondary"
-              className="p-0 border-0 bg-transparent"
-              height="10px"
-            >
-              <FactionIcons faction="alliance" />
-            </Button>
-            <Button
-              onClick={() => setFaction('')}
-              color="secondary"
-              className="p-0 border-0 bg-transparent"
-              height="10px"
-            >
-              <FactionIcons faction="both" />
-            </Button>
-          </ButtonGroup>
-          {/* </CardBody> */}
-          <ButtonGroup className="flex-fill">
-            {/* <CardBody> */}
-            <h6 className="px-0 mb-0 col-4 d-flex align-items-center justify-content-center">
-              Class Specs :
-            </h6>
-            {classArray.specs.map((res) => {
-              const { name, image } = res;
-              return (
-                <Button
-                  className="py-0 px-1 border-0 bg-transparent"
-                  key={image}
-                  onClick={() =>
-                    setSpec(name.toLocaleLowerCase().replace(' ', '-'))
-                  }
-                >
-                  <img src={image} alt={name} title={name} height="50px" />
-                </Button>
-              );
-            })}
-            <Button
-              className="py-0 px-1 border-0 bg-transparent"
-              onClick={() => setSpec('')}
-            >
-              <img
-                src={resetIcon}
-                alt="reset button"
-                title="Reset Class Spec"
-              />
-            </Button>
-            {/* </CardBody> */}
-          </ButtonGroup>
-          <div className="flex-fill mx-3">
-            <h6 className="px-0 mb-0 col-4 d-flex align-items-center justify-content-center">
-              Realms :
-            </h6>
-            <Input
-              // className="col-8"
-              type="select"
-              name="select"
-              className="bg-secondary text-white"
-              style={{ maxHeight: '50px' }}
-              onClick={(e) => setRealm(e.target.value)}
-            >
-              <option value="">All Realms</option>
-              {currentRealmsArray.map((serv) => {
-                const { name, slug } = serv.character.realm;
-                return (
-                  <option key={slug} value={slug}>
-                    {name}
-                  </option>
-                );
-              })}
-            </Input>
-          </div>
-        </ButtonToolbar>
-        {/* </Card> */}
+        <Table borderless>
+          <thead>
+            <tr className="table-primary">
+              <th>Factions</th>
+              <th>Specs</th>
+              <th>Realms</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="table-secondary">
+              <td>
+                <ButtonGroup className="d-flex flex-column flex-md-row flex-fill">
+                  <Button
+                    onClick={() => setFaction('horde')}
+                    color="secondary"
+                    className="p-0 border-0 bg-transparent"
+                    height="10px"
+                  >
+                    <FactionIcons faction="horde" />
+                  </Button>
+                  <Button
+                    onClick={() => setFaction('alliance')}
+                    color="secondary"
+                    className="p-0 m-1 border-0 bg-transparent"
+                    height="10px"
+                  >
+                    <FactionIcons faction="alliance" />
+                  </Button>
+                  <Button
+                    onClick={() => setFaction('')}
+                    color="secondary"
+                    className="p-0 border-0 bg-transparent"
+                    height="10px"
+                  >
+                    <FactionIcons faction="both" />
+                  </Button>
+                </ButtonGroup>
+              </td>
+              <td>
+                <ButtonGroup className="d-flex flex-column flex-md-row flex-fill">
+                  {classArray.specs.map((res) => {
+                    const { name, image } = res;
+                    return (
+                      <Button
+                        className="py-0 m-1 px-1 border-0 bg-transparent"
+                        key={image}
+                        onClick={() =>
+                          setSpec(name.toLocaleLowerCase().replace(' ', '-'))
+                        }
+                      >
+                        <img
+                          src={image}
+                          alt={name}
+                          title={name}
+                          height="40px"
+                        />
+                      </Button>
+                    );
+                  })}
+                  <Button
+                    className="py-0 px-1 border-0 bg-transparent"
+                    onClick={() => setSpec('')}
+                  >
+                    <img
+                      src={resetIcon}
+                      alt="reset button"
+                      title="Reset Class Spec"
+                      height="40px"
+                    />
+                  </Button>
+                </ButtonGroup>
+              </td>
+              <td>
+                <ButtonToolbar className="d-flex flex-column flex-md-row flex-fill">
+                  <div className="flex-fill mx-3">
+                    <CustomInput
+                      id="realmCustomSelect"
+                      type="select"
+                      name="select"
+                      className="text-white bg-secondary"
+                      style={{
+                        maxHeight: '50px',
+                      }}
+                      onClick={(e) => setRealm(e.target.value)}
+                    >
+                      <option value="">All Realms</option>
+                      {currentRealmsArray.map((serv) => {
+                        const { name, slug } = serv.character.realm;
+                        return (
+                          <option key={slug} value={slug}>
+                            {name}
+                          </option>
+                        );
+                      })}
+                    </CustomInput>
+                  </div>
+                </ButtonToolbar>
+              </td>
+            </tr>
+          </tbody>
+        </Table>
       </UncontrolledCollapse>
     </div>
   );
@@ -163,6 +172,27 @@ ToolsFilters.propTypes = {
   results: PropTypes.arrayOf(PropTypes.object).isRequired,
   setCurrentPage: PropTypes.func.isRequired,
   setFilterRes: PropTypes.func.isRequired,
+};
+CustomInput.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  type: PropTypes.string.isRequired, // radio, checkbox, select, range, switch, file.
+  label: PropTypes.string, // used for checkbox and radios
+  inline: PropTypes.bool,
+  valid: PropTypes.bool, // applied the is-valid class when true, does nothing when false
+  invalid: PropTypes.bool, // applied the is-invalid class when true, does nothing when false
+  bsSize: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.array,
+    PropTypes.func,
+  ]), // for type="select"
+  // innerRef would be referenced to select node or input DOM node, depends on type property
+  innerRef: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.func,
+  ]),
 };
 
 export default ToolsFilters;

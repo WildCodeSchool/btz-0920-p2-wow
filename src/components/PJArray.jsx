@@ -74,7 +74,7 @@ const PJArray = () => {
             <Hr />
           </div>
           <Container fluid className="d-flex flex-column align-items-center">
-            <Row className="w-75">
+            <Row>
               <div className="col-12 d-flex justify-content-start p-0 m-2">
                 <ToolsFilters
                   results={results}
