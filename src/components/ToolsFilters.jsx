@@ -145,12 +145,15 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
                       style={{
                         maxHeight: '50px',
                       }}
+                      onClick={(e) => setRealm(e.target.value)}
                     >
-                      <option onClick={() => setRealm('')}>All</option>
+                      <option value="">All Realms</option>
                       {currentRealmsArray.map((serv) => {
                         const { name, slug } = serv.character.realm;
                         return (
-                          <option onClick={() => setRealm(slug)}>{name}</option>
+                          <option key={slug} value={slug}>
+                            {name}
+                          </option>
                         );
                       })}
                     </CustomInput>

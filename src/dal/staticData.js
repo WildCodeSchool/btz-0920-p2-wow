@@ -203,9 +203,9 @@ export const classesAndSpecs = [
       {
         id: 12,
         name: 'Arcane',
-        slug: 'arcade',
+        slug: 'arcane',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_mage_arcade.png',
+          'https://cdnassets.raider.io/images/classes/spec_mage_arcane.png',
       },
       {
         id: 13,
@@ -263,7 +263,7 @@ export const classesAndSpecs = [
         name: 'Holy',
         slug: 'holy',
         image:
-          'https://cdnassets.raider.io/images/classes/spec_paladin_blood.png',
+          'https://cdnassets.raider.io/images/classes/spec_paladin_holy.png',
       },
       {
         id: 19,
