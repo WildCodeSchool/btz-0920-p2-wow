@@ -1,10 +1,10 @@
-import Container from 'reactstrap';
-
 function NoResults() {
   return (
-    <Container className="d-flex align-content-center">
-      <p className="text-center">No Results</p>
-    </Container>
+    <tr className="d-flex align-content-center noResult justify-content-center">
+      <td className="text-center">
+        <h2>No Result</h2>
+      </td>
+    </tr>
   );
 }
 

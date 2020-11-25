@@ -8,6 +8,7 @@ import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
 import ToolsFilters from './ToolsFilters';
 import Error from './Error';
+import NoResults from './NoResults';
 
 import Hr from './cssPages&Components/Hr';
 import LoadingSpinner from './LoadingSpinner';
@@ -92,26 +93,30 @@ const PJArray = () => {
                 borderless
               >
                 <tbody>
-                  {filterRes
-                    .filter(
-                      (_, index) =>
-                        index >= (currentPage - 1) * playerPerPage &&
-                        index < currentPage * playerPerPage
-                    )
-                    .map((result) => {
-                      return (
-                        <PJRow
-                          name={result.character.name}
-                          pjClass={result.character.class.name}
-                          faction={result.character.faction}
-                          rank={result.rank}
-                          spec={result.character.spec.name}
-                          realm={result.character.realm.name}
-                          region={regionName}
-                          key={result.rank}
-                        />
-                      );
-                    })}
+                  {filterRes.length === 0 ? (
+                    <NoResults />
+                  ) : (
+                    filterRes
+                      .filter(
+                        (_, index) =>
+                          index >= (currentPage - 1) * playerPerPage &&
+                          index < currentPage * playerPerPage
+                      )
+                      .map((result) => {
+                        return (
+                          <PJRow
+                            name={result.character.name}
+                            pjClass={result.character.class.name}
+                            faction={result.character.faction}
+                            rank={result.rank}
+                            spec={result.character.spec.name}
+                            realm={result.character.realm.name}
+                            region={regionName}
+                            key={result.rank}
+                          />
+                        );
+                      })
+                  )}
                 </tbody>
               </Table>
             </Row>
