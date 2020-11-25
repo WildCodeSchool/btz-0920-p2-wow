@@ -12,7 +12,7 @@ const Error = ({ msg }) => {
       <p className="mb-0">
         Try reloading the page or call the debugger by clicking on the button
       </p>
-      <Button tag={Link} to="/debugger" className="pt-2">
+      <Button tag={Link} to="/debugger" className="mt-2 text-decoration-none">
         Leeeroyyyy Jenkins
       </Button>
     </Alert>
