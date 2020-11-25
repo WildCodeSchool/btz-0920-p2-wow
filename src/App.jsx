@@ -40,7 +40,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="App d-flex flex-column container-fluid">
+    <div className="killPadding App d-flex flex-column container-fluid">
       <NavBar />
       <AnimatePresence exitBeforeEnter>
         {routes.map(({ path, Component }) => (
