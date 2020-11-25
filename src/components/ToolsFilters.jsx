@@ -139,12 +139,13 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
               name="select"
               className="bg-secondary text-white"
               style={{ maxHeight: '50px' }}
+              onClick={(e) => setRealm(e.target.value)}
             >
-              <option onClick={() => setRealm('')}>All Realms</option>
+              <option value="">All Realms</option>
               {currentRealmsArray.map((serv) => {
                 const { name, slug } = serv.character.realm;
                 return (
-                  <option key={slug} onClick={() => setRealm(slug)}>
+                  <option key={slug} value={slug}>
                     {name}
                   </option>
                 );
