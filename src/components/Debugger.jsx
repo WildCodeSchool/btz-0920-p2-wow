@@ -13,12 +13,13 @@ function Debugger() {
   const thumbnail =
     '//render-eu.worldofwarcraft.com/character/hyjal/11/163290891-avatar.jpg?alt=wow/static/images/2d/avatar/29-1.jpg';
   const faction = 'alliance';
-  const specName = 'Subtlety';
+  const specName =
+    'Subtlety, React, JavaScript, NVidia-lover, Button Designer...';
   const specRole =
     'https://external-preview.redd.it/S38BJlfOcffd02QmOfbhABLi-J9C_FsRDkPcf66F_d4.png?auto=webp&s=8422980d40b8218136652c9ecbc53aa94b38128c';
-  const guild = 'Augure';
-  const itemLevel = 129;
-  const mythicScore = 217.9;
+  const guild = 'Apple (traitor...^^)';
+  const itemLevel = '...Out of Range';
+  const mythicScore = 'NaN (a number is not enough...)';
   const displaysClass = DalApi.getClassesAndSpecsByName('Rogue').image;
 
   return (
