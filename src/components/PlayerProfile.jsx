@@ -119,7 +119,7 @@ const PlayerProfile = () => {
   return (
     <Container
       fluid
-      className={faction === 'alliance' ? 'w100 bgAlliance' : 'w100 bgHorde'}
+      className={`w-100 ${faction === 'alliance' ? 'bgAlliance' : 'bgHorde'}`}
       style={{ marginTop: '100px' }}
     >
       {loading ? (
