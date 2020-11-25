@@ -9,7 +9,7 @@ const GuildLeaderboardRow = ({ realm, region, name }) => {
 
   // link to guild page
   const rowLink = () => {
-    history.push(`/guild/${region}/${realm}/${name}/`);
+    history.push(`/Guild/${region}/${realm}/${name}/`);
   };
   return (
     <tr className="d-flex justify-content-between clickable" onClick={rowLink}>

@@ -69,14 +69,14 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
         requestData[3] !== 'Faction'
       ) {
         history.push(
-          `/GuildsArray/${requestData[1]}/${server}/${requestData[3]}`
+          `/TopGuilds/${requestData[1]}/${server}/${requestData[3]}`
         );
       } else if (
         requestData[0] === 'Character' &&
         requestData[1] !== 'Region' &&
         requestData[2] !== 'Class'
       ) {
-        history.push(`/PJArray/${requestData[1]}/${requestData[2]}`);
+        history.push(`/TopPlayers/${requestData[1]}/${requestData[2]}`);
       }
       return false;
     };

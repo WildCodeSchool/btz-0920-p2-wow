@@ -24,7 +24,7 @@ const GuildRosterRow = (props) => {
 
   // link to player page
   const rowLink = () => {
-    history.push(`/player/${region}/${realm}/${name}/`);
+    history.push(`/Player/${region}/${realm}/${name}/`);
   };
 
   const classe = DalApi.getClassesAndSpecsBySlug(slug);

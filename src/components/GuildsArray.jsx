@@ -69,7 +69,7 @@ const GuildsArray = () => {
           <div style={{ height: '100px', minWidth: '99vw' }} />
           <div className="m-5">
             <h2 className="h1">
-              Top {serverSlug} {realmName} realm {params.faction} Guilds
+              Top {serverSlug} {realmName} {params.faction} Guilds
             </h2>
             <Hr />
           </div>

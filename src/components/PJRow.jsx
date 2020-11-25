@@ -18,7 +18,7 @@ function PJRow({ name, pjClass, faction, rank, spec, realm, region }) {
 
   // link to player page
   const rowLink = () => {
-    history.push(`/player/${region}/${realm}/${name}/`);
+    history.push(`/Player/${region}/${realm}/${name}/`);
   };
   return (
     <tr className="row clickable" onClick={rowLink}>
