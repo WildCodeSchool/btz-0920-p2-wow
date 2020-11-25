@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import {
   Button,
   UncontrolledCollapse,
-  // CardBody,
-  // Card,
   ButtonToolbar,
   ButtonGroup,
   Table,
@@ -140,6 +138,7 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
                 <ButtonToolbar className="d-flex flex-column flex-md-row flex-fill">
                   <div className="flex-fill mx-3">
                     <CustomInput
+                      id="realmCustomSelect"
                       type="select"
                       name="select"
                       className="text-white bg-secondary"
@@ -170,6 +169,27 @@ ToolsFilters.propTypes = {
   results: PropTypes.arrayOf(PropTypes.object).isRequired,
   setCurrentPage: PropTypes.func.isRequired,
   setFilterRes: PropTypes.func.isRequired,
+};
+CustomInput.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  type: PropTypes.string.isRequired, // radio, checkbox, select, range, switch, file.
+  label: PropTypes.string, // used for checkbox and radios
+  inline: PropTypes.bool,
+  valid: PropTypes.bool, // applied the is-valid class when true, does nothing when false
+  invalid: PropTypes.bool, // applied the is-invalid class when true, does nothing when false
+  bsSize: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.array,
+    PropTypes.func,
+  ]), // for type="select"
+  // innerRef would be referenced to select node or input DOM node, depends on type property
+  innerRef: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.string,
+    PropTypes.func,
+  ]),
 };
 
 export default ToolsFilters;
