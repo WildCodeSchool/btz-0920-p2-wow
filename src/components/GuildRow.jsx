@@ -7,7 +7,7 @@ function GuildRow({ name, faction, rank, realm, slug }) {
 
   // link to guild page
   const rowLink = () => {
-    history.push(`/guild/${slug}/${realm}/${name}/`);
+    history.push(`/Guild/${slug}/${realm}/${name}/`);
   };
   return (
     <tr className="row clickable" onClick={rowLink}>

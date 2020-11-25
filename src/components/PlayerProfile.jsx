@@ -32,7 +32,7 @@ const PlayerProfile = () => {
 
   // link to player page
   const guildLink = () => {
-    history.push(`/guild/${playerRegion}/${realm}/${guild}/`);
+    history.push(`/Guild/${playerRegion}/${realm}/${guild}/`);
   };
   useEffect(() => {
     const getDatas = async () => {

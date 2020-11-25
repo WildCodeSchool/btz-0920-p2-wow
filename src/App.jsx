@@ -14,23 +14,23 @@ import './App.css';
 const routes = [
   { path: '/', name: 'Leaderboards', Component: Leaderboards },
   {
-    path: '/player/:region/:realm/:name',
+    path: '/Player/:region/:realm/:name',
     name: 'PlayerProfile',
     Component: PlayerProfile,
   },
   {
-    path: '/guild/:region/:realm/:name',
+    path: '/Guild/:region/:realm/:name',
     name: 'GuildPage',
     Component: GuildPage,
   },
   {
-    path: '/GuildsArray/:region/:realm/:faction',
+    path: '/TopGuilds/:region/:realm/:faction',
     name: 'GuildsArray',
     Component: GuildsArray,
   },
-  { path: '/search', name: 'SearchPage', Component: SearchPage },
+  { path: '/Search', name: 'SearchPage', Component: SearchPage },
   {
-    path: '/PJArray/:region/:class',
+    path: '/TopPlayers/:region/:class',
     name: 'PJArray',
     Component: PJArray,
   },
