@@ -145,7 +145,7 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
                       style={{
                         maxHeight: '50px',
                       }}
-                      onClick={(e) => setRealm(e.target.value)}
+                      onChange={(e) => setRealm(e.target.value)}
                     >
                       <option value="">All Realms</option>
                       {currentRealmsArray.map((serv) => {
