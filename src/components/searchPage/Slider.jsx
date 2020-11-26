@@ -86,7 +86,6 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   const customStyles = {
     option: () => ({
       fontSize: 18,
-      borderBottom: '1px solid #495057',
       color: '#495057',
       padding: 15,
       cursor: 'pointer',
@@ -141,10 +140,12 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
                 className="react-select-container"
                 classNamePrefix="react-select"
                 styles={customStyles}
-                options={region.map((realm) => ({
-                  label: realm.name,
-                  value: realm.name,
-                }))}
+                options={region
+                  .sort((a, b) => (a.name > b.name ? 1 : -1))
+                  .map((realm) => ({
+                    label: realm.name,
+                    value: realm.name,
+                  }))}
               />
             </div>
           ) : (
