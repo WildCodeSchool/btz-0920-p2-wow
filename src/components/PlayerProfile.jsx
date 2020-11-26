@@ -18,6 +18,7 @@ const PlayerProfile = () => {
   const [playerName, setPlayerName] = useState('');
   const [thumbnail, setThumbnail] = useState('');
   const [charClass, setCharClass] = useState('');
+  const [faction, setFaction] = useState('');
   const [specName, setSpecName] = useState('');
   const [specRole, setSpecRole] = useState('');
   const [guild, setGuild] = useState('');
@@ -41,6 +42,7 @@ const PlayerProfile = () => {
 
         setPlayerRegion(player.data.region);
         setPlayerRealm(player.data.realm);
+        setFaction(player.data.faction);
         setPlayerName(player.data.name);
         setThumbnail(player.data.thumbnail_url);
         setCharClass(player.data.class);
@@ -115,7 +117,11 @@ const PlayerProfile = () => {
   if (error) return <Error msg={error.response.data.statusText} />;
 
   return (
-    <Container fluid className="w100" style={{ marginTop: '100px' }}>
+    <Container
+      fluid
+      className={`w-100 ${faction === 'alliance' ? 'bgAlliance' : 'bgHorde'}`}
+      style={{ marginTop: '100px' }}
+    >
       {loading ? (
         <LoadingSpinner />
       ) : (
@@ -142,10 +148,14 @@ const PlayerProfile = () => {
                 </Col>
               </Row>
               <Row>
-                <Col xs="12" md="4" className="d-flex align-items-start my-2">
+                <Col xs="12" md="3" className="d-flex align-items-start my-2">
                   <Flag slug={playerRegion} />
                 </Col>
-                <Col xs="12" md="8" className="d-flex align-items-start">
+                <Col
+                  xs="12"
+                  md="9"
+                  className="d-flex flex-column align-items-start justify-content-center"
+                >
                   <h3>{playerRealm}</h3>
                 </Col>
               </Row>
@@ -156,7 +166,7 @@ const PlayerProfile = () => {
             <Col xs="12" md="8">
               <Table className="table table-striped" opacity="0.5" borderless>
                 <thead>
-                  <tr className="table-primary d-flex align-items-center">
+                  <tr className="d-flex align-items-center test">
                     <th className="flex-1 d-flex justify-content-start align-items-center">
                       <img
                         src={displaysClass(charClass)}

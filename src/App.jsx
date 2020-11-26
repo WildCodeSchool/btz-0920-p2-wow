@@ -10,6 +10,7 @@ import SearchPage from './components/searchPage/SearchPage';
 import PJArray from './components/PJArray';
 
 import './App.css';
+import Debugger from './components/Debugger';
 
 const routes = [
   { path: '/', name: 'Leaderboards', Component: Leaderboards },
@@ -17,6 +18,11 @@ const routes = [
     path: '/Player/:region/:realm/:name',
     name: 'PlayerProfile',
     Component: PlayerProfile,
+  },
+  {
+    path: '/debugger',
+    name: 'Debugger',
+    Component: Debugger,
   },
   {
     path: '/Guild/:region/:realm/:name',
@@ -40,7 +46,7 @@ function App() {
   const location = useLocation();
 
   return (
-    <div className="App d-flex flex-column container-fluid">
+    <div className="killPadding App d-flex flex-column container-fluid">
       <NavBar />
       <AnimatePresence exitBeforeEnter>
         {routes.map(({ path, Component }) => (
