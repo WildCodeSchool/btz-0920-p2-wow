@@ -89,6 +89,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
       // borderBottom: '1px solid #495057',
       color: '#495057',
       padding: 15,
+      cursor: 'pointer',
     }),
   };
 
@@ -118,46 +119,22 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
         >
           {/* Slide Server Select Input */}
           {title === 'Server' ? (
-            <FormGroup>
+            <FormGroup style={{ width: '50vw' }}>
               <Select
                 className="react-select-container"
                 classNamePrefix="react-select"
                 styles={customStyles}
-                onChange={(selectedOption) => {
-                  setServer(selectedOption.label);
-                  next();
-                }}
-                value={server}
                 options={region
                   .sort((a, b) => (a.name > b.name ? 1 : -1))
                   .map((realm) => ({
                     label: realm.name,
                     value: realm.slug,
                   }))}
-              />
-              {/* <CustomInput
-                onChange={(e) => {
-                  setServer(e.target.value);
+                onChange={(selectedOption) => {
+                  setServer(selectedOption.label);
                   next();
                 }}
-                type="select"
-                className="custom-select custom-select-lg serverSelect"
-                name="server"
-                id="serverSelect"
-              >
-                console.log(server)
-                {region.map((realm) => {
-                  return (
-                    <option
-                      key={realm.slug}
-                      value={realm.name}
-                      className="text-dark"
-                    >
-                      {realm.name}
-                    </option>
-                  );
-                })}
-              </CustomInput> */}
+              />
             </FormGroup>
           ) : (
             // Slide Cards
