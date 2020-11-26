@@ -52,3 +52,7 @@
 .react-select__control {
   color: var(--sec-color);
 }
+
+.react-select__input {
+  font-size: 18px;
+}

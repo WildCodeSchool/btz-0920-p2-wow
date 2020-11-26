@@ -5,8 +5,6 @@ import {
   CarouselIndicators,
   CarouselItem,
   Container,
-  FormGroup,
-  CustomInput,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
@@ -84,12 +82,30 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     dataCheck();
   }, [next]);
 
+  // React-select options
   const customStyles = {
     option: () => ({
+      fontSize: 18,
       borderBottom: '1px solid #495057',
       color: '#495057',
       padding: 15,
     }),
+    control: (base) => ({
+      ...base,
+      height: 100,
+      minHeight: 100,
+      fontSize: 18,
+    }),
+    placeholder: () => ({
+      fontSize: 18,
+    }),
+    input: () => ({
+      fontSize: 24,
+    }),
+  };
+  const handleChange = (e) => {
+    setServer(e.value);
+    next();
   };
 
   const items = (requestData[0] !== 'Character'
@@ -118,40 +134,18 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
         >
           {/* Slide Server Select Input */}
           {title === 'Server' ? (
-            <FormGroup>
+            <div className="w-75" style={{ zIndex: '500' }}>
               <Select
+                onChange={handleChange}
                 className="react-select-container"
                 classNamePrefix="react-select"
                 styles={customStyles}
                 options={region.map((realm) => ({
                   label: realm.name,
-                  value: realm.slug,
+                  value: realm.name,
                 }))}
               />
-              <CustomInput
-                onChange={(e) => {
-                  setServer(e.target.value);
-                  next();
-                }}
-                type="select"
-                className="custom-select custom-select-lg serverSelect"
-                name="server"
-                id="serverSelect"
-              >
-                console.log(server)
-                {region.map((realm) => {
-                  return (
-                    <option
-                      key={realm.slug}
-                      value={realm.name}
-                      className="text-dark"
-                    >
-                      {realm.name}
-                    </option>
-                  );
-                })}
-              </CustomInput>
-            </FormGroup>
+            </div>
           ) : (
             // Slide Cards
             cardNames.map(([label, img]) => {
