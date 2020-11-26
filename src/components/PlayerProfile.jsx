@@ -148,13 +148,13 @@ const PlayerProfile = () => {
                 </Col>
               </Row>
               <Row>
-                <Col xs="12" md="4" className="d-flex align-items-start my-2">
+                <Col xs="12" md="3" className="d-flex align-items-start">
                   <Flag slug={playerRegion} />
                 </Col>
                 <Col
                   xs="12"
-                  md="8"
-                  className="d-flex flex-column align-items-start justify-content-center"
+                  md="9"
+                  className="d-flex align-items-start text-left"
                 >
                   <h3>{playerRealm}</h3>
                 </Col>
