@@ -88,14 +88,14 @@
 
 .bgAlliance {
   background: left / contain no-repeat url('../src/img/alliance.png');
-  background-position-x: -267px;
+  background-position-x: -274px;
   background-position-y: center;
   /* padding: 0 !important; */
 }
 
 .bgHorde {
   background: left / contain no-repeat url('../src/img/horde.png');
-  background-position-x: -273px;
+  background-position-x: -282px;
   background-position-y: center;
   /* padding: 0 !important; */
 }
