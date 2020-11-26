@@ -9,8 +9,9 @@ import LoadingSpinner from '../LoadingSpinner';
 import GuildRoster from './GuildRoster';
 import Error from '../Error';
 import Flag from '../flags/Flag';
-import FactionIcons from '../flags/FactionIcons';
+// import FactionIcons from '../flags/FactionIcons';
 import { enterBottom } from '../animations';
+import Faction from '../flags/Faction';
 
 const GuildPage = () => {
   const params = useParams();
@@ -92,7 +93,12 @@ const GuildPage = () => {
             </Row>
             <Row className="align-items-center d-flex  flex-sm-row justify-content-center">
               <Col xs={4}>
-                <Flag slug={flagTag} alt={guild.region.name} />
+                <Flag
+                  slug={flagTag}
+                  alt={guild.region.name}
+                  height="80px"
+                  width="120px"
+                />
               </Col>
               <Col
                 xs={4}
@@ -101,7 +107,7 @@ const GuildPage = () => {
                 {guild.realm.name}
               </Col>
               <Col xs={4}>
-                <FactionIcons faction={faction} />
+                <Faction faction={faction} />
               </Col>
             </Row>
           </Container>
