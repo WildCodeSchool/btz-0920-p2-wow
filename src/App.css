@@ -49,6 +49,10 @@
   .leaderboard-container {
     flex-wrap: wrap;
   }
+  .small-logo {
+    height: 60px;
+    width: 80px;
+  }
 }
 
 .page-enter {
