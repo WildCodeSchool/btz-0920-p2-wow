@@ -5,11 +5,12 @@ import {
   CarouselIndicators,
   CarouselItem,
   Container,
-  Input,
   FormGroup,
+  CustomInput,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import Select from 'react-select';
 
 import { eu, us, tw, kr } from '../../dal/realms.json';
 import WildCard from './WildCard';
@@ -83,6 +84,14 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     dataCheck();
   }, [next]);
 
+  const customStyles = {
+    option: () => ({
+      borderBottom: '1px solid #495057',
+      color: '#495057',
+      padding: 15,
+    }),
+  };
+
   const items = (requestData[0] !== 'Character'
     ? slides.slice(0, 4)
     : slides
@@ -110,7 +119,16 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
           {/* Slide Server Select Input */}
           {title === 'Server' ? (
             <FormGroup>
-              <Input
+              <Select
+                className="react-select-container"
+                classNamePrefix="react-select"
+                styles={customStyles}
+                options={region.map((realm) => ({
+                  label: realm.name,
+                  value: realm.slug,
+                }))}
+              />
+              <CustomInput
                 onChange={(e) => {
                   setServer(e.target.value);
                   next();
@@ -132,7 +150,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
                     </option>
                   );
                 })}
-              </Input>
+              </CustomInput>
             </FormGroup>
           ) : (
             // Slide Cards

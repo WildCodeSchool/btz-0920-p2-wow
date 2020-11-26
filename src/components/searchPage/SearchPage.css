@@ -48,3 +48,7 @@
   width: 50vw;
   height: 100px;
 }
+
+.react-select__control {
+  color: var(--sec-color);
+}
