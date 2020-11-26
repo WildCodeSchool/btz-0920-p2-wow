@@ -7,6 +7,7 @@ import {
   raidDifficulty,
   raids,
   seasons,
+  basile,
 } from './staticData';
 
 // const TIPS_BASILE = 'https://cors-proxy.htmldriven.com/?url=';
@@ -106,6 +107,10 @@ class DalApi {
       DalApi.createReqParamRegion(slug, false)
     );
     return DalApi.axiosRequest(request);
+  }
+
+  static getBasile() {
+    return basile;
   }
 
   /**

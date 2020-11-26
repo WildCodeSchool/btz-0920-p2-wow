@@ -8,6 +8,7 @@ import GuildRow from './GuildRow';
 import DalApi from '../dal/DalApi';
 import Pagin from './cssPages&Components/Pagin';
 import Error from './Error';
+import NoResults from './NoResults';
 import { enterBottom } from './animations';
 
 import Hr from './cssPages&Components/Hr';
@@ -86,25 +87,29 @@ const GuildsArray = () => {
                 borderless
               >
                 <tbody>
-                  {results
-                    .filter(
-                      (_, index) =>
-                        index >= (currentPage - 1) * playerPerPage &&
-                        index < currentPage * playerPerPage
-                    )
-                    .map((result) => {
-                      return (
-                        <GuildRow
-                          name={result.guild.name}
-                          faction={result.guild.faction}
-                          slug={result.guild.region.slug}
-                          rank={result.rank}
-                          region={result.guild.region.name}
-                          realm={result.guild.realm.name}
-                          key={result.rank}
-                        />
-                      );
-                    })}
+                  {results.length === 0 ? (
+                    <NoResults />
+                  ) : (
+                    results
+                      .filter(
+                        (_, index) =>
+                          index >= (currentPage - 1) * playerPerPage &&
+                          index < currentPage * playerPerPage
+                      )
+                      .map((result) => {
+                        return (
+                          <GuildRow
+                            name={result.guild.name}
+                            faction={result.guild.faction}
+                            slug={result.guild.region.slug}
+                            rank={result.rank}
+                            region={result.guild.region.name}
+                            realm={result.guild.realm.name}
+                            key={result.rank}
+                          />
+                        );
+                      })
+                  )}
                 </tbody>
               </Table>
             </Row>

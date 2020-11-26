@@ -89,6 +89,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
       borderBottom: '1px solid #495057',
       color: '#495057',
       padding: 15,
+      cursor: 'pointer',
     }),
     control: (base) => ({
       ...base,
