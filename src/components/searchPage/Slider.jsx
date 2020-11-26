@@ -6,7 +6,7 @@ import {
   CarouselItem,
   Container,
   FormGroup,
-  CustomInput,
+  // CustomInput,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
@@ -123,6 +123,11 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
                 className="react-select-container"
                 classNamePrefix="react-select"
                 styles={customStyles}
+                onChange={(selectedOption) => {
+                  setServer(selectedOption.label);
+                  next();
+                }}
+                value={server}
                 options={region
                   .sort((a, b) => (a.name > b.name ? 1 : -1))
                   .map((realm) => ({
@@ -130,7 +135,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
                     value: realm.slug,
                   }))}
               />
-              <CustomInput
+              {/* <CustomInput
                 onChange={(e) => {
                   setServer(e.target.value);
                   next();
@@ -152,7 +157,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
                     </option>
                   );
                 })}
-              </CustomInput>
+              </CustomInput> */}
             </FormGroup>
           ) : (
             // Slide Cards
