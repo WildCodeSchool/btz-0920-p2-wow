@@ -3,7 +3,7 @@
   --main-bg-color: #2b3e50;
   --sec-color: #4e5d6c;
   --sec-color-light: #808b96;
-  color: white;
+  /* color: white; */
 }
 
 .App {
@@ -49,6 +49,10 @@
   .leaderboard-container {
     flex-wrap: wrap;
   }
+  .small-logo {
+    height: 60px;
+    width: 80px;
+  }
 }
 
 .page-enter {
@@ -87,16 +91,18 @@
 }
 
 .bgAlliance {
-  background: left / contain no-repeat url('../src/img/alliance.png');
-  background-position-x: -267px;
+  background: left no-repeat url('../src/img/alliance.png');
+  background-position-x: -272px;
   background-position-y: center;
+  background-size: auto 75%;
   /* padding: 0 !important; */
 }
 
 .bgHorde {
-  background: left / contain no-repeat url('../src/img/horde.png');
-  background-position-x: -273px;
+  background: left no-repeat url('../src/img/horde.png');
+  background-position-x: -282px;
   background-position-y: center;
+  background-size: auto 75%;
   /* padding: 0 !important; */
 }
 
@@ -110,14 +116,14 @@
   }
 
   .bgAlliance {
-    background: bottom / contain no-repeat url('../src/img/alliance.png');
+    background: center / contain no-repeat url('../src/img/alliance.png');
+    background-size: auto 50%;
     /* padding: 0 !important; */
   }
 
   .bgHorde {
-    background: bottom / contain no-repeat url('../src/img/horde.png');
-    /* padding: 0 !important; */
-    /* background-position-y: 85px; */
+    background: center / contain no-repeat url('../src/img/horde.png');
+    background-size: auto 50%;
   }
   /* essai couleur th avec transparence */
   .test {

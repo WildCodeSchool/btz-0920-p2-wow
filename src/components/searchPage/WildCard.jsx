@@ -2,12 +2,16 @@ import PropTypes from 'prop-types';
 
 import './SearchPage.css';
 
+// START COMPONENT
 const WildCard = ({ title, image, height, width, handleClick, next }) => {
   const wildCardStyle = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.15)),url(${image})`,
     height: `${height}`,
     width: `${width}`,
+    color: 'white',
   };
+
+  // RETURN COMPONENT
   return (
     <button
       onClick={(e) => {
@@ -24,8 +28,10 @@ const WildCard = ({ title, image, height, width, handleClick, next }) => {
   );
 };
 
+// EXPORT COMPONENT
 export default WildCard;
 
+// PROPTYPES
 WildCard.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,

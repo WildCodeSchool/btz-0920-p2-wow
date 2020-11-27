@@ -4,7 +4,7 @@ import { GiWorld } from 'react-icons/gi';
 
 import { usa, europe, korea, taiwan, china } from '../../img';
 
-function Flag({ slug, alt }) {
+function Flag({ slug, alt, height, width }) {
   const [isNull, setIsNull] = useState(false);
 
   // eslint-disable-next-line consistent-return
@@ -27,16 +27,27 @@ function Flag({ slug, alt }) {
   };
   if (isNull) return <GiWorld />;
 
-  return <img src={selectFlag()} alt={alt} height="30px" width="50px" />;
+  return (
+    <img
+      src={selectFlag()}
+      alt={alt}
+      height={height || '30px'}
+      width={width || '50px'}
+    />
+  );
 }
 
 Flag.defaultProps = {
   alt: '',
+  height: '30px',
+  width: '50px',
 };
 
 Flag.propTypes = {
   slug: PropTypes.string.isRequired,
   alt: PropTypes.string,
+  height: PropTypes.string,
+  width: PropTypes.string,
 };
 
 export default Flag;

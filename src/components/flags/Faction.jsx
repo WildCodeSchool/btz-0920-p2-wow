@@ -22,7 +22,9 @@ const Faction = ({ faction }) => {
 
   if (isNull) return <GiWorld />;
 
-  return <img src={selectFaction()} alt={faction} />;
+  return (
+    <img src={selectFaction()} alt={faction} style={{ height: '100px' }} />
+  );
 };
 
 Faction.propTypes = {

@@ -5,17 +5,17 @@ import {
   CarouselIndicators,
   CarouselItem,
   Container,
-  Input,
-  FormGroup,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import Select from 'react-select';
 
 import { eu, us, tw, kr } from '../../dal/realms.json';
 import WildCard from './WildCard';
 
 import './SearchPage.css';
 
+// COMPONENT START
 const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -39,6 +39,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     setActiveIndex(newIndex);
   };
 
+  // Setting regions
   useEffect(() => {
     switch (regionData.toLowerCase()) {
       case 'eu':
@@ -58,6 +59,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     }
   }, [regionData]);
 
+  // Settings cards to generate
   const history = useHistory();
   useEffect(() => {
     const dataCheck = () => {
@@ -83,6 +85,33 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     dataCheck();
   }, [next]);
 
+  // React-select options
+  const customStyles = {
+    option: () => ({
+      fontSize: 18,
+      color: '#495057',
+      padding: 15,
+      cursor: 'pointer',
+    }),
+    control: (base) => ({
+      ...base,
+      height: 100,
+      minHeight: 100,
+      fontSize: 18,
+    }),
+    placeholder: () => ({
+      fontSize: 18,
+    }),
+    input: () => ({
+      fontSize: 24,
+    }),
+  };
+  const handleChange = (e) => {
+    setServer(e.value);
+    next();
+  };
+
+  // Generetings carousel slides
   const items = (requestData[0] !== 'Character'
     ? slides.slice(0, 4)
     : slides
@@ -109,31 +138,20 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
         >
           {/* Slide Server Select Input */}
           {title === 'Server' ? (
-            <FormGroup>
-              <Input
-                onChange={(e) => {
-                  setServer(e.target.value);
-                  next();
-                }}
-                type="select"
-                className="custom-select custom-select-lg serverSelect"
-                name="server"
-                id="serverSelect"
-              >
-                console.log(server)
-                {region.map((realm) => {
-                  return (
-                    <option
-                      key={realm.slug}
-                      value={realm.name}
-                      className="text-dark"
-                    >
-                      {realm.name}
-                    </option>
-                  );
-                })}
-              </Input>
-            </FormGroup>
+            <div className="w-75" style={{ zIndex: '500' }}>
+              <Select
+                onChange={handleChange}
+                className="react-select-container"
+                classNamePrefix="react-select"
+                styles={customStyles}
+                options={region
+                  .sort((a, b) => (a.name > b.name ? 1 : -1))
+                  .map((realm) => ({
+                    label: realm.name,
+                    value: realm.name,
+                  }))}
+              />
+            </div>
           ) : (
             // Slide Cards
             cardNames.map(([label, img]) => {
@@ -155,6 +173,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     );
   });
 
+  // RETURN COMPONENT
   return (
     <>
       {/* <p>
@@ -190,6 +209,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   );
 };
 
+// PROPTYPES
 Slider.propTypes = {
   slides: PropTypes.arrayOf(
     PropTypes.shape({

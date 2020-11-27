@@ -11,7 +11,7 @@ const NavBar = () => {
         <WoWildCraftLogo />
       </Link>
       <Link to="/Search">
-        <FaSearch className="h2" />
+        <FaSearch className="h2" style={{ color: 'white' }} />
       </Link>
     </Navbar>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Col, Container, Navbar, Row } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Hr from '../cssPages&Components/Hr';
@@ -9,8 +9,9 @@ import LoadingSpinner from '../LoadingSpinner';
 import GuildRoster from './GuildRoster';
 import Error from '../Error';
 import Flag from '../flags/Flag';
-import FactionIcons from '../flags/FactionIcons';
+// import FactionIcons from '../flags/FactionIcons';
 import { enterBottom } from '../animations';
+import Faction from '../flags/Faction';
 
 const GuildPage = () => {
   const params = useParams();
@@ -62,8 +63,7 @@ const GuildPage = () => {
   }
 
   return (
-    <div>
-      <Navbar />
+    <>
       {loading ? (
         <div className="d-flex flex-column align-items-center">
           <div style={{ height: '100px', minWidth: '95vw' }} />
@@ -71,7 +71,7 @@ const GuildPage = () => {
         </div>
       ) : (
         <motion.div
-          className="container mob-100 leaderboard-container"
+          className="container mob-100 d-flex flex-column flex-1 leaderboard-container"
           style={{ style: '75%' }}
           variants={enterBottom}
           initial="hidden"
@@ -92,7 +92,12 @@ const GuildPage = () => {
             </Row>
             <Row className="align-items-center d-flex  flex-sm-row justify-content-center">
               <Col xs={4}>
-                <Flag slug={flagTag} alt={guild.region.name} />
+                <Flag
+                  slug={flagTag}
+                  alt={guild.region.name}
+                  height="60px"
+                  width="100px"
+                />
               </Col>
               <Col
                 xs={4}
@@ -101,7 +106,7 @@ const GuildPage = () => {
                 {guild.realm.name}
               </Col>
               <Col xs={4}>
-                <FactionIcons faction={faction} />
+                <Faction faction={faction} />
               </Col>
             </Row>
           </Container>
@@ -118,7 +123,7 @@ const GuildPage = () => {
           />
         </motion.div>
       )}
-    </div>
+    </>
   );
 };
 

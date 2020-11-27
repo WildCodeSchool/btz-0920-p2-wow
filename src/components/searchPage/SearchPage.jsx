@@ -31,7 +31,9 @@ import { classesAndSpecs, factions } from '../../dal/staticData';
 
 import './SearchPage.css';
 
+// COMPONENT START
 const SearchPage = () => {
+  // Items array used for generatings cards
   const [items] = useState([
     {
       cardNames: [
@@ -78,11 +80,13 @@ const SearchPage = () => {
     },
   ]);
 
+  // States declarations
   const [searchTypeData, setSearchTypeData] = useState('Search Type');
   const [regionData, setRegionData] = useState('Region');
   const [factionData, setFactionData] = useState('Faction');
   const [classData, setClassData] = useState('Class');
 
+  // Click handling for settings research datas
   const handleSelection = (e) => {
     switch (e.target.id) {
       case 'Guild':
@@ -150,8 +154,10 @@ const SearchPage = () => {
     }
   };
 
+  // Full research request datas
   const requestData = [searchTypeData, regionData, classData, factionData];
 
+  // RETURN COMPONENT
   return (
     <div
       className="d-flex flex-column flex-1 container-fluid"
@@ -173,8 +179,10 @@ const SearchPage = () => {
   );
 };
 
+// EXPORT COMPONENT
 export default SearchPage;
 
+// PROPTYPES
 Carousel.propTypes = {
   // the current active slide of the carousel
   activeIndex: PropTypes.number,

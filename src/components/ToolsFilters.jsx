@@ -148,14 +148,20 @@ function ToolsFilters({ results, setFilterRes, setCurrentPage }) {
                       onChange={(e) => setRealm(e.target.value)}
                     >
                       <option value="">All Realms</option>
-                      {currentRealmsArray.map((serv) => {
-                        const { name, slug } = serv.character.realm;
-                        return (
-                          <option key={slug} value={slug}>
-                            {name}
-                          </option>
-                        );
-                      })}
+                      {currentRealmsArray
+                        .sort((a, b) =>
+                          a.character.realm.name > b.character.realm.name
+                            ? 1
+                            : -1
+                        )
+                        .map((serv) => {
+                          const { name, slug } = serv.character.realm;
+                          return (
+                            <option key={slug} value={slug}>
+                              {name}
+                            </option>
+                          );
+                        })}
                     </CustomInput>
                   </div>
                 </ButtonToolbar>

@@ -19,6 +19,7 @@ const PJArray = () => {
   const params = useParams();
   const [results, setResults] = useState([]);
   const [regionName, setRegionName] = useState('');
+  const [regionSlug, setRegionSlug] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
@@ -35,6 +36,7 @@ const PJArray = () => {
         ).then(({ data }) => {
           setResults(data.rankings.rankedCharacters);
           setRegionName(data.rankings.region.name);
+          setRegionSlug(data.rankings.region.slug);
           setFilterRes(data.rankings.rankedCharacters);
           setLoading(false);
         });
@@ -55,13 +57,13 @@ const PJArray = () => {
   return (
     <>
       {loading ? (
-        <div className="cssStyle d-flex flex-column align-items-center">
+        <div className="cssStyle d-flex flex-column flex-1 align-items-center">
           <div style={{ height: '100px', minWidth: '100vw' }} />
           <LoadingSpinner />
         </div>
       ) : (
         <motion.div
-          className="cssStyle d-flex flex-column align-items-center text-center"
+          className="cssStyle d-flex flex-column flex-1 align-items-center text-center"
           variants={enterBottom}
           initial="hidden"
           animate="visible"
@@ -74,7 +76,10 @@ const PJArray = () => {
             </h2>
             <Hr />
           </div>
-          <Container fluid className="d-flex flex-column align-items-center">
+          <Container
+            fluid
+            className="d-flex flex-column flex-1 align-items-center"
+          >
             <Row>
               <div className="col-12 d-flex justify-content-start p-0 m-2">
                 <ToolsFilters
@@ -111,7 +116,7 @@ const PJArray = () => {
                             rank={result.rank}
                             spec={result.character.spec.name}
                             realm={result.character.realm.name}
-                            region={regionName}
+                            region={regionSlug}
                             key={result.rank}
                           />
                         );
