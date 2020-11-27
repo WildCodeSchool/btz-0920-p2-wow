@@ -36,28 +36,34 @@ const PlayerProfile = () => {
 
   // if useEffect success promise
   const succesPromise = (player) => {
-    setPlayerRegion(player.data.region);
-    setPlayerRealm(player.data.realm);
-    setFaction(player.data.faction);
-    setPlayerName(player.data.name);
-    setThumbnail(player.data.thumbnail_url);
-    setSpecName(player.data.active_spec_name);
-    setSpecRole(player.data.active_spec_role);
-    setGuild(player.data.guild.name);
-    setItemLevel(player.data.gear.item_level_equipped);
-    setRaidScore(
-      player.data.raid_progression['nyalotha-the-waking-city'].summary
-    );
-    setMythicScore(player.data.mythic_plus_scores_by_season[0].scores.all);
-    setDisplaysClass(DalApi.getClassesAndSpecsByName(player.data.class).image);
-
-    setLoading(false);
+    try {
+      setPlayerRegion(player.data.region);
+      setPlayerRealm(player.data.realm);
+      setFaction(player.data.faction);
+      setPlayerName(player.data.nameold);
+      setThumbnail(player.data.thumbnail_url);
+      setSpecName(player.data.active_spec_name);
+      setSpecRole(player.data.active_spec_role);
+      setGuild(player.data.guild.name);
+      setItemLevel(player.data.gear.item_level_equipped);
+      setRaidScore(
+        player.data.raid_progression['nyalotha-the-waking-city'].summary
+      );
+      setMythicScore(player.data.mythic_plus_scores_by_season[0].scores.all);
+      setDisplaysClass(
+        DalApi.getClassesAndSpecsByName(player.data.class).image
+      );
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   // if useEffect failed promise
   const failPromise = (promiseError) => {
     // cause error => http://localhost:3000/Player/eu/Sargeras/Joker/
-    setError(promiseError.message);
+    setError(promiseError);
     setLoading(false);
   };
 
@@ -84,7 +90,7 @@ const PlayerProfile = () => {
   };
 
   if (error !== '') {
-    return <Error msg={error} />;
+    return <Error msg={error.message} />;
   }
 
   return (
