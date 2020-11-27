@@ -19,6 +19,7 @@ const PJArray = () => {
   const params = useParams();
   const [results, setResults] = useState([]);
   const [regionName, setRegionName] = useState('');
+  const [regionSlug, setRegionSlug] = useState('');
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [playerPerPage] = useState(5);
@@ -35,6 +36,7 @@ const PJArray = () => {
         ).then(({ data }) => {
           setResults(data.rankings.rankedCharacters);
           setRegionName(data.rankings.region.name);
+          setRegionSlug(data.rankings.region.slug);
           setFilterRes(data.rankings.rankedCharacters);
           setLoading(false);
         });
@@ -111,7 +113,7 @@ const PJArray = () => {
                             rank={result.rank}
                             spec={result.character.spec.name}
                             realm={result.character.realm.name}
-                            region={regionName}
+                            region={regionSlug}
                             key={result.rank}
                           />
                         );
