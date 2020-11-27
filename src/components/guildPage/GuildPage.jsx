@@ -96,8 +96,8 @@ const GuildPage = () => {
                 <Flag
                   slug={flagTag}
                   alt={guild.region.name}
-                  height="80px"
-                  width="120px"
+                  height="60px"
+                  width="100px"
                 />
               </Col>
               <Col

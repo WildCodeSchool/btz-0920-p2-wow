@@ -32,8 +32,7 @@ function Flag({ slug, alt, height, width }) {
       src={selectFlag()}
       alt={alt}
       height={height || '30px'}
-      width={width || '80px'}
-      className="small-logo"
+      width={width || '50px'}
     />
   );
 }
