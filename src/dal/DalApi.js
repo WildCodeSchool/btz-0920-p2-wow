@@ -194,7 +194,26 @@ class DalApi {
       .concat(
         '&fields=gear%2Cguild%2Cmythic_plus_scores_by_season:current%2Craid_progression'
       );
-    return DalApi.axiosRequest(request);
+    return new Promise((resolve, reject) => {
+      axios
+        .get(request)
+        .then((response) => resolve(response))
+        .catch((error) => {
+          // if (error.response) {
+          //   // Request made and server responded
+          //   console.log('response.data: ', error.response.data);
+          //   console.log('response.status: ', error.response.status);
+          //   console.log('response.headers: ', error.response.headers);
+          // } else if (error.request) {
+          //   // The request was made but no response was received
+          //   console.log(error.request);
+          // } else {
+          //   // Something happened in setting up the request that triggered an Error
+          //   console.log('Error', error.message);
+          // }
+          reject(error.response.data);
+        });
+    });
   }
 
   /**
