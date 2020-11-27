@@ -15,6 +15,7 @@ import WildCard from './WildCard';
 
 import './SearchPage.css';
 
+// COMPONENT START
 const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -38,6 +39,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     setActiveIndex(newIndex);
   };
 
+  // Setting regions
   useEffect(() => {
     switch (regionData.toLowerCase()) {
       case 'eu':
@@ -57,6 +59,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     }
   }, [regionData]);
 
+  // Settings cards to generate
   const history = useHistory();
   useEffect(() => {
     const dataCheck = () => {
@@ -108,6 +111,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     next();
   };
 
+  // Generetings carousel slides
   const items = (requestData[0] !== 'Character'
     ? slides.slice(0, 4)
     : slides
@@ -169,6 +173,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
     );
   });
 
+  // RETURN COMPONENT
   return (
     <>
       {/* <p>
@@ -204,6 +209,7 @@ const Slider = ({ slides, handleSelection, regionData, requestData }) => {
   );
 };
 
+// PROPTYPES
 Slider.propTypes = {
   slides: PropTypes.arrayOf(
     PropTypes.shape({
