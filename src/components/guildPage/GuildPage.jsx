@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Col, Container, Navbar, Row } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Hr from '../cssPages&Components/Hr';
@@ -63,8 +63,7 @@ const GuildPage = () => {
   }
 
   return (
-    <div>
-      <Navbar />
+    <>
       {loading ? (
         <div className="d-flex flex-column align-items-center">
           <div style={{ height: '100px', minWidth: '95vw' }} />
@@ -72,7 +71,7 @@ const GuildPage = () => {
         </div>
       ) : (
         <motion.div
-          className="container mob-100 leaderboard-container"
+          className="container mob-100 d-flex flex-column flex-1 leaderboard-container"
           style={{ style: '75%' }}
           variants={enterBottom}
           initial="hidden"
@@ -124,7 +123,7 @@ const GuildPage = () => {
           />
         </motion.div>
       )}
-    </div>
+    </>
   );
 };
 

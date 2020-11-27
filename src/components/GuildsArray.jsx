@@ -53,7 +53,7 @@ const GuildsArray = () => {
   return (
     <>
       {loading ? (
-        <div className="cssStyle d-flex flex-column align-items-center">
+        <div className="cssStyle d-flex flex-column flex-1 align-items-center">
           <div style={{ height: '100px', minWidth: '95vw' }} />
           <LoadingSpinner />
         </div>
@@ -63,7 +63,7 @@ const GuildsArray = () => {
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="cssStyle d-flex flex-column align-items-center text-center"
+          className="cssStyle d-flex flex-column flex-1 align-items-center text-center"
           style={{ maxWidth: '100vw' }}
         >
           <div style={{ height: '100px', minWidth: '99vw' }} />
@@ -73,7 +73,10 @@ const GuildsArray = () => {
             </h2>
             <Hr />
           </div>
-          <Container fluid className="d-flex flex-column align-items-center">
+          <Container
+            fluid
+            className="d-flex flex-column flex-1 align-items-center"
+          >
             <Row className="w-75">
               <div className="col-12 d-flex justify-content-start p-0 m-2">
                 {/* <ToolsFilters /> */}
