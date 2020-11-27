@@ -91,16 +91,18 @@
 }
 
 .bgAlliance {
-  background: left / contain no-repeat url('../src/img/alliance.png');
-  background-position-x: -274px;
+  background: left no-repeat url('../src/img/alliance.png');
+  background-position-x: -50%;
   background-position-y: center;
+  background-size: auto 75%;
   /* padding: 0 !important; */
 }
 
 .bgHorde {
-  background: left / contain no-repeat url('../src/img/horde.png');
+  background: left no-repeat url('../src/img/horde.png');
   background-position-x: -282px;
   background-position-y: center;
+  background-size: auto 75%;
   /* padding: 0 !important; */
 }
 
@@ -114,14 +116,14 @@
   }
 
   .bgAlliance {
-    background: bottom / contain no-repeat url('../src/img/alliance.png');
+    background: center / contain no-repeat url('../src/img/alliance.png');
+    background-size: auto 50%;
     /* padding: 0 !important; */
   }
 
   .bgHorde {
-    background: bottom / contain no-repeat url('../src/img/horde.png');
-    /* padding: 0 !important; */
-    /* background-position-y: 85px; */
+    background: center / contain no-repeat url('../src/img/horde.png');
+    background-size: auto 50%;
   }
   /* essai couleur th avec transparence */
   .test {

@@ -53,7 +53,7 @@ const Leaderboards = () => {
   }
 
   return (
-    <Container className="leaderboard-container d-flex mt-5 justify-content-center overflow-hidden">
+    <Container className="leaderboard-container d-flex flex-column flex-1 mt-5 justify-content-center overflow-hidden">
       {loading ? (
         <div className="d-flex flex-column align-items-center">
           <div style={{ height: '100px', minWidth: '100vw' }} />

@@ -55,13 +55,13 @@ const PJArray = () => {
   return (
     <>
       {loading ? (
-        <div className="cssStyle d-flex flex-column align-items-center">
+        <div className="cssStyle d-flex flex-column flex-1 align-items-center">
           <div style={{ height: '100px', minWidth: '100vw' }} />
           <LoadingSpinner />
         </div>
       ) : (
         <motion.div
-          className="cssStyle d-flex flex-column align-items-center text-center"
+          className="cssStyle d-flex flex-column flex-1 align-items-center text-center"
           variants={enterBottom}
           initial="hidden"
           animate="visible"
@@ -74,7 +74,10 @@ const PJArray = () => {
             </h2>
             <Hr />
           </div>
-          <Container fluid className="d-flex flex-column align-items-center">
+          <Container
+            fluid
+            className="d-flex flex-column flex-1 align-items-center"
+          >
             <Row>
               <div className="col-12 d-flex justify-content-start p-0 m-2">
                 <ToolsFilters
